@@ -1,8 +1,8 @@
 Stepst to start up the project on a new machine
 
 * 1 - Install:
-Ionic 2 
-Cordova 
+Ionic 2
+Cordova
 NPM 
 
 
