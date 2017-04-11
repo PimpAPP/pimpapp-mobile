@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
-import { 
-  GoogleMap, 
-  GoogleMapsEvent, 
-  LatLng,
-  MarkerOptions,
-  Marker 
-} from '@ionic-native/google-maps';
-
+import { GoogleMapsEvent, GoogleMapsLatLng } from 'ionic-native';
+import { GoogleMap } from '@ionic-native/google-maps';
 
 
 @Component({
@@ -26,7 +20,7 @@ export class HomePage {
  
     loadMap(){
  
-        let location = new LatLng(-23.616786, -46.669331);
+        let location = new GoogleMapsLatLng(-34.9290,138.6010);
  
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
@@ -51,28 +45,8 @@ export class HomePage {
         });
  
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-          let catador: LatLng = new LatLng(-23.616786, -46.669331);
-          let coleta: LatLng = new LatLng(-23.618742, -46.667335);
-
-          let markerColeta: MarkerOptions = {
-            position: coleta,
-            title: 'Coleta',
-          };
-
-          let markerCatador: MarkerOptions = {
-            position: catador,
-            title: 'Catador'
-          };
-
-          const mkCatador = this.map.addMarker(markerCatador)
-            .then((marker: Marker) => {
-                marker.showInfoWindow();
-            });
-
-            const mkColeta = this.map.addMarker(markerColeta)
-            .then((marker: Marker) => {
-                marker.showInfoWindow();
-            });
+            console.log('Map is ready!');
         });
+ 
     }
 }
