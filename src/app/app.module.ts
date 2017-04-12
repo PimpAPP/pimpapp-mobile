@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CatadoresProvider } from './../providers/catadores-provider';
+import { CollectsProvider } from './../providers/collects-provider';
 
 import {
  GoogleMaps,
@@ -32,6 +33,7 @@ import {
     SplashScreen,
     GoogleMaps,
     CatadoresProvider,
+    CollectsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

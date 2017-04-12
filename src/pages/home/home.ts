@@ -3,6 +3,7 @@ import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
 import { CatadoresProvider } from './../../providers/catadores-provider';
+import { CollectsProvider } from './../../providers/collects-provider';
 
 import { 
   GoogleMap, 
@@ -25,10 +26,12 @@ export class HomePage {
  
     map: GoogleMap;
     geocode : Geocoder;
-    neares_catadores: any;
+    nearest_catadores: any;
+    nearest_collects: any;
  
     constructor(public navCtrl: NavController, public platform: Platform,
-        private geolocation: Geolocation, public catadoresProvider: CatadoresProvider) {
+        private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
+        public collectsProvider: CollectsProvider) {
         platform.ready().then(() => {
             this.loadMap();
         });
@@ -107,6 +110,7 @@ export class HomePage {
                 this.map.moveCamera(location);
             });
             this.loadCatadores();  
+            this.loadCollects();
         });
     }
 
@@ -131,38 +135,70 @@ export class HomePage {
     loadCatadores(){
       this.catadoresProvider.getCatadoresPositions()
         .subscribe(data => {
-            this.neares_catadores = data;
-            this.plotCatadoresOnMap(this.neares_catadores);
+            this.nearest_catadores = data;
+            this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
         });
     }
 
-    plotCatadoresOnMap(catadores_list){
+    loadCollects(){
+      this.collectsProvider.getCollectsPositions()
+        .subscribe(data => {
+            this.nearest_collects = data.results;
+            this.plotCollectsOnMap(this.nearest_collects);
+        });
+    }
+
+    plotCollectsOnMap(points_list){
         let index = 0;
 
-        while (index < catadores_list.length ){
-            let catador = catadores_list[index];
+        while (index < points_list.length ){
+            let collect = points_list[index];
+            
+            if (collect.latitude == null || collect.longitude == null){
+                index = index + 1
+                continue;
+            }
+
+            this.createNewPoint(
+                collect.latitude, collect.longitude, 'Coleta: ' + collect.id);
+
+            index = index + 1;
+        }
+
+    }
+
+    createNewPoint(lat, long, title){
+        //Creating the Position
+        let position: LatLng = new LatLng(lat, long);
+
+        //Creating the Marker
+        let marker: MarkerOptions = {
+            position: position,
+            title: title
+        };
+
+        // Adding the Marker 
+        this.map.addMarker(marker)
+            .then((marker: Marker) => {
+                marker.showInfoWindow();
+        });
+    }
+
+    plotCatadoresOnMap(points_list, title){
+        let index = 0;
+
+        while (index < points_list.length ){
+            let catador = points_list[index];
             
             if (catador.geolocation.length == 0){
                 index = index + 1
                 continue;
             }
 
-            //Creating the Position
-            let position: LatLng = new LatLng(
+            this.createNewPoint(
                 catador.geolocation[0].latitude, 
-                catador.geolocation[0].longitude);
-
-            //Creating the Marker
-            let markerCatador: MarkerOptions = {
-                position: position,
-                title: 'Catador'
-            };
-
-           // Adding the Marker 
-           this.map.addMarker(markerCatador)
-                .then((marker: Marker) => {
-                    marker.showInfoWindow();
-           });
+                catador.geolocation[0].longitude, 
+                'Catador: ' + catador.id)
 
            index = index + 1
       }
