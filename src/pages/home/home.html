@@ -3,9 +3,12 @@
     <ion-title>
       Pimp
     </ion-title>
+    <button (click)="centerLocation()"> <ion-icon name="navigate"></ion-icon></button>
   </ion-navbar>
 </ion-header>
  
 <ion-content>
+    <button ion-button (click)="centerLocation()">getLocation</button>
+    <img src="assets/img/car-icon.png" alt="">
     <div id="map"></div>
 </ion-content>
