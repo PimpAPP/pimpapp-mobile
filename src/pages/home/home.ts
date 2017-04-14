@@ -136,9 +136,50 @@ export class HomePage {
     loadCatadores(){
       this.catadoresProvider.getCatadoresPositions()
         .subscribe(data => {
-            this.neares_catadores = data;
+            this.neares_catadores = data.results;
             console.log(this.neares_catadores);
+            this.plotCatadoresOnMap(this.neares_catadores);
         });
+    }
+
+    plotCatadoresOnMap(catadores_list){
+        for (var index = 0; index < catadores_list.length; index++) {
+            var catador = catadores_list[index];
+
+            if (!catador.geolocation)
+                continue;
+
+            if (!catador.geolocation[0])
+                continue;
+
+            if (!catador.geolocation[0].latitude || !catador.geolocation[0].longitude)
+                continue;
+
+            //Creating the Position
+            let position: LatLng = new LatLng(
+                catador.geolocation[0].latitude, 
+                catador.geolocation[0].longitude);
+
+            // Creating the Icon
+            let icon: MarkerIcon = {
+                url: 'img/car-icon.png',
+            }
+
+            //Creating the Marker
+            let markerCatador: MarkerOptions = {
+                position: position,
+                title: 'Catador',
+                icon: icon,
+                animation: GoogleMapsAnimation.BOUNCE
+            };
+
+           // Adding the Marker 
+           this.map.addMarker(markerCatador)
+                .then((marker: Marker) => {
+                    marker.showInfoWindow();
+            });
+            
+        }
     }
 
 }

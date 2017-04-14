@@ -4,7 +4,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CatadoresProvider {
-  url = 'http://127.0.0.1:8000/api/nearest-catadores/?format=json';
+  // url = 'http://179.188.38.243/api/nearest-catadores/?format=json';
+  url = 'http://179.188.38.243/api/catadores/?format=json';
 
   constructor(public http: Http) { }
 
