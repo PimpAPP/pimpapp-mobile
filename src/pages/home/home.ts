@@ -1,7 +1,8 @@
-import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
-import { NavController, Platform, Loading, LoadingOptions } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
+import { CatadoresProvider } from './../../providers/catadores-provider';
 
 import { 
   GoogleMap, 
@@ -24,9 +25,10 @@ export class HomePage {
  
     map: GoogleMap;
     geocode : Geocoder;
+    neares_catadores: any[];
  
     constructor(public navCtrl: NavController, public platform: Platform,
-        private geolocation: Geolocation) {
+        private geolocation: Geolocation, public catadoresProvider: CatadoresProvider) {
         platform.ready().then(() => {
             this.loadMap();
         });
@@ -36,6 +38,7 @@ export class HomePage {
         this.getCurrentLocation().subscribe(location =>{
             this.map.moveCamera(location);
         });
+        this.loadCatadores();        
     }
 
     centerLocation(){
@@ -129,4 +132,13 @@ export class HomePage {
                     });
         });
     }
+
+    loadCatadores(){
+      this.catadoresProvider.getCatadoresPositions()
+        .subscribe(data => {
+            this.neares_catadores = data;
+            console.log(this.neares_catadores);
+        });
+    }
+
 }
