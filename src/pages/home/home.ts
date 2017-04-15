@@ -25,7 +25,7 @@ export class HomePage {
  
     map: GoogleMap;
     geocode : Geocoder;
-    neares_catadores: any[];
+    neares_catadores: any;
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider) {
@@ -34,17 +34,8 @@ export class HomePage {
         });
     }
 
-    ngOnInit(){
-        this.getCurrentLocation().subscribe(location =>{
-            this.map.moveCamera(location);
-        });
-        this.loadCatadores();        
-    }
-
     centerLocation(){
-        console.log('centering');
         this.getCurrentLocation().subscribe(location =>{
-            console.log('Location: ' + location);
             let position: CameraPosition = {
                 target: location,
                 zoom: 10,
@@ -112,6 +103,10 @@ export class HomePage {
                 marker.showInfoWindow();
             });
 
+            this.getCurrentLocation().subscribe(location =>{
+                this.map.moveCamera(location);
+            });
+            this.loadCatadores();  
         });
     }
 
@@ -136,50 +131,41 @@ export class HomePage {
     loadCatadores(){
       this.catadoresProvider.getCatadoresPositions()
         .subscribe(data => {
-            this.neares_catadores = data.results;
-            console.log(this.neares_catadores);
+            this.neares_catadores = data;
             this.plotCatadoresOnMap(this.neares_catadores);
         });
     }
 
     plotCatadoresOnMap(catadores_list){
-        for (var index = 0; index < catadores_list.length; index++) {
-            var catador = catadores_list[index];
+        let index = 0;
 
-            if (!catador.geolocation)
+        while (index < catadores_list.length ){
+            let catador = catadores_list[index];
+            
+            if (catador.geolocation.length == 0){
+                index = index + 1
                 continue;
-
-            if (!catador.geolocation[0])
-                continue;
-
-            if (!catador.geolocation[0].latitude || !catador.geolocation[0].longitude)
-                continue;
+            }
 
             //Creating the Position
             let position: LatLng = new LatLng(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude);
 
-            // Creating the Icon
-            let icon: MarkerIcon = {
-                url: 'img/car-icon.png',
-            }
-
             //Creating the Marker
             let markerCatador: MarkerOptions = {
                 position: position,
-                title: 'Catador',
-                icon: icon,
-                animation: GoogleMapsAnimation.BOUNCE
+                title: 'Catador'
             };
 
            // Adding the Marker 
            this.map.addMarker(markerCatador)
                 .then((marker: Marker) => {
                     marker.showInfoWindow();
-            });
-            
-        }
-    }
+           });
 
+           index = index + 1
+      }
+           
+    }
 }
