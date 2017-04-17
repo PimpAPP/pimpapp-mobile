@@ -18,12 +18,18 @@
  
 <ion-content>
     <div class="recicle">
-          <img src="assets/img/recicle.png" alt="Logo" width="30%">
+          <a (click)="newResidue()">
+            <img src="assets/img/recicle.png" alt="Logo" width="30%">
+          </a>
     </div>
     <div id="map"></div>
 </ion-content>
 
 <ion-footer>
+        <button ion-button full large color="light" (click)="newResidue()">
+          <ion-icon name="arrow-down"></ion-icon>
+        </button>
+
   <ion-toolbar color="green">
     <ion-buttons>
       <button ion-button icon-right color="royal" class="btn-footer">

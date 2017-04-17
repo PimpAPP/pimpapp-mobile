@@ -4,6 +4,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
 import { CatadoresProvider } from './../../providers/catadores-provider';
 import { CollectsProvider } from './../../providers/collects-provider';
+import { ModalController } from 'ionic-angular';
+import { NewResidue } from './../new-residue/new-residue';
+
 
 import { 
   GoogleMap, 
@@ -31,10 +34,15 @@ export class HomePage {
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
-        public collectsProvider: CollectsProvider) {
+        public collectsProvider: CollectsProvider, public modalCtrl: ModalController) {
         platform.ready().then(() => {
             this.loadMap();
         });
+    }
+
+    newResidue() {
+        let modal = this.modalCtrl.create(NewResidue);
+        modal.present();
     }
 
     centerLocation(){

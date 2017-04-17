@@ -1,3 +1,4 @@
+import { NewResidue } from './../pages/new-residue/new-residue';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -16,7 +17,8 @@ import {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    NewResidue
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    NewResidue
   ],
   providers: [
     StatusBar,
