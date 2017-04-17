@@ -6,6 +6,7 @@ import { CatadoresProvider } from './../../providers/catadores-provider';
 import { CollectsProvider } from './../../providers/collects-provider';
 import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
+import { CatadorCollects } from './../catador-collects/catador-collects';
 
 
 import { 
@@ -40,8 +41,15 @@ export class HomePage {
         });
     }
 
-    newResidue() {
+    newResiduePage() {
+        console.log('residue');
         let modal = this.modalCtrl.create(NewResidue);
+        modal.present();
+    }
+
+    catadorCollectPage() {
+        console.log('catador');
+        let modal = this.modalCtrl.create(CatadorCollects);
         modal.present();
     }
 

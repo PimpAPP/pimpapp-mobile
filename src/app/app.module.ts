@@ -1,4 +1,3 @@
-import { NewResidue } from './../pages/new-residue/new-residue';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -9,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CatadoresProvider } from './../providers/catadores-provider';
 import { CollectsProvider } from './../providers/collects-provider';
+import { CatadorCollects } from './../pages/catador-collects/catador-collects';
+import { NewResidue } from './../pages/new-residue/new-residue';
 
 import {
  GoogleMaps,
@@ -18,7 +19,8 @@ import {
   declarations: [
     MyApp,
     HomePage,
-    NewResidue
+    NewResidue,
+    CatadorCollects
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import {
   entryComponents: [
     MyApp,
     HomePage,
-    NewResidue
+    NewResidue,
+    CatadorCollects
   ],
   providers: [
     StatusBar,
