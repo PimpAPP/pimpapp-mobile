@@ -1,0 +1,65 @@
+@import "../../theme/variables";
+
+ion-app._gmaps_cdv_ .nav-decor{
+  background-color: transparent !important;
+}
+collects-open {
+    ion-header {
+        background-image: url('../assets/img/bkg-top.png') !important;
+        background-size:cover;
+    }
+
+    ion-content {
+        background-image: url('../assets/img/map-background.png') !important;
+        background-size:cover;
+    }
+
+    ion-list {
+        background-color: rgba(222, 222, 222, 0.65) !important;
+        border-radius: 10px 10px 0 0;
+    }
+
+    ion-item {
+        background-color: rgba(222, 222, 222, 0.65) !important;
+    }
+
+    ion-list-header {
+        border-radius: 10px 10px 0 0;
+        background-color: rgba(222, 222, 222, 0.65) !important;
+        color: #298336;
+    }
+
+    ion-list-header h1, ion-list-header h1{
+        color: #298336;
+    }
+
+    .mat-green {
+        background-color: #298336; 
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    .mat-green p {
+        color: white;
+    }
+
+    .mat-yellow {
+        background-color: yellow; 
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    .mat-yellow p {
+        color: white;
+    }
+
+    .mat-red {
+        background-color: red; 
+        padding: 0 5px;
+        display: inline-block;
+    }
+
+    .mat-red p {
+        color: white;
+    }
+}

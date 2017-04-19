@@ -8,8 +8,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CatadoresProvider } from './../providers/catadores-provider';
 import { CollectsProvider } from './../providers/collects-provider';
-import { CatadorCollects } from './../pages/catador-collects/catador-collects';
 import { NewResidue } from './../pages/new-residue/new-residue';
+import { CollectsOpen } from './../pages/collects-open/catador-collects';
+
 
 import {
  GoogleMaps,
@@ -20,7 +21,7 @@ import {
     MyApp,
     HomePage,
     NewResidue,
-    CatadorCollects
+    CollectsOpen
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,7 @@ import {
     MyApp,
     HomePage,
     NewResidue,
-    CatadorCollects
+    CollectsOpen
   ],
   providers: [
     StatusBar,

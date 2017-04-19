@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-catador-collects',
-  templateUrl: 'catador-collects.html',
+  selector: 'collects-open',
+  templateUrl: 'collects-open.html',
 })
-export class CatadorCollects {
+export class CollectsOpen {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public viewCtrl: ViewController) {
