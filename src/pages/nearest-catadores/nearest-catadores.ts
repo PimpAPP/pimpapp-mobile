@@ -1,21 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { NearestCatadores } from './../nearest-catadores/nearest-catadores';
-
-
 
 @Component({
-  selector: 'collects-open',
-  templateUrl: 'collects-open.html',
+  selector: 'nearest-catadores',
+  templateUrl: 'nearest-catadores.html',
 })
-export class CollectsOpen {
+export class NearestCatadores {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public viewCtrl: ViewController) {
-  }
-
-  openNearestCatadores(){
-    this.navCtrl.push(NearestCatadores);
   }
 
   dismiss(){

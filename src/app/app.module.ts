@@ -10,6 +10,7 @@ import { CatadoresProvider } from './../providers/catadores-provider';
 import { CollectsProvider } from './../providers/collects-provider';
 import { NewResidue } from './../pages/new-residue/new-residue';
 import { CollectsOpen } from './../pages/collects-open/catador-collects';
+import { NearestCatadores } from './../pages/nearest-catadores/nearest-catadores';
 
 
 import {
@@ -21,7 +22,8 @@ import {
     MyApp,
     HomePage,
     NewResidue,
-    CollectsOpen
+    CollectsOpen,
+    NearestCatadores
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import {
     MyApp,
     HomePage,
     NewResidue,
-    CollectsOpen
+    CollectsOpen,
+    NearestCatadores
   ],
   providers: [
     StatusBar,

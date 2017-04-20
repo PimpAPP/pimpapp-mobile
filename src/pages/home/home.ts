@@ -49,8 +49,9 @@ export class HomePage {
 
     collectsOpenPage() {
         console.log('collectsOpenPage');
-        let modal = this.modalCtrl.create(CollectsOpen);
-        modal.present();
+        // let modal = this.modalCtrl.create(CollectsOpen);
+        // modal.present();
+        this.navCtrl.push(CollectsOpen);
     }
 
     centerLocation(){

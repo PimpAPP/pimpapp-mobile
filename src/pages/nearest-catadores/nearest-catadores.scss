@@ -1,6 +1,4 @@
-@import "../../theme/variables";
-
-collects-open {
+nearest-catadores {
     ion-header {
         background-image: url('../assets/img/bkg-top.png') !important;
         background-size:cover;
@@ -16,9 +14,8 @@ collects-open {
         border-radius: 10px 10px 0 0;
     }
 
-    ion-list ion-item {
+    ion-item {
         background-color: rgba(222, 222, 222, 0.65) !important;
-        text-align: center;
     }
 
     ion-list-header {
@@ -27,7 +24,7 @@ collects-open {
         color: #298336;
     }
 
-    ion-list-header h1 {
+    ion-list-header h1, ion-list-header h1{
         color: #298336;
     }
 
