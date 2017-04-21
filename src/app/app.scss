@@ -14,3 +14,29 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@font-face{
+    font-family: 'Brizzush-Rough';
+    src: url('../assets/fonts/Brizzush-Rough.ttf')
+}
+
+@font-face{
+    font-family: 'DIN-Bold';
+    src: url('../assets/fonts/DIN-Bold.ttf')
+}
+
+
+h1 {
+    font-family: "Brizzush-Rough";
+    color: #298336;
+}
+
+h2, h3 {
+    font-family: "DIN-Bold";
+    color: #298336;
+}
+
+p {
+    color: #252323;
+}
+
