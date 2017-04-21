@@ -18,6 +18,10 @@
             <p>Av Nova de Julho, 3223</p>
             <p>Jardim Paulista, São Paulo</p>
             <p><b>Dia 03/05 às 14:50</b></p>
+
+              <img src="assets/img/Icones_materiais-poda.png" alt="Vidro" width="15%">
+              <img src="assets/img/Icones_materiais-vidro.png" alt="Vidro" width="15%">
+              <img src="assets/img/Icones_materiais-plastico.png" alt="Vidro" width="15%">
         </div>
     </div>
 
@@ -25,13 +29,13 @@
           <ion-grid>
               <ion-row>
                   <ion-col col-6>
-                      <button ion-button block color="danger">NÃO ROLOU</button>
+                      <button ion-button block color="danger" (click)="showConfirm('CONFIRMA QUE A COLETA NÃO FOI REALIZADA?')">NÃO ROLOU</button>
                   </ion-col>
                   <ion-col col-6>
-                      <button ion-button block color="green">ROLOU</button>  
+                      <button ion-button block color="green" (click)="showConfirm('A COLETA FOI REALMENTE REALIZADA?')">ROLOU</button>  
                   </ion-col>
               </ion-row>
           </ion-grid>
-  </ion-footer>
+      </ion-footer>
 
 </ion-content>
