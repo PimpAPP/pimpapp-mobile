@@ -7,8 +7,7 @@ import { CollectsProvider } from './../../providers/collects-provider';
 import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
 import { CollectsOpen } from './../collects-open/catador-collects';
-import { Feedback } from './../feedback/feedback';
-
+import { Feedback1 } from './../feedback/feedback-1/feedback-1';
 
 import { 
   GoogleMap, 
@@ -41,24 +40,15 @@ export class HomePage {
             this.loadMap();
         });
 
-        this.navCtrl.push(Feedback);
-    }
-
-    openFeedbackPage(){
-      console.log('xx');
-      this.navCtrl.push(Feedback);
+        this.navCtrl.push(Feedback1);
     }
 
     newResiduePage() {
-        console.log('residue');
         let modal = this.modalCtrl.create(NewResidue);
         modal.present();
     }
 
     collectsOpenPage() {
-        console.log('collectsOpenPage');
-        // let modal = this.modalCtrl.create(CollectsOpen);
-        // modal.present();
         this.navCtrl.push(CollectsOpen);
     }
 

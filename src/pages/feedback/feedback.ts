@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { Feedback1 } from './feedback-1/feedback-1';
 
 @Component({
   selector: 'page-feedback',
@@ -23,7 +24,7 @@ export class Feedback {
           {
             text: 'SIM!',
             handler: () => {
-              console.log('Agree clicked');
+              this.navCtrl.push(Feedback1);
             }
           }
         ]
