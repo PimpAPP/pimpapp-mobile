@@ -11,6 +11,7 @@ import { CollectsProvider } from './../providers/collects-provider';
 import { NewResidue } from './../pages/new-residue/new-residue';
 import { CollectsOpen } from './../pages/collects-open/catador-collects';
 import { NearestCatadores } from './../pages/nearest-catadores/nearest-catadores';
+import { Feedback } from './../pages/feedback/feedback';
 
 
 import {
@@ -23,7 +24,8 @@ import {
     HomePage,
     NewResidue,
     CollectsOpen,
-    NearestCatadores
+    NearestCatadores,
+    Feedback
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import {
     HomePage,
     NewResidue,
     CollectsOpen,
-    NearestCatadores
+    NearestCatadores,
+    Feedback
   ],
   providers: [
     StatusBar,

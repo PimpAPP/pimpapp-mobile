@@ -1,1 +1,16 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="c">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu temporário</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage('feedback')">
+        Feedback page
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #c [root]="rootPage"></ion-nav>
