@@ -1,0 +1,41 @@
+<!--
+  Generated template for the Cadastro page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar class="block-header" style="background-color: rgb(255,255,255,0)">
+    <h1 class="draw h1-pagina" style="margin-top: 20px">CADASTRO</h1>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="cadastro section-body">
+
+  <div style="width: 100%; height: 100%; position: absolute">
+    <div class="cadastro section-body">
+      <div class="block-form marg">
+        <div class="w-form">
+
+            <ion-input class="tfield-cadastrp w-input" placeholder="Seu nome completo" type="text" [value]="userNome" [(ngModel)]="userNome"></ion-input>
+            <ion-input class="tfield-cadastrp w-input" placeholder="Seu e-mail" type="email" [value]="userEmail" [(ngModel)]="userEmail"></ion-input>
+            <ion-input class="tfield-cadastrp w-input" placeholder="Sua senha" type="password" [value]="userSenha" [(ngModel)]="userSenha"></ion-input>
+            <ion-input class="tfield-cadastrp w-input" placeholder="Confirme sua senha" type="password" [value]="userConfirmaSenha" [(ngModel)]="userConfirmaSenha"></ion-input>
+
+        </div>
+      </div>
+      <div class="div100 margin">
+        <div class="p-description white">Conecte-se com:</div>
+        <div class="div-column">
+          <div class="div-iconredes"></div>
+          <div class="div-iconredes google"></div>
+        </div>
+        <button ion-button class="button-cadastrado cadastro1 green w-button" (click)="cadastrar()">CADASTRAR</button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
