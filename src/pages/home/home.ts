@@ -7,7 +7,6 @@ import { CollectsProvider } from './../../providers/collects-provider';
 import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
 import { CollectsOpen } from './../collects-open/catador-collects';
-import { Feedback1 } from './../feedback/feedback-1/feedback-1';
 
 import { 
   GoogleMap, 
@@ -39,8 +38,6 @@ export class HomePage {
         platform.ready().then(() => {
             this.loadMap();
         });
-
-        this.navCtrl.push(Feedback1);
     }
 
     newResiduePage() {

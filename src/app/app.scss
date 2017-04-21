@@ -25,6 +25,12 @@
     src: url('../assets/fonts/DIN-Bold.ttf')
 }
 
+@font-face{
+    font-family: 'DIN-Regular';
+    src: url('../assets/fonts/DIN-Regular.ttf')
+}
+
+
 
 h1 {
     font-family: "Brizzush-Rough";
@@ -37,6 +43,7 @@ h2, h3 {
 }
 
 p {
+    font-family: "DIN-Regular";
     color: #252323;
 }
 

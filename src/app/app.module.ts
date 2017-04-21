@@ -13,6 +13,9 @@ import { CollectsOpen } from './../pages/collects-open/catador-collects';
 import { NearestCatadores } from './../pages/nearest-catadores/nearest-catadores';
 import { Feedback } from './../pages/feedback/feedback';
 import { Feedback1 } from './../pages/feedback/feedback-1/feedback-1';
+import { Feedback2 } from './../pages/feedback/feedback-2/feedback-2';
+import { Feedback3 } from './../pages/feedback/feedback-3/feedback-3';
+import { Feedback4 } from './../pages/feedback/feedback-4/feedback-4';
 
 
 import {
@@ -27,7 +30,10 @@ import {
     CollectsOpen,
     NearestCatadores,
     Feedback,
-    Feedback1
+    Feedback1,
+    Feedback2,
+    Feedback3,
+    Feedback4
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,10 @@ import {
     CollectsOpen,
     NearestCatadores,
     Feedback,
-    Feedback1
+    Feedback1,
+    Feedback2,
+    Feedback3,
+    Feedback4
   ],
   providers: [
     StatusBar,

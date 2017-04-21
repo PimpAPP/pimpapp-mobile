@@ -1,3 +1,4 @@
+import { Feedback3 } from './feedback-3/feedback-3';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Feedback1 } from './feedback-1/feedback-1';
@@ -8,7 +9,8 @@ import { Feedback1 } from './feedback-1/feedback-1';
 })
 export class Feedback {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public alertCtrl: AlertController) {
   }
 
   showConfirm(message) {
@@ -18,7 +20,7 @@ export class Feedback {
           {
             text: 'AINDA NÃO',
             handler: () => {
-              console.log('Disagree clicked');
+              this.navCtrl.push(Feedback3);
             }
           },
           {
