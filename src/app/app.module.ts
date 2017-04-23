@@ -19,6 +19,7 @@ import { Feedback3 } from './../pages/feedback/feedback-3/feedback-3';
 import { Feedback4 } from './../pages/feedback/feedback-4/feedback-4';
 import { MenuPage } from './../pages/menu/menu';
 import { TutorialPage } from './../pages/tutorial/tutorial';
+import { TutorialPage2 } from './../pages/tutorial/page2/page2';
 
 
 import {
@@ -39,7 +40,8 @@ import {
     Feedback4,
     TabsPage,
     MenuPage,
-    TutorialPage
+    TutorialPage,
+    TutorialPage2
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import {
     Feedback4,
     TabsPage,
     MenuPage,
-    TutorialPage
+    TutorialPage,
+    TutorialPage2
   ],
   providers: [
     StatusBar,
