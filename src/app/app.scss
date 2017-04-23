@@ -34,12 +34,18 @@
 
 h1 {
     font-family: "Brizzush-Rough";
-    color: #298336;
+    color: color($colors, green);
+}
+
+
+ion-title {
+    font-family: "Brizzush-Rough";
+    color: color($colors, green);
 }
 
 h2, h3 {
     font-family: "DIN-Bold";
-    color: #298336;
+    color: color($colors, green);
 }
 
 p {
