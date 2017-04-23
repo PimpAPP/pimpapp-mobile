@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { TutorialPage } from './../tutorial/tutorial';
 
 
 @Component({
@@ -9,6 +10,10 @@ import { NavController } from 'ionic-angular';
 export class MenuPage {
 
   constructor(public navCtrl: NavController) {
+  }
+
+  openTutorial(){
+    this.navCtrl.push(TutorialPage);
   }
 
 }
