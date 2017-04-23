@@ -1,3 +1,4 @@
+import { TabsPage } from './../pages/tabs/tabs';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -16,6 +17,7 @@ import { Feedback1 } from './../pages/feedback/feedback-1/feedback-1';
 import { Feedback2 } from './../pages/feedback/feedback-2/feedback-2';
 import { Feedback3 } from './../pages/feedback/feedback-3/feedback-3';
 import { Feedback4 } from './../pages/feedback/feedback-4/feedback-4';
+import { MenuPage } from './../pages/menu/menu';
 
 
 import {
@@ -33,7 +35,9 @@ import {
     Feedback1,
     Feedback2,
     Feedback3,
-    Feedback4
+    Feedback4,
+    TabsPage,
+    MenuPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import {
     Feedback1,
     Feedback2,
     Feedback3,
-    Feedback4
+    Feedback4,
+    TabsPage,
+    MenuPage
   ],
   providers: [
     StatusBar,
