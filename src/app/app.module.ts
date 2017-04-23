@@ -22,6 +22,7 @@ import { TutorialPage } from './../pages/tutorial/tutorial';
 import { TutorialPage2 } from './../pages/tutorial/page2/page2';
 import { TutorialPage3 } from './../pages/tutorial/page3/page3';
 import { TutorialPage4 } from './../pages/tutorial/page4/page4';
+import { TutorialPage5 } from './../pages/tutorial/page5/page5';
 
 
 import {
@@ -45,7 +46,8 @@ import {
     TutorialPage,
     TutorialPage2,
     TutorialPage3,
-    TutorialPage4
+    TutorialPage4,
+    TutorialPage5
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import {
     TutorialPage,
     TutorialPage2,
     TutorialPage3,
-    TutorialPage4
+    TutorialPage4,
+    TutorialPage5
   ],
   providers: [
     StatusBar,
