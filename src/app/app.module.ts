@@ -1,4 +1,3 @@
-import { TabsPage } from './../pages/tabs/tabs';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -18,8 +17,11 @@ import { Feedback2 } from './../pages/feedback/feedback-2/feedback-2';
 import { Feedback3 } from './../pages/feedback/feedback-3/feedback-3';
 import { Feedback4 } from './../pages/feedback/feedback-4/feedback-4';
 import { MenuPage } from './../pages/menu/menu';
+import { TabsPage } from './../pages/tabs/tabs';
 import { TutorialPage } from './../pages/tutorial/tutorial';
 import { TutorialPage2 } from './../pages/tutorial/page2/page2';
+import { TutorialPage3 } from './../pages/tutorial/page3/page3';
+import { TutorialPage4 } from './../pages/tutorial/page4/page4';
 
 
 import {
@@ -41,7 +43,9 @@ import {
     TabsPage,
     MenuPage,
     TutorialPage,
-    TutorialPage2
+    TutorialPage2,
+    TutorialPage3,
+    TutorialPage4
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,9 @@ import {
     TabsPage,
     MenuPage,
     TutorialPage,
-    TutorialPage2
+    TutorialPage2,
+    TutorialPage3,
+    TutorialPage4
   ],
   providers: [
     StatusBar,

@@ -2,7 +2,7 @@ import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-import { TutorialPage2 } from './../pages/tutorial/page2/page2';
+import { TutorialPage4 } from './../pages/tutorial/page4/page4';
 // import { TabsPage } from './../pages/tabs/tabs';
 
 
@@ -12,7 +12,7 @@ import { TutorialPage2 } from './../pages/tutorial/page2/page2';
 export class MyApp {
   @ViewChild('c') nav: NavController;
 
-  rootPage:any = TutorialPage2;
+  rootPage:any = TutorialPage4;
   public menu: MenuController;
 
   constructor(platform: Platform, statusBar: StatusBar, public menuCtrl: MenuController
