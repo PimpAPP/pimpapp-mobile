@@ -23,6 +23,7 @@ import { TutorialPage2 } from './../pages/tutorial/page2/page2';
 import { TutorialPage3 } from './../pages/tutorial/page3/page3';
 import { TutorialPage4 } from './../pages/tutorial/page4/page4';
 import { TutorialPage5 } from './../pages/tutorial/page5/page5';
+import { MenuCatadorRegister } from './../pages/menu-catador-register/menu-catador-register';
 
 
 import {
@@ -47,7 +48,8 @@ import {
     TutorialPage2,
     TutorialPage3,
     TutorialPage4,
-    TutorialPage5
+    TutorialPage5,
+    MenuCatadorRegister
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,8 @@ import {
     TutorialPage2,
     TutorialPage3,
     TutorialPage4,
-    TutorialPage5
+    TutorialPage5,
+    MenuCatadorRegister
   ],
   providers: [
     StatusBar,
