@@ -26,6 +26,7 @@ import { TutorialPage5 } from './../pages/tutorial/page5/page5';
 import { MenuCatadorRegister } from './../pages/menu-catador-register/menu-catador-register';
 import { MenuMaterials } from './../pages/menu-materials/menu-materials';
 import { CansPage } from './../pages/menu-materials/cans/cans';
+import { MenuSupport } from './../pages/menu-support/menu-support';
 
 
 import {
@@ -53,7 +54,8 @@ import {
     TutorialPage5,
     MenuCatadorRegister,
     MenuMaterials,
-    CansPage
+    CansPage,
+    MenuSupport
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,8 @@ import {
     TutorialPage5,
     MenuCatadorRegister,
     MenuMaterials,
-    CansPage
+    CansPage,
+    MenuSupport
   ],
   providers: [
     StatusBar,

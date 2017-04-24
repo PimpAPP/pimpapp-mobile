@@ -3,6 +3,7 @@ import { HomePage } from './../home/home';
 import { MenuPage } from './../menu/menu';
 import { MenuCatadorRegister } from './../menu-catador-register/menu-catador-register';
 import { MenuMaterials } from './../menu-materials/menu-materials';
+import { MenuSupport } from './../menu-support/menu-support';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class TabsPage {
     home = HomePage;
     menuCatadorRegister = MenuCatadorRegister;
     menuMaterials = MenuMaterials;
+    support = MenuSupport;
 
   constructor() {
 

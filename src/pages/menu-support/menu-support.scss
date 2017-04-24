@@ -1,0 +1,26 @@
+menu-support {
+    ion-content {
+        background-image: url('../assets/img/fundo-papelao.jpg') !important;
+        background-repeat: no-repeat;
+        background-position: top; 
+        background-size: 100% 100%;
+    }
+
+    h1 {
+        color: color($colors, dark);
+        font-size: 3em;
+    }
+
+    h3 {
+        color: color($colors, light);
+    }
+
+    h4 a {
+        color: color($colors, dark);
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+}
+

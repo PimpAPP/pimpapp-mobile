@@ -54,3 +54,15 @@ p {
     font-size: 1.5em;
 }
 
+.tabs-md .tabbar, .tabs-ios .tabbar, .tabs-wp .tabbar {
+    background-color: color($colors, secondary);
+
+    ion-icon {
+        color: color($colors, light);
+    }
+
+    // Changin collor of the active tab
+    .tab-button[aria-selected=true] .tab-button-icon {
+        color: color($colors, green);
+    }
+}
