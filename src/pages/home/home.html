@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="brown">
+  <ion-navbar>
 
     <ion-grid>
       <ion-row>
@@ -17,14 +17,11 @@
 </ion-header>
  
 <ion-content>
-    <a (click)="newResiduePage()">
-      <div class="recicle">
-              <img src="assets/img/recicle.png" alt="Logo" width="30%">
-      </div>
-    </a>
     <div id="map"></div>
+      <div class="recicle">
+          <img src="assets/img/recicle.png" alt="Logo" width="30%" (click)="newResiduePage()">
+      </div>
 </ion-content>
-
 
 <ion-footer>
 

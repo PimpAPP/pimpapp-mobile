@@ -51,7 +51,7 @@ h2, h3 {
 p {
     font-family: "DIN-Regular";
     color: #252323;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .tabs-md .tabbar, .tabs-ios .tabbar, .tabs-wp .tabbar {
@@ -65,4 +65,12 @@ p {
     .tab-button[aria-selected=true] .tab-button-icon {
         color: color($colors, green);
     }
+}
+
+// Fundo de pepelão
+.toolbar-background {
+    background-image: url('../assets/img/fundo.png') !important;
+    background-repeat: no-repeat;
+    background-position: top; 
+    background-size: 100% 100%;
 }

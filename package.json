@@ -25,6 +25,7 @@
     "@ionic-native/splash-screen": "3.4.2",
     "@ionic-native/status-bar": "3.4.2",
     "@ionic/storage": "2.0.1",
+    "font-awesome": "^4.7.0",
     "ionic-angular": "3.0.1",
     "ionicons": "3.0.0",
     "rxjs": "5.1.1",
@@ -43,6 +44,12 @@
     "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard"
   ],
+  "config": {
+    "ionic_bundler": "webpack",
+    "ionic_source_map": "source-map",
+    "ionic_copy": "./config/copy.config.js",
+    "ionic_sass": "./config/sass.config.js"
+  },
   "cordovaPlatforms": [],
   "description": "pimp: An Ionic project"
 }
