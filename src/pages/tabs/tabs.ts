@@ -1,3 +1,4 @@
+import { NewResidue } from './../new-residue/new-residue';
 import { Component } from '@angular/core';
 import { HomePage } from './../home/home';
 import { MenuPage } from './../menu/menu';
@@ -16,6 +17,7 @@ export class TabsPage {
     menuCatadorRegister = MenuCatadorRegister;
     menuMaterials = MenuMaterials;
     support = MenuSupport;
+    newResidue = NewResidue;
 
   constructor() {
 
