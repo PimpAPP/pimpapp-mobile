@@ -28,7 +28,7 @@ import { MenuMaterials } from './../pages/menu-materials/menu-materials';
 import { CansPage } from './../pages/menu-materials/cans/cans';
 import { MenuSupport } from './../pages/menu-support/menu-support';
 import { ResidueRegister } from './../pages/residue-register/residue-register';
-
+import { QuantityPage } from './../pages/residue-register/quantity/quantity';
 
 import {
  GoogleMaps,
@@ -57,11 +57,12 @@ import {
     MenuMaterials,
     CansPage,
     MenuSupport,
-    ResidueRegister
+    ResidueRegister,
+    QuantityPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, ResidueRegister),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -87,7 +88,8 @@ import {
     MenuMaterials,
     CansPage,
     MenuSupport,
-    ResidueRegister
+    ResidueRegister,
+    QuantityPage
   ],
   providers: [
     StatusBar,

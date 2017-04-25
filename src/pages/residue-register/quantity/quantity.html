@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="brown">
+      <ion-title>REGISTRAR MATERIAL</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+    <ion-card>
+    <ion-card-header>
+        <p text-center><b>Material:</b> {{ material }}</p>
+    </ion-card-header>
+    <ion-card-content>
+        <h2 text-center>QUANTIDADE</h2>
+        <ion-grid>
+            <ion-row>
+                <ion-col class="selected">
+                    <img src="assets/img/{{ materialImage }}" width="10%">
+                    <p text-center><b>SACO</b></p>
+                    <p text-center>2-5L</p>
+                </ion-col>
+                <ion-col>
+                    <img src="assets/img/{{ materialImage }}" width="10%">
+                    <p text-center><b>SACO</b></p>
+                    <p text-center>5-10L</p>
+                </ion-col>
+                <ion-col>
+                    <img src="assets/img/{{ materialImage }}" width="10%">
+                    <p text-center><b>SACO</b></p>
+                    <p text-center>10+L</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card-content>
+    </ion-card>
+    <button ion-button full color="grey">REGISTRAR OUTRO MATERIAL</button>
+    <button ion-button full color="green">PRÓXIMO PASSO</button>
+</ion-content>

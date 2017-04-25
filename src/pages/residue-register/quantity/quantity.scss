@@ -1,0 +1,27 @@
+page-quantity {
+    p {
+        color: color($colors, secondary);
+    }
+    .card-md {
+         h2 {
+          color: green;
+         }
+    }
+
+    // Background transparency
+    .content-md, .content-ios, .content-wp {
+            background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    ion-title {
+        font-size: 3em;
+    }
+
+    .selected {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+        margin-bottom: 120px;
+    }
+}
