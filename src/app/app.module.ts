@@ -27,6 +27,7 @@ import { MenuCatadorRegister } from './../pages/menu-catador-register/menu-catad
 import { MenuMaterials } from './../pages/menu-materials/menu-materials';
 import { CansPage } from './../pages/menu-materials/cans/cans';
 import { MenuSupport } from './../pages/menu-support/menu-support';
+import { ResidueRegister } from './../pages/residue-register/residue-register';
 
 
 import {
@@ -55,7 +56,8 @@ import {
     MenuCatadorRegister,
     MenuMaterials,
     CansPage,
-    MenuSupport
+    MenuSupport,
+    ResidueRegister
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,8 @@ import {
     MenuCatadorRegister,
     MenuMaterials,
     CansPage,
-    MenuSupport
+    MenuSupport,
+    ResidueRegister
   ],
   providers: [
     StatusBar,

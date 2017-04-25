@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 
 
 @Component({
@@ -9,7 +9,12 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 export class NewResidue {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-      public viewCtrl: ViewController) {
+      public viewCtrl: ViewController, public modalCtrl: ModalController) {
+  }
+
+  showModalQuantity(){
+      // let modal = this.modalCtrl.create(QuantityPage);
+      // modal.present();
   }
 
   dismiss(){
