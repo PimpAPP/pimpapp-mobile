@@ -28,6 +28,13 @@ import { MenuMaterials } from './../pages/menu-materials/menu-materials';
 import { CansPage } from './../pages/menu-materials/cans/cans';
 import { MenuSupport } from './../pages/menu-support/menu-support';
 
+//Adicionado do meu código
+import { LandingPage } from './../pages/landing/landing';
+import { CadastroPage } from './../pages/cadastro/cadastro';
+import { LoginPage } from './../pages/login/login';
+
+import { UsersAPI } from '../providers/users-api';
+import { CameraProvider } from '../providers/camera-provider';
 
 import {
  GoogleMaps,
@@ -55,7 +62,10 @@ import {
     MenuCatadorRegister,
     MenuMaterials,
     CansPage,
-    MenuSupport
+    MenuSupport,
+    LandingPage,
+    CadastroPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -84,7 +94,10 @@ import {
     MenuCatadorRegister,
     MenuMaterials,
     CansPage,
-    MenuSupport
+    MenuSupport,
+    LandingPage,
+    CadastroPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -92,6 +105,8 @@ import {
     GoogleMaps,
     CatadoresProvider,
     CollectsProvider,
+    UsersAPI,
+    CameraProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
