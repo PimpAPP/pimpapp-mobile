@@ -31,6 +31,13 @@ import { ResidueRegister } from './../pages/residue-register/residue-register';
 import { QuantityPage } from './../pages/residue-register/quantity/quantity';
 import { ResumePage } from './../pages/residue-register/resume/resume';
 
+//Adicionado do meu código
+// import { LandingPage } from './../pages/landing/landing';
+// import { CadastroPage } from './../pages/cadastro/cadastro';
+// import { LoginPage } from './../pages/login/login';
+
+// import { UsersAPI } from '../providers/users-api';
+// import { CameraProvider } from '../providers/camera-provider';
 
 import {
  GoogleMaps,
@@ -61,8 +68,11 @@ import {
     MenuSupport,
     ResidueRegister,
     QuantityPage,
-    ResumePage
-  ],
+    ResumePage,
+    // LandingPage,
+    // CadastroPage,
+    // LoginPage
+    ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, ResidueRegister),
@@ -93,7 +103,10 @@ import {
     MenuSupport,
     ResidueRegister,
     QuantityPage,
-    ResumePage
+    ResumePage,
+    // LandingPage,
+    // CadastroPage,
+    // LoginPage
   ],
   providers: [
     StatusBar,
@@ -101,6 +114,8 @@ import {
     GoogleMaps,
     CatadoresProvider,
     CollectsProvider,
+    // UsersAPI,
+    // CameraProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

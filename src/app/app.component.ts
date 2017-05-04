@@ -4,6 +4,7 @@ import { Platform, MenuController, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ResumePage } from './../pages/residue-register/resume/resume';
 // import { TabsPage } from './../pages/tabs/tabs';
+// import { LandingPage } from './../pages/landing/landing';
 
 
 @Component({
