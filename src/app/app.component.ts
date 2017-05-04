@@ -2,8 +2,7 @@ import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-import { ResumePage } from './../pages/residue-register/resume/resume';
-// import { TabsPage } from './../pages/tabs/tabs';
+import { TabsPage } from './../pages/tabs/tabs';
 // import { LandingPage } from './../pages/landing/landing';
 
 
@@ -13,7 +12,7 @@ import { ResumePage } from './../pages/residue-register/resume/resume';
 export class MyApp {
   @ViewChild('c') nav: NavController;
 
-  rootPage:any = ResumePage;
+  rootPage:any = TabsPage;
   public menu: MenuController;
 
   constructor(platform: Platform, statusBar: StatusBar, public menuCtrl: MenuController

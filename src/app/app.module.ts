@@ -30,6 +30,7 @@ import { MenuSupport } from './../pages/menu-support/menu-support';
 import { ResidueRegister } from './../pages/residue-register/residue-register';
 import { QuantityPage } from './../pages/residue-register/quantity/quantity';
 import { ResumePage } from './../pages/residue-register/resume/resume';
+import { ListCatadoresNear } from './../pages/residue-register/list-catadores-near/list-catadores-near';
 
 //Adicionado do meu código
 // import { LandingPage } from './../pages/landing/landing';
@@ -71,7 +72,8 @@ import {
     ResumePage,
     // LandingPage,
     // CadastroPage,
-    // LoginPage
+    // LoginPage,
+    ListCatadoresNear
     ],
   imports: [
     BrowserModule,
@@ -106,7 +108,8 @@ import {
     ResumePage,
     // LandingPage,
     // CadastroPage,
-    // LoginPage
+    // LoginPage,
+    ListCatadoresNear
   ],
   providers: [
     StatusBar,
