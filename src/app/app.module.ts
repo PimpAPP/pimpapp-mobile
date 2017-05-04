@@ -29,6 +29,8 @@ import { CansPage } from './../pages/menu-materials/cans/cans';
 import { MenuSupport } from './../pages/menu-support/menu-support';
 import { ResidueRegister } from './../pages/residue-register/residue-register';
 import { QuantityPage } from './../pages/residue-register/quantity/quantity';
+import { ResumePage } from './../pages/residue-register/resume/resume';
+
 
 import {
  GoogleMaps,
@@ -58,7 +60,8 @@ import {
     CansPage,
     MenuSupport,
     ResidueRegister,
-    QuantityPage
+    QuantityPage,
+    ResumePage
   ],
   imports: [
     BrowserModule,
@@ -89,7 +92,8 @@ import {
     CansPage,
     MenuSupport,
     ResidueRegister,
-    QuantityPage
+    QuantityPage,
+    ResumePage
   ],
   providers: [
     StatusBar,

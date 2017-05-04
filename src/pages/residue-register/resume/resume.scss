@@ -1,0 +1,23 @@
+page-resume-residue {
+    .card {
+        h2 {
+            color: green;
+            font-size: 2em;
+        }
+    }
+
+    .col p {
+        text-align: center;
+        color: white;
+    }
+
+    .estimated-value {
+        text-align: center;
+    }
+
+    .estimated-value h2, .estimated-value p {
+        display: inline;
+    }
+    
+    
+}

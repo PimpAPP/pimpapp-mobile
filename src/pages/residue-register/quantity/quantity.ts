@@ -1,3 +1,4 @@
+import { ResumePage } from './../resume/resume';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 
@@ -14,6 +15,14 @@ export class QuantityPage {
       public viewCtrl: ViewController) {
         this.material = 'Misturado';
         this.materialImage = 'Icones_materiais-misturado.png';
+  }
+
+  takePictures(){
+
+  }
+
+  residueResume(){
+    this.navCtrl.push(ResumePage)
   }
 
   dismiss(){
