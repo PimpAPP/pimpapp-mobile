@@ -1,9 +1,9 @@
-import { Material } from './Material';
+import { MaterialItem } from './MaterialItem';
 
 export class Residue {
-    public materialList: Array<Material>;
+    public materialList: Array<MaterialItem>;
 
     constructor(){
-        this.materialList = new Array<Material>();
+        this.materialList = new Array<MaterialItem>();
     }
 }

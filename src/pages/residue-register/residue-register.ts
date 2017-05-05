@@ -1,3 +1,4 @@
+import { MaterialItem } from './../MaterialItem';
 import { Residue } from './../Residue';
 import { QuantityPage } from './quantity/quantity';
 import { Component } from '@angular/core';
@@ -10,7 +11,7 @@ import { MaterialRecover } from './../MaterialRecover';
 })
 export class ResidueRegister {
   private materialRecover: MaterialRecover;
-  private residue: Residue; 
+  private residue: Residue;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public modalCtrl: ModalController) {
@@ -19,16 +20,21 @@ export class ResidueRegister {
   }
 
   showModalQuantity(material){
-      let modal = this.modalCtrl.create(QuantityPage);
-
       let materialSelected = this.materialRecover.findMaterial(material);
-      console.log(materialSelected);
+      let materialItem = new MaterialItem;
       
-      this.residue.materialList.push(materialSelected);
-      console.log(this.residue);
+      materialItem.material = materialSelected;
 
+      // Modal structure
+      let modal = this.modalCtrl.create(QuantityPage, 
+      { material: materialSelected, residue: this.residue });
+      modal.onDidDismiss(data => {
+          materialItem.quantity = data;
+          this.residue.materialList.push(materialItem);
+      });
       modal.present();
   }
+
 
 
 }

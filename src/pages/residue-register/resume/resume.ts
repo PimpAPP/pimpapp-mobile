@@ -13,6 +13,8 @@ export class ResumePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public viewCtrl: ViewController) {
+
+        console.log(navParams.get('residue'));
   }
 
   registerResidue(){
