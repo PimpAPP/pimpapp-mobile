@@ -29,8 +29,8 @@ export class ResidueRegister {
       let modal = this.modalCtrl.create(QuantityPage, 
       { material: materialSelected, residue: this.residue });
       modal.onDidDismiss(data => {
-          materialItem.quantity = data;
-          this.residue.materialList.push(materialItem);
+          if (data > 0)
+            this.residue.addMaterialItem(materialItem, data);
       });
       modal.present();
   }

@@ -1,43 +1,70 @@
-import { MaterialItem } from './../../MaterialItem';
-import { ResumePage } from './../resume/resume';
+import { Residue } from './../../Residue';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { MaterialItem } from './../../MaterialItem';
+import { Material } from './../../Material';
+import { ResumePage } from './../resume/resume';
 
 @Component({
   selector: 'page-quantity',
   templateUrl: 'quantity.html',
 })
 export class QuantityPage {
-  public material: any;
+  public material: Material;
+  public residue: Residue;
   public selectedQuantity: Number = null;
   public bagSelected: boolean = false;
   public canSelected: boolean = false;
   public stackSelected: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-      public viewCtrl: ViewController) {
+      public viewCtrl: ViewController, private camera: Camera) {
+        this.material = new Material();
         this.material = navParams.get('material');
+        
+        this.residue = new Residue();
+        this.residue = this.navParams.get('residue');
   }
 
-    takePictures(){
+    openCamera(){
+        const options: CameraOptions = {
+            quality: 40,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+        }
 
+        this.camera.getPicture(options).then((imageData) => {
+            let base64Image = 'data:image/jpeg;base64,' + imageData;
+            this.residue.image = base64Image;
+            this.navCtrl.push(ResumePage, { residue: this.residue });
+        }, (err) => {
+            console.log('Error camera: ' + err);
+        });
+        
+        let materialItem: MaterialItem = new MaterialItem();
+        materialItem.material = this.material;
+        this.residue.addMaterialItem(materialItem, this.selectedQuantity);
+        this.navCtrl.push(ResumePage, { residue: this.residue });
     }
 
     residueResume(){
         let materialItem: MaterialItem;
-        let residue = this.navParams.get('residue');
         materialItem = this.navParams.get('material');
 
-        materialItem.quantity = this.selectedQuantity;
-
-        residue.materialList.push(materialItem);
+        this.residue.addMaterialItem(
+            materialItem, this.selectedQuantity);
 
         this.navCtrl.push(ResumePage, 
-            { residue: residue});
+            { residue: this.residue});
     }
     
     dismiss() {
-        this.viewCtrl.dismiss(this.selectedQuantity);
+        if (this.selectedQuantity)
+            this.viewCtrl.dismiss(this.selectedQuantity);
+        else
+            this.viewCtrl.dismiss(this.selectedQuantity);
     }
 
     selectQuantity(option){

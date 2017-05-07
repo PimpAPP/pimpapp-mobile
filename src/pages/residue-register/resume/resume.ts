@@ -1,3 +1,4 @@
+import { Residue } from './../../Residue';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ListCatadoresNear } from './../list-catadores-near/list-catadores-near';
@@ -7,14 +8,13 @@ import { ListCatadoresNear } from './../list-catadores-near/list-catadores-near'
   templateUrl: 'resume.html',
 })
 export class ResumePage {
-  public materials = [
-    {id: 1, description:'Papel', color: '#ccc', quantity: 0}
-  ]
+  public materials: any[];
+  public residue: Residue;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       public viewCtrl: ViewController) {
-
-        console.log(navParams.get('residue'));
+        this.residue = new Residue();
+        this.residue = navParams.get('residue');
   }
 
   registerResidue(){

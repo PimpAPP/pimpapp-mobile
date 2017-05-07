@@ -31,6 +31,7 @@ import { ResidueRegister } from './../pages/residue-register/residue-register';
 import { QuantityPage } from './../pages/residue-register/quantity/quantity';
 import { ResumePage } from './../pages/residue-register/resume/resume';
 import { ListCatadoresNear } from './../pages/residue-register/list-catadores-near/list-catadores-near';
+import { Camera } from '@ionic-native/camera';
 
 //Adicionado do meu código
 // import { LandingPage } from './../pages/landing/landing';
@@ -117,6 +118,7 @@ import {
     GoogleMaps,
     CatadoresProvider,
     CollectsProvider,
+    Camera,
     // UsersAPI,
     // CameraProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

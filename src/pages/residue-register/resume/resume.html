@@ -13,24 +13,17 @@
 
             <ion-grid>
                 <ion-row>
-                    <ion-col>
-                        <img src="assets/img/Icones_materiais-moveis.png" alt="Materiais Móveis">
-                        <p style="background-color: mediumturquoise">Móveis</p>
-                    </ion-col>
-                    <ion-col>
-                        <img src="assets/img/Icones_materiais-papel.png" alt="Materiais">
-                        <p style="background-color: blue">Papel</p>
-                    </ion-col>
-                    <ion-col>
-                        <img src="assets/img/Icones_materiais-oleo.png" alt="Materiais Móveis">
-                        <p style="background-color:saddlebrown">Óleo</p>
+                    <ion-col *ngFor="let item of residue.materialList" col-4>
+                        <img src="assets/img/{{ item.material.icon }}" alt="{{ item.material.name }}">
+                        <p [style.background-color]="item.material.color">{{ item.material.name }}</p>
                     </ion-col>
                 </ion-row>
             </ion-grid>
 
             <div class="estimated-value">
                 <p>O valor médio de venda do material registrado é entre: </p> <br>
-                <h2>R$ 4,50</h2> <p> e </p> <h2>R$ 5,50</h2><br>
+                <h2>R$ {{ residue.getAverrageValue()[0] }}</h2> <p> e </p> 
+                    <h2>R$ {{ residue.getAverrageValue()[1] }}</h2><br>
                 <p>Considere complementar o valor com o que você acha justo pelo serviço</p>
             </div>
 

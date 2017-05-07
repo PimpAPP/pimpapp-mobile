@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "pymp",
+  "author": "Gregory Pacheco",
+  "homepage": "https://usereco.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -10,14 +10,15 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
-    "@angular/common": "4.0.0",
-    "@angular/compiler": "4.0.0",
-    "@angular/compiler-cli": "4.0.0",
-    "@angular/core": "4.0.0",
-    "@angular/forms": "4.0.0",
-    "@angular/http": "4.0.0",
-    "@angular/platform-browser": "4.0.0",
-    "@angular/platform-browser-dynamic": "4.0.0",
+    "@angular/common": "4.0.2",
+    "@angular/compiler": "4.0.2",
+    "@angular/compiler-cli": "4.0.2",
+    "@angular/core": "4.0.2",
+    "@angular/forms": "4.0.2",
+    "@angular/http": "4.0.2",
+    "@angular/platform-browser": "4.0.2",
+    "@angular/platform-browser-dynamic": "4.0.2",
+    "@ionic-native/camera": "^3.6.1",
     "@ionic-native/core": "^3.6.1",
     "@ionic-native/geolocation": "^3.6.1",
     "@ionic-native/google-maps": "^3.6.1",
@@ -52,5 +53,5 @@
     "ionic_sass": "./config/sass.config.js"
   },
   "cordovaPlatforms": [],
-  "description": "pimp: An Ionic project"
+  "description": "pimp: Lixo não existe"
 }
