@@ -15,7 +15,6 @@ import {
   MarkerOptions,
   Marker,
   MarkerIcon,
-  Geocoder,
   GoogleMapsAnimation,
   CameraPosition
 } from '@ionic-native/google-maps';
@@ -28,7 +27,6 @@ import {
 export class HomePage {
  
     map: GoogleMap;
-    geocode : Geocoder;
     nearest_catadores: any;
     nearest_collects: any;
  
