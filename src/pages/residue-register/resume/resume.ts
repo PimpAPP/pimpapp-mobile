@@ -1,7 +1,7 @@
 import { MapUtils } from './../../map-utils';
 import { Residue } from './../../Residue';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { ListCatadoresNear } from './../list-catadores-near/list-catadores-near';
 
 @Component({
@@ -13,9 +13,10 @@ export class ResumePage {
   public residue: Residue;
   public location: any;
   public mapUtils: MapUtils;
+  public address: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-      public viewCtrl: ViewController) {
+      public viewCtrl: ViewController, public modalCtrl: ModalController) {
         this.mapUtils = new MapUtils();
         this.residue = new Residue();
         this.residue = navParams.get('residue');

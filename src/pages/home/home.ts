@@ -55,6 +55,7 @@ export class HomePage {
                 tilt: 30
             };
             this.map.moveCamera(position);
+            
         });
     }
 
