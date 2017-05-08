@@ -14,7 +14,7 @@ export class ListCatadoresNear {
       public viewCtrl: ViewController, public callNumber: CallNumber) {
   }
 
-  lanchPhone(number){
+  lanchPhone(number: string){
     this.callNumber.callNumber(number, true)
       .then(() => console.log('Launched dialer!'))
       .catch(() => console.log('Error launching dialer'));

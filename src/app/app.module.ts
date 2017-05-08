@@ -1,3 +1,4 @@
+import { CallNumber } from '@ionic-native/call-number';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -119,6 +120,7 @@ import {
     CatadoresProvider,
     CollectsProvider,
     Camera,
+    CallNumber,
     // UsersAPI,
     // CameraProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
