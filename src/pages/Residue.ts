@@ -3,6 +3,8 @@ import { MaterialItem } from './MaterialItem';
 export class Residue {
     public materialList: Array<MaterialItem>;
     public image: string;
+    public address: string;
+    public location: Location;
 
     constructor(){
         this.materialList = new Array<MaterialItem>();
@@ -30,6 +32,6 @@ export class Residue {
         let value = 0;
         for(let i=0; i<this.materialList.length; i++)
             value+= this.materialList[i].material.value * (this.materialList[i].quantity * 2);
-        return [value, (value+=value*0.20).toFixed(2)];
+        return [value.toFixed(2), (value+=value*0.20).toFixed(2)];
     }
 }

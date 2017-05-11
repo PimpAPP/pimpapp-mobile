@@ -209,7 +209,8 @@ export class HomePage {
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude, 
-                'Catador: ' + catador.id)
+                'Catador: ' + catador.geolocation[0].reverse_geocoding)
+                console.log(catador);
 
            index = index + 1
       }

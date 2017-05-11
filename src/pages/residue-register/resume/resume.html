@@ -9,8 +9,21 @@
         <ion-card-content>
             <img src="assets/img/avatar.png" alt="Avatar">
             <h2 text-center>ENDEREÇO RETIRADA</h2>
-            <h3 text-center>{{ location }}</h3>
 
+            <div [hidden]="locationDetermined">
+                <h3>Não foi possível determinar sua localização</h3>
+                <p>Clique abaixo para informar seu endereço manualmente</p>
+                
+                <ion-item>
+                    <ion-input type="text" placeholder="Username" 
+                        [(ngModel)]="address">
+                    </ion-input>
+                </ion-item>
+
+            </div>
+
+            <h3 text-center [hidden]="!locationDetermined">{{ location }}</h3>
+            
             <ion-grid>
                 <ion-row>
                     <ion-col *ngFor="let item of residue.materialList" col-4>
@@ -36,7 +49,8 @@
                 <button ion-button full color="danger" (click)="dismiss()">CANCELAR</button>
             </ion-col>
             <ion-col col-6>
-                <button ion-button full color="green" (click)="registerResidue()">REGISTRAR</button>
+                <button ion-button full color="green" (click)="registerResidue()"
+                    [disabled]="!address">REGISTRAR</button>
             </ion-col>
         </ion-row>
     </ion-grid>

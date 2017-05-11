@@ -38,7 +38,6 @@ export class QuantityPage {
         this.camera.getPicture(options).then((imageData) => {
             let base64Image = 'data:image/jpeg;base64,' + imageData;
             this.residue.image = base64Image;
-            this.navCtrl.push(ResumePage, { residue: this.residue });
         }, (err) => {
             console.log('Error camera: ' + err);
         });

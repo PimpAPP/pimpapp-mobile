@@ -3,7 +3,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'nearest-catadores',
-  template: 'nearest-catadores.html'
+  templateUrl: 'nearest-catadores.html'
 })
 export class NearestCatadores {
 
