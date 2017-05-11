@@ -39,8 +39,11 @@ import { Toast } from '@ionic-native/toast';
 // import { LandingPage } from './../pages/landing/landing';
 // import { CadastroPage } from './../pages/cadastro/cadastro';
 // import { LoginPage } from './../pages/login/login';
+import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
+import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
+import { PerfilCooperativa } from './../pages/perfil-cooperativa/perfil-cooperativa';
 
-// import { UsersAPI } from '../providers/users-api';
+import { UsersAPI } from '../providers/users-api';
 // import { CameraProvider } from '../providers/camera-provider';
 
 import {
@@ -76,6 +79,9 @@ import {
     // LandingPage,
     // CadastroPage,
     // LoginPage,
+    PerfilGerador,
+    PerfilCatador,
+    PerfilCooperativa,
     ListCatadoresNear
     ],
   imports: [
@@ -112,6 +118,9 @@ import {
     // LandingPage,
     // CadastroPage,
     // LoginPage,
+    PerfilGerador,
+    PerfilCatador,
+    PerfilCooperativa,
     ListCatadoresNear
   ],
   providers: [
@@ -124,6 +133,7 @@ import {
     CallNumber,
     Toast,
     // UsersAPI,
+    UsersAPI,
     // CameraProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

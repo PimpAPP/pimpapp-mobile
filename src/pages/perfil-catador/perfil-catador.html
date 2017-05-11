@@ -1,0 +1,69 @@
+<!--
+  Generated template for the PerfilCatador page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <img width="50" height="50" src="{{ catador?.profile_photo }}">
+    <a href="#">Alterar Foto</a>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1>{{ catador?.name }}</h1>
+  <div *ngIf="catador?.nickname">
+    <h2>({{ catador?.nickname }})</h2>
+  </div>
+
+  <br />
+
+  <div *ngIf="catador?.presentation_phrase">
+    <h3>"{{ catador?.presentation_phrase }}"</h3>
+  </div>
+
+  <p>{{ catador?.minibio }}</p>
+
+  <ion-list>
+
+    <ion-item *ngFor="let material of catador?.materials_collected">{{ material }}</ion-item>
+
+  </ion-list>
+
+  <h2>{{ catador?.region }}</h2>
+  <br />
+
+  <h2>+ Perfil</h2>
+  <p>{{ catador?.name }} coleta em média</p>
+  <h2>{{ catador?.kg_week / catador?.how_many_days_work_week}} kg/dia</h2>
+  <p>Até hoje a estimativa é de que já tenha coletado</p>
+  <h2>{{ catador?.kg_week * catadorDiasTrabalhados}}</h2>
+  <p>de recicláveis!</p>
+
+  <ion-icon [name]="catador?.safety_kit ? 'checkmark-circle' : 'close-circle'">Kit de Segurança</ion-icon>
+  <ion-icon [name]="catador?.has_motor_vehicle ? 'checkmark-circle' : 'close-circle'">Motorizada</ion-icon>
+  <ion-icon [name]="catador?.phones[0].mobile_internet ? 'checkmark-circle' : 'close-circle'">Smartphone e Internet</ion-icon>
+  <ion-icon [name]="catador?.carroca_pimpada ? 'checkmark-circle' : 'close-circle'">Pimpada</ion-icon>
+
+  <a *ngIf="catador?.phones?.length" href="tel: {{ catador.phones[0].phone }}">
+    <button ion-button full color="secondary">
+      <ion-icon name="call"></ion-icon>
+      <div>Ligar</div>
+    </button>
+  </a>
+
+  <a *ngIf="catador?.has_whatsapp && catador?.phones?.length" href="intent://send/{{ catador.phones[0].phone }}#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">
+    <button ion-button full color="secondary">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+      <div>Enviar WhatsApp</div>
+    </button>
+  </a>
+  
+  <button ion-button full color="secondary">Apoiar</button>
+
+</ion-content>
