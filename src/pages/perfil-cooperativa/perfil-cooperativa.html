@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar>
+    <img width="50" height="50" src="{{ cooperativa?.profile_photo }}">
+    <a href="#">Alterar Foto</a>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1>{{ cooperativa?.name }}</h1>
+
+  <br />
+
+  <div *ngIf="cooperativa?.phrase">
+    <h3>"{{ cooperativa?.phrase }}"</h3>
+  </div>
+
+  <p>{{ cooperativa?.minibio }}</p>
+
+  <!-- <h2>Trabalha Reciclando</h2>
+  <ion-list>
+
+    <ion-item *ngFor="let material of cooperativa?.materials_collected">{{ material }}</ion-item>
+
+  </ion-list> -->
+
+  <h2>{{ cooperativa?.region_where_operates }}</h2>
+  <br />
+
+  <h2>+ Perfil</h2>
+  <p>{{ cooperativa?.name }} coleta em média</p>
+  <h2>{{ cooperativa?.how_much_collect_day }} kg/dia</h2>
+  <p>Até hoje a estimativa é de que já tenha coletado</p>
+  <h2>{{ cooperativa?.how_many_years_work * cooperativa?.how_much_collect_day * cooperativa?.how_many_days_work_week }}</h2>
+  <p>de recicláveis!</p>
+
+  <h2>Galeria de Fotos</h2>
+  <!-- <img *ngFor="let image from cooperativa?.photos" width="100%" height="200px" src="{{ image }}"> -->
+
+  <a *ngIf="cooperativa?.phones?.length > 0" href="tel: {{ cooperativa?.phones[0].phone }}">
+    <button ion-button full color="secondary">
+      <ion-icon name="call"></ion-icon>
+      <div>Ligar</div>
+    </button>
+  </a>
+  
+  <button ion-button full color="secondary">Apoiar</button>
+
+</ion-content>
