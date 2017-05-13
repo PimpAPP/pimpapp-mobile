@@ -5,12 +5,6 @@ import { AlertController } from 'ionic-angular';
 
 import { UsersAPI } from '../../providers/users-api';
 
-/**
- * Generated class for the PerfilCatador page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-perfil-catador',

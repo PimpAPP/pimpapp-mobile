@@ -35,11 +35,7 @@ import { ResumePage } from './../pages/residue-register/resume/resume';
 import { ListCatadoresNear } from './../pages/residue-register/list-catadores-near/list-catadores-near';
 import { Camera } from '@ionic-native/camera';
 import { Toast } from '@ionic-native/toast';
-
-//Adicionado do meu código
-// import { LandingPage } from './../pages/landing/landing';
-// import { CadastroPage } from './../pages/cadastro/cadastro';
-// import { LoginPage } from './../pages/login/login';
+import { LandingPage } from './../pages/landing/landing';
 import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 import { PerfilCooperativa } from './../pages/perfil-cooperativa/perfil-cooperativa';
@@ -79,6 +75,7 @@ import {
     ResidueRegister,
     QuantityPage,
     ResumePage,
+    LandingPage,
     // LandingPage,
     // CadastroPage,
     // LoginPage,
@@ -119,7 +116,7 @@ import {
     ResidueRegister,
     QuantityPage,
     ResumePage,
-    // LandingPage,
+    LandingPage,
     // CadastroPage,
     // LoginPage,
     PerfilGerador,
