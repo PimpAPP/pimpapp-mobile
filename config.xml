@@ -43,4 +43,5 @@
     </plugin>
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
     <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
+    <plugin name="cordova-sqlite-storage" spec="~2.0.4" />
 </widget>

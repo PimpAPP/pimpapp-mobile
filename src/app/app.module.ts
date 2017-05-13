@@ -1,3 +1,4 @@
+import { StorageService } from './../pages/storage-service';
 import { CallNumber } from '@ionic-native/call-number';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -45,6 +46,8 @@ import { PerfilCooperativa } from './../pages/perfil-cooperativa/perfil-cooperat
 
 import { UsersAPI } from '../providers/users-api';
 // import { CameraProvider } from '../providers/camera-provider';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 import {
  GoogleMaps,
@@ -87,6 +90,7 @@ import {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, ResidueRegister),
+    IonicStorageModule.forRoot(),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -128,6 +132,7 @@ import {
     SplashScreen,
     GoogleMaps,
     CatadoresProvider,
+    StorageService,
     CollectsProvider,
     Camera,
     CallNumber,
