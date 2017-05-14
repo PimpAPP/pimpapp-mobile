@@ -1,6 +1,6 @@
 import { TutorialPage } from './../tutorial/tutorial';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-landing',
@@ -12,7 +12,7 @@ export class LandingPage {
   }
 
   openTutorial(){
-    this.navCtrl.push(TutorialPage);
+      this.navCtrl.push(TutorialPage);
   }
 
 }

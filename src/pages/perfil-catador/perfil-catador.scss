@@ -1,3 +1,72 @@
 page-perfil-catador {
+    ion-header {
+        text-align: center;
+    }
+    ion-header img {
+        position: absolute;
+        margin-top: -12%;
+        width: 30%;
+        height: auto;
+        left: 30%;
+    }
+
+    ion-content {
+        margin-top: 18%;
+    }
+
+    p a {
+        color: color($colors, green);
+    }
+
+    a {
+        color: color($colors, grey);
+        font-size: 1.5em;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+
+    #perfil-catador {
+        background-image: url('../assets/img/papelao.png') !important;
+        background-size: 120%;
+        background-repeat: no-repeat;
+        background-position: top; 
+        min-height: 70%;
+        padding: 10%;
+
+        h1 {
+            padding-top: 10%;
+            font-size: 3em;
+            text-align: center;
+        }
+
+        h2, p {
+            text-align: center;
+        }
+
+        p { 
+            line-height: 15px;
+        }
+    }
+
+   .item-md ion-thumbnail img, .item-ios ion-thumbnail img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .item-md ion-thumbnail, .item-ios ion-thumbnail {
+        min-width: 10px;
+        min-height: 10px;
+    }
+
+    .item-md.item-block .item-inner,
+    .item-ios.item-block .item-inner {
+        border: none;
+    }
+
+    #phones {
+        margin-bottom: 20%;
+    }
 
 }

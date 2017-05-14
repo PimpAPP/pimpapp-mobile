@@ -1,3 +1,4 @@
+import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';
@@ -29,11 +30,11 @@ export class MyApp {
   checkLandingFirstTime(){
       this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
-                if (val===2)
-                    this.rootPage = LandingPage;
+                if (val===1)
+                    this.rootPage = PerfilCatador;
                 else{
-                    this.storage.set('firstAccess', 0);
                     this.rootPage = LandingPage;
+                    this.storage.set('firstAccess', 1);
                 }
             })
         });

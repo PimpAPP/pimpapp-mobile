@@ -1,3 +1,5 @@
+import { CallNumber } from '@ionic-native/call-number';
+import { MaterialRecover } from './../MaterialRecover';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
@@ -16,8 +18,13 @@ export class PerfilCatador {
   catadorID: any = 8;
   catador: any;
   catadorDiasTrabalhados: any;
+  material_list: any[] = [];
+  materialRecover: MaterialRecover;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: UsersAPI, public loading: LoadingController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public http: UsersAPI, public loading: LoadingController, 
+    public alertCtrl: AlertController, public callNumber: CallNumber) {
+      this.materialRecover = new MaterialRecover();
   }
 
   ionViewWillEnter() {
@@ -46,27 +53,29 @@ export class PerfilCatador {
                 this.catadorDiasTrabalhados =  Math.ceil(tempoTrabalhado / (1000 * 3600 * 24));
 
               } else {
-
-                this.catadorDiasTrabalhados = 0;
-
+                  this.catadorDiasTrabalhados = 0;
               }
-
-              console.log("Catador: " + JSON.stringify(this.catador)); 
- 
+              this.setMaterialList(); 
             },
-            err => {
-
-              
-              
-            }
+            err => {}
           );
           loader.dismiss();
         });
-
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilCatador');
+  setMaterialList(){
+      let material_id: number;
+      for (let i=0; i<this.catador.materials_collected.length; i++){
+          material_id = this.catador.materials_collected[i];
+          this.material_list.push(
+            this.materialRecover.findMaterialId(this.catador.materials_collected[i]));
+      }
+  }
+
+  lanchPhone(number: string){
+    this.callNumber.callNumber(number, true)
+      .then(() => console.log('Launched dialer!'))
+      .catch(() => console.log('Error launching dialer'));
   }
 
 }
