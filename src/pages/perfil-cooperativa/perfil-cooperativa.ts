@@ -1,17 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { UsersAPI } from '../../providers/users-api';
 
-/**
- * Generated class for the PerfilCooperativa page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
   selector: 'page-perfil-cooperativa',
   templateUrl: 'perfil-cooperativa.html',

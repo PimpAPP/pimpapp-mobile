@@ -1,13 +1,12 @@
 import { CallNumber } from '@ionic-native/call-number';
 import { MaterialRecover } from './../MaterialRecover';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { UsersAPI } from '../../providers/users-api';
 
-@IonicPage()
 @Component({
   selector: 'page-perfil-catador',
   templateUrl: 'perfil-catador.html',

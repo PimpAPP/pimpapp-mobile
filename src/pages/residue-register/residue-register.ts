@@ -2,11 +2,9 @@ import { MaterialItem } from './../MaterialItem';
 import { Residue } from './../Residue';
 import { QuantityPage } from './quantity/quantity';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { MaterialRecover } from './../MaterialRecover';
 
-
-@IonicPage()
 @Component({
   templateUrl: 'residue-register.html',
 })
