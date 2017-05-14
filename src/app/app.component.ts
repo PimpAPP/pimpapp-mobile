@@ -1,3 +1,4 @@
+import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
@@ -31,7 +32,7 @@ export class MyApp {
       this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val===1)
-                    this.rootPage = PerfilCatador;
+                    this.rootPage = TabsPage;
                 else{
                     this.rootPage = LandingPage;
                     this.storage.set('firstAccess', 1);
@@ -46,7 +47,14 @@ export class MyApp {
       this.nav.push(Feedback);
       this.menuCtrl.close();
       break;
+      case 'perfil-gerador':
+      this.nav.push(PerfilGerador);
+      this.menuCtrl.close();
+      break;
+      case 'perfil-catador':
+      this.nav.push(PerfilCatador);
+      this.menuCtrl.close();
+      break;
     }
   }
 }
-

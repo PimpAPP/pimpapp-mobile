@@ -1,3 +1,48 @@
 page-perfil-gerador {
+    ion-header {
+        text-align: center;
+    }
+    ion-header img {
+        position: absolute;
+        margin-top: -12%;
+        width: 30%;
+        height: auto;
+        left: 33%;
+    }
 
+    #perfil-gerador {
+        background-image: url('../assets/img/papelao_horiz.png') !important;
+        background-size: 120%;
+        background-repeat: no-repeat;
+        background-position: top; 
+        min-height: 70%;
+        padding: 10%;
+        text-align: center;
+        padding-top: 15%;
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        a {
+            color: color($colors, dark);
+            font-size: 1.2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+    }
+
+    ion-content {
+        margin-top: 10%;
+    }
+
+    p a {
+        color: color($colors, grey);
+    }
+
+    ion-col img {
+        margin-left: 10%;
+    }
 }

@@ -5,12 +5,6 @@ import { AlertController } from 'ionic-angular';
 
 import { UsersAPI } from '../../providers/users-api';
 
-/**
- * Generated class for the PerfilGerador page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-perfil-gerador',
@@ -20,12 +14,14 @@ export class PerfilGerador {
 
   usuario: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: UsersAPI, public loading: LoadingController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public http: UsersAPI, public loading: LoadingController, 
+    public alertCtrl: AlertController) {
   }
 
   ionViewWillEnter() {
 
-    let url = "http://179.188.38.243/api/users/177/";
+    let url = "http://179.188.38.243/api/users/180/";
 
     //Prepara o loading
     let loader = this.loading.create({
@@ -55,7 +51,7 @@ export class PerfilGerador {
 
       console.log("Teste de dados: " + JSON.stringify({ tipoMod: mod }));
 
-      let url = "http://179.188.38.243/api/users/177/";
+      let url = "http://179.188.38.243/api/users/180/";
 
       //Prepara o loading
       let loader = this.loading.create({
@@ -109,7 +105,7 @@ export class PerfilGerador {
             handler: data => {
              
              let novoNome = data.nome;
-             let url = "http://179.188.38.243/api/users/177/";
+             let url = "http://179.188.38.243/api/users/180/";
 
              this.http.post(url, {
                 "first_name": novoNome
