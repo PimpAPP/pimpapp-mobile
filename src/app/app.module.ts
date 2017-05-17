@@ -1,3 +1,4 @@
+import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { StorageService } from './../pages/storage-service';
 import { CallNumber } from '@ionic-native/call-number';
 import { BrowserModule } from '@angular/platform-browser';
@@ -40,6 +41,7 @@ import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 import { PerfilCooperativa } from './../pages/perfil-cooperativa/perfil-cooperativa';
 
+
 import { UsersAPI } from '../providers/users-api';
 // import { CameraProvider } from '../providers/camera-provider';
 import { IonicStorageModule } from '@ionic/storage';
@@ -76,9 +78,7 @@ import {
     QuantityPage,
     ResumePage,
     LandingPage,
-    // LandingPage,
-    // CadastroPage,
-    // LoginPage,
+    CadastroCatador,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
@@ -117,8 +117,7 @@ import {
     QuantityPage,
     ResumePage,
     LandingPage,
-    // CadastroPage,
-    // LoginPage,
+    CadastroCatador,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
