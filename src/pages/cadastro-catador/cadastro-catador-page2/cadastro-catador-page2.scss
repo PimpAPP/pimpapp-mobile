@@ -1,4 +1,4 @@
-page-cadastro-catador {
+page-cadastro-catador-page2 {
     ion-content {
         background-image: url('../assets/img/fundo-papelao.jpg') !important;
         background-repeat: no-repeat;
@@ -41,6 +41,16 @@ page-cadastro-catador {
 
     .active {
         background-color: rgba(4, 95, 31, 0.67);
+    }
+
+    .transp {
+        background-color: transparent;
+        border: none;
+        color: color($colors, light);
+    }
+
+    .radio-icon {
+        border-color: color($colors, light);
     }
 
 

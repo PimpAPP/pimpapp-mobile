@@ -1,3 +1,4 @@
+import { CadastroCatadorPage2 } from './../pages/cadastro-catador/cadastro-catador-page2/cadastro-catador-page2';
 import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
 import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { StorageService } from './../pages/storage-service';
@@ -81,6 +82,7 @@ import {
     LandingPage,
     CadastroCatador,
     CadastroGerador,
+    CadastroCatadorPage2,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
@@ -121,6 +123,7 @@ import {
     LandingPage,
     CadastroCatador,
     CadastroGerador,
+    CadastroCatadorPage2,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,

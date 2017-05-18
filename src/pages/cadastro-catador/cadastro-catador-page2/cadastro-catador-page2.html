@@ -1,0 +1,184 @@
+<ion-content padding>
+    <h1 text-center>Cadastro</h1>
+    <h2 text-center>CATADOR</h2>
+
+    <ion-item>
+        <ion-textarea placeholder="HISTÓRIA DE VIDA"></ion-textarea>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+        <ion-input type="text" placeholder="TELEFONE"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-list radio-group [(ngModel)]="phone">
+
+        <ion-row>
+            <ion-col col-4>
+                <ion-item class="transp">
+                    <ion-label>Vivo</ion-label>
+                    <ion-radio value="vivo"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Tim</ion-label>
+                    <ion-radio value="tim"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Claro</ion-label>
+                    <ion-radio value="claro"></ion-radio>
+                </ion-item>
+            </ion-col>
+
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Oi</ion-label>
+                    <ion-radio value="oi"></ion-radio>
+                </ion-item>
+            </ion-col>
+
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Nextel</ion-label>
+                    <ion-radio value="nextel"></ion-radio>
+                </ion-item>
+            </ion-col>
+
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Outro</ion-label>
+                    <ion-radio value="outro"></ion-radio>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        
+    </ion-list>
+
+    <ion-list radio-group>
+        <ion-row>
+            <ion-item>
+                <ion-label>Whats app</ion-label>
+            </ion-item>
+            <ion-col col-6>
+                <ion-item  class="transp">
+                    <ion-label>Sim</ion-label>
+                    <ion-radio value="yes"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col col-6>
+                <ion-item  class="transp">
+                    <ion-label>Não</ion-label>
+                    <ion-radio value="no"></ion-radio>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-list>
+
+    <br>
+
+        <ion-item>
+        <ion-input type="text" placeholder="TELEFONE 2"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-list radio-group [(ngModel)]="phone2">
+
+        <ion-row>
+            <ion-col col-4>
+                <ion-item class="transp">
+                    <ion-label>Vivo</ion-label>
+                    <ion-radio value="vivo"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Tim</ion-label>
+                    <ion-radio value="tim"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Claro</ion-label>
+                    <ion-radio value="claro"></ion-radio>
+                </ion-item>
+            </ion-col>
+
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Oi</ion-label>
+                    <ion-radio value="oi"></ion-radio>
+                </ion-item>
+            </ion-col>
+
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Nextel</ion-label>
+                    <ion-radio value="nextel"></ion-radio>
+                </ion-item>
+            </ion-col>
+
+            <ion-col col-4>
+                <ion-item  class="transp">
+                    <ion-label>Outro</ion-label>
+                    <ion-radio value="outro"></ion-radio>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        
+    </ion-list>
+
+    <ion-list radio-group>
+        <ion-row>
+            <ion-item>
+                <ion-label>Whats app</ion-label>
+            </ion-item>
+            <ion-col col-6>
+                <ion-item  class="transp">
+                    <ion-label>Sim</ion-label>
+                    <ion-radio value="yes"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col col-6>
+                <ion-item  class="transp">
+                    <ion-label>Não</ion-label>
+                    <ion-radio value="no"></ion-radio>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-list>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step active"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>
