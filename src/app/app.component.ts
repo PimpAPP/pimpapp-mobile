@@ -1,3 +1,4 @@
+import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
 import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
@@ -33,7 +34,7 @@ export class MyApp {
       this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val===1)
-                    this.rootPage = CadastroCatador;
+                    this.rootPage = TabsPage;
                 else{
                     this.rootPage = LandingPage;
                     this.storage.set('firstAccess', 1);
@@ -54,6 +55,14 @@ export class MyApp {
       break;
       case 'perfil-catador':
       this.nav.push(PerfilCatador);
+      this.menuCtrl.close();
+      break;
+      case 'cadastro-catador':
+      this.nav.push(CadastroCatador);
+      this.menuCtrl.close();
+      break;
+      case 'cadastro-gerador':
+      this.nav.push(CadastroGerador);
       this.menuCtrl.close();
       break;
     }

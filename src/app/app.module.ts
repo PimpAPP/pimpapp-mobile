@@ -1,3 +1,4 @@
+import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
 import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { StorageService } from './../pages/storage-service';
 import { CallNumber } from '@ionic-native/call-number';
@@ -79,6 +80,7 @@ import {
     ResumePage,
     LandingPage,
     CadastroCatador,
+    CadastroGerador,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
@@ -118,6 +120,7 @@ import {
     ResumePage,
     LandingPage,
     CadastroCatador,
+    CadastroGerador,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
