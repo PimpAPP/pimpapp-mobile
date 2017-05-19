@@ -1,8 +1,3 @@
-import { CadastroCatadorPage2 } from './../pages/cadastro-catador/cadastro-catador-page2/cadastro-catador-page2';
-import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
-import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
-import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
-import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';
@@ -11,6 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { TabsPage } from './../pages/tabs/tabs';
 import { Storage } from '@ionic/storage';
 import { LandingPage } from './../pages/landing/landing';
+import { CadastroCatadorPage3 } from './../pages/cadastro-catador/cadastro-catador-page3/cadastro-catador-page3';
+import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
+import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
+import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
+import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 
 @Component({
   templateUrl: 'app.html',
@@ -35,7 +35,7 @@ export class MyApp {
       this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val===1)
-                    this.rootPage = TabsPage;
+                    this.rootPage = CadastroCatadorPage3;
                 else{
                     this.rootPage = LandingPage;
                     this.storage.set('firstAccess', 1);
