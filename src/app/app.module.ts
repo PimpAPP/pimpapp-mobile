@@ -27,6 +27,7 @@ import { TutorialPage4 } from './../pages/tutorial/page4/page4';
 import { TutorialPage5 } from './../pages/tutorial/page5/page5';
 import { CadastroCatadorPage3 } from './../pages/cadastro-catador/cadastro-catador-page3/cadastro-catador-page3';
 import { CadastroCatadorPage2 } from './../pages/cadastro-catador/cadastro-catador-page2/cadastro-catador-page2';
+import { CadastroCatadorPage4 } from './../pages/cadastro-catador/cadastro-catador-page4/cadastro-catador-page4';
 import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
 import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { MenuCatadorRegister } from './../pages/menu-catador-register/menu-catador-register';
@@ -85,6 +86,7 @@ import {
     CadastroGerador,
     CadastroCatadorPage2,
     CadastroCatadorPage3,
+    CadastroCatadorPage4,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
@@ -127,6 +129,7 @@ import {
     CadastroGerador,
     CadastroCatadorPage2,
     CadastroCatadorPage3,
+    CadastroCatadorPage4,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,

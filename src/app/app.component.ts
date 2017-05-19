@@ -1,3 +1,4 @@
+import { CadastroCatadorPage4 } from './../pages/cadastro-catador/cadastro-catador-page4/cadastro-catador-page4';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';
@@ -35,7 +36,7 @@ export class MyApp {
       this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val===1)
-                    this.rootPage = CadastroCatadorPage3;
+                    this.rootPage = CadastroCatadorPage4;
                 else{
                     this.rootPage = LandingPage;
                     this.storage.set('firstAccess', 1);
