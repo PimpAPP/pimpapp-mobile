@@ -1,3 +1,4 @@
+import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
 import { StorageService } from './../pages/storage-service';
 import { CallNumber } from '@ionic-native/call-number';
 import { BrowserModule } from '@angular/platform-browser';
@@ -87,6 +88,7 @@ import {
     CadastroCatadorPage2,
     CadastroCatadorPage3,
     CadastroCatadorPage4,
+    CadastroCatadorPage5,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
@@ -130,6 +132,7 @@ import {
     CadastroCatadorPage2,
     CadastroCatadorPage3,
     CadastroCatadorPage4,
+    CadastroCatadorPage5,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,

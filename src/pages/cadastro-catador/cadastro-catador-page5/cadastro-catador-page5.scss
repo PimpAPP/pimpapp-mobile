@@ -1,4 +1,4 @@
-page-cadastro-catador-page4 {
+page-cadastro-catador-page5 {
     ion-content {
         background-image: url('../assets/img/fundo-papelao.jpg') !important;
         background-repeat: no-repeat;
@@ -45,5 +45,18 @@ page-cadastro-catador-page4 {
         border-color: color($colors, light);
     }
 
+    ion-icon {
+        text-align: center;
+        color: white;
+        font-size: 3em;
+        margin-left: 5%;
+        
+        h2 {
+            color: white;
+            font-family: "DIN-Bold";
+            display: inline;
+            font-size: 1em;
+        }
+    }
+    
 }
-
