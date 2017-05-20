@@ -1,0 +1,75 @@
+<ion-content padding>
+    <h1 text-center>Cadastro</h1>
+    <h2 text-center>CATADOR</h2>
+
+    <ion-item>
+        <ion-input type="text" placeholder="NOME"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+        <ion-input type="text" placeholder="APELIDO"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-list radio-group [(ngModel)]="autoManufacturers">
+
+        <ion-list-header>
+            Prefere usar
+        </ion-list-header>
+
+        <ion-item>
+            <ion-label>Nome</ion-label>
+            <ion-radio value="name"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Apelido</ion-label>
+            <ion-radio value="nickname"></ion-radio>
+        </ion-item>
+
+    </ion-list>
+
+    <br>
+
+    <ion-item>
+        <ion-input type="email" placeholder="INSIRA SEU EMAIL"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+        <ion-input type="password" placeholder="INSIRA SUA SENHA"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+        <ion-input type="password" placeholder="CONFIRME SUA SENHA"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step active"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

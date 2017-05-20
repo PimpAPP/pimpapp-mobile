@@ -1,0 +1,99 @@
+<ion-content padding>
+    <h1 text-center>Cadastro</h1>
+    <h2 text-center>CATADOR</h2>
+    
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-misturado.png" 
+                    alt="Lata" width="80%" (click)="showModalQuantity('misturado')">
+                <p text-center><ion-checkbox></ion-checkbox>Misturado</p>
+            </ion-col>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-lata.png" 
+                    alt="Lata" (click)="showModalQuantity('lata')" width="80%">
+                <p text-center><ion-checkbox></ion-checkbox>Latas</p>
+            </ion-col>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-vidro.png" 
+                    alt="Lata" (click)="showModalQuantity('vidro')" width="80%">
+                <p text-center><ion-checkbox></ion-checkbox>Vidro</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-papel.png" 
+                    alt="Lata" (click)="showModalQuantity('papel')" width="80%">
+                <p text-center><ion-checkbox></ion-checkbox>Papel</p>
+            </ion-col>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-plastico.png" 
+                    alt="Lata" (click)="showModalQuantity('plastico')" width="80%">
+                <p text-center><ion-checkbox></ion-checkbox>Plástico</p>
+            </ion-col>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-metal.png" 
+                        alt="Lata" (click)="showModalQuantity('metal')" width="80%">
+                <p text-center><ion-checkbox></ion-checkbox>Metal</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-oleo.png" 
+                    alt="Lata" (click)="showModalQuantity('oleo')" width="80%">
+                <p text-center><ion-checkbox></ion-checkbox>Óleo</p>
+            </ion-col>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-eletronico.png" 
+                    alt="Lata" (click)="showModalQuantity('eletronico')" width="80%">
+                <p text-center><ion-checkbox></ion-checkbox>Eletrônicos</p>
+            </ion-col>
+            <ion-col col-4>
+                <img src="assets/img/Icones_materiais-bateria.png" 
+                        alt="Lata" (click)="showModalQuantity('bateria')" width="80%">
+                <p text-center><ion-checkbox></ion-checkbox>Pilas</p>
+            </ion-col>
+        </ion-row>
+            <ion-row>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-moveis.png" 
+                        alt="Lata" (click)="showModalQuantity('moveis')" width="80%">
+                    <ion-label>
+                        <ion-checkbox></ion-checkbox>Móveis
+                    </ion-label>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-entulho.png" 
+                        alt="Lata" (click)="showModalQuantity('entulho')" width="80%">
+                        <ion-label><ion-checkbox></ion-checkbox> Entulho</ion-label>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-poda.png" 
+                        alt="Lata" (click)="showModalQuantity('poda')" width="80%">
+                        <ion-label><ion-checkbox></ion-checkbox> Poda</ion-label>
+                </ion-col>
+            </ion-row>
+    </ion-grid>
+
+    
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step active"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

@@ -1,3 +1,4 @@
+import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
 import { StorageService } from './../pages/storage-service';
 import { CallNumber } from '@ionic-native/call-number';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +26,11 @@ import { TutorialPage2 } from './../pages/tutorial/page2/page2';
 import { TutorialPage3 } from './../pages/tutorial/page3/page3';
 import { TutorialPage4 } from './../pages/tutorial/page4/page4';
 import { TutorialPage5 } from './../pages/tutorial/page5/page5';
+import { CadastroCatadorPage3 } from './../pages/cadastro-catador/cadastro-catador-page3/cadastro-catador-page3';
+import { CadastroCatadorPage2 } from './../pages/cadastro-catador/cadastro-catador-page2/cadastro-catador-page2';
+import { CadastroCatadorPage4 } from './../pages/cadastro-catador/cadastro-catador-page4/cadastro-catador-page4';
+import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
+import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { MenuCatadorRegister } from './../pages/menu-catador-register/menu-catador-register';
 import { MenuMaterials } from './../pages/menu-materials/menu-materials';
 import { CansPage } from './../pages/menu-materials/cans/cans';
@@ -39,6 +45,7 @@ import { LandingPage } from './../pages/landing/landing';
 import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 import { PerfilCooperativa } from './../pages/perfil-cooperativa/perfil-cooperativa';
+
 
 import { UsersAPI } from '../providers/users-api';
 // import { CameraProvider } from '../providers/camera-provider';
@@ -76,9 +83,12 @@ import {
     QuantityPage,
     ResumePage,
     LandingPage,
-    // LandingPage,
-    // CadastroPage,
-    // LoginPage,
+    CadastroCatador,
+    CadastroGerador,
+    CadastroCatadorPage2,
+    CadastroCatadorPage3,
+    CadastroCatadorPage4,
+    CadastroCatadorPage5,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
@@ -117,8 +127,12 @@ import {
     QuantityPage,
     ResumePage,
     LandingPage,
-    // CadastroPage,
-    // LoginPage,
+    CadastroCatador,
+    CadastroGerador,
+    CadastroCatadorPage2,
+    CadastroCatadorPage3,
+    CadastroCatadorPage4,
+    CadastroCatadorPage5,
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,

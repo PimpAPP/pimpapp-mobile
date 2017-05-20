@@ -1,0 +1,26 @@
+page-cadastro-gerador {
+    ion-content {
+        background-image: url('../assets/img/fundo-papelao.jpg') !important;
+        background-repeat: no-repeat;
+        background-position: top; 
+        background-size: 100% 100%;
+    }
+
+    h1 {
+        font-size: 3em;
+        color: color($colors, dark);
+    }
+
+    h2 {
+        font-size: 1.5em;
+        color: color($colors, dark);
+    }
+
+    #camera {
+        color: color($colors, light);
+
+        ion-icon {
+            font-size: 2em;
+        }
+    }
+}

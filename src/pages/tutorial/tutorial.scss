@@ -1,22 +1,26 @@
+page-tutorial {
+    
+    .toolbar-title.toolbar-title-md,
+    .toolbar-title.toolbar-title-ios,
+    .toolbar-title.toolbar-title-wp {
+        color: color($colors, green);
+        text-align: center;
+    }
 
-.toolbar-title.toolbar-title-md,
-.toolbar-title.toolbar-title-ios,
-.toolbar-title.toolbar-title-wp {
-    color: color($colors, green);
-    text-align: center;
-}
+    .step {
+        background-color: color($colors, inactive);
+        color: color($colors, light);
+        text-align: center;
+        border-radius: 50%;
+        width: 3em;
+        height: 3em;
+        vertical-align: middle;
+        display: table-cell;
+    }
 
-.step {
-    background-color: color($colors, inactive);
-    color: color($colors, light);
-    text-align: center;
-    border-radius: 50%;
-    width: 3em;
-    height: 3em;
-    vertical-align: middle;
-    display: table-cell;
-}
+    .active {
+        background-color: rgba(50, 219, 100, 0.42);
+    }
 
-.active {
-    background-color: color($colors, secondary);
+
 }
