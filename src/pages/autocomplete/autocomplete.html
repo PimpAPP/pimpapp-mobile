@@ -1,0 +1,52 @@
+<!--<ion-header>
+    <ion-navbar color="headerblue">
+    <ion-title class="toptitle toptitleSearch"><span class="heavy">SEARCH</span></ion-title>
+    <ion-buttons end (click)="closeModal()">
+      <button button-clear ion-button class="searchCancel" >
+        <span>cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>-->
+
+<ion-header>
+  <ion-navbar color="dark">
+      <ion-title><span class="heavy toptitle2">SEARCH</span></ion-title>
+    <ion-buttons end (click)="closeModal()">
+      <button button-clear ion-button class="searchCancel" >
+        <span>cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <!--<ion-searchbar id="PickupLocation" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)" [animated]="true" ></ion-searchbar>-->
+
+<ion-list class="searchItem">
+        <ion-item>
+            <label>
+                <ion-icon name="ion-search"></ion-icon>
+                <input type="search" placeholder="Search" id="PickupLocation">
+            </label>
+           <!-- <button class="button button-clear" (click)="onCancel($event)">
+                Cancel
+            </button>-->
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+
+        <ion-list-header>
+              Previous Searches
+        </ion-list-header>
+
+        
+        <ion-item *ngFor="let address of lstAdd; let i = index;" (tap)="gotoAddress(address)" class="preSearch">
+            {{address.add}}
+        </ion-item>
+    </ion-list>
+
+</ion-content>
+
+
