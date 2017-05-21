@@ -19,11 +19,11 @@ export class CadastroCatadorPage3 {
   }
 
   openPage2(){
-      this.navCtrl.push(CadastroCatadorPage2)
+      this.navCtrl.push(CadastroCatadorPage2, {catador: this.catador})
   }
 
   openPage4(){
-      this.navCtrl.push(CadastroCatadorPage4);
+      this.navCtrl.push(CadastroCatadorPage4, {catador: this.catador});
   } 
 
 }

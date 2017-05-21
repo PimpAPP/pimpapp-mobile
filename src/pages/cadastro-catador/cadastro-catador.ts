@@ -26,8 +26,6 @@ export class CadastroCatador {
           (this.catador.password.length > 0)
       )
 
-      // Remove
-      this.formValid = true;
       return this.formValid;
   }
 

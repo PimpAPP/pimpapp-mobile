@@ -1,4 +1,6 @@
 import { MaterialItem } from './MaterialItem';
+import { Material } from './Material';
+
 
 export class Phone{
     // 1 vivo, 2 tim, 3 claro, 4 oi, 5 nextel, 6 outros
@@ -24,7 +26,7 @@ export class Catador{
     public yearsCollecting: number = 0;
     public belongsCooperative: boolean = false;
     public cooperativeName: string = '';
-    public materialList: Array<MaterialItem> = new Array<MaterialItem>();
+    public materialList: Array<Material> = new Array<Material>();
     public cartHasSecurityKit: boolean = false;
     public cartHasEngine: boolean = false;
     public smartphoneWithInternet: boolean = false;
@@ -36,5 +38,15 @@ export class Catador{
             (this.email.length > 0) &&
             (this.password.length > 0)
         )
+    }
+
+    addMaterialOrRemoveIfAlreadyIncluded(material: Material){
+        for(let i=0; i<this.materialList.length; i++){
+            if (material.id === this.materialList[i].id){
+                this.materialList.splice(i, 1);
+                return 0;
+            }
+        }
+        this.materialList.push(material);
     }
 }

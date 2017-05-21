@@ -21,7 +21,7 @@ export class CadastroCatadorPage2 {
   }
 
   openPage1(){
-      this.navCtrl.push(CadastroCatador);
+      this.navCtrl.push(CadastroCatador, {catador: this.catador});
   }
 
   openPage3(){
