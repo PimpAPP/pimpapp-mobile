@@ -16,7 +16,7 @@ export class CadastroCatador {
 
   openPage2(){
       if (this.validForm())
-        this.navCtrl.push(CadastroCatadorPage2);
+        this.navCtrl.push(CadastroCatadorPage2, { catador: this.catador });
   }
 
   validForm(){
@@ -25,6 +25,9 @@ export class CadastroCatador {
           (this.catador.email.length > 0) &&
           (this.catador.password.length > 0)
       )
+
+      // Remove
+      this.formValid = true;
       return this.formValid;
   }
 

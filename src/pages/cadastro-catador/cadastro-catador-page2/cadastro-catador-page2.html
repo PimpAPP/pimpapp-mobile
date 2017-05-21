@@ -10,7 +10,8 @@
 
     <ion-item>
         <ion-label>DATA DE NASCIMENTO</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+        <ion-datetime displayFormat="MM/DD/YYYY" 
+            [(ngModel)]="catador.birthDay" name="birthDay"></ion-datetime>
     </ion-item>
 
     <br>
@@ -69,8 +70,8 @@
 
     <ion-list radio-group>
         <ion-row>
-            <ion-item>
-                <ion-label>Whats app</ion-label>
+            <ion-item (click)="printItem()">
+                <ion-label (click)="printItem()">Whats app</ion-label>
             </ion-item>
             <ion-col col-6>
                 <ion-item  class="transp">
