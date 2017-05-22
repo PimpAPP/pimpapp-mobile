@@ -2,31 +2,36 @@
     <h1 text-center>Cadastro</h1>
     <h2 text-center>CATADOR</h2>
     <ion-item>
-        <ion-input type="text" placeholder="TELEFONE"></ion-input>
+        <ion-input type="text" placeholder="ENDEREÇO DE REFERÊNCIA"
+            [(ngModel)]="catador.referenceAddress" name="referenceAddress"></ion-input>
     </ion-item>
 
     <br>
 
     <ion-item>
-        <ion-textarea placeholder="REGIÃO E BAIRROS QUE COLETA"></ion-textarea>
+        <ion-textarea placeholder="REGIÃO E BAIRROS QUE COLETA" 
+            [(ngModel)]="catador.regionWhereWorks" name="regionWhereWorks"></ion-textarea>
     </ion-item>
 
     <br>
 
     <ion-item>
-        <ion-input type="number" placeholder="QUANTOS QUILOS COLETA POR DIA"></ion-input>
+        <ion-input type="number" placeholder="QUANTOS QUILOS COLETA POR DIA"
+            [(ngModel)]="catador.kgPerDay" name="kgPerDay"></ion-input>
     </ion-item>
 
     <br>
 
     <ion-item>
-        <ion-input type="number" placeholder="QUANTOS DIAS POR SEMANA"></ion-input>
+        <ion-input type="number" placeholder="QUANTOS DIAS POR SEMANA"
+            [(ngModel)]="catador.daysPerWeek" name="daysPerWeek"></ion-input>
     </ion-item>
 
     <br>
 
     <ion-item>
-        <ion-input type="number" placeholder="A QUANTOS ANOS COLETA"></ion-input>
+        <ion-input type="number" placeholder="A QUANTOS ANOS COLETA"
+         [(ngModel)]="catador.yearsCollecting" name="yearsCollecting"></ion-input>
     </ion-item>
 
     <br>
@@ -62,13 +67,13 @@
                 <ion-icon name="arrow-round-forward" class="step"></ion-icon>
             </ion-col>
             <ion-col>
-                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+                <ion-icon name="arrow-round-forward" class="step" (click)="openPage2()"></ion-icon>
             </ion-col>
             <ion-col>
                 <ion-icon name="arrow-round-forward" class="step active"></ion-icon>
             </ion-col>
             <ion-col>
-                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+                <ion-icon name="arrow-round-forward" class="step" (click)="openPage4()"></ion-icon>
             </ion-col>
             <ion-col>
                 <ion-icon name="arrow-round-forward" class="step"></ion-icon>

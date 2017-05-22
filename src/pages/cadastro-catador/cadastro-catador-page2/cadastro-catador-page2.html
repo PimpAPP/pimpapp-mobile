@@ -9,8 +9,9 @@
     <br>
 
     <ion-item>
-        <ion-label>Date</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+        <ion-label>DATA DE NASCIMENTO</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" 
+            [(ngModel)]="catador.birthDay" name="birthDay"></ion-datetime>
     </ion-item>
 
     <br>
@@ -69,8 +70,8 @@
 
     <ion-list radio-group>
         <ion-row>
-            <ion-item>
-                <ion-label>Whats app</ion-label>
+            <ion-item (click)="printItem()">
+                <ion-label (click)="printItem()">Whats app</ion-label>
             </ion-item>
             <ion-col col-6>
                 <ion-item  class="transp">
@@ -164,13 +165,13 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+                <ion-icon name="arrow-round-forward" class="step" (click)="openPage1()"></ion-icon>
             </ion-col>
             <ion-col>
                 <ion-icon name="arrow-round-forward" class="step active"></ion-icon>
             </ion-col>
             <ion-col>
-                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+                <ion-icon name="arrow-round-forward" class="step" (click)="openPage3()"></ion-icon>
             </ion-col>
             <ion-col>
                 <ion-icon name="arrow-round-forward" class="step"></ion-icon>

@@ -7,6 +7,7 @@ import { CollectsProvider } from './../../providers/collects-provider';
 import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
 import { CollectsOpen } from './../collects-open/catador-collects';
+import { AutocompletePage } from './../autocomplete/autocomplete';
 
 import { 
   GoogleMap, 
@@ -19,6 +20,8 @@ import {
   CameraPosition
 } from '@ionic-native/google-maps';
 
+declare var google:any;
+
 @Component({
   selector: 'home-page',
   templateUrl: 'home.html',
@@ -29,6 +32,11 @@ export class HomePage {
     map: GoogleMap;
     nearest_catadores: any;
     nearest_collects: any;
+    selectedAddress={
+        add:"",
+        lat:0,
+        lng:0
+    };
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
@@ -89,21 +97,21 @@ export class HomePage {
           let catador: LatLng = new LatLng(-23.616786, -46.669331);
           let coleta: LatLng = new LatLng(-23.618742, -46.667335);
 
-          let icon: MarkerIcon = {
+         /* let icon: MarkerIcon = {
               url: 'img/car-icon.png',
-          }
+          }*/
 
           let markerColeta: MarkerOptions = {
             position: coleta,
             title: 'Coleta',
-            icon: icon,
+           // icon: icon,
             animation: GoogleMapsAnimation.BOUNCE
           };
 
           let markerCatador: MarkerOptions = {
             position: catador,
             title: 'Catador',
-            icon: icon,
+            //icon: icon,
             animation: GoogleMapsAnimation.BOUNCE
           };
 
@@ -143,6 +151,33 @@ export class HomePage {
         });
     }
 
+    showAddressModal(){
+
+        const modal = this.modalCtrl.create(AutocompletePage);
+
+        this.map.setClickable(false);
+
+        modal.onDidDismiss(data => {
+            this.map.setClickable(true);
+            if(data!=null){
+                    this.selectedAddress.add = data.add;
+                    this.selectedAddress.lat = data.lat;
+                    this.selectedAddress.lng = data.lng;
+                    let loc = new LatLng(data.lat,data.lng);
+                    let position: CameraPosition = {
+                        target: loc,
+                        zoom: 15,
+                        tilt: 30
+                    };
+                    this.map.moveCamera(position);
+            }    
+        });
+
+        modal.present();
+
+    }
+
+
     loadCatadores(){
       this.catadoresProvider.getCatadoresPositions()
         .subscribe(data => {
@@ -170,23 +205,41 @@ export class HomePage {
                 continue;
             }
 
+            // Change this as per Logic - Sudipta 
+
+            let iconType:string = 'assets/icon/pin-residue.png';
+
+
             this.createNewPoint(
-                collect.latitude, collect.longitude, 'Coleta: ' + collect.id);
+                collect.latitude, collect.longitude, 'Coleta: ' + collect.id,iconType);
 
             index = index + 1;
         }
 
     }
 
-    createNewPoint(lat, long, title){
+    createNewPoint(lat, long, title, iconURL){
         //Creating the Position
         let position: LatLng = new LatLng(lat, long);
 
-        //Creating the Marker
-        let marker: MarkerOptions = {
-            position: position,
-            title: title
-        };
+        //Creating the Dynamic Marker
+
+        let marker: MarkerOptions;
+
+        if (this.platform.is('ios')) {
+            marker = {
+                position: position,
+                title: title,
+                icon: { url : iconURL }
+            };
+        }else{
+            marker = {
+                position: position,
+                title: title,
+                icon: { url : "file:///android_asset/www/" + iconURL }
+            };            
+        }
+
 
         // Adding the Marker 
         this.map.addMarker(marker)
@@ -206,11 +259,16 @@ export class HomePage {
                 continue;
             }
 
+            // Change this as per Logic - Sudipta 
+            let iconType:string = 'assets/icon/pin-collector.png';
+
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude, 
-                'Catador: ' + catador.geolocation[0].reverse_geocoding)
-                console.log(catador);
+                'Catador: ' + catador.geolocation[0].reverse_geocoding,iconType);
+
+
+            console.log(catador);
 
            index = index + 1
       }

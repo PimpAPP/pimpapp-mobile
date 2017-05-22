@@ -17,7 +17,20 @@
 </ion-header>
  
 <ion-content>
-    <div id="map"></div>
+    <div id="map">
+
+      <ion-card>
+        <ion-list>
+          <button ion-item (tap)="showAddressModal()">
+            <ion-icon name="ios-pin" item-left></ion-icon>
+              {{selectedAddress.add}}
+          </button>
+        </ion-list>
+      </ion-card>
+
+
+    </div>
+
       <!--<div class="recicle">
           <img src="assets/img/recicle.png" alt="Logo" width="30%" (click)="newResiduePage()">
       </div>-->
