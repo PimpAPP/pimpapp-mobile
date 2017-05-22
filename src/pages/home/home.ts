@@ -267,9 +267,6 @@ export class HomePage {
                 catador.geolocation[0].longitude, 
                 'Catador: ' + catador.geolocation[0].reverse_geocoding,iconType);
 
-
-            console.log(catador);
-
            index = index + 1
       }
            

@@ -36,28 +36,30 @@
 
     <br>
 
-    <ion-list radio-group>
+     <ion-list radio-group 
+                [(ngModel)]="catador.belongsCooperative" name="belongsCooperative">
         <ion-row>
-            <ion-item>
-                <ion-label>Faz parte de cooperativa?</ion-label>
-            </ion-item>
-            <ion-col col-6>
-                <ion-item  class="transp">
-                    <ion-label>Sim</ion-label>
-                    <ion-radio value="yes"></ion-radio>
-                </ion-item>
-            </ion-col>
-            <ion-col col-6>
-                <ion-item  class="transp">
-                    <ion-label>Não</ion-label>
-                    <ion-radio value="no"></ion-radio>
-                </ion-item>
-            </ion-col>
-            <ion-col col-12> 
                 <ion-item>
-                    <ion-input type="text" placeholder="QUAL?"></ion-input>
+                    <ion-label>Faz parte de cooperativa?</ion-label>
                 </ion-item>
-            </ion-col>
+                <ion-col col-6>
+                    <ion-item  class="transp">
+                        <ion-label>Sim</ion-label>
+                        <ion-radio value="yes"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-item  class="transp">
+                        <ion-label>Não</ion-label>
+                        <ion-radio value="no"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-12> 
+                    <ion-item>
+                        <ion-input type="text" placeholder="QUAL?" 
+                            [(ngModel)]="catador.cooperativeName"></ion-input>
+                    </ion-item>
+                </ion-col>
         </ion-row>
     </ion-list>
 

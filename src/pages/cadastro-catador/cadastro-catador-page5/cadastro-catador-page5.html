@@ -8,21 +8,28 @@
             A Carroça equipada com itens de segurança?
         </ion-list-header>
 
-        <ion-item>
-            <ion-label>Sim</ion-label>
-            <ion-radio value="yes"></ion-radio>
-        </ion-item>
+        <form>
+            <ion-list radio-group [(ngModel)]="catador.cartHasSecurityKit"
+                name="cartHasSecurityKit">
+                <ion-item>
+                    <ion-label>Sim</ion-label>
+                    <ion-radio value="true"></ion-radio>
+                </ion-item>
 
-        <ion-item>
-            <ion-label>Nâo</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
+                <ion-item>
+                    <ion-label>Nâo</ion-label>
+                    <ion-radio value="false"></ion-radio>
+                </ion-item>
 
+            </ion-list>
+
+        </form>
     </ion-list>
 
     <br>
 
-    <ion-list radio-group>
+    <ion-list radio-group 
+        [(ngModel)]="catador.cartHasEngine" name="cartHasEngine">
 
         <ion-list-header>
             A Carroça possui motor?
@@ -42,7 +49,8 @@
 
     <br>
 
-    <ion-list radio-group>
+    <ion-list radio-group 
+        [(ngModel)]="catador.smartphoneWithInternet" name="smartphoneWithInternet">
 
         <ion-list-header>
             Você tem smartphone com internet móvel?
@@ -63,6 +71,6 @@
     <ion-icon name="camera"><h2> Adicionar foto</h2></ion-icon>
 
 
-    <button ion-button full color="green">CADASTRAR</button>
+    <button ion-button full color="green" (click)="printItem()">CADASTRAR</button>
 
 </ion-content>

@@ -1,3 +1,5 @@
+import { CadastroCatadorPage2 } from './../pages/cadastro-catador/cadastro-catador-page2/cadastro-catador-page2';
+import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';

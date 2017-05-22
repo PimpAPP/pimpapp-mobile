@@ -32,6 +32,11 @@ export class Catador{
     public smartphoneWithInternet: boolean = false;
     public image: string = '';
 
+    constructor(){
+        this.phones[0] = new Phone();
+        this.phones[1] = new Phone();
+    }
+
     valid(){
         return (
             (this.name.length > 0) &&

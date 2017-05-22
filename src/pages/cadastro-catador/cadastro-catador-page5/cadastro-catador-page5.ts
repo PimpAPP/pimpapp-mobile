@@ -1,3 +1,4 @@
+import { Catador } from './../../catador';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -7,7 +8,16 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class CadastroCatadorPage5 {
   public myDate: any;
+  public catador: Catador = new Catador();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams) {
+        this.catador = navParams.get('catador');
+        console.log(this.catador);
+    }
+
+    printItem(){
+        console.log(this.catador);
+    }
 
 }
