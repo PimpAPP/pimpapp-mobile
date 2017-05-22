@@ -97,21 +97,21 @@ export class HomePage {
           let catador: LatLng = new LatLng(-23.616786, -46.669331);
           let coleta: LatLng = new LatLng(-23.618742, -46.667335);
 
-          let icon: MarkerIcon = {
+         /* let icon: MarkerIcon = {
               url: 'img/car-icon.png',
-          }
+          }*/
 
           let markerColeta: MarkerOptions = {
             position: coleta,
             title: 'Coleta',
-            icon: icon,
+           // icon: icon,
             animation: GoogleMapsAnimation.BOUNCE
           };
 
           let markerCatador: MarkerOptions = {
             position: catador,
             title: 'Catador',
-            icon: icon,
+            //icon: icon,
             animation: GoogleMapsAnimation.BOUNCE
           };
 
@@ -205,23 +205,41 @@ export class HomePage {
                 continue;
             }
 
+            // Change this as per Logic - Sudipta 
+
+            let iconType:string = 'assets/icon/pin-residue.png';
+
+
             this.createNewPoint(
-                collect.latitude, collect.longitude, 'Coleta: ' + collect.id);
+                collect.latitude, collect.longitude, 'Coleta: ' + collect.id,iconType);
 
             index = index + 1;
         }
 
     }
 
-    createNewPoint(lat, long, title){
+    createNewPoint(lat, long, title, iconURL){
         //Creating the Position
         let position: LatLng = new LatLng(lat, long);
 
-        //Creating the Marker
-        let marker: MarkerOptions = {
-            position: position,
-            title: title
-        };
+        //Creating the Dynamic Marker
+
+        let marker: MarkerOptions;
+
+        if (this.platform.is('ios')) {
+            marker = {
+                position: position,
+                title: title,
+                icon: { url : iconURL }
+            };
+        }else{
+            marker = {
+                position: position,
+                title: title,
+                icon: { url : "file:///android_asset/www/" + iconURL }
+            };            
+        }
+
 
         // Adding the Marker 
         this.map.addMarker(marker)
@@ -241,11 +259,16 @@ export class HomePage {
                 continue;
             }
 
+            // Change this as per Logic - Sudipta 
+            let iconType:string = 'assets/icon/pin-collector.png';
+
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude, 
-                'Catador: ' + catador.geolocation[0].reverse_geocoding)
-                console.log(catador);
+                'Catador: ' + catador.geolocation[0].reverse_geocoding,iconType);
+
+
+            console.log(catador);
 
            index = index + 1
       }
