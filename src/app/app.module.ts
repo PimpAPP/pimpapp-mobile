@@ -45,6 +45,9 @@ import { LandingPage } from './../pages/landing/landing';
 import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 import { PerfilCooperativa } from './../pages/perfil-cooperativa/perfil-cooperativa';
+import { AutocompletePage } from './../pages/autocomplete/autocomplete';
+
+import { AppStorage } from '../providers/app-storage';
 
 
 import { UsersAPI } from '../providers/users-api';
@@ -92,7 +95,8 @@ import {
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
-    ListCatadoresNear
+    ListCatadoresNear,
+    AutocompletePage
     ],
   imports: [
     BrowserModule,
@@ -136,7 +140,8 @@ import {
     PerfilGerador,
     PerfilCatador,
     PerfilCooperativa,
-    ListCatadoresNear
+    ListCatadoresNear,
+    AutocompletePage
   ],
   providers: [
     StatusBar,
@@ -151,7 +156,8 @@ import {
     // UsersAPI,
     UsersAPI,
     // CameraProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: AppStorage, useClass: AppStorage}
   ]
 })
 export class AppModule {}

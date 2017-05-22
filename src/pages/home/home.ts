@@ -7,6 +7,7 @@ import { CollectsProvider } from './../../providers/collects-provider';
 import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
 import { CollectsOpen } from './../collects-open/catador-collects';
+import { AutocompletePage } from './../autocomplete/autocomplete';
 
 import { 
   GoogleMap, 
@@ -19,6 +20,8 @@ import {
   CameraPosition
 } from '@ionic-native/google-maps';
 
+declare var google:any;
+
 @Component({
   selector: 'home-page',
   templateUrl: 'home.html',
@@ -29,6 +32,11 @@ export class HomePage {
     map: GoogleMap;
     nearest_catadores: any;
     nearest_collects: any;
+    selectedAddress={
+        add:"",
+        lat:0,
+        lng:0
+    };
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
@@ -142,6 +150,33 @@ export class HomePage {
                     });
         });
     }
+
+    showAddressModal(){
+
+        const modal = this.modalCtrl.create(AutocompletePage);
+
+        this.map.setClickable(false);
+
+        modal.onDidDismiss(data => {
+            this.map.setClickable(true);
+            if(data!=null){
+                    this.selectedAddress.add = data.add;
+                    this.selectedAddress.lat = data.lat;
+                    this.selectedAddress.lng = data.lng;
+                    let loc = new LatLng(data.lat,data.lng);
+                    let position: CameraPosition = {
+                        target: loc,
+                        zoom: 15,
+                        tilt: 30
+                    };
+                    this.map.moveCamera(position);
+            }    
+        });
+
+        modal.present();
+
+    }
+
 
     loadCatadores(){
       this.catadoresProvider.getCatadoresPositions()
