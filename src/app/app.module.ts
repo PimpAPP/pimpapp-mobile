@@ -1,3 +1,4 @@
+import { ResiduesProvider } from './../providers/residues-providers';
 import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
 import { StorageService } from './../pages/storage-service';
 import { CallNumber } from '@ionic-native/call-number';
@@ -148,6 +149,7 @@ import {
     SplashScreen,
     GoogleMaps,
     CatadoresProvider,
+    ResiduesProvider,
     StorageService,
     CollectsProvider,
     Camera,

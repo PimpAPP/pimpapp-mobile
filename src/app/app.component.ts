@@ -1,3 +1,4 @@
+import { ResidueRegister } from './../pages/residue-register/residue-register';
 import { CadastroCatadorPage2 } from './../pages/cadastro-catador/cadastro-catador-page2/cadastro-catador-page2';
 import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
 import { StorageService } from './../pages/storage-service';
@@ -36,7 +37,7 @@ export class MyApp {
       this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val===1)
-                    this.rootPage = CadastroCatador;
+                    this.rootPage = ResidueRegister;
                 else{
                     this.rootPage = LandingPage;
                     this.storage.set('firstAccess', 1);

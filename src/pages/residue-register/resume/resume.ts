@@ -1,7 +1,8 @@
+import { ResiduesProvider } from './../../../providers/residues-providers';
 import { MapUtils } from './../../map-utils';
 import { Residue } from './../../Residue';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ListCatadoresNear } from './../list-catadores-near/list-catadores-near';
 import { Geocoder } from '@ionic-native/google-maps';
 
@@ -20,7 +21,7 @@ export class ResumePage {
   public address: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-      public viewCtrl: ViewController, public modalCtrl: ModalController,
+      public viewCtrl: ViewController, public residuesProvider: ResiduesProvider,
       public geocoder: Geocoder) {
         this.mapUtils = new MapUtils();
         
@@ -43,14 +44,24 @@ export class ResumePage {
         });
   }
 
-  registerResidue(){
-    this.residue.address = this.address;
-    this.residue.location = this.location;
-    this.navCtrl.push(ListCatadoresNear);
-  }
+    registerResidue(){
+        this.residue.reverse_geocoding = this.address;
+        this.residue.location = this.location;
 
-  dismiss(){
-    this.viewCtrl.dismiss();
-  }
+        let new_material_list = [];
+        this.residue.materials.forEach(
+          item => { new_material_list.push(item.material.id)});
+        this.residue.materials = new_material_list;
+
+        this.residuesProvider.registerResidue(this.residue)
+            .subscribe(data => {
+                console.log(data);
+            });
+        this.navCtrl.push(ListCatadoresNear);
+    }
+
+    dismiss(){
+      this.viewCtrl.dismiss();
+    }
 
 }
