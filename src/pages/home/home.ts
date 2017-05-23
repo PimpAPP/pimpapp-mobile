@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
@@ -8,6 +8,9 @@ import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
 import { CollectsOpen } from './../collects-open/catador-collects';
 import { AutocompletePage } from './../autocomplete/autocomplete';
+import { ResidueRegister } from './../residue-register/residue-register';
+import { NgZone } from '@angular/core';
+
 
 import { 
   GoogleMap, 
@@ -37,10 +40,12 @@ export class HomePage {
         lat:0,
         lng:0
     };
+    showProfile: boolean;
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
-        public collectsProvider: CollectsProvider, public modalCtrl: ModalController) {
+        public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone) {
+        this.showProfile = false;
         platform.ready().then(() => {
             this.loadMap();
         });
@@ -230,13 +235,15 @@ export class HomePage {
             marker = {
                 position: position,
                 title: title,
-                icon: { url : iconURL }
+                icon: { url : iconURL },
+                markerClick:this.iconClicked
             };
         }else{
             marker = {
                 position: position,
                 title: title,
-                icon: { url : "file:///android_asset/www/" + iconURL }
+                icon: { url : "file:///android_asset/www/" + iconURL },
+                markerClick:this.iconClicked
             };            
         }
 
@@ -244,8 +251,24 @@ export class HomePage {
         // Adding the Marker 
         this.map.addMarker(marker)
             .then((marker: Marker) => {
-                marker.showInfoWindow();
+                //marker.showInfoWindow();
         });
+    }
+
+    iconClicked(){
+        console.log("Hello");
+        document.getElementById('ngifDiv').classList.add('ngopenDiv');
+        this.map.setClickable(false);
+    
+    }
+    closeSlide(){
+        this.map.setClickable(true);
+        console.log('remove')
+        document.getElementById('ngifDiv').classList.remove('ngopenDiv');
+    }
+
+    goRegisterMate() {
+        this.navCtrl.push(ResidueRegister);
     }
 
     plotCatadoresOnMap(points_list, title){
