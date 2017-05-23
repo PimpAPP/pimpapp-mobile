@@ -22,7 +22,6 @@ export class MapUtils{
                         let lat = resp.coords.latitude;
                         let lng = resp.coords.longitude;
                         let location: LatLng = new LatLng(lat, lng);
-                        console.log(location);
                         observable.next(location);
                     },
                     (error) => {

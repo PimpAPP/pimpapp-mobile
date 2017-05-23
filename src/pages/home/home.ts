@@ -172,9 +172,7 @@ export class HomePage {
                     this.map.moveCamera(position);
             }    
         });
-
         modal.present();
-
     }
 
 

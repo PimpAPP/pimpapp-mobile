@@ -4,7 +4,7 @@ import { Residue } from './../../Residue';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ListCatadoresNear } from './../list-catadores-near/list-catadores-near';
-import { Geocoder } from '@ionic-native/google-maps';
+import { Geocoder, LatLng } from '@ionic-native/google-maps';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { Geocoder } from '@ionic-native/google-maps';
 export class ResumePage {
   public materials: any[];
   public residue: Residue;
-  public location: Location;
+  public location: LatLng;
   public locationDetermined: boolean;
   public mapUtils: MapUtils;
   public address: string;
@@ -46,8 +46,7 @@ export class ResumePage {
 
     registerResidue(){
         this.residue.reverse_geocoding = this.address;
-        this.residue.location = this.location;
-
+        
         let new_material_list = [];
         this.residue.materials.forEach(
           item => { new_material_list.push(item.material.id)});
@@ -56,6 +55,12 @@ export class ResumePage {
         this.residuesProvider.registerResidue(this.residue)
             .subscribe(data => {
                 console.log(data);
+                this.residuesProvider.registerResidueLocation(
+                    data.id, {latitude: this.location.lat, longitude: this.location.lng})
+                        .subscribe(data => {
+                            console.log('location: ');
+                            console.log(data);
+                        });
             });
         this.navCtrl.push(ListCatadoresNear);
     }
