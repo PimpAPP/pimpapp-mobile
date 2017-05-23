@@ -19,7 +19,7 @@ export class CadastroCatadorPage2 {
   }
 
   printItem(){
-      console.log(this.catador.phones);
+      console.log(this.catador.phone);
   }
 
   openPage1(){

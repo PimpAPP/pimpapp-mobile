@@ -18,7 +18,7 @@ export class Catador{
     public lifeHistory: string = '';
     public nickname: string = '';
     public birthDay: Date = new Date();
-    public phones: Array<Phone> = new Array<Phone>();
+    public phone: Array<Phone> = new Array<Phone>();
     public referenceAddress: string = '';
     public regionWhereWorks: string = '';
     public kgPerDay: number = 0;
@@ -26,15 +26,17 @@ export class Catador{
     public yearsCollecting: number = 0;
     public belongsCooperative: boolean = false;
     public cooperativeName: string = '';
-    public materialList: Array<Material> = new Array<Material>();
+    public materials_collected: Array<Material> = new Array<Material>();
     public cartHasSecurityKit: boolean = false;
     public cartHasEngine: boolean = false;
     public smartphoneWithInternet: boolean = false;
     public image: string = '';
+    // Gambiarra - Remover isso quando o problema da API fo resolvido
+    public user: string = '1';
 
     constructor(){
-        this.phones[0] = new Phone();
-        this.phones[1] = new Phone();
+        this.phone[0] = new Phone();
+        this.phone[1] = new Phone();
     }
 
     valid(){
@@ -46,12 +48,12 @@ export class Catador{
     }
 
     addMaterialOrRemoveIfAlreadyIncluded(material: Material){
-        for(let i=0; i<this.materialList.length; i++){
-            if (material.id === this.materialList[i].id){
-                this.materialList.splice(i, 1);
+        for(let i=0; i<this.materials_collected.length; i++){
+            if (material.id === this.materials_collected[i].id){
+                this.materials_collected.splice(i, 1);
                 return 0;
             }
         }
-        this.materialList.push(material);
+        this.materials_collected.push(material);
     }
 }
