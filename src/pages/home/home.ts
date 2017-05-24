@@ -207,7 +207,7 @@ export class HomePage {
 
             // Change this as per Logic - Sudipta 
 
-            let iconType:string = 'assets/icon/pin-residue.png';
+            let iconType:string = 'assets/icon/pin-catador-rs.png';
 
 
             this.createNewPoint(
@@ -260,15 +260,12 @@ export class HomePage {
             }
 
             // Change this as per Logic - Sudipta 
-            let iconType:string = 'assets/icon/pin-collector.png';
+            let iconType:string = 'assets/icon/pin-catador-rs.png';
 
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude, 
                 'Catador: ' + catador.geolocation[0].reverse_geocoding,iconType);
-
-
-            console.log(catador);
 
            index = index + 1
       }
