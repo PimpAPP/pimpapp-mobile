@@ -255,17 +255,19 @@ export class HomePage {
         });
     }
 
-    iconClicked(){
-        console.log("Hello");
-        document.getElementById('ngifDiv').classList.add('ngopenDiv');
-        this.map.setClickable(false);
-    
-    }
-    closeSlide(){
-        this.map.setClickable(true);
-        console.log('remove')
-        document.getElementById('ngifDiv').classList.remove('ngopenDiv');
-    }
+   iconClicked(){
+        console.log("Add");
+        document.getElementById('ngifDiv').style.height='45%';
+        this.map.setClickable(false);
+    
+    }
+    closeSlide(){
+        this.map.setClickable(true);
+        console.log('remove');
+        document.getElementById('ngifDiv').style.height='0%';
+        document.getElementById('ngifDiv').style.bottom='-20px';
+
+    }
 
     goRegisterMate() {
         this.navCtrl.push(ResidueRegister);
