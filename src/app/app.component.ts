@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';
@@ -34,7 +35,7 @@ export class MyApp {
       this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val===1)
-                    this.rootPage = TabsPage;
+                    this.rootPage = LoginPage;
                 else{
                     this.rootPage = LandingPage;
                     this.storage.set('firstAccess', 1);

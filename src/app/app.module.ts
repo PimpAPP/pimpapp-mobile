@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
 import { StorageService } from './../pages/storage-service';
 import { CallNumber } from '@ionic-native/call-number';
@@ -86,6 +87,7 @@ import {
     QuantityPage,
     ResumePage,
     LandingPage,
+    LoginPage,
     CadastroCatador,
     CadastroGerador,
     CadastroCatadorPage2,
@@ -131,6 +133,7 @@ import {
     QuantityPage,
     ResumePage,
     LandingPage,
+    LoginPage,
     CadastroCatador,
     CadastroGerador,
     CadastroCatadorPage2,
