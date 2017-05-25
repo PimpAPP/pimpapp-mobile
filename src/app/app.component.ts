@@ -34,7 +34,7 @@ export class MyApp {
       this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val===1)
-                    this.rootPage = CadastroCatador;
+                    this.rootPage = TabsPage;
                 else{
                     this.rootPage = LandingPage;
                     this.storage.set('firstAccess', 1);
