@@ -5,16 +5,18 @@
     <ion-list>
 
         <ion-item>
-            <ion-input type="text" placeholder="E-MAIL CADASTRADO"></ion-input>
+            <ion-input type="text" placeholder="USUÁRIO CADASTRADO" 
+                [(ngModel)]="user"></ion-input>
         </ion-item>
 
         <br>    
 
         <ion-item>
-            <ion-input type="password" placeholder="SENHA"></ion-input>
+            <ion-input type="password" placeholder="SENHA" 
+                [(ngModel)]="password"></ion-input>
         </ion-item>
 
-        <button ion-button full color="green">LOGIN</button>
+        <button ion-button full color="green" (click)="login()">LOGIN</button>
 
     </ion-list>
 

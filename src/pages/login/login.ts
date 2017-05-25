@@ -1,4 +1,4 @@
-import { TutorialPage } from './../tutorial/tutorial';
+import { LoginProvider } from './../../providers/login-provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -7,8 +7,16 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+    public user: string;
+    public password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+      public loginProvider: LoginProvider) {
+    }
+
+    login(){
+        if (!this.loginProvider.isLogedIn())
+          this.loginProvider.makeLogin(this.user, this.password);
+    }
 
 }
