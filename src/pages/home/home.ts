@@ -234,14 +234,14 @@ export class HomePage {
         if (this.platform.is('ios')) {
             marker = {
                 position: position,
-                title: title,
+               // title: title,
                 icon: { url : iconURL },
                 markerClick:this.iconClicked
             };
         }else{
             marker = {
                 position: position,
-                title: title,
+               // title: title,
                 icon: { url : "file:///android_asset/www/" + iconURL },
                 markerClick:this.iconClicked
             };            
