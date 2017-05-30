@@ -236,14 +236,16 @@ export class HomePage {
                 position: position,
                // title: title,
                 icon: { url : iconURL },
-                markerClick:this.iconClicked
+                //markerClick:this.iconClicked
+                 markerClick:(()=>{this.iconClicked(title)})
             };
         }else{
             marker = {
                 position: position,
                // title: title,
                 icon: { url : "file:///android_asset/www/" + iconURL },
-                markerClick:this.iconClicked
+               // markerClick:this.iconClicked
+              markerClick:(()=>{this.iconClicked(title)})
             };            
         }
 
@@ -254,8 +256,10 @@ export class HomePage {
                 //marker.showInfoWindow();
         });
     }
-
-   iconClicked(){
+profileTitle:any;
+   iconClicked(title){
+       console.log(title);
+       this.profileTitle = title;
         console.log("Add");
         document.getElementById('ngifDiv').style.height='45%';
         this.map.setClickable(false);
@@ -264,8 +268,9 @@ export class HomePage {
     closeSlide(){
         this.map.setClickable(true);
         console.log('remove');
-        document.getElementById('ngifDiv').style.height='0%';
+        document.getElementById('ngifDiv').style.height='0%';
         document.getElementById('ngifDiv').style.bottom='-20px';
+        
 
     }
 
