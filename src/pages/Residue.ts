@@ -1,18 +1,21 @@
 import { MaterialItem } from './MaterialItem';
 
 export class Residue {
-    public materialList: Array<MaterialItem>;
+    public materials: Array<MaterialItem>;
     public image: string;
-    public address: string;
+    public reverse_geocoding: string;
     public location: Location;
+    public description: string = '';
+    public quantity: string = "S";
 
     constructor(){
-        this.materialList = new Array<MaterialItem>();
+        this.materials = new Array<MaterialItem>();
+        this.description = 'Residue register by app';
     }
 
     findmaterial(materialItem:MaterialItem){
-        for(let i=0; i<this.materialList.length; i++){
-            if (materialItem.material.id === this.materialList[i].material.id)
+        for(let i=0; i<this.materials.length; i++){
+            if (materialItem.material.id === this.materials[i].material.id)
                 return i;
         }
         return -1;
@@ -20,18 +23,18 @@ export class Residue {
 
     addMaterialItem(materialItem, quantity){
         if (this.findmaterial(materialItem) >=0){
-            this.materialList[this.findmaterial(
+            this.materials[this.findmaterial(
             materialItem)].quantity = quantity;
         } else {
             materialItem.quantity = quantity;
-            this.materialList.push(materialItem);
+            this.materials.push(materialItem);
         }
     }
 
     getAverrageValue(){
         let value = 0;
-        for(let i=0; i<this.materialList.length; i++)
-            value+= this.materialList[i].material.value * (this.materialList[i].quantity * 2);
+        for(let i=0; i<this.materials.length; i++)
+            value+= this.materials[i].material.value * (this.materials[i].quantity * 2);
         return [value.toFixed(2), (value+=value*0.20).toFixed(2)];
     }
 }

@@ -1,0 +1,16 @@
+page-login {
+    h3, a { 
+        color: color($colors, dark);
+    }
+
+    ion-content {
+        background-image: url('/assets/img/fundo-papelao.jpg') !important;
+        background-repeat: no-repeat;
+        background-position: top; 
+        background-size: 100% 100%;
+    }
+
+    img {
+        margin-top: 20%;
+    }
+}

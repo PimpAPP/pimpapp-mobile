@@ -3,7 +3,8 @@
     <h2 text-center>CATADOR</h2>
 
     <ion-item>
-        <ion-textarea placeholder="HISTÓRIA DE VIDA"></ion-textarea>
+        <ion-textarea placeholder="HISTÓRIA DE VIDA"
+            [(ngModel)]="catador.lifeHistory"></ion-textarea>
     </ion-item>
 
     <br>
@@ -17,12 +18,14 @@
     <br>
 
     <ion-item>
-        <ion-input type="text" placeholder="TELEFONE"></ion-input>
+        <ion-input type="text" placeholder="TELEFONE" 
+            [(ngModel)]="catador.phone[0].number"></ion-input>
     </ion-item>
 
     <br>
 
-    <ion-list radio-group [(ngModel)]="phone">
+    <ion-list radio-group 
+        [(ngModel)]="catador.phone[0].mobileOperator" name="mobileOperator">
 
         <ion-row>
             <ion-col col-4>
@@ -68,7 +71,7 @@
         
     </ion-list>
 
-    <ion-list radio-group>
+    <ion-list radio-group [(ngModel)]="catador.phone[0].whatsApp">
         <ion-row>
             <ion-item (click)="printItem()">
                 <ion-label (click)="printItem()">Whats app</ion-label>
@@ -90,13 +93,14 @@
 
     <br>
 
-        <ion-item>
-        <ion-input type="text" placeholder="TELEFONE 2"></ion-input>
+    <ion-item>
+        <ion-input type="text" placeholder="TELEFONE 2" 
+            [(ngModel)]="catador.phone[1].number"></ion-input>
     </ion-item>
 
     <br>
 
-    <ion-list radio-group [(ngModel)]="phone2">
+    <ion-list radio-group [(ngModel)]="catador.phone[1].mobileOperator">
 
         <ion-row>
             <ion-col col-4>
@@ -142,7 +146,7 @@
         
     </ion-list>
 
-    <ion-list radio-group>
+    <ion-list radio-group [(ngModel)]="catador.phone[1].whatsapp">
         <ion-row>
             <ion-item>
                 <ion-label>Whats app</ion-label>
