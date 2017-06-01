@@ -135,7 +135,11 @@ export class HomePage {
             });
             this.loadCatadores();  
             this.loadCollects();
+            this.centerLocation();
         });
+
+        
+        
     }
 
     getCurrentLocation(){
@@ -148,6 +152,7 @@ export class HomePage {
                         let lat = resp.coords.latitude;
                         let lng = resp.coords.longitude;
                         let location: LatLng = new LatLng(lat, lng);
+                        this.reverseGeoCode(lat, lng);
                         observable.next(location);
                     },
                     (error) => {
@@ -299,4 +304,23 @@ profileTitle:any;
       }
            
     }
+
+
+
+
+reverseGeoCode(lat,lng){
+      let geocoder = new google.maps.Geocoder();
+      let request = {
+          latLng: new LatLng(lat,lng)
+      };
+
+      geocoder.geocode(request,(data, status)=>{
+            if (status == google.maps.GeocoderStatus.OK) {  
+                this.selectedAddress.lat = lat;
+                this.selectedAddress.lng =lng;
+                this.selectedAddress.add =  data[0].formatted_address;
+            }         
+      }); 
+  }
+    
 }
