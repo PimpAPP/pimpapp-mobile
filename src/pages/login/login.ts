@@ -15,10 +15,10 @@ export class LoginPage {
       public loginProvider: LoginProvider) {
     }
 
-    login(){
-        if (!this.loginProvider.isLogedIn())
-          this.loginProvider.makeLogin(this.user, this.password);
-    }
+    // login(){
+    //     if (!this.loginProvider.isLogedIn())
+    //       this.loginProvider.makeLogin(this.user, this.password);
+    // }
 
   gotoHome(){
     this.navCtrl.setRoot(TabsPage);
