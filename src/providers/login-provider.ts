@@ -1,3 +1,4 @@
+import { TutorialPage } from './../pages/tutorial/tutorial';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -22,15 +23,13 @@ export class LoginProvider {
     }
 
     makeLogin(user, password){
+        let data: any;
         this.loginAPI(user, password).subscribe(data =>{
+            console.log('salvando ...');
+            console.log(data.token);
             this.storage.set('token', data.token);
+            data = data;
         });        
-    }
-
-    isLogedIn(){
-        this.storage.get('token').then((val) => {
-            console.log(val);
-            return val;
-        })
+        return Promise.resolve(data);
     }
 }

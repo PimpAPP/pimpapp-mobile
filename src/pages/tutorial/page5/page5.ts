@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TabsPage } from './../../tabs/tabs';
@@ -9,13 +10,13 @@ import { TabsPage } from './../../tabs/tabs';
 })
 export class TutorialPage5 {
 
-  constructor(public navCtrl: NavController) {
-  }
+    constructor(public navCtrl: NavController, public storage: Storage) {
+    }
 
-
-  goHome(){
-    this.navCtrl.push(TabsPage);
-  }
+    goHome(){
+      this.storage.set('firstAccess', 1);
+      this.navCtrl.push(TabsPage);
+    }
 
 
 }

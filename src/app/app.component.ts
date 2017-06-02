@@ -1,3 +1,5 @@
+import { ResidueRegister } from './../pages/residue-register/residue-register';
+import { LoginProvider } from './../providers/login-provider';
 import { LoginPage } from './../pages/login/login';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
@@ -23,7 +25,7 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, 
     public menuCtrl: MenuController, public storage: Storage,
-    public storageService: StorageService
+    public storageService: StorageService, public loginProvider: LoginProvider
   ) {
       platform.ready().then(() => {
         statusBar.styleDefault();
@@ -33,14 +35,12 @@ export class MyApp {
 
   checkLandingFirstTime(){
       this.storage.ready().then(() => {
-            this.storage.get('firstAccess').then((val) => {
-                if (val===1)
-                    this.rootPage = LoginPage;
-                else{
-                    this.rootPage = LandingPage;
-                    this.storage.set('firstAccess', 1);
-                }
-            })
+          this.storage.get('token').then((val) => {
+              if (val)
+                this.rootPage = TabsPage;
+              else
+                this.rootPage = CadastroCatador;
+          });
         });
   }
 

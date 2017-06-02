@@ -1,3 +1,6 @@
+import { TabsPage } from './../tabs/tabs';
+import { Storage } from '@ionic/storage';
+import { TutorialPage } from './../tutorial/tutorial';
 import { LoginProvider } from './../../providers/login-provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -11,12 +14,18 @@ export class LoginPage {
     public password: string;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
-      public loginProvider: LoginProvider) {
+      public loginProvider: LoginProvider, public storage: Storage) {
     }
 
     login(){
-        if (!this.loginProvider.isLogedIn())
-          this.loginProvider.makeLogin(this.user, this.password);
+        this.loginProvider.makeLogin(this.user, this.password).then((data) => {
+            this.storage.get('firstAccess').then((val) =>{
+                if (!val)
+                    this.navCtrl.push(TutorialPage);
+                else 
+                    this.navCtrl.push(TabsPage);
+            });
+        });
     }
 
 }
