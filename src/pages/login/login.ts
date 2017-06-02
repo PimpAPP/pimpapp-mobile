@@ -1,6 +1,7 @@
 import { LoginProvider } from './../../providers/login-provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import  { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-login',
@@ -18,5 +19,9 @@ export class LoginPage {
         if (!this.loginProvider.isLogedIn())
           this.loginProvider.makeLogin(this.user, this.password);
     }
+
+  gotoHome(){
+    this.navCtrl.setRoot(TabsPage);
+  }
 
 }
