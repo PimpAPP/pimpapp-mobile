@@ -81,8 +81,8 @@ export class HomePage {
           'controls': {
             'compass': true,
             // 'myLocationButton': true,
-            'indoorPicker': true,
-            'zoom': true
+            'indoorPicker': true//,
+           // 'zoom': true
           },
           'gestures': {
             'scroll': true,
@@ -135,7 +135,11 @@ export class HomePage {
             });
             this.loadCatadores();  
             this.loadCollects();
+            this.centerLocation();
         });
+
+        
+        
     }
 
     getCurrentLocation(){
@@ -148,6 +152,7 @@ export class HomePage {
                         let lat = resp.coords.latitude;
                         let lng = resp.coords.longitude;
                         let location: LatLng = new LatLng(lat, lng);
+                        this.reverseGeoCode(lat, lng);
                         observable.next(location);
                     },
                     (error) => {
@@ -232,16 +237,18 @@ export class HomePage {
         if (this.platform.is('ios')) {
             marker = {
                 position: position,
-                title: title,
+               // title: title,
                 icon: { url : iconURL },
-                markerClick:this.iconClicked
+                //markerClick:this.iconClicked
+                 markerClick:(()=>{this.iconClicked(title)})
             };
         }else{
             marker = {
                 position: position,
-                title: title,
+               // title: title,
                 icon: { url : "file:///android_asset/www/" + iconURL },
-                markerClick:this.iconClicked
+               // markerClick:this.iconClicked
+              markerClick:(()=>{this.iconClicked(title)})
             };            
         }
 
@@ -252,8 +259,10 @@ export class HomePage {
                 //marker.showInfoWindow();
         });
     }
-
-   iconClicked(){
+profileTitle:any;
+   iconClicked(title){
+       console.log(title);
+       this.profileTitle = title;
         console.log("Add");
         document.getElementById('ngifDiv').style.height='45%';
         this.map.setClickable(false);
@@ -262,8 +271,9 @@ export class HomePage {
     closeSlide(){
         this.map.setClickable(true);
         console.log('remove');
-        document.getElementById('ngifDiv').style.height='0%';
+        document.getElementById('ngifDiv').style.height='0%';
         document.getElementById('ngifDiv').style.bottom='-20px';
+        
 
     }
 
@@ -294,4 +304,23 @@ export class HomePage {
       }
            
     }
+
+
+
+
+reverseGeoCode(lat,lng){
+      let geocoder = new google.maps.Geocoder();
+      let request = {
+          latLng: new LatLng(lat,lng)
+      };
+
+      geocoder.geocode(request,(data, status)=>{
+            if (status == google.maps.GeocoderStatus.OK) {  
+                this.selectedAddress.lat = lat;
+                this.selectedAddress.lng =lng;
+                this.selectedAddress.add =  data[0].formatted_address;
+            }         
+      }); 
+  }
+    
 }
