@@ -2,20 +2,31 @@
     <h1 text-center>Cadastro</h1>
     <h2 text-center>GERADOR DE RESÍDUOS</h2>
 
+    <p>{{ error }}</p>
+
     <ion-item>
-        <ion-input type="text" placeholder="INSIRA SEU NOME"></ion-input>
+        <ion-input type="text" placeholder="INSIRA SEU NOME"
+        [(ngModel)]="gerador.name" name="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-input type="text" placeholder="ESCOLHA UM USERNAME"
+        [(ngModel)]="gerador.username" name="username"></ion-input>
+    </ion-item>
+
+
+    <br>
+
+    <ion-item>
+        <ion-input type="email" placeholder="INSIRA SEU EMAIL"
+        [(ngModel)]="gerador.email" name="email"></ion-input>
     </ion-item>
 
     <br>
 
     <ion-item>
-        <ion-input type="email" placeholder="INSIRA SEU EMAIL"></ion-input>
-    </ion-item>
-
-    <br>
-
-    <ion-item>
-        <ion-input type="password" placeholder="INSIRA SUA SENHA"></ion-input>
+        <ion-input type="password" placeholder="INSIRA SUA SENHA"
+        [(ngModel)]="gerador.password" name="paassword"></ion-input>
     </ion-item>
 
     <br>
@@ -28,6 +39,6 @@
         <ion-icon name="camera" color="light"></ion-icon> Adicione uma foto
     </h2>
 
-    <button ion-button full color="green">Cadastrar</button>
+    <button ion-button full color="green" (click)="cadastrarGerador()">Cadastrar</button>
 
 </ion-content>

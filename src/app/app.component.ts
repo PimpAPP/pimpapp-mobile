@@ -37,7 +37,8 @@ export class MyApp {
       this.storage.ready().then(() => {
           this.storage.get('token').then((val) => {
               if (val)
-                this.rootPage = TabsPage;
+                // this.rootPage = TabsPage;
+                this.rootPage = LandingPage;
               else
                 this.rootPage = LandingPage;
           });
