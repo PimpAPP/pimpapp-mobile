@@ -58,7 +58,7 @@ export class PerfilGerador {
       });
 
         loader.present().then(() => {
-            this.http.post(url, {
+            this.http.post({
               tipoMod: mod
             }).subscribe(
               data => {
@@ -106,7 +106,7 @@ export class PerfilGerador {
              let novoNome = data.nome;
              let url = "http://179.188.38.243/api/users/180/";
 
-             this.http.post(url, {
+             this.http.post({
                 "first_name": novoNome
               }).subscribe(
                 data => {

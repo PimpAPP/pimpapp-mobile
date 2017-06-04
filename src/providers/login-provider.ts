@@ -12,7 +12,6 @@ export class LoginProvider {
 
   constructor(public http: Http, public storage: Storage) {
       this.headers.append('Content-Type', 'application/json');
-      this.headers.append('Authorization', 'Token a9df25172b3a778cb58c87e63f33c69309bf4e20');
    }
 
     loginAPI(user, password){

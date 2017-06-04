@@ -1,4 +1,3 @@
-import { TabsPage } from './../tabs/tabs';
 import { Storage } from '@ionic/storage';
 import { TutorialPage } from './../tutorial/tutorial';
 import { LoginProvider } from './../../providers/login-provider';
@@ -13,31 +12,30 @@ import  { TabsPage } from '../tabs/tabs';
 export class LoginPage {
     public user: string;
     public password: string;
+    public error: string;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
       public loginProvider: LoginProvider, public storage: Storage) {
     }
 
-<<<<<<< HEAD
     login(){
-        this.loginProvider.makeLogin(this.user, this.password).then((data) => {
+        let a: any;
+        a = this.loginProvider.loginAPI(this.user, this.password).subscribe((data)=>{
+            this.storage.set('token', data.token);
             this.storage.get('firstAccess').then((val) =>{
                 if (!val)
                     this.navCtrl.push(TutorialPage);
                 else 
                     this.navCtrl.push(TabsPage);
             });
+            this.navCtrl.push(TabsPage);
+        }, err => {
+            this.error = 'Falha ao logar, verifique suas informações e tente novamente';
         });
     }
-=======
-    // login(){
-    //     if (!this.loginProvider.isLogedIn())
-    //       this.loginProvider.makeLogin(this.user, this.password);
-    // }
 
   gotoHome(){
     this.navCtrl.setRoot(TabsPage);
   }
->>>>>>> codersudipta-fixIssue
 
 }

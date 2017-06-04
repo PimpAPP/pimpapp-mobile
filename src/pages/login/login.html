@@ -1,5 +1,6 @@
 <ion-content padding>
 
+    <p>{{ error }}</p>
     <img src="assets/img/logo.png" alt="">
     
     <ion-list>
@@ -15,7 +16,7 @@
             <ion-input type="password" placeholder="SENHA" 
                 [(ngModel)]="password"></ion-input>
         </ion-item>
-        <button ion-button full color="green" (click)="gotoHome()">LOGIN</button>
+        <button ion-button full color="green" (click)="login()">LOGIN</button>
 
     </ion-list>
 
