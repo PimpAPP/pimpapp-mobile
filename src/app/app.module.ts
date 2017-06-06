@@ -1,3 +1,4 @@
+import { LoginProvider } from './../providers/login-provider';
 import { ResiduesProvider } from './../providers/residues-providers';
 import { LoginPage } from './../pages/login/login';
 import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
@@ -158,7 +159,7 @@ import {
     Camera,
     CallNumber,
     Toast,
-    // UsersAPI,
+    LoginProvider,
     UsersAPI,
     // CameraProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

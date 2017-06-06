@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
 
     <ion-grid>
@@ -14,10 +14,10 @@
     </ion-grid>
 
   </ion-navbar>
-</ion-header>
+</ion-header>-->
  
 <ion-content>
-    <div id="map">
+    <div id="map" (click)="closeSlide()">
 
       <ion-card>
         <ion-list>
@@ -35,7 +35,8 @@
 
     <div id="ngifDiv">
       <h2>This is Profile Div.</h2>
-      <p>Lorem ipsum dolor emet.</p>
+     <!-- <p>Lorem ipsum dolor emet.</p>-->
+      <p>{{profileTitle}}</p>
 
       <button (click)="closeSlide()" class="closeDiv">x</button>
     </div>
@@ -48,11 +49,12 @@
 </ion-content>
 
 <ion-footer>
-
-  <ion-item (click)="collectsOpenPage()" text-center>
+<!-- point 4 -->
+  <!--<ion-item (click)="collectsOpenPage()" text-center>
     <div text-center>
         <ion-icon name="arrow-down"></ion-icon>
     </div>
-  </ion-item>
+  </ion-item>-->
+  <!-- point 4 -->
 
 </ion-footer>
