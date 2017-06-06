@@ -50,6 +50,12 @@ import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 import { PerfilCooperativa } from './../pages/perfil-cooperativa/perfil-cooperativa';
 import { AutocompletePage } from './../pages/autocomplete/autocomplete';
 
+import { ErrorPage } from './../pages/404/ErrorPage';
+import { ListaCatadores } from './../pages/ListaCatadores/ListaCatadores';
+import { ColetaConfirmada} from './../pages/coletaconfirmada/coletaconfirmada';
+
+import { IonAlphaScrollModule } from 'ionic2-alpha-scroll';
+
 import { AppStorage } from '../providers/app-storage';
 
 
@@ -100,13 +106,17 @@ import {
     PerfilCatador,
     PerfilCooperativa,
     ListCatadoresNear,
-    AutocompletePage
+    AutocompletePage,
+    ErrorPage,
+    ColetaConfirmada,
+    ListaCatadores
     ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, ResidueRegister),
     IonicStorageModule.forRoot(),
-    HttpModule
+    HttpModule,
+    IonAlphaScrollModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -146,7 +156,10 @@ import {
     PerfilCatador,
     PerfilCooperativa,
     ListCatadoresNear,
-    AutocompletePage
+    AutocompletePage,
+    ErrorPage,
+    ColetaConfirmada,
+    ListaCatadores
   ],
   providers: [
     StatusBar,

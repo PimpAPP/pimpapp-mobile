@@ -4,7 +4,6 @@ import { TutorialPage } from './../tutorial/tutorial';
 import { LoginProvider } from './../../providers/login-provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import  { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-login',
@@ -18,7 +17,6 @@ export class LoginPage {
       public loginProvider: LoginProvider, public storage: Storage) {
     }
 
-<<<<<<< HEAD
     login(){
         this.loginProvider.makeLogin(this.user, this.password).then((data) => {
             this.storage.get('firstAccess').then((val) =>{
@@ -29,7 +27,6 @@ export class LoginPage {
             });
         });
     }
-=======
     // login(){
     //     if (!this.loginProvider.isLogedIn())
     //       this.loginProvider.makeLogin(this.user, this.password);
@@ -38,6 +35,5 @@ export class LoginPage {
   gotoHome(){
     this.navCtrl.setRoot(TabsPage);
   }
->>>>>>> codersudipta-fixIssue
 
 }

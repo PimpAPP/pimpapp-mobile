@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title class="titleText">CONFIRMAR COLETO</ion-title>
+  </ion-navbar>
+  <!--<img width="50" height="50" src="{{ usuario?.photo }}" *ngIf="!usuario?.photo">
+  <img width="50" height="50" src="assets/img/avatar.png" *ngIf="usuario?.photo">-->
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card class="bodyCard">
+        <img src="assets/img/userImage1.png" alt="User Image" class="userImage">
+        <h2>JORGE SANTOS</h2>
+        <p>Conseguiu falar com o catador e agendar a retirada?</p>
+
+        <ion-list>
+            <ion-item>
+                <ion-input type="text" value="" placeholder="Data da retidara"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" value="" placeholder="Horario"></ion-input>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card class="buttonCard">
+        <button ion-button class="leftBtn">Nao Rolou</button>
+        <button ion-button class="rightBtn">Sim, Rolou</button>
+    </ion-card>
+
+  
+</ion-content>
