@@ -1,9 +1,9 @@
+import { TabsPage } from './../tabs/tabs';
 import { Storage } from '@ionic/storage';
 import { TutorialPage } from './../tutorial/tutorial';
 import { LoginProvider } from './../../providers/login-provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import  { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-login',
@@ -33,7 +33,7 @@ export class LoginPage {
             this.error = 'Falha ao logar, verifique suas informações e tente novamente';
         });
     }
-
+    
   gotoHome(){
     this.navCtrl.setRoot(TabsPage);
   }

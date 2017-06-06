@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title class="titleText">LISTA DE CATADURES</ion-title>
+  </ion-navbar>
+  <!--<img width="50" height="50" src="{{ usuario?.photo }}" *ngIf="!usuario?.photo">
+  <img width="50" height="50" src="assets/img/avatar.png" *ngIf="usuario?.photo">-->
+</ion-header>
+
+
+<ion-content padding>
+    <!--<ion-alpha-scroll *ngIf="listCategoryRepeat"
+        [listData]="listCategoryRepeat"
+        key="itemName"
+        [itemTemplate]="alphaScrollItemTemplate"
+        [currentPageClass]="currentPageClass"
+        [triggerChange]="triggerAlphaScrollChange">
+      </ion-alpha-scroll>-->
+
+    <ion-card class="segmentCard">
+        <p>Ordenar por :</p>
+        <ion-segment [(ngModel)]="listCategory">
+            <ion-segment-button value="nome">
+                Nome,
+            </ion-segment-button>
+            <ion-segment-button value="material">
+                Material,
+            </ion-segment-button>
+            <ion-segment-button value="bairro">
+                Bairro
+            </ion-segment-button>
+        </ion-segment>
+    </ion-card>
+    
+    <ion-alpha-scroll *ngIf="listCategoryRepeat"
+        [listData]="listCategoryRepeat"
+        key="itemName"
+        [itemTemplate]="alphaScrollItemTemplate"
+        [currentPageClass]="currentPageClass"
+        [triggerChange]="triggerAlphaScrollChange">
+    </ion-alpha-scroll>
+
+<!--<div [ngSwitch]="listCategory" class="switchCategory">
+    <ion-list *ngSwitchCase="'nome'">
+        <ion-item *ngFor="let item of listCategoryRepeat">
+            <ion-avatar item-start col-3>
+                <img src="{{item.avatarImage}}" alt="List Image">
+            </ion-avatar>
+            <div col-9 class="listDetails">
+                <h2>{{item.itemName}} <img src="{{item.rightArrow}}" alt="List Arrow" ></h2>
+                <div class="clear"></div>                
+                <p>{{item.itemDesc}}</p>
+                <span>
+                    <img src="{{item.metarialIcon1}}" alt="Icones Mmateriais">
+                    <img src="{{item.metarialIcon2}}" alt="Icones Materiais">
+                    <img src="{{item.metarialIcon3}}" alt="Icones Materiais">
+                </span>
+            </div>
+        </ion-item>        
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'material'">
+        <ion-item>
+            <ion-avatar item-start col-3>
+                <img src="assets/img/listImage.png" alt="List Image">
+            </ion-avatar>
+            <div col-9 class="listDetails">
+                <h2>ADRIANO CRUZ <img src="assets/img/listArrow.png" alt="List Arrow" ></h2>
+                <div class="clear"></div>                
+                <p>Vila Madalena</p>
+                <span>
+                    <img src="assets/img/Icones_materiais-28.png" alt="Icones Mmateriais">
+                    <img src="assets/img/Icones_materiais-23.png" alt="Icones Materiais">
+                    <img src="assets/img/Icones_materiais-18.png" alt="Icones Materiais">
+                </span>
+            </div>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'bairro'">
+        <ion-item>
+            <ion-avatar item-start col-3>
+                <img src="assets/img/listImage.png" alt="List Image">
+            </ion-avatar>
+            <div col-9 class="listDetails">
+                <h2>ADRIANO CRUZ <img src="assets/img/listArrow.png" alt="List Arrow" ></h2>
+                <div class="clear"></div>                
+                <p>Vila Madalena</p>
+                <span>
+                    <img src="assets/img/Icones_materiais-28.png" alt="Icones Mmateriais">
+                    <img src="assets/img/Icones_materiais-23.png" alt="Icones Materiais">
+                    <img src="assets/img/Icones_materiais-18.png" alt="Icones Materiais">
+                </span>
+            </div>
+        </ion-item>
+    </ion-list>
+  </div>
+-->
+  
+</ion-content>
