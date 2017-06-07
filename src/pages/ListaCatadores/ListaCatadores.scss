@@ -132,4 +132,44 @@ page-ListaCatadores{
             }
         }
     }
+    @media screen and (max-width:600px){
+        .titleText{
+            .toolbar-title{
+                font-size: 26px;
+            }
+        }
+    }
+    @media screen and (max-width:320px){
+        .titleText{
+            .toolbar-title{
+                font-size: 19px;
+            }
+        }
+        .segmentCard{
+            margin: 0px;
+            p{
+                font-size: 12px;
+                width: 36%;
+            }
+            ion-segment{
+                width: 62%;
+                .segment-button{
+                    font-size: 13px;
+                    width: 31.111%;
+                }
+            }
+        }
+        ion-item.scrollItem{
+            .listDetails{
+                h2{
+                    font-size: 15px;
+                }
+                span{
+                    img{
+                        width: 40px;
+                    }
+                }
+            }   
+        }
+    }
 }

@@ -33,4 +33,13 @@ page-ErrorPage{
             }
         }
     }
+      @media screen and (max-width:414px){
+        .ErrorPageContent{
+            .ErrorPageCard{
+                p{
+                    width: 70%;
+                }
+            }
+        }
+      }
 }
