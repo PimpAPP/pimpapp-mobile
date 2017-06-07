@@ -1,3 +1,4 @@
+import { ApiProvider } from '../providers/api-provider';
 import { TutorialPage } from './../pages/tutorial/tutorial';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
@@ -7,11 +8,17 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class LoginProvider {
-  public url = 'http://179.188.38.243/api/api-token-auth/';
+  public url = this.apiProvider.url + 'api/api-token-auth/';
   public headers = new Headers();
 
-  constructor(public http: Http, public storage: Storage) {
+  constructor(public http: Http, public storage: Storage, 
+    public apiProvider: ApiProvider) {
       this.headers.append('Content-Type', 'application/json');
+<<<<<<< HEAD
+=======
+      //this.headers.append('Authorization', 'Token a9df25172b3a778cb58c87e63f33c69309bf4e20');
+      this.headers.append('Authorization', 'Token 7afb143945125d6bd471f988d5449f2b23b3d099');
+>>>>>>> 24d7babe2b885048808984fe3f222bb3bcf8d428
    }
 
     loginAPI(user, password){

@@ -1,9 +1,11 @@
+import { TabsPage } from './../tabs/tabs';
 import { Storage } from '@ionic/storage';
 import { TutorialPage } from './../tutorial/tutorial';
 import { LoginProvider } from './../../providers/login-provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import  { TabsPage } from '../tabs/tabs';
+import { OAuthModule } from '../pages/oauth/oauth.module';
+
 
 @Component({
   selector: 'page-login',

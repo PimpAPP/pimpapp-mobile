@@ -1,3 +1,4 @@
+import { ApiProvider } from './../providers/api-provider';
 import { LoginProvider } from './../providers/login-provider';
 import { ResiduesProvider } from './../providers/residues-providers';
 import { LoginPage } from './../pages/login/login';
@@ -152,6 +153,7 @@ import {
     StatusBar,
     SplashScreen,
     GoogleMaps,
+    ApiProvider,
     CatadoresProvider,
     ResiduesProvider,
     StorageService,

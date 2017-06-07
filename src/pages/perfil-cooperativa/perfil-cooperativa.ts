@@ -1,3 +1,4 @@
+import { ApiProvider } from '../../providers/api-provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
@@ -16,12 +17,14 @@ export class PerfilCooperativa {
   cooperativa: any;
   cooperativaDiasTrabalhados: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: UsersAPI, public loading: LoadingController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public http: UsersAPI, public loading: LoadingController, 
+    public alertCtrl: AlertController, public apiProvider: ApiProvider) {
   }
 
   ionViewWillEnter() {
 
-    let url = "http://179.188.38.243/api/cooperatives/" + this.cooperativaID + "/";
+    let url = this.apiProvider.url + "api/cooperatives/" + this.cooperativaID + "/";
 
     //Prepara o loading
     let loader = this.loading.create({

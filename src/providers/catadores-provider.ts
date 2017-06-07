@@ -1,3 +1,4 @@
+import { ApiProvider } from '../providers/api-provider';
 import { Catador } from './../pages/catador';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
@@ -6,13 +7,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CatadoresProvider {
-    url = 'http://179.188.38.243/api/nearest-catadores/?format=json';
+    url = this.apiProvider.url + 'api/nearest-catadores/?format=json';
 
-    constructor(public http: Http) { }
+    constructor(public http: Http, public apiProvider: ApiProvider) { }
 
     createAuthorizationHeader(headers: Headers) {
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', 'Token 4d1a0496a4de43e5f798ceed9db4272e1f4b72e6'); 
+        headers.append('Authorization', 'Token ' + this.apiProvider.token); 
     }
 
     getCatadoresPositions() {
@@ -21,7 +22,7 @@ export class CatadoresProvider {
     }
 
     registerCatador(catador: Catador){
-        let url = 'http://179.188.38.243/api/catadores/';
+        let url = this.apiProvider.url + 'api/catadores/';
         let headers = new Headers();
         this.createAuthorizationHeader(headers);
         return this.http.post(url, catador, {
