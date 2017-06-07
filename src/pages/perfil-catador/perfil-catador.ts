@@ -1,3 +1,4 @@
+import { ApiProvider } from '../../providers/api-provider';
 import { CallNumber } from '@ionic-native/call-number';
 import { MaterialRecover } from './../MaterialRecover';
 import { Component } from '@angular/core';
@@ -22,13 +23,14 @@ export class PerfilCatador {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: UsersAPI, public loading: LoadingController, 
-    public alertCtrl: AlertController, public callNumber: CallNumber) {
+    public alertCtrl: AlertController, public callNumber: CallNumber,
+    public apiProvider: ApiProvider) {
       this.materialRecover = new MaterialRecover();
   }
 
   ionViewWillEnter() {
 
-    let url = "http://179.188.38.243/api/catadores/" + this.catadorID + "/";
+    let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
 
     //Prepara o loading
     let loader = this.loading.create({

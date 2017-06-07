@@ -1,3 +1,4 @@
+import { ApiProvider } from '../providers/api-provider';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -5,13 +6,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CollectsProvider {
-  url = 'http://179.188.38.243/api/residues/?format=json';
+  url = this.apiProvider.url + 'api/residues/?format=json';
 
-  constructor(public http: Http) { }
+  constructor(public http: Http, public apiProvider: ApiProvider) { }
 
   createAuthorizationHeader(headers: Headers) {
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Token a9df25172b3a778cb58c87e63f33c69309bf4e20'); 
+    headers.append('Authorization', 'Token ' + this.apiProvider.token); 
   }
 
   getCollectsPositions() {

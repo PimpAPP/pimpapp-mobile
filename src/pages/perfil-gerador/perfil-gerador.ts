@@ -1,3 +1,4 @@
+import { ApiProvider } from '../../providers/api-provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
@@ -15,12 +16,12 @@ export class PerfilGerador {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: UsersAPI, public loading: LoadingController, 
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController, public apiProvider: ApiProvider) {
   }
 
   ionViewWillEnter() {
 
-    let url = "http://179.188.38.243/api/users/180/";
+    let url = this.apiProvider.url + "api/users/180/";
 
     //Prepara o loading
     let loader = this.loading.create({
@@ -50,7 +51,7 @@ export class PerfilGerador {
 
       console.log("Teste de dados: " + JSON.stringify({ tipoMod: mod }));
 
-      let url = "http://179.188.38.243/api/users/180/";
+      let url = this.apiProvider.url + "api/users/180/";
 
       //Prepara o loading
       let loader = this.loading.create({
@@ -104,7 +105,7 @@ export class PerfilGerador {
             handler: data => {
              
              let novoNome = data.nome;
-             let url = "http://179.188.38.243/api/users/180/";
+             let url = this.apiProvider.url + "api/users/180/";
 
              this.http.post(url, {
                 "first_name": novoNome
