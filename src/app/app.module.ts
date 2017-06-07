@@ -52,7 +52,14 @@ import { AutocompletePage } from './../pages/autocomplete/autocomplete';
 
 import { ErrorPage } from './../pages/404/ErrorPage';
 import { ListaCatadores } from './../pages/ListaCatadores/ListaCatadores';
-import { ColetaConfirmada} from './../pages/coletaconfirmada/coletaconfirmada';
+import { ColetaConfirmada } from './../pages/coletaconfirmada/coletaconfirmada';
+
+import { ColetaAberta2h } from './../pages/coletaaberta2h/coletaaberta2h';
+import { ColetaAberta } from './../pages/coletaaberta/coletaaberta';
+import { ColetaAbertaRetorno2h } from './../pages/coletaabertaretorno2h/coletaabertaretorno2h';
+import { coletaaberta12h } from './../pages/coletaaberta12h/coletaaberta12h';
+
+
 
 import { IonAlphaScrollModule } from 'ionic2-alpha-scroll';
 
@@ -109,7 +116,11 @@ import {
     AutocompletePage,
     ErrorPage,
     ColetaConfirmada,
-    ListaCatadores
+    ListaCatadores,
+    ColetaAberta2h,
+    ColetaAberta,
+    ColetaAbertaRetorno2h,
+    coletaaberta12h
     ],
   imports: [
     BrowserModule,
@@ -159,7 +170,11 @@ import {
     AutocompletePage,
     ErrorPage,
     ColetaConfirmada,
-    ListaCatadores
+    ListaCatadores,
+    ColetaAberta2h,
+    ColetaAberta,
+    ColetaAbertaRetorno2h,
+    coletaaberta12h
   ],
   providers: [
     StatusBar,

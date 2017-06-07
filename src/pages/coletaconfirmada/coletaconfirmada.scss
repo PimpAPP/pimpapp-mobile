@@ -78,7 +78,13 @@ page-coletaconfirmada{
         }
     }
 
-    
+    @media screen and (max-width:600px){
+        .titleText{
+            .toolbar-title{
+                font-size: 26px;
+            }
+        }
+    }
     @media screen and (max-width: 375px){
         .titleText{
             .toolbar-title{
@@ -99,24 +105,26 @@ page-coletaconfirmada{
             }
         }
     }
-    /*@media screen and (max-width: 360px){
+    
+    @media screen and (max-width:320px){
         .titleText{
             .toolbar-title{
-                font-size: 26px;
+                font-size: 19px;
             }
         }
         .bodyCard {
             background: url('../assets/img/papelao.png') no-repeat top 65px center;
-            background-size: 110%;
-            img{
-                width: 100px;
-            }
+            background-size: 115%;
             h2{
                 font-size: 28px;
             }
             p{
-                font-size: 18px;
+                font-size: 16px;
+                margin: 0px auto;
             }
+            ion-list{
+                margin: 3px auto;
+            }  
         }
-    }*/
+    }
 } 

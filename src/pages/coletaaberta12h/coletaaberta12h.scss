@@ -1,0 +1,136 @@
+page-coletacberta12h{
+    .titleText{
+        .toolbar-title{
+            color: #00862e;
+            font-size: 38px;
+            font-family: "Brizzush-Rough";
+        }
+    }
+    .coletaAbertaContent{
+        padding-top: 20px;
+        text-align: center;
+        .bodyCard{
+            background: none;
+            box-shadow: none;
+            h2{
+                color: #00862e;
+                font-size: 32px;
+                font-family: "Brizzush-Rough";
+                text-transform: uppercase;
+                margin: 20px 0;
+            }
+            p{
+                width: 90%;
+                margin: 0px auto;
+                color: #000;
+                font-size: 20px;
+                line-height: 26px;
+            }
+        }
+        .bgCard{
+            background: url('../assets/img/caletaAberta2hBg.png') no-repeat top 40px center;
+            background-size: 100%;
+            width: 100%;
+            padding: 0px 15% 12% 15%;
+            margin-left: 0px;
+            margin-right: 0px;
+            box-shadow: none;
+            .imgDiv{
+                img{
+                    position: relative;
+                    width: 40%;
+                    display: inline-block;
+                    vertical-align: top;
+                    border-radius: 50%;
+                }
+                img.userImage2{
+                    margin-right: -20px;
+                    z-index: 1;
+                }
+            }
+            h2{
+                color: #008a2d;
+                font-size: 20px;
+                line-height: 28px;
+                font-weight: bold;
+                margin: 10px 0px 0px 0px;
+                text-transform: uppercase;
+                small{
+                    font-family: "DIN-Regular";
+                    text-transform: lowercase;
+                    font-size: 18px;
+                    color: #70624c;
+                    line-height: 26px;
+                }
+            }
+            p{
+                font-size: 18px;
+                color: #70624c;
+                line-height: 26px;
+            }
+            h3{
+                color: #000;
+                font-size: 20px;
+                font-weight: bold;
+                margin: 10px 0;
+            }
+            ion-list{
+                text-align: center;
+                ion-item{
+                    background: none;
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 20%;
+                    margin: 0px;
+                    padding-left: 0px;
+                    border: none !important;
+                    .item-inner{
+                        padding-right: 0px;
+                        ion-label{
+                            margin: 0px;
+                            img{
+                                width: 100%;
+                                margin: 0px auto;
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .btnCard{
+            width: 100%;
+            margin: 25px 0;
+            button{
+                width: 49%;
+                display: inline-block;
+                vertical-align: top;
+                color: #fff;
+                font-size: 22px;
+                text-transform: uppercase;
+                line-height: 22px;
+                height: 55px;
+                border-radius: 0px;
+                background: #f62826;
+                padding: 4px 10px;
+                margin: 0px;
+                font-weight: bold;
+            }
+            .rightBtn{
+                background: #00b741;
+            }
+        }
+    }
+    @media screen and (max-width:320px){
+        .coletaAbertaContent{
+            .bodyCard{
+                p{
+                    font-size: 16px;
+                }
+                h3{
+                    margin: 5px 0;
+                }
+            }
+        }
+    }
+}
