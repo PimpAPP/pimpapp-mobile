@@ -3,10 +3,7 @@
     <ion-title>TUTORIAL</ion-title>
   </ion-navbar>
 </ion-header>
-
-
-<ion-content padding>
-    <h2 text-center>
+   <!-- <h2 text-center>
       Você sabia que os catadores são responsáveis por 
       quase 90% de tudo que é reciclado no Brasil?
     </h2>
@@ -46,6 +43,71 @@
                 </div>
             </ion-col>
         </ion-row>
-    </ion-grid>
+    </ion-grid>-->
 
+<ion-content >
+  <ion-slides (ionSlideDidChange)="slideChanged()">
+           <ion-slide >
+                <h2 text-center class="sliderheading" >
+                Você sabia que os catadores são responsáveis por 
+                quase 90% de tudo que é reciclado no Brasil?
+                </h2>
+                 <p text-center class="slide1p">
+                E que mesmo sendo os maiores recicladores do país, ainda não são 
+                reconhecidos pelo serviço público que prestam? 
+                Eles apenas recebem revendendo os materiais separados
+                por um preço baixíssimo.
+                </p>
+            </ion-slide>
+            <ion-slide >
+                <p text-center class="slide2p">
+                 <strong class="slide2strong">RECO</strong> quer te aproximar dos catadores e cooperativas.
+                </p>
+                <br>
+                <p text-center class="slide2p">Vamor provar que</p>
+                <h2 text-center class="slide2h2">LIXO NÃO EXISTE,</h2>
+                <p text-center class="slide2p2">é só uma ideia que colocaram na sua cabeça. 
+                    O que existe é material, resíduo e descarte.</p>
+            </ion-slide>
+            <ion-slide >
+                <img src="assets/img/app2.png" /> 
+            </ion-slide>
+             <ion-slide>
+              <img src="assets/img/tut4.png" /> 
+            </ion-slide>
+             <ion-slide>
+                <img src="assets/img/tut5.png" />               
+            </ion-slide>
+            </ion-slides>
+
+<ion-grid style="text-align: center;padding:27px; magin-left:11px;">
+        <ion-row style="vertical-align:center">
+            <ion-col >
+                <div (click)="goToSlide('1')" class="slideno" id="no1">
+                    1
+                </div>
+            </ion-col>
+            <ion-col >
+                <div  (click)="goToSlide('2')" class="slideno" id="no2">
+                    2
+                </div>
+            </ion-col>
+            <ion-col>
+                <div class="slideno" (click)="goToSlide('3')" id="no3">
+                    3
+                </div>
+            </ion-col>
+            <ion-col>
+                <div class="slideno" (click)="goToSlide('4')" id="no4">
+                    4
+                </div>
+            </ion-col>
+            <ion-col>
+                <div class="slideno" (click)="goToSlide('5')" id="no5">
+                    5
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    
 </ion-content>
