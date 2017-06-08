@@ -1,0 +1,175 @@
+page-ListaCatadores{
+    .titleText{
+        .toolbar-title{
+            color: #00862e;
+            font-size: 38px;
+            font-family: "Brizzush-Rough";
+        }
+    }
+    .segmentCard{
+        text-align: left;
+        background: none;
+        box-shadow: none;
+        p{
+            text-transform: uppercase;
+            display: inline-block;
+            vertical-align: top;
+            width: 32%;
+            line-height: 24px;
+            color: #bababa;
+        }
+        ion-segment{
+            display: inline-block;
+            vertical-align: top;
+            width: 66%;
+            .segment-button{
+                display: inline-block;
+                vertical-align: top;
+                text-transform: capitalize;
+                width: 32.111%;
+                line-height: 24px;
+                border: none;
+                font-size: 16px;
+                color: #bababa;
+                height: auto;
+            }
+            .segment-button.activated, .segment-button.segment-activated{
+                color: #00b645;
+                border: none;
+                font-weight: bold;
+                background: none;       
+            }
+        }
+    }
+    .switchCategory{
+        ion-list{
+            ion-item{
+                padding-left: 0px;
+                ion-avatar{
+                    min-width: auto;
+                    min-height: auto;
+                    display: inline-block;
+                    vertical-align: top;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .listDetails{
+                    display: inline-block;
+                    vertical-align: top;
+                    h2{
+                        display: inline-block;
+                        vertical-align: middle;
+                        color: #12b94e;
+                        font-size: 20px;
+                        font-weight: bold;
+                        width: 100%;
+                        img{
+                            display: inline-block;
+                            vertical-align: middle;
+                            float: right;
+                        }
+                    }
+                    p{
+                        color: #aeaeae;
+                        font-size: 16px;
+                    }
+                    span{
+                        text-align: center;
+                        img{
+                            display: inline-block;
+                            vertical-align: bottom;
+                            width: 60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .ion-alpha-scroll .scroll-content::-webkit-scrollbar {
+        display: none;
+    }
+    ion-item.scrollItem{
+        padding-left: 0px;
+        ion-avatar{
+            min-width: auto;
+            min-height: auto;
+            display: inline-block;
+            vertical-align: top;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .listDetails{
+            display: inline-block;
+            vertical-align: top;
+            h2{
+                display: inline-block;
+                vertical-align: middle;
+                color: #12b94e;
+                font-size: 20px;
+                font-weight: bold;
+                width: 100%;
+                img{
+                    display: inline-block;
+                    vertical-align: middle;
+                    float: right;
+                }
+            }
+            p{
+                color: #aeaeae;
+                font-size: 16px;
+            }
+            span{
+                text-align: center;
+                img{
+                    display: inline-block;
+                    vertical-align: bottom;
+                    width: 60px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width:600px){
+        .titleText{
+            .toolbar-title{
+                font-size: 26px;
+            }
+        }
+    }
+    @media screen and (max-width:320px){
+        .titleText{
+            .toolbar-title{
+                font-size: 19px;
+            }
+        }
+        .segmentCard{
+            margin: 0px;
+            p{
+                font-size: 12px;
+                width: 36%;
+            }
+            ion-segment{
+                width: 62%;
+                .segment-button{
+                    font-size: 13px;
+                    width: 31.111%;
+                }
+            }
+        }
+        ion-item.scrollItem{
+            .listDetails{
+                h2{
+                    font-size: 15px;
+                }
+                span{
+                    img{
+                        width: 40px;
+                    }
+                }
+            }   
+        }
+    }
+}

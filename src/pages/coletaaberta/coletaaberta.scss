@@ -1,0 +1,176 @@
+page-coletacberta{
+    .recLogo{
+        width: 50%;
+    }
+    .coletaAbertaHeadImg{
+        width: 50px;
+        float: right;
+        margin-right: 10px;
+    }
+    .coletaAbertaContent{
+        padding-top: 30px;
+        text-align: center;
+        .leftArrow{
+            position: absolute;            
+            left: 8%;
+            top: 8%;
+            width: 15px;
+        }
+        .bgCard{
+            background: url('../assets/img/papelao.png') no-repeat top 40px center;
+            background-size: 106%;
+            width: 100%;
+            padding: 0px 15%;
+            margin-left: 0px;
+            margin-right: 0px;
+            box-shadow: none;
+            .imgDiv{
+                img{
+                    position: relative;
+                    width: 40%;
+                    display: inline-block;
+                    vertical-align: top;
+                    border-radius: 50%;
+                }
+                img.userImage2{
+                    margin-right: -20px;
+                    z-index: 1;
+                }
+            }
+            h2{
+                color: #008a2d;
+                font-size: 26px;
+                line-height: 28px;
+                font-weight: bold;
+                margin: 10px 0px 0px 0px;
+                text-transform: uppercase;
+            }
+            p{
+                font-size: 18px;
+                color: #fff;
+                line-height: 26px;
+            }
+            h3{
+                color: #000;
+                font-size: 20px;
+                font-weight: bold;
+                margin: 10px 0;
+            }
+            ion-list{
+                text-align: center;
+                ion-item{
+                    background: none;
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 20%;
+                    margin: 0px;
+                    padding-left: 0px;
+                    border: none !important;
+                    .item-inner{
+                        padding-right: 0px;
+                        ion-label{
+                            margin: 0px;
+                            img{
+                                width: 100%;
+                                margin: 0px auto;
+                                display: block;
+                            }
+                            span{
+                                display: block;
+                                text-align: center;
+                                color: #000;
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+            ion-list.iconList{
+                margin: 20px auto;
+                ion-item{
+                    background: none;
+                    width: 35%;
+                    display: inline-block;
+                    vertical-align: top;
+                    img{
+                        width: 50% !important;
+                        display: block;
+                        margin: 0px auto;
+                    }
+                }
+            }
+        }
+        .btnCard{
+            width: 70%;
+            margin: 25px auto;
+            button{
+                width: 49%;
+                display: inline-block;
+                vertical-align: top;
+                color: #fff;
+                font-size: 16px;
+                text-transform: uppercase;
+                line-height: 20px;
+                height: 55px;
+                border-radius: 0px;
+                background: #a1a1a1;
+                padding: 4px 10px;
+                margin: 0px;
+                font-weight: bold;
+            }
+            .rightBtn{
+                background: #3cb54c;
+            }
+        }
+    }
+    @media screen and (max-width:375px){
+        .coletaAbertaContent{
+            .bgCard{
+                padding-bottom: 9%;
+                h2{
+                    font-size: 24px;
+                }
+                h3{
+                    margin: 0px;
+                }
+                ion-list.iconList{
+                    margin: 5px auto;
+                }
+            }
+            .btnCard{
+                width: 80%;
+            }
+        }
+    }
+    @media screen and (max-width:320px){
+        .coletaAbertaContent{
+            .bgCard{
+                padding-bottom: 4%;
+                h2{
+                    font-size: 20px;
+                    margin-top: 5px;
+                }
+                p{
+                    font-size: 16px;
+                }
+                h3{
+                    margin: 0px;
+                }
+                ion-list{
+                    ion-item{
+                        .item-inner{
+                            ion-label{
+                                span{
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+                ion-list.iconList{
+                    margin: 0px auto;
+                }
+            }
+        }
+    }
+}
