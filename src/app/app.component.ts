@@ -38,7 +38,7 @@ export class MyApp {
           this.storage.get('token').then((val) => {
               if (val)
                 // this.rootPage = TabsPage;
-                this.rootPage = LandingPage;
+                this.rootPage = LoginPage;
               else
                 this.rootPage = LandingPage;
           });

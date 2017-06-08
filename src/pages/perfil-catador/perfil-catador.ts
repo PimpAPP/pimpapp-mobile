@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number';
 import { MaterialRecover } from './../MaterialRecover';
 import { Component } from '@angular/core';
@@ -21,45 +22,47 @@ export class PerfilCatador {
   materialRecover: MaterialRecover;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public http: UsersAPI, public loading: LoadingController, 
+    public http: UsersAPI, public loading: LoadingController, public storage: Storage,
     public alertCtrl: AlertController, public callNumber: CallNumber) {
       this.materialRecover = new MaterialRecover();
   }
 
   ionViewWillEnter() {
+    this.storage.get('id').then((val) => {
+      let url = "http://179.188.38.243/api/catadores/" + val + "/";
 
-    let url = "http://179.188.38.243/api/catadores/" + this.catadorID + "/";
+      //Prepara o loading
+      let loader = this.loading.create({
+          content: 'Por favor aguarde...',
+      });
 
-    //Prepara o loading
-    let loader = this.loading.create({
-        content: 'Por favor aguarde...',
-    });
+        loader.present().then(() => {
+            this.http.get(url).subscribe(
+              data => {
 
-      loader.present().then(() => {
-          this.http.get(url).subscribe(
-            data => {
+                this.catador = JSON.stringify(data);
+                this.catador = JSON.parse(this.catador);
+                console.log(this.catador);
 
-              this.catador = JSON.stringify(data);
-              this.catador = JSON.parse(this.catador);
+                let inicio = new Date(this.catador.works_since);
 
-              let inicio = new Date(this.catador.works_since);
+                if(inicio != null) {
 
-              if(inicio != null) {
+                  let fim = new Date();
 
-                let fim = new Date();
+                  let tempoTrabalhado = Math.abs(fim.getDate() - inicio.getDate());
+                  this.catadorDiasTrabalhados =  Math.ceil(tempoTrabalhado / (1000 * 3600 * 24));
 
-                let tempoTrabalhado = Math.abs(fim.getDate() - inicio.getDate());
-                this.catadorDiasTrabalhados =  Math.ceil(tempoTrabalhado / (1000 * 3600 * 24));
-
-              } else {
-                  this.catadorDiasTrabalhados = 0;
-              }
-              this.setMaterialList(); 
-            },
-            err => {}
-          );
-          loader.dismiss();
-        });
+                } else {
+                    this.catadorDiasTrabalhados = 0;
+                }
+                this.setMaterialList(); 
+              },
+              err => {}
+            );
+            loader.dismiss();
+          });
+      });
   }
 
   setMaterialList(){

@@ -30,15 +30,11 @@ export class PerfilGerador {
       loader.present().then(() => {
           this.http.get(url).subscribe(
             data => {
-
               this.usuario = JSON.stringify(data);
               this.usuario = JSON.parse(this.usuario)
-
+              console.log(this.usuario);
             },
-            err => {
-
-              
-              
+            err => {              
             }
           );
           loader.dismiss();
@@ -49,9 +45,6 @@ export class PerfilGerador {
     enviarModificacao(tipoMod, mod) {
 
       console.log("Teste de dados: " + JSON.stringify({ tipoMod: mod }));
-
-      let url = "http://179.188.38.243/api/users/180/";
-
       //Prepara o loading
       let loader = this.loading.create({
           content: 'Por favor aguarde...',
@@ -67,14 +60,10 @@ export class PerfilGerador {
 
               },
               err => {
-
-                
-                
               }
             );
             loader.dismiss();
           });
-
     }
 
     mudarNome() {
@@ -104,23 +93,17 @@ export class PerfilGerador {
             handler: data => {
              
              let novoNome = data.nome;
-             let url = "http://179.188.38.243/api/users/180/";
 
              this.http.post({
                 "first_name": novoNome
               }).subscribe(
                 data => {
-
                   console.log(JSON.stringify(data));
-
                 },
                 err => {
-
                   console.log("Erro: " + err)
-                  
                 }
               );
-
             }
           }
         ]
