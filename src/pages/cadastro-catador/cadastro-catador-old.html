@@ -1,0 +1,87 @@
+<ion-content padding>
+    <h1 text-center>Cadastro</h1>
+    <h2 text-center>CATADOR</h2>
+
+    <form>
+        <h2 [hidden]="formValid">Preencha todos os campos antes de prosseguir</h2>
+        <ion-item>
+            <ion-input type="text" placeholder="NOME" 
+            [(ngModel)]="catador.name" name="name" required></ion-input>
+        </ion-item>
+
+        <br>
+
+        <ion-item>
+            <ion-input type="text" placeholder="APELIDO" 
+                [(ngModel)]="catador.nickname" name="nickname"></ion-input>
+        </ion-item>
+
+        <br>
+
+        <ion-list radio-group [(ngModel)]="catador.prefererUseName"
+            name="prefererUseName">
+
+            <ion-list-header (click)="printItem()">
+                Prefere usar
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>Nome</ion-label>
+                <ion-radio value="true"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Apelido</ion-label>
+                <ion-radio value="false"></ion-radio>
+            </ion-item>
+
+        </ion-list>
+
+        <br>
+        <ion-item>
+            <ion-input type="email" placeholder="INSIRA SEU EMAIL"
+            [(ngModel)]="catador.email" required name="email"></ion-input>
+        </ion-item>
+
+        <br>
+
+        <ion-item >
+            <ion-input type="password" placeholder="INSIRA SUA SENHA" 
+                [(ngModel)]="catador.password" required name="password"
+                [class.ng-invalid]="validPassword()"></ion-input>
+        </ion-item>
+
+        <br>
+
+        <ion-item>
+            <ion-input type="password" placeholder="CONFIRME SUA SENHA"
+                [(ngModel)]="passwordConfirm" required name="passwordConfirm"
+                [class.ng-invalid]="!validPassword()"></ion-input>
+        </ion-item>
+
+        <br>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step active"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step" 
+                    (click)="openPage2()" type="submit"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    
+    </form>
+
+</ion-content>
