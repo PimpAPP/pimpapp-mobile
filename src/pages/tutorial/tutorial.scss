@@ -7,15 +7,19 @@ page-tutorial {
         text-align: center;
     }
 
-    
-     ion-slides{
+    .active {
+        background-color: rgba(50, 219, 100, 0.42);
+    }
+
+
+}
+ion-slides{
             height: auto;
             margin: 15px auto;
             ion-slide{
                 .slide-zoom{
                     width: 100%;
-                    margin: 0px auto;
-                    
+                    margin: 0px auto; 
                 }
                 img{
                         width: 100%;
@@ -23,10 +27,7 @@ page-tutorial {
                         display: block;
                     }
             }
-
-   
 }
-
 
 .sliderheading{color:#15bc54 !important;font-size:26px;}
 .slide1p{font-size:23px !important}
@@ -36,7 +37,7 @@ page-tutorial {
 .slide2h2 {color: #00b644 !important;font-size: 3em !important;line-height:52px !important}
 .slideno{height:2.5em;width:2.5em;background-color:#7dd8a3;color:white;border-radius:50%;padding:10px}
 #no1{background-color: #00b544;}
-}
+
 ion-slide img{box-shadow:none;}
 ion-slide{padding:0 10px 0 10px;}
 

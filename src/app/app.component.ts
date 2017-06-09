@@ -41,7 +41,7 @@ export class MyApp {
               if (val)
                 this.rootPage = TabsPage;
               else
-                this.rootPage = CadastroCatador;
+                this.rootPage = LandingPage;
           });
         });
   }
