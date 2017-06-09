@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+      <img src="assets/img/logo.png" alt="Logo" class="recLogo">
+      <img src="assets/img/coletaAbertaHeadImg.png" alt="User Image" class="coletaAbertaHeadImg">
+  </ion-navbar>
+  <!--<img width="50" height="50" src="{{ usuario?.photo }}" *ngIf="!usuario?.photo">
+  <img width="50" height="50" src="assets/img/avatar.png" *ngIf="usuario?.photo">-->
+</ion-header>
+
+
+<ion-content padding class="coletaAbertaContent">
+    <img src="assets/img/leftArrow.png" alt="Left Arrow" class="leftArrow" (click)="leftArrow()">
+    <ion-card class="bgCard">
+        <div class="imgDiv">
+            <img src="assets/img/userImage2.png" alt="User Image" class="userImage2">
+            <img src="assets/img/userImage1.png" alt="User Image" class="userImage1">
+        </div>
+        <h2>Coleta #3 <br>Jorge Dos Santos</h2>
+        <p>Av Nova de Julho, 3223 - <br>Jardim Paulista, Sao Paulo.</p>
+        <h3>Dia 03/05 as 14h30</h3>
+        <ion-list>
+            <ion-item>
+                <img src="assets/img/Icones_materiais-28.png" alt="Icones Materiais">
+                <span>Pilha</span>
+            </ion-item>
+            <ion-item>
+                <img src="assets/img/Icones_materiais-23.png" alt="Icones Materiais">
+                <span>Saco</span>
+            </ion-item>
+            <ion-item>
+                <img src="assets/img/Icones_materiais-18.png" alt="Icones Materiais">
+                <span>Saco</span>
+            </ion-item>
+        </ion-list>
+        <ion-list class="iconList">
+            <ion-item>
+                <img src="assets/img/coletaAbertaSocialIcon2.png" alt="Icones Mapamenu">
+            </ion-item>
+            <ion-item>
+                <img src="assets/img/coletaAbertaSocialIcon1.png" alt="Icones Mapamenu">
+            </ion-item>
+        </ion-list>        
+    </ion-card>
+    <ion-card class="btnCard">
+        <button ion-button>Cancelar</button>
+        <button ion-button class="rightBtn">Rolou</button>
+    </ion-card>
+</ion-content>

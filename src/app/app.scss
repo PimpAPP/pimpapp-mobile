@@ -113,3 +113,14 @@ ion-app._gmaps_cdv_ .nav-decor{
   display: none !important;
 
 }
+
+.step {
+    background-color: color($colors, inactive);
+    color: color($colors, light);
+    text-align: center;
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    vertical-align: middle;
+    display: table-cell;
+}

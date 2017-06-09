@@ -1,0 +1,136 @@
+page-coletacberta2h{
+    .titleText{
+        .toolbar-title{
+            color: #00862e;
+            font-size: 38px;
+            font-family: "Brizzush-Rough";
+        }
+    }
+    .coletaAberta2hContent{
+        text-align: center;
+        .bodyCard{
+            background: none;
+            box-shadow: none;
+            h2{
+                color: #00862e;
+                font-size: 32px;
+                font-family: "Brizzush-Rough";
+                text-transform: uppercase;
+                margin: 20px 0;
+            }
+            p{
+                width: 90%;
+                margin: 0px auto;
+                color: #000;
+                font-size: 20px;
+                line-height: 26px;
+            }
+        }
+        .bodyBgCard{
+            background: url('../assets/img/caletaAberta2hBg.png') no-repeat top 40px center;
+            background-size: 98%;
+            width: 100%;
+            margin: 15px 0px 0px 0px;
+            box-shadow: none;
+            padding-bottom: 50px;
+            > img{
+                width: 120px;
+                height: 120px;
+                margin: 0px auto;
+                display: block;
+                border-radius: 50%;
+                margin-bottom: 25px;
+            }
+            h3{
+                font-size: 24px;
+                color: #32712b;
+                text-transform: uppercase;
+            }
+            p{
+                font-size: 18px;
+                color: #70624c;
+                line-height: 26px;
+                margin: 10px 0px; 
+            }
+            span{
+                width: 60%;
+                margin: 0px auto;
+                display: block;
+                img{
+                    display: inline-block;
+                    width: 32.111%;
+                    vertical-align: top;
+                }
+            }
+            a{
+                font-size: 16px;
+                color: #000;
+                text-decoration: underline;
+                text-transform: uppercase;
+                font-weight: bold;
+                display: block;
+            }
+        }
+        .btnCard{
+            width: 100%;
+            margin-left: 0px;
+            margin-right: 0px;
+            background: none;
+            box-shadow: none;
+            button{
+                width: 49%;
+                display: inline-block;
+                vertical-align: top;
+                color: #fff;
+                font-size: 16px;
+                text-transform: uppercase;
+                line-height: 20px;
+                height: 55px;
+                border-radius: 0px;
+                background: #a1a1a1;
+                padding: 4px 10px;
+                margin: 0px;
+                font-weight: bold;
+            }
+            .rightBtn{
+                background: #00b741;
+                font-size: 19px;
+            }
+        }
+    }
+    @media screen and (max-width:600px){
+        .titleText{
+            .toolbar-title{
+                font-size: 26px;
+            }
+        }
+    }    
+    @media screen and (max-width:375px){
+        .coletaAberta2hContent{
+            .bodyBgCard{
+                > img{
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width:320px){
+        .titleText{
+            .toolbar-title{
+                font-size: 19px;
+            }
+        }
+        .coletaAberta2hContent{
+            .bodyBgCard{
+                > img{
+                    margin-bottom: 10px;
+                }
+                p{
+                    margin: 0px;
+                }
+            }
+        }
+        
+    }
+}

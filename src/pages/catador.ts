@@ -16,6 +16,7 @@ export class Catador{
     public email: string = '';
     public password: string = '';
     public lifeHistory: string = '';
+    public username: string = '';
     public nickname: string = '';
     public birthDay: Date = new Date();
     public phone: Array<Phone> = new Array<Phone>();
