@@ -7,7 +7,8 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class LoginProvider {
-  public url = 'http://179.188.38.243/api/api-token-auth/';
+//   public url = 'http://179.188.38.243/api/api-token-auth/';
+  public url = 'http://localhost:8000/api/api-token-auth/';
   public headers = new Headers();
 
   constructor(public http: Http, public storage: Storage) {
