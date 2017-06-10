@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TutorialPage } from './../tutorial/tutorial';
-
+import { ErrorPage } from './../404/ErrorPage';
 
 @Component({
   selector: 'page-menu',
@@ -14,6 +14,10 @@ export class MenuPage {
 
   openTutorial(){
     this.navCtrl.push(TutorialPage);
+  }
+
+  errorpage(){
+    this.navCtrl.push(ErrorPage);
   }
 
 }

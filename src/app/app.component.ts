@@ -30,8 +30,7 @@ export class MyApp {
   ) {
       platform.ready().then(() => {
         statusBar.styleDefault();
-        //this.checkLandingFirstTime();
-        this.rootPage = CadastroCatador;
+          this.checkLandingFirstTime();
       });
   }
 

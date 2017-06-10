@@ -83,7 +83,7 @@ page-cadastro-catador {
         }
         .cadastroGrid{
             position: fixed;
-            bottom: 0px;
+            bottom: 54px;
             left: 0px;
             width: 100%;
             z-index: 1;
@@ -170,8 +170,13 @@ page-cadastro-catador {
         .catadorGrid{
             ion-row{
                 ion-col{
+                    img{
+                        width: 70% !important;
+                    }
                     p{
-                        font-size: 11px;
+                        font-size: 14px;
+                        text-align: left;
+                        margin-left: 4px;
                         ion-checkbox{
                             display: inline-block;
                             margin-right: 3px;

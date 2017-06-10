@@ -5,7 +5,7 @@ import { MenuCatadorRegister } from './../menu-catador-register/menu-catador-reg
 import { MenuMaterials } from './../menu-materials/menu-materials';
 import { MenuSupport } from './../menu-support/menu-support';
 import { ResidueRegister } from './../residue-register/residue-register';
-
+import {searchPage} from './../search/search'
 
 @Component({
   templateUrl: 'tabs.html'
@@ -18,6 +18,7 @@ export class TabsPage {
     menuMaterials = MenuMaterials;
     support = MenuSupport;
     newResidue = ResidueRegister;
+    searchPage =searchPage;
 
   constructor() {
 

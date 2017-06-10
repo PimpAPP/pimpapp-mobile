@@ -2,7 +2,7 @@ import { Catador } from './../catador';
 import { CadastroCatadorPage2 } from './cadastro-catador-page2/cadastro-catador-page2';
 import { Component , ViewChild} from '@angular/core';
 import { NavController, NavParams, Slides } from 'ionic-angular';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'page-cadastro-catador',
   templateUrl: 'cadastro-catador.html',
@@ -12,15 +12,27 @@ export class CadastroCatador {
   public catador: Catador = new Catador();
   public passwordConfirm: string = '';
   public formValid: boolean = true;
+  masks:any;
+  number:any;
+  numbersOnly:any;
+  numbersOnlyy:any;
   
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
+    
+      this.masks = {
+			number: ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/]
+		};
+    
+  }
+ 
 
   openPage2(){
       if (this.validForm())
         this.navCtrl.push(CadastroCatadorPage2, { catador: this.catador });
   }
 
+  
   validForm(){
       this.formValid = (
           (this.catador.name.length > 0) &&
@@ -139,5 +151,7 @@ slideChanged() {
     }
    
 }
+
+
 
 }

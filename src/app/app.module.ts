@@ -59,12 +59,13 @@ import { ColetaAberta } from './../pages/coletaaberta/coletaaberta';
 import { ColetaAbertaRetorno2h } from './../pages/coletaabertaretorno2h/coletaabertaretorno2h';
 import { coletaaberta12h } from './../pages/coletaaberta12h/coletaaberta12h';
 
-
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { IonAlphaScrollModule } from 'ionic2-alpha-scroll';
 
 import { AppStorage } from '../providers/app-storage';
 
+import {searchPage} from './../pages/search/search'
 
 import { UsersAPI } from '../providers/users-api';
 // import { CameraProvider } from '../providers/camera-provider';
@@ -73,6 +74,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import {
  GoogleMaps,
+ 
 } from '@ionic-native/google-maps';
 
 @NgModule({
@@ -120,14 +122,16 @@ import {
     ColetaAberta2h,
     ColetaAberta,
     ColetaAbertaRetorno2h,
-    coletaaberta12h
+    coletaaberta12h,
+    searchPage
     ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, ResidueRegister),
     IonicStorageModule.forRoot(),
     HttpModule,
-    IonAlphaScrollModule
+    IonAlphaScrollModule,
+    TextMaskModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -174,7 +178,8 @@ import {
     ColetaAberta2h,
     ColetaAberta,
     ColetaAbertaRetorno2h,
-    coletaaberta12h
+    coletaaberta12h,
+    searchPage
   ],
   providers: [
     StatusBar,
