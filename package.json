@@ -28,6 +28,7 @@
     "@ionic-native/status-bar": "3.4.2",
     "@ionic-native/toast": "^3.6.1",
     "@ionic/storage": "^2.0.1",
+    "@msafi/angular2-text-mask": "^0.7.0",
     "angular2-text-mask": "^8.0.1",
     "cordova-android": "^6.2.3",
     "cordova-ios": "^4.4.0",
