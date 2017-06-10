@@ -60,9 +60,14 @@
         </ion-item>
         <br>
         <ion-item>
+
             <ion-label>DATA DE NASCIMENTO</ion-label>
             <ion-datetime displayFormat="MM/DD/YYYY" 
             [(ngModel)]="catador.birthDay" name="birthDay"></ion-datetime>
+
+            <ion-input type="text" placeholder="APELIDO" 
+                [(ngModel)]="catador.username" name="username"></ion-input>
+
         </ion-item>
         <br>
         <ion-item>
