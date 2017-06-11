@@ -47,6 +47,7 @@ export class CadastroCatadorPage5 {
             this.storage.set('user', data );
             this.catador.user = data.id;
             this.catador.nickname = this.catador.username;
+            //this.catador.profile_photo = data.photo;
             this.registerCatador();
         });
     }
@@ -79,7 +80,6 @@ export class CadastroCatadorPage5 {
             console.log('Error camera: ' + err);
         });
     }
-
 
     openPage4(){
         this.navCtrl.push(CadastroCatadorPage4);

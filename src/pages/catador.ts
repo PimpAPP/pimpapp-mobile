@@ -31,8 +31,8 @@ export class Catador{
     public cartHasEngine: boolean = false;
     public smartphoneWithInternet: boolean = false;
     public image: string = '';
-    public user: string = '';
     public profile_photo: string = '';
+    public user: string = '';
 
     constructor(){
         this.phone[0] = new Phone();
