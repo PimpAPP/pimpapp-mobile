@@ -4,6 +4,8 @@ import { Gerador } from './../Gerador';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { ToastController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-cadastro-gerador',
@@ -15,7 +17,8 @@ export class CadastroGerador {
   public avatar: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public userProvider: UsersAPI, private camera: Camera) {
+    public userProvider: UsersAPI, private camera: Camera, 
+    public toastCtrl: ToastController) {
       this.gerador = new Gerador();
   }
 
@@ -55,10 +58,19 @@ export class CadastroGerador {
         this.camera.getPicture(options).then((imageData) => {
             let base64Image = 'data:image/jpeg;base64,' + imageData;
             this.avatar = base64Image;
+            let toast = this.toastCtrl.create({
+                message: 'Imagem carregada com sucesso!',
+                duration: 3000,
+                position: 'top'
+            });
+            toast.present();
+
         }, (err) => {
             console.log('Error camera: ' + err);
         });
     }
+
+
 
 
 
