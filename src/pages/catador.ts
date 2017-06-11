@@ -1,4 +1,3 @@
-import { MaterialItem } from './MaterialItem';
 import { Material } from './Material';
 
 
@@ -33,8 +32,7 @@ export class Catador{
     public smartphoneWithInternet: boolean = false;
     public image: string = '';
     public profile_photo: string = '';
-    // Gambiarra - Remover isso quando o problema da API fo resolvido
-    public user: string = '1';
+    public user: string = '';
 
     constructor(){
         this.phone[0] = new Phone();

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import { AlertController, Platform } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 import { UsersAPI } from '../../providers/users-api';
 

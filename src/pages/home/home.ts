@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
@@ -18,8 +18,6 @@ import {
   LatLng,
   MarkerOptions,
   Marker,
-  MarkerIcon,
-  GoogleMapsAnimation,
   CameraPosition
 } from '@ionic-native/google-maps';
 
@@ -68,14 +66,10 @@ export class HomePage {
                 tilt: 30
             };
             this.map.moveCamera(position);
-            
         });
     }
 
     loadMap(){
- 
-        let location = new LatLng(-23.616786, -46.669331);
- 
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
           'controls': {
@@ -99,47 +93,20 @@ export class HomePage {
         });
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-          let catador: LatLng = new LatLng(-23.616786, -46.669331);
-          let coleta: LatLng = new LatLng(-23.618742, -46.667335);
-
-         /* let icon: MarkerIcon = {
-              url: 'img/car-icon.png',
-          }*/
-
-          let markerColeta: MarkerOptions = {
-            position: coleta,
-            title: 'Coleta',
-           // icon: icon,
-            animation: GoogleMapsAnimation.BOUNCE
-          };
-
-          let markerCatador: MarkerOptions = {
-            position: catador,
-            title: 'Catador',
-            //icon: icon,
-            animation: GoogleMapsAnimation.BOUNCE
-          };
-
-          this.map.addMarker(markerCatador)
-            .then((marker: Marker) => {
-                marker.showInfoWindow();
-            });
-
-            this.map.addMarker(markerColeta)
-            .then((marker: Marker) => {
-                marker.showInfoWindow();
-            });
-
             this.getCurrentLocation().subscribe(location =>{
+                            // Change this as per Logic - Sudipta 
+            let iconType:string = 'assets/icon/pin-gerador.png';
+
+            this.createNewPoint(
+                location.latitude, 
+                location.longitude, 
+                'Sua posição',iconType);
                 this.map.moveCamera(location);
             });
             this.loadCatadores();  
-            this.loadCollects();
+            // this.loadCollects();
             this.centerLocation();
-        });
-
-        
-        
+        });        
     }
 
     getCurrentLocation(){
@@ -292,7 +259,6 @@ profileTitle:any;
                 continue;
             }
 
-            // Change this as per Logic - Sudipta 
             let iconType:string = 'assets/icon/pin-catador-rs.png';
 
             this.createNewPoint(
