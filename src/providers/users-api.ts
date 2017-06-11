@@ -5,12 +5,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UsersAPI {
-  public url: string = 'http://179.188.38.243/api/users/';
+  public url: string = 'http://192.168.0.100:8000/api/users/';
 
   constructor(public http: Http, public storage: Storage) {}
 
   createAuthorizationHeader(headers: Headers) {
-    headers.append('Content-Type', 'application/json');
+      headers.append('Content-Type', 'application/json');
   }
 
   get(url) {

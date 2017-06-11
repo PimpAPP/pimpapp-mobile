@@ -1,4 +1,3 @@
-import { MaterialItem } from './../../MaterialItem';
 import { MaterialRecover } from './../../MaterialRecover';
 import { Catador } from './../../catador';
 import { CadastroCatadorPage5 } from './../cadastro-catador-page5/cadastro-catador-page5';
