@@ -23,8 +23,12 @@ export class CadastroCatadorPage5 {
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, public catadoresProvider: CatadoresProvider,
+<<<<<<< HEAD
     public userProvider: UsersAPI, private camera: Camera, public storage: Storage,
     public toastCtrl: ToastController) {
+=======
+    public userProvider: UsersAPI, public storage: Storage, private camera: Camera) {
+>>>>>>> c6644f2da0cd7ccdb01fd004706c48b4b39a53fb
         this.catador = navParams.get('catador');
         console.log(this.catador);
     }
@@ -50,8 +54,6 @@ export class CadastroCatadorPage5 {
             this.storage.set('user', data );
             this.catador.user = data.id;
             this.catador.nickname = this.catador.username;
-            // Remove this when the Api get fixed
-            // this.catador.profile_photo = 'asdfasfasfsad'
             this.registerCatador();
         });
     }
@@ -104,7 +106,6 @@ export class CadastroCatadorPage5 {
             console.log('Error camera: ' + err);
         });
     }
-
 
     openPage4(){
         this.navCtrl.push(CadastroCatadorPage4);

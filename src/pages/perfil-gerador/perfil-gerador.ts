@@ -47,8 +47,6 @@ export class PerfilGerador {
 
       console.log("Teste de dados: " + JSON.stringify({ tipoMod: mod }));
 
-      let url = this.apiProvider.url + "api/users/180/";
-
       //Prepara o loading
       let loader = this.loading.create({
           content: 'Por favor aguarde...',
@@ -97,7 +95,6 @@ export class PerfilGerador {
             handler: data => {
              
              let novoNome = data.nome;
-             let url = this.apiProvider.url + "api/users/180/";
 
              this.http.post({
                 "first_name": novoNome

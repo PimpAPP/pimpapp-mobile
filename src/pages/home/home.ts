@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
@@ -18,8 +18,6 @@ import {
   LatLng,
   MarkerOptions,
   Marker,
-  MarkerIcon,
-  GoogleMapsAnimation,
   CameraPosition
 } from '@ionic-native/google-maps';
 
