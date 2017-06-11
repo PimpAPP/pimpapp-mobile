@@ -22,6 +22,7 @@ export class LoginPage {
         let a: any;
         a = this.loginProvider.loginAPI(this.user, this.password).subscribe((data)=>{
             this.storage.set('token', data.token);
+            this.storage.set('id', data.id);
             this.storage.get('firstAccess').then((val) =>{
                 if (!val)
                     this.navCtrl.push(TutorialPage);

@@ -32,8 +32,8 @@ export class Catador{
     public cartHasEngine: boolean = false;
     public smartphoneWithInternet: boolean = false;
     public image: string = '';
-    // Gambiarra - Remover isso quando o problema da API fo resolvido
-    public user: string = '1';
+    public user: string = '';
+    // public profile_photo = '';
 
     constructor(){
         this.phone[0] = new Phone();

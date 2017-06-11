@@ -31,15 +31,11 @@ export class PerfilGerador {
       loader.present().then(() => {
           this.http.get(url).subscribe(
             data => {
-
               this.usuario = JSON.stringify(data);
               this.usuario = JSON.parse(this.usuario)
-
+              console.log(this.usuario);
             },
-            err => {
-
-              
-              
+            err => {              
             }
           );
           loader.dismiss();
@@ -68,14 +64,10 @@ export class PerfilGerador {
 
               },
               err => {
-
-                
-                
               }
             );
             loader.dismiss();
           });
-
     }
 
     mudarNome() {
@@ -111,17 +103,12 @@ export class PerfilGerador {
                 "first_name": novoNome
               }).subscribe(
                 data => {
-
                   console.log(JSON.stringify(data));
-
                 },
                 err => {
-
                   console.log("Erro: " + err)
-                  
                 }
               );
-
             }
           }
         ]
