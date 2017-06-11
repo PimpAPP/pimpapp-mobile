@@ -1,5 +1,5 @@
 import { Storage } from '@ionic/storage';
-import { Http, Headers } from '@angular/http';
+import { Headers } from '@angular/http';
 
 
 export class TokenUtils{
