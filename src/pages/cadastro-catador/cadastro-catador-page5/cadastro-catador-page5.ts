@@ -16,6 +16,7 @@ export class CadastroCatadorPage5 {
   public user: any;
   public avatar:String = '';
 
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, public catadoresProvider: CatadoresProvider,
     public userProvider: UsersAPI, private camera: Camera) {
@@ -35,8 +36,7 @@ export class CadastroCatadorPage5 {
     registerUser(){
         let user = {
             username: this.catador.username, email: this.catador.email,
-            first_name: this.catador.name, password: this.catador.password,
-            avatar: this.avatar
+            first_name: this.catador.name, password: this.catador.password
         };
 
         console.log(user);
@@ -44,7 +44,6 @@ export class CadastroCatadorPage5 {
             console.log(data);
             this.catador.user = data.id;
             this.catador.nickname = this.catador.username;
-            //this.catador.profile_photo = data.photo;
             this.registerCatador();
         });
     }
@@ -56,10 +55,23 @@ export class CadastroCatadorPage5 {
         this.catador.materials_collected = new_material_list;
         this.catadoresProvider.registerCatador(this.catador)
         .subscribe(data => {
+            if (this.avatar) {
+              this.cadastrarAvatar(this.catador.user);
+            } else {
+              this.navCtrl.push(LoginPage);
+            } 
             console.log(data);
             this.navCtrl.push(LoginPage);
         });
     }
+    
+    cadastrarAvatar(userId) {
+      this.userProvider.addAvatar({avatar: this.avatar}, userId).subscribe(data=>{
+        this.navCtrl.push(LoginPage);
+      }, err =>{
+         console.log(err);
+      });
+     }
     
     openCamera(){
         const options: CameraOptions = {
@@ -70,8 +82,7 @@ export class CadastroCatadorPage5 {
         }
 
         this.camera.getPicture(options).then((imageData) => {
-            let base64Image = 'data:image/jpeg;base64,' + imageData;
-            this.avatar = base64Image;
+            this.avatar = imageData;
         }, (err) => {
             console.log('Error camera: ' + err);
         });

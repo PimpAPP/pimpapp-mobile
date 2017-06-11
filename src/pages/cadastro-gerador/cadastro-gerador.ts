@@ -22,10 +22,22 @@ export class CadastroGerador {
   cadastrarGerador(){
     this.userProvider.post({
             username: this.gerador.username, email: this.gerador.email,
-            first_name: this.gerador.name, password: this.gerador.password,
-            avatar: this.avatar
+            first_name: this.gerador.name, password: this.gerador.password
         }).subscribe(data=>{
-            this.navCtrl.push(LoginPage);
+            if (this.avatar) {
+              this.cadastrarAvatar(data.id);
+            } else {
+              this.navCtrl.push(LoginPage);
+            } 
+      }, err =>{
+         console.log(err);
+         this.error = err._body;
+      });
+  }
+
+  cadastrarAvatar(userId) {
+      this.userProvider.addAvatar({avatar: this.avatar}, userId).subscribe(data=>{
+        this.navCtrl.push(LoginPage);
       }, err =>{
          console.log(err);
          this.error = err._body;

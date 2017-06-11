@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UsersAPI {
-  public url: string = 'http://179.188.38.243/api/users/';
+  public url: string = 'http://192.168.0.100:8000/api/users/';
 
   constructor(public http: Http, public storage: Storage) {}
 
@@ -29,6 +29,16 @@ export class UsersAPI {
           headers: headers
       })
       .map(res => res.json());
+  }
+
+  addAvatar(data, userId) {
+      let headers = new Headers();
+      let url = this.url + userId + '/photos/';
+      this.createAuthorizationHeader(headers);
+      return this.http.post(url, data, {
+          headers: headers
+      })
+      //.map(res => res.json());
   }
 
 }
