@@ -1,4 +1,3 @@
-import { MaterialItem } from './MaterialItem';
 import { Material } from './Material';
 
 
@@ -33,7 +32,7 @@ export class Catador{
     public smartphoneWithInternet: boolean = false;
     public image: string = '';
     public user: string = '';
-    // public profile_photo = '';
+    public profile_photo: string = '';
 
     constructor(){
         this.phone[0] = new Phone();

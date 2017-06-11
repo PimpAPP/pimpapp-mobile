@@ -1,5 +1,4 @@
 import { ApiProvider } from '../providers/api-provider';
-import { TutorialPage } from './../pages/tutorial/tutorial';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
