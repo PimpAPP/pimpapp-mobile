@@ -35,7 +35,7 @@ export class MyApp {
       this.storage.ready().then(() => {
           this.storage.get('token').then((val) => {
               if (val)
-                this.rootPage = CadastroCatador;
+                this.rootPage = TabsPage;
               else
                 this.rootPage = LandingPage;
           });
