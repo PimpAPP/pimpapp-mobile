@@ -88,7 +88,8 @@ export class CadastroCatadorPage5 {
         }
 
         this.camera.getPicture(options).then((imageData) => {
-            this.avatar = imageData;
+            let base64Image = 'data:image/jpeg;base64,' + imageData;
+            this.avatar = base64Image;
         }, (err) => {
             console.log('Error camera: ' + err);
         });

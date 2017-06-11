@@ -10,7 +10,7 @@ export class UsersAPI {
   constructor(public http: Http, public storage: Storage) {}
 
   createAuthorizationHeader(headers: Headers) {
-    headers.append('Content-Type', 'application/json');
+      headers.append('Content-Type', 'application/json');
   }
 
   get(url) {
