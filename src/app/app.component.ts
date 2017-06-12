@@ -12,6 +12,7 @@ import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
 import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
+import { TutorialPage } from './../pages/tutorial/tutorial';
 
 @Component({
   templateUrl: 'app.html',
@@ -28,7 +29,7 @@ export class MyApp {
   ) {
       platform.ready().then(() => {
         statusBar.styleDefault();
-        this.checkLandingFirstTime();
+          this.checkLandingFirstTime();
       });
   }
 

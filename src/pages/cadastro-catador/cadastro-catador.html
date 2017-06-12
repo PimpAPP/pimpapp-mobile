@@ -1,88 +1,410 @@
-<ion-content padding>
-    <h1 text-center>Cadastro</h1>
-    <h2 text-center>CATADOR</h2>
+<ion-content padding class="cadastroContent">  
 
-    <form>
-        <h2 [hidden]="formValid">Preencha todos os campos antes de prosseguir</h2>
+<ion-slides (ionSlideDidChange)="slideChanged()" class="formSlide">           
+    <ion-slide class="slide1">
+        <h1 text-center>Cadastro</h1>
+        <h2 text-center>CATADOR</h2>
+        <form>
+            <h2 [hidden]="formValid" >Preencha todos os campos antes de prosseguir</h2>
+            <ion-item>
+                <ion-input type="text" placeholder="NOME" 
+                [(ngModel)]="catador.name" name="name" required></ion-input>
+            </ion-item>
+            <br>
+            <ion-item>
+                <ion-input type="text" placeholder="APELIDO" 
+                [(ngModel)]="catador.nickname" name="nickname"></ion-input>
+            </ion-item>
+            <br>
+            <ion-item>
+                <ion-input type="text" placeholder="FRASE MARCARTE" 
+                [(ngModel)]="catador.frasemarcante" name="frasemarcante" maxlength="140"></ion-input>
+            </ion-item>
+            <ion-list radio-group [(ngModel)]="catador.prefererUseName" name="prefererUseName">
+                <ion-list-header (click)="printItem()">Prefere usar</ion-list-header>
+                <ion-item>
+                    <ion-label>Nome</ion-label>
+                    <ion-radio value="true"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Apelido</ion-label>
+                    <ion-radio value="false"></ion-radio>
+                </ion-item>
+            </ion-list>
+            <br>
+        </form>
+    </ion-slide>
+    <!-- end slide 1 --> 
+
+    <ion-slide class="ionSlide2">
+        <h1 text-center>Cadastro</h1>
+        <h2 text-center>CATADOR</h2>
         <ion-item>
-            <ion-input type="text" placeholder="NOME" 
-            [(ngModel)]="catador.name" name="name" required></ion-input>
+            <ion-textarea placeholder="HISTÓRIA DE VIDA"
+            [(ngModel)]="catador.lifeHistory"></ion-textarea>
         </ion-item>
-
         <br>
-
         <ion-item>
+
+            <ion-label>DATA DE NASCIMENTO</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" 
+            [(ngModel)]="catador.birthDay" name="birthDay"></ion-datetime>
+
             <ion-input type="text" placeholder="APELIDO" 
                 [(ngModel)]="catador.username" name="username"></ion-input>
+
         </ion-item>
-
         <br>
-
-        <ion-list radio-group [(ngModel)]="catador.prefererUseName"
-            name="prefererUseName">
-
-            <ion-list-header (click)="printItem()">
-                Prefere usar
-            </ion-list-header>
-
-            <ion-item>
-                <ion-label>Nome</ion-label>
-                <ion-radio value="true"></ion-radio>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Apelido</ion-label>
-                <ion-radio value="false"></ion-radio>
-            </ion-item>
-
+        <ion-item>
+            <ion-input type="text" placeholder="TELEFONE" 
+            [(ngModel)]="catador.phone[0].number" [textMask]="{mask: masks.number}" placeholder="(00) 00000-0000"></ion-input>
+        </ion-item>
+        <br>
+        <ion-list radio-group 
+        [(ngModel)]="catador.phone[0].mobileOperator" name="mobileOperator">
+            <ion-row>
+                <ion-col col-4>
+                    <ion-item class="transp">
+                        <ion-label>Vivo</ion-label>
+                        <ion-radio value="vivo"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Tim</ion-label>
+                        <ion-radio value="tim"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Claro</ion-label>
+                        <ion-radio value="claro"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Oi</ion-label>
+                        <ion-radio value="oi"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Nextel</ion-label>
+                        <ion-radio value="nextel"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Outro</ion-label>
+                        <ion-radio value="outro"></ion-radio>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
         </ion-list>
-
+        <ion-list radio-group [(ngModel)]="catador.phone[0].whatsApp">
+            <ion-row>
+                <ion-item (click)="printItem()">
+                    <ion-label (click)="printItem()">Whats app</ion-label>
+                </ion-item>
+                <ion-col col-6>
+                    <ion-item  class="transp">
+                        <ion-label>Sim</ion-label>
+                        <ion-radio value="yes"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-item  class="transp">
+                        <ion-label>Não</ion-label>
+                        <ion-radio value="no"></ion-radio>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-list>
         <br>
+    <ion-item>
+            <ion-input type="text" [textMask]="{mask: masks.number}" placeholder="(00) 00000-0000"
+            [(ngModel)]="catador.phone[1].number" ></ion-input>
+        </ion-item>
+           
+        <br>
+        <ion-list radio-group [(ngModel)]="catador.phone[1].mobileOperator">
+            <ion-row>
+                <ion-col col-4>
+                    <ion-item class="transp">
+                        <ion-label>Vivo</ion-label>
+                        <ion-radio value="vivo"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Tim</ion-label>
+                        <ion-radio value="tim"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Claro</ion-label>
+                        <ion-radio value="claro"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Oi</ion-label>
+                        <ion-radio value="oi"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Nextel</ion-label>
+                        <ion-radio value="nextel"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                    <ion-item  class="transp">
+                        <ion-label>Outro</ion-label>
+                        <ion-radio value="outro"></ion-radio>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+        <ion-list radio-group [(ngModel)]="catador.phone[1].whatsapp">
+            <ion-row>
+                <ion-item>
+                    <ion-label>Whats app</ion-label>
+                </ion-item>
+                <ion-col col-6>
+                    <ion-item  class="transp">
+                        <ion-label>Sim</ion-label>
+                        <ion-radio value="yes"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-item  class="transp">
+                        <ion-label>Não</ion-label>
+                        <ion-radio value="no"></ion-radio>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+    </ion-slide>    <!--end slide2 -->
 
+    <ion-slide class="ionSlide3">
+        <h1 text-center>Cadastro</h1>
+        <h2 text-center>CATADOR</h2>
         <ion-item>
-            <ion-input type="email" placeholder="INSIRA SEU EMAIL"
-            [(ngModel)]="catador.email" required name="email"></ion-input>
+            <ion-input type="text" placeholder="Endereço referência - rua e n."
+            [(ngModel)]="catador.referenceAddress" name="referenceAddress"></ion-input>
         </ion-item>
-
         <br>
-
-        <ion-item >
-            <ion-input type="password" placeholder="INSIRA SUA SENHA" 
-                [(ngModel)]="catador.password" required name="password"
-                [class.ng-invalid]="validPassword()"></ion-input>
-        </ion-item>
-
-        <br>
-
         <ion-item>
-            <ion-input type="password" placeholder="CONFIRME SUA SENHA"
-                [(ngModel)]="passwordConfirm" required name="passwordConfirm"
-                [class.ng-invalid]="!validPassword()"></ion-input>
+          <ion-textarea placeholder="REGIÃO E BAIRROS QUE COLETA" 
+            [(ngModel)]="catador.regionWhereWorks" name="regionWhereWorks"></ion-textarea>
         </ion-item>
-
         <br>
+        <ion-item>
+            <ion-input type="number" placeholder="HÁ QUANTOS ANOS COLETA?"
+            [(ngModel)]="catador.kgPerDay" name="kgPerDay" id="num" ></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-input type="number" placeholder="QUANTOS DIAS POR SEMANA COLETA"
+            [(ngModel)]="catador.daysPerWeek" name="daysPerWeek"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-input type="number" placeholder="QUANTOS KILOS POR DIA, EM MÉDIA, COLETA?"
+            [(ngModel)]="catador.yearsCollecting" name="yearsCollecting"></ion-input>
+        </ion-item>
+        <br>
+         <ion-item>
+            <ion-input type="text" placeholder="Participa de coopeartiva?Qual?"
+            [(ngModel)]="catador.Participa" name="Participa"></ion-input>
+        </ion-item>
+         <br>
+         <ion-item>
+            <ion-input type="text" placeholder="Trabalha com qual ferro velho?"
+            [(ngModel)]="catador.ironwork" name="ironwork"></ion-input>
+        </ion-item>
+         
+        <!--<ion-list radio-group 
+        [(ngModel)]="catador.belongsCooperative" name="belongsCooperative">
+            <ion-row>
+                <ion-item>
+                    <ion-label>Faz parte de cooperativa?</ion-label>
+                </ion-item>
+                <ion-col col-6>
+                    <ion-item  class="transp">
+                        <ion-label>Sim</ion-label>
+                        <ion-radio value="yes"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-item  class="transp">
+                        <ion-label>Não</ion-label>
+                        <ion-radio value="no"></ion-radio>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-12> 
+                    <ion-item>
+                        <ion-input type="text" placeholder="QUAL?" 
+                        [(ngModel)]="catador.cooperativeName"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-list>   -->        
+    </ion-slide>
+    <ion-slide  class="ionSlide4">
+        <h1 text-center>Cadastro</h1>
+        <h2 text-center>CATADOR</h2>    
+        <ion-grid class="catadorGrid">
+            <ion-row>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-misturado.png" 
+                        alt="Lata" width="80%" (click)="selectMaterial('misturado')">
+                    <p text-center><ion-checkbox (click)="selectMaterial('misturado')"></ion-checkbox>Misturado</p>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-lata.png" 
+                        alt="Lata" (click)="selectMaterial('lata')" width="80%">
+                    <p text-center><ion-checkbox (click)="selectMaterial('lata')"></ion-checkbox>Latas</p>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-vidro.png" 
+                        alt="Lata" (click)="selectMaterial('vidro')" width="80%">
+                    <p text-center><ion-checkbox (click)="selectMaterial('vidro')"></ion-checkbox>Vidro</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-papel.png" 
+                        alt="Lata" (click)="selectMaterial('papel')" width="80%">
+                    <p text-center><ion-checkbox (click)="selectMaterial('papel')"></ion-checkbox>Papel</p>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-plastico.png" 
+                        alt="Lata" (click)="selectMaterial('plastico')" width="80%">
+                    <p text-center><ion-checkbox (click)="selectMaterial('plastico')"></ion-checkbox>Plástico</p>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-metal.png" 
+                            alt="Lata" (click)="selectMaterial('metal')" width="80%">
+                    <p text-center><ion-checkbox (click)="selectMaterial('metal')"></ion-checkbox>Metal</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-oleo.png" 
+                        alt="Lata" (click)="selectMaterial('oleo')" width="80%">
+                    <p text-center><ion-checkbox (click)="selectMaterial('oleo')"></ion-checkbox>Óleo</p>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-eletronico.png" 
+                        alt="Lata" (click)="selectMaterial('eletronico')" width="80%">
+                    <p text-center><ion-checkbox (click)="selectMaterial('eletronico')"></ion-checkbox>Eletrônicos</p>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-bateria.png" 
+                            alt="Lata" (click)="selectMaterial('bateria')" width="80%">
+                    <p text-center><ion-checkbox (click)="selectMaterial('bateria')"></ion-checkbox>Pilas</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-moveis.png" 
+                        alt="Lata" (click)="selectMaterial('moveis')" width="80%">
+                    <p>
+                        <ion-checkbox (click)="selectMaterial('moveis')"></ion-checkbox>Móveis
+                    </p>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-entulho.png" 
+                        alt="Lata" (click)="selectMaterial('entulho')" width="80%">
+                        <p>
+                            <ion-checkbox (click)="selectMaterial('entulho')"></ion-checkbox> Entulho
+                        </p>
+                </ion-col>
+                <ion-col col-4>
+                    <img src="assets/img/Icones_materiais-poda.png" 
+                        alt="Lata" (click)="selectMaterial('outros')" width="80%">
+                        <p><ion-checkbox (click)="selectMaterial('outros')"></ion-checkbox> Poda</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-slide>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-icon name="arrow-round-forward" class="step active"></ion-icon>
-            </ion-col>
-            <ion-col>
-                <ion-icon name="arrow-round-forward" class="step" 
-                    (click)="openPage2()" type="submit"></ion-icon>
-            </ion-col>
-            <ion-col>
-                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
-            </ion-col>
-            <ion-col>
-                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
-            </ion-col>
-            <ion-col>
-                <ion-icon name="arrow-round-forward" class="step"></ion-icon>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <!--end slide 4 -->
+
+    <ion-slide class="ionSlide5">
+        <h1 text-center>Cadastro</h1>
+        <h2 text-center>CATADOR</h2>
+        <ion-list radio-group>
+            <ion-list-header>A Carroça equipada com itens de segurança?</ion-list-header>
+            <form>
+                <ion-list radio-group [(ngModel)]="catador.cartHasSecurityKit"
+                name="cartHasSecurityKit">
+                    <ion-item>
+                        <ion-label>Sim</ion-label>
+                        <ion-radio value="true"></ion-radio>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Nâo</ion-label>
+                        <ion-radio value="false"></ion-radio>
+                    </ion-item>
+                </ion-list>
+            </form>
+        </ion-list>
+        <br>
+        <ion-list radio-group 
+        [(ngModel)]="catador.cartHasEngine" name="cartHasEngine">
+            <ion-list-header>A Carroça possui motor?</ion-list-header>
+            <ion-item>
+                <ion-label>Sim</ion-label>
+                <ion-radio value="yes"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Nâo</ion-label>
+                <ion-radio value="no"></ion-radio>
+            </ion-item>
+        </ion-list>
+        <br>
+        <ion-list radio-group 
+        [(ngModel)]="catador.smartphoneWithInternet" name="smartphoneWithInternet">
+            <ion-list-header>Você tem smartphone com internet móvel?</ion-list-header>
+            <ion-item>
+                <ion-label>Sim</ion-label>
+                <ion-radio value="yes"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Nâo</ion-label>
+                <ion-radio value="no"></ion-radio>
+            </ion-item>
+        </ion-list>
+        <ion-icon name="camera">
+            <h2> Adicionar foto</h2>
+        </ion-icon>
+        <button ion-button full color="green" (click)="registerCatador()">CADASTRAR</button>
+    </ion-slide>
+</ion-slides>
+<br>
+<ion-grid class="cadastroGrid">
+    <ion-row>
+        <ion-col (click)="goToSlide('1')" >
+            <ion-icon name="arrow-round-forward" class="step" id="no1"></ion-icon>
+        </ion-col>
+        <ion-col (click)="goToSlide('2')">
+            <ion-icon name="arrow-round-forward" class="step"  id="no2"></ion-icon>
+        </ion-col>
+        <ion-col (click)="goToSlide('3')">
+            <ion-icon name="arrow-round-forward" class="step"  id="no3"></ion-icon>
+        </ion-col>
+        <ion-col (click)="goToSlide('4')">
+            <ion-icon name="arrow-round-forward" class="step"  id="no4"></ion-icon>
+        </ion-col>
+        <ion-col (click)="goToSlide('5')">
+            <ion-icon name="arrow-round-forward" class="step"  id="no5"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-grid> 
     
-    </form>
 
 </ion-content>

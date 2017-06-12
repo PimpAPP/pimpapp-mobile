@@ -6,6 +6,12 @@ page-cadastro-catador {
         background-size: 100% 100%;
     }
 
+ ion-slides{
+    height: auto;
+    margin: 15px auto;
+    
+ }
+
     h1 {
         font-size: 3em;
         color: color($colors, dark);
@@ -23,13 +29,27 @@ page-cadastro-catador {
             font-size: 2em;
         }
     }
+    
+    .transp {
+        background-color: transparent;
+        border: none;
+        color: color($colors, light);
+    }
+
+    .radio-icon {
+        border-color: color($colors, light);
+    }
+   .page1lebel{color:red !important}
 
     ion-textarea {
         background-color: color($colors, light);
     }
 
+
+   //for sliding by click
+
     .step {
-        background-color: color($colors, inactive);
+        background-color: rgba(50, 219, 100, 0.42);
         color: color($colors, light);
         text-align: center;
         border-radius: 50%;
@@ -38,11 +58,171 @@ page-cadastro-catador {
         vertical-align: middle;
         display: table-cell;
     }
+    
 
-    .active {
-        background-color: rgba(4, 95, 31, 0.67);
+    ion-icon {
+        text-align: center;
+        color: white;
+        font-size: 1.6 em;
+        margin-left: 5%;
+        
+        h2 {
+            color: white;
+            font-family: "DIN-Bold";
+            display: inline;
+            font-size: 1em;
+        }
     }
 
 
 }
+.cadastroContent{
+        position: relative;
+        .formSlide{
+            overflow: scroll;
+        }
+        .cadastroGrid{
+            position: fixed;
+            bottom: 54px;
+            left: 0px;
+            width: 100%;
+            z-index: 1;
+            background: transparent;
+        }
+    }
 
+@media screen and (max-width:400px){
+    /*.formSlide{
+        ion-slide{
+            height: 100vh;
+            overflow-y: scroll;
+        }
+    }*/
+    
+    .slide1{
+        h1{
+            font-size: 24px;
+            margin-bottom: 0px;
+        }
+        h2{
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        br{
+            display: none;
+        }
+        ion-list{
+            margin-bottom: 5px;
+        }
+        ion-item{
+            margin-bottom: 5px;
+        }
+    }
+    .ionSlide2{
+        h1{
+            font-size: 24px;
+            margin-bottom: 0px;
+        }
+        h2{
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        br{
+            display: none;
+        }
+        ion-list{
+            margin-bottom: 5px;
+        }
+        ion-item{
+            margin-bottom: 5px;
+            ion-textarea{
+                background: none;
+                height: 40px;
+                line-height: 20px;
+            }
+        }
+    }
+    .ionSlide3{
+        h1{
+            font-size: 24px;
+            margin-bottom: 0px;
+        }
+        h2{
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        br{
+            display: none;
+        }
+        ion-item{
+            margin-bottom: 5px;
+        }
+    }
+    .ionSlide4{
+        h1{
+            font-size: 24px;
+            margin-bottom: 0px;
+        }
+        h2{
+            font-size: 20px;
+            margin-bottom: 0px;
+        }
+        .catadorGrid{
+            ion-row{
+                ion-col{
+                    img{
+                        width: 70% !important;
+                    }
+                    p{
+                        font-size: 14px;
+                        text-align: left;
+                        margin-left: 4px;
+                        ion-checkbox{
+                            display: inline-block;
+                            margin-right: 3px;
+                            .checkbox-icon{
+                                width: 10px;
+                                height: 10px;
+                            }
+                            .checkbox-icon.checkbox-checked{
+                                .checkbox-inner{
+                                    top: 1px;
+                                    left: 3px;
+                                    width: 2px;
+                                    height: 5px;
+                                }
+                            }                      
+                        }
+                    }                
+                }
+            }
+        }
+    }
+    .ionSlide5{        
+        h1{
+            font-size: 24px;
+            margin-bottom: 0px;
+        }
+        h2{
+            font-size: 20px;
+            margin-bottom: 0px;
+        }
+        ion-list-header{
+            padding-left: 0px;
+            ion-label{
+                white-space: normal;
+            }
+        }
+        br{
+            display: none;
+        }
+        ion-list{
+            margin-bottom: 0px;
+            ion-item{
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+#no1{background-color:#00b544;}
