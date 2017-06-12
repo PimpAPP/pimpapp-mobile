@@ -1,6 +1,5 @@
-import { ResidueRegister } from './../pages/residue-register/residue-register';
-import { LoginProvider } from './../providers/login-provider';
 import { LoginPage } from './../pages/login/login';
+import { LoginProvider } from './../providers/login-provider';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';
@@ -38,7 +37,7 @@ export class MyApp {
       this.storage.ready().then(() => {
           this.storage.get('token').then((val) => {
               if (val)
-                this.rootPage = TabsPage;
+                this.rootPage = LoginPage;
               else
                 this.rootPage = LandingPage;
           });
