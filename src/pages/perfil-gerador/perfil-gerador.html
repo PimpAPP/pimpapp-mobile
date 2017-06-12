@@ -2,7 +2,7 @@
   <ion-navbar>
   </ion-navbar>
   <img width="50" height="50" src="{{ usuario?.photo }}" *ngIf="!usuario?.photo">
-  <img width="50" height="50" src="assets/img/avatar.png" *ngIf="usuario?.photo">
+  <img width="50" height="50" src="{{ usuario?.photo }}" *ngIf="usuario?.photo">
 </ion-header>
 
 

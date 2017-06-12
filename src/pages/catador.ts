@@ -31,7 +31,6 @@ export class Catador{
     public cartHasEngine: boolean = false;
     public smartphoneWithInternet: boolean = false;
     public image: string = '';
-    public profile_photo: string = '';
     public user: string = '';
 
     constructor(){

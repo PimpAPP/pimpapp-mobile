@@ -4,6 +4,8 @@ import { Gerador } from './../Gerador';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { ToastController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-cadastro-gerador',
@@ -15,17 +17,30 @@ export class CadastroGerador {
   public avatar: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public userProvider: UsersAPI, private camera: Camera) {
+    public userProvider: UsersAPI, private camera: Camera, 
+    public toastCtrl: ToastController) {
       this.gerador = new Gerador();
   }
 
   cadastrarGerador(){
     this.userProvider.post({
             username: this.gerador.username, email: this.gerador.email,
-            first_name: this.gerador.name, password: this.gerador.password,
-            avatar: this.avatar
+            first_name: this.gerador.name, password: this.gerador.password
         }).subscribe(data=>{
-            this.navCtrl.push(LoginPage);
+            if (this.avatar) {
+              this.cadastrarAvatar(data.id);
+            } else {
+              this.navCtrl.push(LoginPage);
+            } 
+      }, err =>{
+         console.log(err);
+         this.error = err._body;
+      });
+  }
+
+  cadastrarAvatar(userId) {
+      this.userProvider.addAvatar({avatar: this.avatar}, userId).subscribe(data=>{
+        this.navCtrl.push(LoginPage);
       }, err =>{
          console.log(err);
          this.error = err._body;
@@ -43,10 +58,19 @@ export class CadastroGerador {
         this.camera.getPicture(options).then((imageData) => {
             let base64Image = 'data:image/jpeg;base64,' + imageData;
             this.avatar = base64Image;
+            let toast = this.toastCtrl.create({
+                message: 'Imagem carregada com sucesso!',
+                duration: 3000,
+                position: 'top'
+            });
+            toast.present();
+
         }, (err) => {
             console.log('Error camera: ' + err);
         });
     }
+
+
 
 
 
