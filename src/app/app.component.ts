@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { LoginProvider } from './../providers/login-provider';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
@@ -36,7 +37,7 @@ export class MyApp {
       this.storage.ready().then(() => {
           this.storage.get('token').then((val) => {
               if (val)
-                this.rootPage = PerfilGerador;
+                this.rootPage = LoginPage;
               else
                 this.rootPage = LandingPage;
           });
