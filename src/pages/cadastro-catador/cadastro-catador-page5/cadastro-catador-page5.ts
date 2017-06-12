@@ -23,12 +23,8 @@ export class CadastroCatadorPage5 {
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, public catadoresProvider: CatadoresProvider,
-<<<<<<< HEAD
     public userProvider: UsersAPI, private camera: Camera, public storage: Storage,
     public toastCtrl: ToastController) {
-=======
-    public userProvider: UsersAPI, public storage: Storage, private camera: Camera) {
->>>>>>> c6644f2da0cd7ccdb01fd004706c48b4b39a53fb
         this.catador = navParams.get('catador');
         console.log(this.catador);
     }
