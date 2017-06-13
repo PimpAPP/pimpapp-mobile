@@ -97,6 +97,7 @@
             },
             "mx.ferreyra.callnumber": {}
         },
+
         "platforms": [
             "android",
             "ios"
