@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20170310222111",
     "localforage": "registry:dt/localforage#0.0.0+20161102134758"
   }
 }

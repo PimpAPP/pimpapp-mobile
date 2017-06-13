@@ -1,6 +1,5 @@
-import { ResidueRegister } from './../pages/residue-register/residue-register';
-import { LoginProvider } from './../providers/login-provider';
 import { LoginPage } from './../pages/login/login';
+import { LoginProvider } from './../providers/login-provider';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
 import { Component, ViewChild } from '@angular/core';
@@ -13,6 +12,7 @@ import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
 import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
+import { TutorialPage } from './../pages/tutorial/tutorial';
 
 @Component({
   templateUrl: 'app.html',
@@ -29,7 +29,7 @@ export class MyApp {
   ) {
       platform.ready().then(() => {
         statusBar.styleDefault();
-        this.checkLandingFirstTime();
+          this.checkLandingFirstTime();
       });
   }
 
@@ -37,7 +37,7 @@ export class MyApp {
       this.storage.ready().then(() => {
           this.storage.get('token').then((val) => {
               if (val)
-                this.rootPage = TabsPage;
+                this.rootPage = LoginPage;
               else
                 this.rootPage = LandingPage;
           });

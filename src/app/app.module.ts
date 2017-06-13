@@ -4,7 +4,7 @@ import { ResiduesProvider } from './../providers/residues-providers';
 import { LoginPage } from './../pages/login/login';
 import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
 import { StorageService } from './../pages/storage-service';
-import { CallNumber } from '@ionic-native/call-number';
+//import { CallNumber } from '@ionic-native/call-number';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -60,12 +60,13 @@ import { ColetaAberta } from './../pages/coletaaberta/coletaaberta';
 import { ColetaAbertaRetorno2h } from './../pages/coletaabertaretorno2h/coletaabertaretorno2h';
 import { coletaaberta12h } from './../pages/coletaaberta12h/coletaaberta12h';
 
-
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { IonAlphaScrollModule } from 'ionic2-alpha-scroll';
 
 import { AppStorage } from '../providers/app-storage';
 
+import {searchPage} from './../pages/search/search'
 
 import { UsersAPI } from '../providers/users-api';
 // import { CameraProvider } from '../providers/camera-provider';
@@ -74,6 +75,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import {
  GoogleMaps,
+ 
 } from '@ionic-native/google-maps';
 
 @NgModule({
@@ -121,14 +123,16 @@ import {
     ColetaAberta2h,
     ColetaAberta,
     ColetaAbertaRetorno2h,
-    coletaaberta12h
+    coletaaberta12h,
+    searchPage
     ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, ResidueRegister),
     IonicStorageModule.forRoot(),
     HttpModule,
-    IonAlphaScrollModule
+    IonAlphaScrollModule,
+    TextMaskModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -175,7 +179,8 @@ import {
     ColetaAberta2h,
     ColetaAberta,
     ColetaAbertaRetorno2h,
-    coletaaberta12h
+    coletaaberta12h,
+    searchPage
   ],
   providers: [
     StatusBar,
@@ -187,7 +192,6 @@ import {
     StorageService,
     CollectsProvider,
     Camera,
-    CallNumber,
     Toast,
     LoginProvider,
     UsersAPI,

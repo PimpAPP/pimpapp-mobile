@@ -28,6 +28,7 @@
     "@ionic-native/status-bar": "3.4.2",
     "@ionic-native/toast": "^3.6.1",
     "@ionic/storage": "^2.0.1",
+    "angular2-text-mask": "^8.0.1",
     "cordova-android": "^6.2.3",
     "cordova-ios": "^4.4.0",
     "cordova-plugin-camera": "^2.4.1",
@@ -48,6 +49,7 @@
     "ionic-plugin-keyboard": "^2.2.1",
     "ionic2-alpha-scroll": "^1.1.2",
     "ionicons": "3.0.0",
+    "jquery": "^3.2.1",
     "localforage": "1.4.0",
     "rxjs": "5.1.1",
     "sw-toolbox": "3.4.0",
@@ -93,8 +95,7 @@
         "API_KEY_FOR_IOS": "AIzaSyCMKcHCSyv6WT4tK0eKs7aTSWNI07dsfdM",
         "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
         "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
-      },
-      "mx.ferreyra.callnumber": {}
+      }
     },
     "platforms": [
       "android",

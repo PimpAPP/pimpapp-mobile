@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-
 import { UsersAPI } from '../../providers/users-api';
+import { User } from './../User';
 
 @Component({
   selector: 'page-perfil-gerador',
@@ -12,46 +12,43 @@ import { UsersAPI } from '../../providers/users-api';
 })
 export class PerfilGerador {
 
-  usuario: any;
+  usuario: User = new User();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: UsersAPI, public loading: LoadingController, 
     public alertCtrl: AlertController, public apiProvider: ApiProvider) {
+      this.usuario = this.http.user;
   }
 
   ionViewWillEnter() {
 
-    let url = this.apiProvider.url + "api/users/180/";
+    let url = this.apiProvider.url + "api/users/" + this.usuario.id + "/";
 
     //Prepara o loading
     let loader = this.loading.create({
         content: 'Por favor aguarde...',
     });
 
-      loader.present().then(() => {
-          this.http.get(url).subscribe(
-            data => {
-
-              this.usuario = JSON.stringify(data);
-              this.usuario = JSON.parse(this.usuario)
-
-            },
-            err => {
-
-              
-              
-            }
-          );
-          loader.dismiss();
-        });
+    loader.present().then(() => {
+      this.http.get(url).subscribe(
+        data => {
+          this.usuario = data;
+          if (this.usuario.photo) {
+            this.usuario.photo = this.apiProvider.url + this.usuario.photo.substring(1);
+          } 
+          console.log(this.usuario);
+        },
+        err => {              
+        }
+      );
+      loader.dismiss();
+    });
 
   }
 
     enviarModificacao(tipoMod, mod) {
 
       console.log("Teste de dados: " + JSON.stringify({ tipoMod: mod }));
-
-      let url = this.apiProvider.url + "api/users/180/";
 
       //Prepara o loading
       let loader = this.loading.create({
@@ -68,14 +65,10 @@ export class PerfilGerador {
 
               },
               err => {
-
-                
-                
               }
             );
             loader.dismiss();
           });
-
     }
 
     mudarNome() {
@@ -105,23 +98,17 @@ export class PerfilGerador {
             handler: data => {
              
              let novoNome = data.nome;
-             let url = this.apiProvider.url + "api/users/180/";
 
              this.http.post({
                 "first_name": novoNome
               }).subscribe(
                 data => {
-
                   console.log(JSON.stringify(data));
-
                 },
                 err => {
-
                   console.log("Erro: " + err)
-                  
                 }
               );
-
             }
           }
         ]

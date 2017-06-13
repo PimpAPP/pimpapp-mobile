@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { CansPage } from './cans/cans';
+import { ErrorPage } from './../404/ErrorPage';
 
 @Component({
   selector: 'menu-materials',
@@ -18,6 +19,10 @@ export class MenuMaterials {
           this.navCtrl.push(CansPage);
       break;
     }
+  }
+
+   errorpage(){
+    this.navCtrl.push(ErrorPage);
   }
 
 }
