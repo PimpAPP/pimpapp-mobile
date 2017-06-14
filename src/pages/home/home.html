@@ -16,30 +16,39 @@
   </ion-navbar>
 </ion-header>-->
  
-<ion-content>
+<ion-content class="homeContent">
     <div id="map" (click)="closeSlide()">
+  
+    <button ion-item (tap)="showAddressModal()">
+      <ion-icon name="ios-pin" item-left></ion-icon>
+      {{selectedAddress.add}}
+    </button>
 
-      <ion-card>
+    <!--  <ion-card>
         <ion-list>
           <button ion-item (tap)="showAddressModal()">
             <ion-icon name="ios-pin" item-left></ion-icon>
               {{selectedAddress.add}}
           </button>
         </ion-list>
-      </ion-card>
-<div class="registerMateDiv" (click)="goRegisterMate()">
+      </ion-card>-->
+      <!-- hide goRegistermate dive -->
+<!--<div class="registerMateDiv" (click)="goRegisterMate()">
   <img src="assets/img/mapIcon.png" alt="Map Icon">
-</div>
+</div>-->
+
+
 
     </div>
-
-    <div id="ngifDiv">
+<div id="ngifDiv">
       <h2>This is Profile Div.</h2>
      <!-- <p>Lorem ipsum dolor emet.</p>-->
       <p>{{profileTitle}}</p>
 
       <button (click)="closeSlide()" class="closeDiv">x</button>
     </div>
+
+    
 
     
 

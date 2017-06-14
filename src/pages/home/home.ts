@@ -66,6 +66,16 @@ export class HomePage {
                 zoom: 10,
                 tilt: 30
             };
+             let markerOptions: MarkerOptions = {
+                position: location,
+                title: "It's you"
+            };
+
+            this.map.addMarker(markerOptions)
+            .then((marker: Marker) => {
+              //  marker.setIcon('www/assets/icon/marker-catador.png');
+                marker.showInfoWindow();
+            });
             this.map.moveCamera(position);
         });
     }
@@ -235,24 +245,35 @@ export class HomePage {
         // Adding the Marker 
         this.map.addMarker(marker)
             .then((marker: Marker) => {
+                marker.setIcon('www/' + iconURL);
                 //marker.showInfoWindow();
         });
     }
 profileTitle:any;
    iconClicked(title){
-       console.log(title);
+       console.log("parameter: " + title);
        this.profileTitle = title;
-        console.log("Add");
-        document.getElementById('ngifDiv').style.height='45%';
-        this.map.setClickable(false);
-    
+        console.log("Add");        
+        document.getElementById('ngifDiv').style.transition='height 1s';
+        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
+        document.getElementById('ngifDiv').style.position='absolute';
+        document.getElementById('ngifDiv').style.bottom='-20px';
+        document.getElementById('ngifDiv').style.zIndex='2222';
+        document.getElementById('ngifDiv').style.padding='6px 12px';
+        document.getElementById('ngifDiv').style.width='100%';
+        document.getElementById('ngifDiv').style.background='#fff';
+        document.getElementById('ngifDiv').style.color='#fff';
+        document.getElementById('ngifDiv').style.height='45%';
+        this.map.setClickable(false);    
     }
+
     closeSlide(){
         this.map.setClickable(true);
         console.log('remove');
         document.getElementById('ngifDiv').style.height='0%';
         document.getElementById('ngifDiv').style.bottom='-20px';
-        
+        document.getElementById('ngifDiv').style.transition='height 1s';
+        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
 
     }
 
@@ -271,7 +292,8 @@ profileTitle:any;
                 continue;
             }
 
-            let iconType:string = 'assets/icon/pin-catador-rs.png';
+           // let iconType:string = 'assets/icon/pin-catador-rs.png';
+            let iconType:string = 'assets/icon/marker-catador.png';
 
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
