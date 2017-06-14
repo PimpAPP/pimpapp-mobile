@@ -43,6 +43,7 @@ export class HomePage {
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone) {
+
         this.showProfile = false;
         platform.ready().then(() => {
             this.loadMap();
@@ -70,6 +71,7 @@ export class HomePage {
     }
 
     loadMap(){
+        let location: LatLng = new LatLng(43.0741904,-89.3809802);
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
           'controls': {
@@ -94,7 +96,7 @@ export class HomePage {
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             this.getCurrentLocation().subscribe(location =>{
-                            // Change this as per Logic - Sudipta 
+            // Change this as per Logic - Sudipta 
             let iconType:string = 'assets/icon/pin-gerador.png';
 
             this.createNewPoint(
@@ -113,18 +115,28 @@ export class HomePage {
         return Observable.create(observable =>{
             let options = {timeout: 1000, enableHightAccuracy: true};
 
-            this.geolocation.getCurrentPosition(options)
-                .then(
-                    resp => {
-                        let lat = resp.coords.latitude;
-                        let lng = resp.coords.longitude;
-                        let location: LatLng = new LatLng(lat, lng);
-                        this.reverseGeoCode(lat, lng);
-                        observable.next(location);
-                    },
-                    (error) => {
-                        console.log('Error on getting current location: ' + error);
-                    });
+        this.geolocation.getCurrentPosition().then(resp => {
+            console.log('getCurrentPosition found' );
+            let lat = resp.coords.latitude;
+            let lng = resp.coords.longitude;
+            let location: LatLng = new LatLng(lat, lng);
+            this.reverseGeoCode(lat, lng);
+            observable.next(location);
+        },(error) => {
+            console.log('Error on getting current location: ' + error);
+        });
+        /*   this.geolocation.getCurrentPosition(options)
+            .then(
+                resp => {
+                    let lat = resp.coords.latitude;
+                    let lng = resp.coords.longitude;
+                    let location: LatLng = new LatLng(lat, lng);
+                    this.reverseGeoCode(lat, lng);
+                    observable.next(location);
+                },
+                (error) => {
+                    console.log('Error on getting current location: ' + error);
+                });*/
         });
     }
 
