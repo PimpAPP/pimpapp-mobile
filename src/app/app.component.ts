@@ -1,3 +1,4 @@
+import { TabsPage } from './../pages/tabs/tabs';
 import { LoginPage } from './../pages/login/login';
 import { LoginProvider } from './../providers/login-provider';
 import { StorageService } from './../pages/storage-service';
@@ -38,7 +39,7 @@ export class MyApp {
       this.storage.ready().then(() => {
           this.storage.get('token').then((val) => {
               if (val)
-                this.rootPage = LoginPage;
+                this.rootPage = CadastroCatador;
               else
                 this.rootPage = LandingPage;
           });

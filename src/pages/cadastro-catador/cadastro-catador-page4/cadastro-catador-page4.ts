@@ -12,18 +12,11 @@ import { NavController, NavParams } from 'ionic-angular';
 export class CadastroCatadorPage4 {
   public myDate: any;
   public catador: Catador = new Catador();
-  public materialRecover: MaterialRecover = new MaterialRecover();
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
       this.catador = navParams.get('catador');
       console.log(this.catador);
   }
-
-    selectMaterial(material){
-      let materialSelected = this.materialRecover.findMaterial(material);
-      this.catador.addMaterialOrRemoveIfAlreadyIncluded(materialSelected);
-      console.log(this.catador);
-    }
 
     openPage3(){
         this.navCtrl.push(CadastroCatadorPage3, {catador: this.catador});
