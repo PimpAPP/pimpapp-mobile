@@ -6,10 +6,15 @@
 
 
 <ion-content padding class="ErrorPageContent">
+    <button class="btnClose" ion-button icon-only [clear]="true" (click)="goBack()">
+            <ion-icon name="close-circle" color="dark"> 
+            </ion-icon>
+    </button>
     <ion-card class="ErrorPageCard">
-        <h2>Tele em <br>Construco</h2>
+        <h2>TELA EM CONSTRUÇÃO</h2>
         <p>Desculpe o transtorno, estamos trabalhando para melhorar o app.</p>
         <img src="assets/img/Icones_404-32.png" alt="Icones_404-32">
     </ion-card>
+
   
 </ion-content>

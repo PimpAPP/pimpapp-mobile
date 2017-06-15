@@ -4,6 +4,7 @@ import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { UsersAPI } from '../../providers/users-api';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-ErrorPage',
@@ -18,5 +19,10 @@ export class ErrorPage {
     public alertCtrl: AlertController) {
 
 
-}
+  }
+
+  goBack(){
+      this.navCtrl.setRoot(TabsPage);
+      this.navCtrl.popToRoot();
+  }
 }
