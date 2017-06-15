@@ -3,7 +3,7 @@ import { Material } from './Material';
 
 export class Phone{
     // 1 vivo, 2 tim, 3 claro, 4 oi, 5 nextel, 6 outros
-    public number: string;
+    public phone: string;
     public mobileOperator: number = 1;
     public whatsapp: boolean = false;
 }
