@@ -17,10 +17,11 @@
             </ion-item>
             <br>
             <ion-item>
-                <ion-input type="text" placeholder="FRASE MARCARTE" 
+                <ion-input type="text" placeholder="FRASE MARCANTE" 
                 [(ngModel)]="catador.frasemarcante" name="frasemarcante" maxlength="140"></ion-input>
             </ion-item>
             <ion-list radio-group [(ngModel)]="catador.prefererUseName" name="prefererUseName">
+                <br>
                 <ion-list-header (click)="printItem()">Prefere usar</ion-list-header>
                 <ion-item>
                     <ion-label>Nome</ion-label>
@@ -30,6 +31,20 @@
                     <ion-label>Apelido</ion-label>
                     <ion-radio value="false"></ion-radio>
                 </ion-item>
+
+        <ion-item >
+            <ion-input type="password" placeholder="INSIRA SUA SENHA" 
+                [(ngModel)]="catador.password" required name="password"
+                [class.ng-invalid]="validPassword()"></ion-input>
+        </ion-item>
+
+        <br>
+
+        <ion-item>
+            <ion-input type="password" placeholder="CONFIRME SUA SENHA"
+                [(ngModel)]="passwordConfirm" required name="passwordConfirm"
+                [class.ng-invalid]="!validPassword()"></ion-input>
+        </ion-item>
             </ion-list>
             <br>
         </form>
@@ -379,10 +394,10 @@
                 <ion-radio value="no"></ion-radio>
             </ion-item>
         </ion-list>
-        <ion-icon name="camera">
+        <ion-icon name="camera" (click)="openCamera()">
             <h2> Adicionar foto</h2>
         </ion-icon>
-        <button ion-button full color="green" (click)="registerCatador()">CADASTRAR</button>
+        <button ion-button full color="green" (click)="registerUserNew()">CADASTRARz</button>
     </ion-slide>
 </ion-slides>
 <br>

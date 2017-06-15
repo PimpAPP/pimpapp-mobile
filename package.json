@@ -21,7 +21,7 @@
     "@ionic-native/call-number": "^3.10.3",
     "@ionic-native/camera": "^3.6.1",
     "@ionic-native/core": "^3.6.1",
-    "@ionic-native/geolocation": "^3.6.1",
+    "@ionic-native/geolocation": "^3.12.1",
     "@ionic-native/google-maps": "^3.6.1",
     "@ionic-native/http": "^3.4.4",
     "@ionic-native/splash-screen": "3.4.2",
