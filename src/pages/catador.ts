@@ -14,28 +14,30 @@ export class Catador{
     public prefererUseName: boolean = true;
     public email: string = '';
     public password: string = '';
-    public lifeHistory: string = '';
+    public minibio: string = '';
     public username: string = '';
     public nickname: string = '';
+    public presentation_phrase: string = '';
     public birthDay: Date = new Date();
-    public phone: Array<Phone> = new Array<Phone>();
-    public referenceAddress: string = '';
-    public regionWhereWorks: string = '';
-    public kgPerDay: number = 0;
-    public daysPerWeek: number = 0;
-    public yearsCollecting: number = 0;
+    public phones: Array<Phone> = new Array<Phone>();
+    public address_base: string = '';
+    public region: string = '';
+    public kg_week: number;
+    public how_many_days_work_week: number;
+    public how_many_years_work: number;
     public belongsCooperative: boolean = false;
-    public cooperativeName: string = '';
+    public cooperative_name: string = '';
+    public iron_work: string = '';
     public materials_collected: Array<Material> = new Array<Material>();
-    public cartHasSecurityKit: boolean = false;
-    public cartHasEngine: boolean = false;
-    public smartphoneWithInternet: boolean = false;
+    public safety_kit: boolean = false;
+    public has_motor_vehicle: boolean = false;
+    public has_smartphone_with_internet: boolean = false;
     public image: string = '';
     public user: string = '';
 
     constructor(){
-        this.phone[0] = new Phone();
-        this.phone[1] = new Phone();
+        this.phones[0] = new Phone();
+        this.phones[1] = new Phone();
     }
 
     valid(){
