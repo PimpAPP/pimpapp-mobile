@@ -39,4 +39,13 @@ export class CatadoresProvider {
             headers: headers
         }).map(res => res.json());
     }
+
+    registerPhone(phone, catadorId) {
+        let url = this.apiProvider.url + 'api/catadores/' + catadorId + '/phones/';
+        let headers = new Headers();
+        this.tokenUtils.createAuthorizationHeader(headers);
+        return this.http.post(url, phone, {headers: headers}).map(res => {
+            return res.json();
+        });
+    }
 }

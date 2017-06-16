@@ -61,9 +61,9 @@
         <br>
         <ion-item>
 
-            <ion-label>DATA DE NASCIMENTO</ion-label>
+            <!--<ion-label>DATA DE NASCIMENTO</ion-label>
             <ion-datetime displayFormat="MM/DD/YYYY" 
-            [(ngModel)]="catador.birthDay" name="birthDay"></ion-datetime>
+            [(ngModel)]="catador.birthDay" name="birthDay"></ion-datetime>-->
 
             <ion-input type="text" placeholder="APELIDO" 
                 [(ngModel)]="catador.username" name="username"></ion-input>
@@ -116,10 +116,10 @@
                 </ion-col>
             </ion-row>
         </ion-list>
-        <ion-list radio-group [(ngModel)]="catador.phones[0].has_whatsapp">
+        <ion-list radio-group [(ngModel)]="catador.phones[0].whatsapp">
             <ion-row>
                 <ion-item (click)="printItem()">
-                    <ion-label (click)="printItem()">Whats app</ion-label>
+                    <ion-label (click)="printItem()">Esta linha tem WhatsApp?</ion-label>
                 </ion-item>
                 <ion-col col-6>
                     <ion-item  class="transp">
@@ -182,10 +182,10 @@
                 </ion-col>
             </ion-row>
         </ion-list>
-        <ion-list radio-group [(ngModel)]="catador.phones[1].has_whatsapp">
+        <ion-list radio-group [(ngModel)]="catador.phones[1].whatsapp">
             <ion-row>
                 <ion-item>
-                    <ion-label>Whats app</ion-label>
+                    <ion-label>Esta linha tem WhatsApp?</ion-label>
                 </ion-item>
                 <ion-col col-6>
                     <ion-item  class="transp">
@@ -207,7 +207,7 @@
         <h1 text-center>Cadastro</h1>
         <h2 text-center>CATADOR</h2>
         <ion-item>
-            <ion-input type="text" placeholder="Endereço referência - rua e n."
+            <ion-input type="text" placeholder="Endereço referência - rua e número"
             [(ngModel)]="catador.address_base" name="address_base"></ion-input>
         </ion-item>
         <br>
@@ -232,7 +232,7 @@
         </ion-item>
         <br>
          <ion-item>
-            <ion-input type="text" placeholder="Participa de coopeartiva? Qual?"
+            <ion-input type="text" placeholder="Participa de cooperativa? Qual"
             [(ngModel)]="catador.cooperative_name" name="cooperative_name"></ion-input>
         </ion-item>
          <br>
