@@ -4,6 +4,11 @@ page-ErrorPage{
         background-size: cover;
         width: 100%;
         height: 100%;
+        .btnClose{
+            position:fixed;
+            top:15px;
+            right:10px;
+        }
         .ErrorPageCard{
             background: none;
             width: 100%;
@@ -12,7 +17,7 @@ page-ErrorPage{
             margin-right: 0px;
             text-align: center;
             box-shadow: none;
-            padding-top: 20%;
+            padding-top: 15%;
             h2{
                 font-family: "Brizzush-Rough";
                 color: #000;

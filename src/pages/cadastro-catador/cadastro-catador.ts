@@ -88,24 +88,34 @@ export class CadastroCatador {
 
         this.catadoresProvider.registerCatador(this.catador)
         .subscribe(data => {
-            if (this.avatar) {
-              this.cadastrarAvatar(this.catador.user);
-            } else {
-              this.navCtrl.push(LoginPage);
-            } 
             console.log(data);
+            this.catador.id = data.id;
+            this.cadastrarAvatar(this.catador.user);
+            this.cadastrarPhones(this.catador.phones);
             this.storage.set('catador', data );
             this.navCtrl.push(LoginPage);
         });
     }
 
     cadastrarAvatar(userId) {
+      if (!this.avatar) return;
+
       this.userProvider.addAvatar({avatar: this.avatar}, userId).subscribe(data=>{
         this.navCtrl.push(LoginPage);
       }, err =>{
          console.log(err);
       });
      }
+
+    cadastrarPhones(phones) {
+      if (!phones) return;
+      for (var x=0;x<phones.length;x++) {
+        // If a newer
+        if (!phones[x].id) {
+            this.catadoresProvider.registerPhone(phones[x], this.catador.id);
+        } 
+      }
+    }
 
     selectMaterial(material){
       let materialSelected = this.materialRecover.findMaterial(material);

@@ -68,12 +68,12 @@ export class HomePage {
             };
              let markerOptions: MarkerOptions = {
                 position: location,
-                title: "It's you"
+                title: "ó você aqui"
             };
 
             this.map.addMarker(markerOptions)
             .then((marker: Marker) => {
-              //  marker.setIcon('www/assets/icon/marker-catador.png');
+                marker.setIcon('www/assets/icon/marker-user.png');
                 marker.showInfoWindow();
             });
             this.map.moveCamera(position);
