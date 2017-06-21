@@ -25,6 +25,14 @@ export class CatadoresProvider {
     }
 
     //get data using marker Id
+    getAllData(){
+        return this.http.get(this.apiProvider.url + '/api/catadores/?format=json')
+          .map(res => res.json() );
+         
+    }
+
+
+    //get data using marker Id
     getDataUsingID(id){
         return this.http.get(this.apiProvider.url + '/api/catadores/' + id + '/?format=json')
         .map(res => res.json() );

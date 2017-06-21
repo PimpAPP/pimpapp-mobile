@@ -95,14 +95,14 @@
             },
             "cordova-plugin-x-toast": {},
             "cordova-sqlite-storage": {},
+            "cordova-plugin-compat": {},
+            "mx.ferreyra.callnumber": {},
             "cordova-plugin-googlemaps": {
                 "API_KEY_FOR_ANDROID": "AIzaSyDS7AxBMmoeRanMxs4-VJJ87I9hMKp-d1E",
                 "API_KEY_FOR_IOS": "AIzaSyCMKcHCSyv6WT4tK0eKs7aTSWNI07dsfdM",
                 "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
                 "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
-            },
-            "cordova-plugin-compat": {},
-            "mx.ferreyra.callnumber": {}
+            }
         },
         "platforms": [
             "android",

@@ -273,18 +273,12 @@ markerPhone:any;
 markerPhoto:any;
 
    iconClicked(title){
-    let loading = this.loadingCtrl.create({
-        content: 'Loading data...'
-    });
-    loading.present()
-    
        let id = this.nearest_catadores[title].id;
        console.log("parameter: " + this.nearest_catadores[title].id);
       // this.profileTitle = title;
 
       this.catadoresProvider.getDataUsingID(id)
         .subscribe(data => {
-            loading.dismiss();
             this.clickMarkerData = data;
             if(this.clickMarkerData.catador_type){ this.markerCatador_type = this.clickMarkerData.catador_type; console.log(this.markerCatador_type); }
             if(this.clickMarkerData.address_base){ this.markerAddress = this.clickMarkerData.address_base; console.log(this.markerAddress); }
