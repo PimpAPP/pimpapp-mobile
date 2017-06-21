@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform , LoadingController} from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
 import { CatadoresProvider } from './../../providers/catadores-provider';
@@ -39,10 +39,20 @@ export class HomePage {
         lng:0
     };
     showProfile: boolean;
+    openLatitude:any;
+    openLongitude:any;
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
-        public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone) {
+        public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
+        public loadingCtrl : LoadingController) {
+
+        this.geolocation.getCurrentPosition().then(resp => {
+            this.openLatitude = resp.coords.latitude;
+            this.openLongitude = resp.coords.longitude;
+        },(error) => {
+            console.log('Error on getting current location: ' + error);
+        });
 
         this.showProfile = false;
         platform.ready().then(() => {
@@ -73,7 +83,8 @@ export class HomePage {
 
             this.map.addMarker(markerOptions)
             .then((marker: Marker) => {
-                marker.setIcon('www/assets/icon/marker-user.png');
+                //marker.setIcon('www/assets/icon/marker-user.png');
+                marker.setIcon('www/assets/icon/marker.png');
                 marker.showInfoWindow();
             });
             this.map.moveCamera(position);
@@ -81,7 +92,8 @@ export class HomePage {
     }
 
     loadMap(){
-        let location: LatLng = new LatLng(43.0741904,-89.3809802);
+       // let location: LatLng = new LatLng(43.0741904,-89.3809802);
+        let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
           'controls': {
@@ -259,13 +271,20 @@ markerAddress:any;
 markerName:any;
 markerPhone:any;
 markerPhoto:any;
+
    iconClicked(title){
+    let loading = this.loadingCtrl.create({
+        content: 'Loading data...'
+    });
+    loading.present()
+    
        let id = this.nearest_catadores[title].id;
        console.log("parameter: " + this.nearest_catadores[title].id);
       // this.profileTitle = title;
 
       this.catadoresProvider.getDataUsingID(id)
         .subscribe(data => {
+            loading.dismiss();
             this.clickMarkerData = data;
             if(this.clickMarkerData.catador_type){ this.markerCatador_type = this.clickMarkerData.catador_type; console.log(this.markerCatador_type); }
             if(this.clickMarkerData.address_base){ this.markerAddress = this.clickMarkerData.address_base; console.log(this.markerAddress); }
@@ -277,6 +296,7 @@ markerPhoto:any;
             console.log(this.clickMarkerData.email);
             console.log("individual marker data is: ");
             console.log(this.clickMarkerData);
+           // loading.dismiss();
         });
 
 
