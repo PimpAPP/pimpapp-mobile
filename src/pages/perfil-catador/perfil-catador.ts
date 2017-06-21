@@ -1,6 +1,6 @@
 import { ApiProvider } from '../../providers/api-provider';
 import { Storage } from '@ionic/storage';
-//import { CallNumber } from '@ionic-native/call-number';
+import { CallNumber } from '@ionic-native/call-number';
 import { MaterialRecover } from './../MaterialRecover';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -22,16 +22,9 @@ export class PerfilCatador {
   material_list: any[] = [];
   materialRecover: MaterialRecover;
 
- /* constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public http: UsersAPI, public loading: LoadingController, 
-    public alertCtrl: AlertController, public callNumber: CallNumber,
-    public apiProvider: ApiProvider, public storage: Storage) {
-      this.materialRecover = new MaterialRecover();
-  }*/
-
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: UsersAPI, public loading: LoadingController, 
-    public alertCtrl: AlertController,
+    public alertCtrl: AlertController, public callNumber: CallNumber,
     public apiProvider: ApiProvider, public storage: Storage) {
       this.materialRecover = new MaterialRecover();
   }
@@ -83,9 +76,9 @@ export class PerfilCatador {
   }
 
   lanchPhone(number: string){
-   // this.callNumber.callNumber(number, true)
-   //   .then(() => console.log('Launched dialer!'))
-    //  .catch(() => console.log('Error launching dialer'));
+    this.callNumber.callNumber(number, true)
+      .then(() => console.log('Launched dialer!'))
+      .catch(() => console.log('Error launching dialer'));
   }
 
 }
