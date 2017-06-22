@@ -43,6 +43,7 @@ export class HomePage {
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone) {
+
         this.showProfile = false;
         platform.ready().then(() => {
             this.loadMap();
@@ -65,11 +66,22 @@ export class HomePage {
                 zoom: 10,
                 tilt: 30
             };
+             let markerOptions: MarkerOptions = {
+                position: location,
+                title: "ó você aqui"
+            };
+
+            this.map.addMarker(markerOptions)
+            .then((marker: Marker) => {
+                marker.setIcon('www/assets/icon/marker-user.png');
+                marker.showInfoWindow();
+            });
             this.map.moveCamera(position);
         });
     }
 
     loadMap(){
+        let location: LatLng = new LatLng(43.0741904,-89.3809802);
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
           'controls': {
@@ -94,7 +106,7 @@ export class HomePage {
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             this.getCurrentLocation().subscribe(location =>{
-                            // Change this as per Logic - Sudipta 
+            // Change this as per Logic - Sudipta 
             let iconType:string = 'assets/icon/pin-gerador.png';
 
             this.createNewPoint(
@@ -113,18 +125,28 @@ export class HomePage {
         return Observable.create(observable =>{
             let options = {timeout: 1000, enableHightAccuracy: true};
 
-            this.geolocation.getCurrentPosition(options)
-                .then(
-                    resp => {
-                        let lat = resp.coords.latitude;
-                        let lng = resp.coords.longitude;
-                        let location: LatLng = new LatLng(lat, lng);
-                        this.reverseGeoCode(lat, lng);
-                        observable.next(location);
-                    },
-                    (error) => {
-                        console.log('Error on getting current location: ' + error);
-                    });
+        this.geolocation.getCurrentPosition().then(resp => {
+            console.log('getCurrentPosition found' );
+            let lat = resp.coords.latitude;
+            let lng = resp.coords.longitude;
+            let location: LatLng = new LatLng(lat, lng);
+            this.reverseGeoCode(lat, lng);
+            observable.next(location);
+        },(error) => {
+            console.log('Error on getting current location: ' + error);
+        });
+        /*   this.geolocation.getCurrentPosition(options)
+            .then(
+                resp => {
+                    let lat = resp.coords.latitude;
+                    let lng = resp.coords.longitude;
+                    let location: LatLng = new LatLng(lat, lng);
+                    this.reverseGeoCode(lat, lng);
+                    observable.next(location);
+                },
+                (error) => {
+                    console.log('Error on getting current location: ' + error);
+                });*/
         });
     }
 
@@ -157,6 +179,8 @@ export class HomePage {
       this.catadoresProvider.getCatadoresPositions()
         .subscribe(data => {
             this.nearest_catadores = data;
+            console.log("catadores here");
+            console.log(this.nearest_catadores);
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
         });
     }
@@ -189,6 +213,7 @@ export class HomePage {
                 collect.latitude, collect.longitude, 'Coleta: ' + collect.id,iconType);
 
             index = index + 1;
+            console.log("index is: "+ index);
         }
 
     }
@@ -223,25 +248,64 @@ export class HomePage {
         // Adding the Marker 
         this.map.addMarker(marker)
             .then((marker: Marker) => {
+                marker.setIcon('www/' + iconURL);
                 //marker.showInfoWindow();
         });
     }
 profileTitle:any;
+clickMarkerData:any;
+markerCatador_type:any;
+markerAddress:any;
+markerName:any;
+markerPhone:any;
+markerPhoto:any;
    iconClicked(title){
-       console.log(title);
-       this.profileTitle = title;
-        console.log("Add");
-        document.getElementById('ngifDiv').style.height='45%';
-        this.map.setClickable(false);
-    
+       let id = this.nearest_catadores[title].id;
+       console.log("parameter: " + this.nearest_catadores[title].id);
+      // this.profileTitle = title;
+
+      this.catadoresProvider.getDataUsingID(id)
+        .subscribe(data => {
+            this.clickMarkerData = data;
+            if(this.clickMarkerData.catador_type){ this.markerCatador_type = this.clickMarkerData.catador_type; console.log(this.markerCatador_type); }
+            if(this.clickMarkerData.address_base){ this.markerAddress = this.clickMarkerData.address_base; console.log(this.markerAddress); }
+            if(this.clickMarkerData.name){ this.markerName = this.clickMarkerData.name; console.log(this.markerName);}
+            if(this.clickMarkerData.phones){ this.markerPhone = this.clickMarkerData.phones[0].phone; console.log(this.markerPhone);}
+            if(this.clickMarkerData.profile_photo){ this.markerPhoto = this.clickMarkerData.profile_photo;console.log(this.markerPhoto);
+            }else{ this.markerPhoto = 'assets/img/no_image.jpg'; }
+
+            console.log(this.clickMarkerData.email);
+            console.log("individual marker data is: ");
+            console.log(this.clickMarkerData);
+        });
+
+
+        console.log("Add");      
+
+  
+        document.getElementById('ngifDiv').style.transition='height 1s';
+        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
+        document.getElementById('ngifDiv').style.position='absolute';
+        document.getElementById('ngifDiv').style.bottom='-20px';
+        document.getElementById('ngifDiv').style.zIndex='2222';
+        document.getElementById('ngifDiv').style.padding='6px 12px';
+        document.getElementById('ngifDiv').style.width='100%';
+        document.getElementById('ngifDiv').style.background='#fff';
+        document.getElementById('ngifDiv').style.color='#fff';
+        document.getElementById('ngifDiv').style.height='45%';
+        document.getElementById('closeDiv').style.display='block';
+        
+        this.map.setClickable(false);    
     }
+
     closeSlide(){
         this.map.setClickable(true);
         console.log('remove');
         document.getElementById('ngifDiv').style.height='0%';
         document.getElementById('ngifDiv').style.bottom='-20px';
-        
-
+        document.getElementById('ngifDiv').style.transition='height 1s';
+        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
+        document.getElementById('closeDiv').style.display='none';
     }
 
     goRegisterMate() {
@@ -259,12 +323,18 @@ profileTitle:any;
                 continue;
             }
 
-            let iconType:string = 'assets/icon/pin-catador-rs.png';
+           // let iconType:string = 'assets/icon/pin-catador-rs.png';
+            let iconType:string = 'assets/icon/marker-catador.png';
+
+         /*   this.createNewPoint(
+                catador.geolocation[0].latitude, 
+                catador.geolocation[0].longitude, 
+                'Catador: ' + catador.geolocation[0].reverse_geocoding,iconType);*/
 
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude, 
-                'Catador: ' + catador.geolocation[0].reverse_geocoding,iconType);
+                index,iconType);
 
            index = index + 1
       }

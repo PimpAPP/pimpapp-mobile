@@ -3,35 +3,35 @@
     <h2 text-center>CATADOR</h2>
     <ion-item>
         <ion-input type="text" placeholder="ENDEREÇO DE REFERÊNCIA"
-            [(ngModel)]="catador.referenceAddress" name="referenceAddress"></ion-input>
+            [(ngModel)]="catador.address_base" name="address_base"></ion-input>
     </ion-item>
 
     <br>
 
     <ion-item>
         <ion-textarea placeholder="REGIÃO E BAIRROS QUE COLETA" 
-            [(ngModel)]="catador.regionWhereWorks" name="regionWhereWorks"></ion-textarea>
+            [(ngModel)]="catador.region" name="region"></ion-textarea>
     </ion-item>
 
     <br>
 
     <ion-item>
-        <ion-input type="number" placeholder="QUANTOS QUILOS COLETA POR DIA"
-            [(ngModel)]="catador.kgPerDay" name="kgPerDay"></ion-input>
+        <ion-input type="number" placeholder="QUANTOS QUILOS COLETA POR SEMANA"
+            [(ngModel)]="catador.kg_week" name="kg_week"></ion-input>
     </ion-item>
 
     <br>
 
     <ion-item>
         <ion-input type="number" placeholder="QUANTOS DIAS POR SEMANA"
-            [(ngModel)]="catador.daysPerWeek" name="daysPerWeek"></ion-input>
+            [(ngModel)]="catador.how_many_days_work_week" name="how_many_days_work_week"></ion-input>
     </ion-item>
 
     <br>
 
     <ion-item>
         <ion-input type="number" placeholder="A QUANTOS ANOS COLETA"
-         [(ngModel)]="catador.yearsCollecting" name="yearsCollecting"></ion-input>
+         [(ngModel)]="catador.how_many_years_work" name="how_many_years_work"></ion-input>
     </ion-item>
 
     <br>
@@ -57,7 +57,7 @@
                 <ion-col col-12> 
                     <ion-item>
                         <ion-input type="text" placeholder="QUAL?" 
-                            [(ngModel)]="catador.cooperativeName"></ion-input>
+                            [(ngModel)]="catador.cooperative_name"></ion-input>
                     </ion-item>
                 </ion-col>
         </ion-row>

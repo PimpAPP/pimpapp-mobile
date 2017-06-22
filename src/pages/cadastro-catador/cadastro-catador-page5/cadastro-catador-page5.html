@@ -9,8 +9,8 @@
         </ion-list-header>
 
         <form>
-            <ion-list radio-group [(ngModel)]="catador.cartHasSecurityKit"
-                name="cartHasSecurityKit">
+            <ion-list radio-group [(ngModel)]="catador.safety_kit"
+                name="safety_kit">
                 <ion-item>
                     <ion-label>Sim</ion-label>
                     <ion-radio value="true"></ion-radio>
@@ -29,7 +29,7 @@
     <br>
 
     <ion-list radio-group 
-        [(ngModel)]="catador.cartHasEngine" name="cartHasEngine">
+        [(ngModel)]="catador.has_motor_vehicle" name="has_motor_vehicle">
 
         <ion-list-header>
             A Carroça possui motor?
@@ -50,7 +50,7 @@
     <br>
 
     <ion-list radio-group 
-        [(ngModel)]="catador.smartphoneWithInternet" name="smartphoneWithInternet">
+        [(ngModel)]="catador.has_smartphone_with_internet" name="has_smartphone_with_internet">
 
         <ion-list-header>
            Possui smartphone com internet móvel?
@@ -71,7 +71,7 @@
     <ion-icon name="camera" (click)="openCamera()"><h2> Adicionar foto</h2></ion-icon>
 
 
-    <button ion-button full color="green" (click)="registerUser()">CADASTRAR</button>
+    <button ion-button full color="green" (click)="openPage4()">CADASTRARX</button>
     <button ion-button full color="green" (click)="openPage4()">Voltar</button>
 
 </ion-content>
