@@ -11,12 +11,11 @@ import { TabsPage } from './../../tabs/tabs';
 export class TutorialPage5 {
 
     constructor(public navCtrl: NavController, public storage: Storage) {
+        this.goHome();
     }
 
     goHome(){
       this.storage.set('firstAccess', 1);
       this.navCtrl.push(TabsPage);
     }
-
-
 }

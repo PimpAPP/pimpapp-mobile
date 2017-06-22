@@ -31,20 +31,6 @@
                     <ion-label>Apelido</ion-label>
                     <ion-radio value="false"></ion-radio>
                 </ion-item>
-
-        <ion-item >
-            <ion-input type="password" placeholder="INSIRA SUA SENHA" 
-                [(ngModel)]="catador.password" required name="password"
-                [class.ng-invalid]="validPassword()"></ion-input>
-        </ion-item>
-
-        <br>
-
-        <ion-item>
-            <ion-input type="password" placeholder="CONFIRME SUA SENHA"
-                [(ngModel)]="passwordConfirm" required name="passwordConfirm"
-                [class.ng-invalid]="!validPassword()"></ion-input>
-        </ion-item>
             </ion-list>
             <br>
         </form>
@@ -59,16 +45,6 @@
             [(ngModel)]="catador.minibio"></ion-textarea>
         </ion-item>
         <br>
-        <ion-item>
-
-            <!--<ion-label>DATA DE NASCIMENTO</ion-label>
-            <ion-datetime displayFormat="MM/DD/YYYY" 
-            [(ngModel)]="catador.birthDay" name="birthDay"></ion-datetime>-->
-
-            <ion-input type="text" placeholder="APELIDO" 
-                [(ngModel)]="catador.username" name="username"></ion-input>
-
-        </ion-item>
         <br>
         <ion-item>
             <ion-input type="text" placeholder="TELEFONE" 

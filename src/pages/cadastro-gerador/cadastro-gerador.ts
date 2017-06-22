@@ -1,4 +1,4 @@
-import { LoginPage } from './../login/login';
+import { TabsPage } from './../tabs/tabs';
 import { UsersAPI } from './../../providers/users-api';
 import { Gerador } from './../Gerador';
 import { Component } from '@angular/core';
@@ -30,7 +30,7 @@ export class CadastroGerador {
             if (this.avatar) {
               this.cadastrarAvatar(data.id);
             } else {
-              this.navCtrl.push(LoginPage);
+              this.navCtrl.push(TabsPage);
             } 
       }, err =>{
          console.log(err);
@@ -40,7 +40,7 @@ export class CadastroGerador {
 
   cadastrarAvatar(userId) {
       this.userProvider.addAvatar({avatar: this.avatar}, userId).subscribe(data=>{
-        this.navCtrl.push(LoginPage);
+        this.navCtrl.push(TabsPage);
       }, err =>{
          console.log(err);
          this.error = err._body;

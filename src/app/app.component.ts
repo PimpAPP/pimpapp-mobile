@@ -1,5 +1,5 @@
+import { TutorialPage } from './../pages/tutorial/tutorial';
 import { TabsPage } from './../pages/tabs/tabs';
-import { LoginPage } from './../pages/login/login';
 import { LoginProvider } from './../providers/login-provider';
 import { StorageService } from './../pages/storage-service';
 import { Feedback } from './../pages/feedback/feedback';
@@ -29,19 +29,17 @@ export class MyApp {
   ) {
       platform.ready().then(() => {
         statusBar.styleDefault();
-
-          this.rootPage = TabsPage;
-          //this.checkLandingFirstTime();
+          this.checkLandingFirstTime();
       });
   }
 
   checkLandingFirstTime(){
       this.storage.ready().then(() => {
-          this.storage.get('token').then((val) => {
-              if (val)
-                this.rootPage = CadastroCatador;
+          this.storage.get('firstAccess').then((val) => {
+              if (val==1)
+                this.rootPage = TabsPage;
               else
-                this.rootPage = LandingPage;
+                this.rootPage = TutorialPage;
           });
         });
   }

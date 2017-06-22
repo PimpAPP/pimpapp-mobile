@@ -1,16 +1,14 @@
+import { TabsPage } from './../tabs/tabs';
 import { MaterialRecover } from './../MaterialRecover';
 import { UsersAPI } from './../../providers/users-api';
-import { LoginPage } from './../login/login';
 import { CatadoresProvider } from './../../providers/catadores-provider';
 import { Storage } from '@ionic/storage';
 import { Catador } from './../catador';
 import { CadastroCatadorPage2 } from './cadastro-catador-page2/cadastro-catador-page2';
 import { Component , ViewChild} from '@angular/core';
 import { NavController, NavParams, Slides, ToastController } from 'ionic-angular';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
-
 
 @Component({
   selector: 'page-cadastro-catador',
@@ -93,7 +91,7 @@ export class CadastroCatador {
             this.cadastrarAvatar(this.catador.user);
             this.cadastrarPhones(this.catador.phones);
             this.storage.set('catador', data );
-            this.navCtrl.push(LoginPage);
+            this.navCtrl.push(TabsPage);
         });
     }
 
@@ -101,7 +99,7 @@ export class CadastroCatador {
       if (!this.avatar) return;
 
       this.userProvider.addAvatar({avatar: this.avatar}, userId).subscribe(data=>{
-        this.navCtrl.push(LoginPage);
+        this.navCtrl.push(TabsPage);
       }, err =>{
          console.log(err);
       });

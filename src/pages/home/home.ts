@@ -123,7 +123,6 @@ export class HomePage {
 
     getCurrentLocation(){
         return Observable.create(observable =>{
-            let options = {timeout: 1000, enableHightAccuracy: true};
 
         this.geolocation.getCurrentPosition().then(resp => {
             console.log('getCurrentPosition found' );

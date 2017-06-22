@@ -1,3 +1,5 @@
+import { Storage } from '@ionic/storage';
+import { TabsPage } from './../tabs/tabs';
 import { Component , ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TutorialPage2 } from './page2/page2';
@@ -11,10 +13,16 @@ import { Slides } from 'ionic-angular';
 })
 export class TutorialPage {
   @ViewChild(Slides) slides: Slides;  
+  public show_final = false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public storage: Storage) {
       
   }
+
+    goHome(){
+      this.storage.set('firstAccess', 1);
+      this.navCtrl.push(TabsPage);
+    }
 
   openPage2(){
     this.navCtrl.push(TutorialPage2);
@@ -63,6 +71,7 @@ export class TutorialPage {
         document.getElementById('no3').style.background="#7bd9a2";
         document.getElementById('no4').style.background="#7bd9a2";
         document.getElementById('no5').style.background="#00b544";
+        this.show_final = true;
     }
 
 }

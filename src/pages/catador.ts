@@ -38,6 +38,7 @@ export class Catador{
     constructor(){
         this.phones[0] = new Phone();
         this.phones[1] = new Phone();
+        this.password = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
     }
 
     valid(){
