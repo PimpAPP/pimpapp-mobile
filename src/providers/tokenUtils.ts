@@ -7,8 +7,9 @@ export class TokenUtils{
 
     createAuthorizationHeader(headers: Headers) {
         headers.append('Content-Type', 'application/json');
-        this.storage.get('token').then(data => {
+        return this.storage.get('token').then(data => {
             headers.append('Authorization', 'Token ' + data); 
+            return headers;
         });
     }
 }

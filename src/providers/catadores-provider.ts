@@ -10,12 +10,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CatadoresProvider {
     public tokenUtils: TokenUtils;
+    private headers = new Headers();
+    public url: string; 
 
     constructor(public http: Http, public storage: Storage,
         public apiProvider: ApiProvider) { 
+        this.url = this.apiProvider.url + 'api/catadores/';
         this.tokenUtils = new TokenUtils(storage);
     }
-    url = this.apiProvider.url + 'api/nearest-catadores/?format=json';
+    //url = this.apiProvider.url + 'api/nearest-catadores/?format=json';
 
   //  url = this.apiProvider.url + 'api/catadores/?format=json';      //new added by me
 
@@ -26,26 +29,30 @@ export class CatadoresProvider {
 
     //get data using marker Id
     getDataUsingID(id){
-        return this.http.get(this.apiProvider.url + '/api/catadores/' + id + '/?format=json')
+        return this.http.get(this.url + id + '/?format=json')
         .map(res => res.json() );
          
     }
 
     registerCatador(catador: Catador){
-        let url = this.apiProvider.url + 'api/catadores/';
-        let headers = new Headers();
-        this.tokenUtils.createAuthorizationHeader(headers);
+        let url = this.url;
+        this.updateHeaders();
         return this.http.post(url, catador, {
-            headers: headers
+            headers: this.headers
         }).map(res => res.json());
     }
 
-    registerPhone(phone, catadorId) {
-        let url = this.apiProvider.url + 'api/catadores/' + catadorId + '/phones/';
-        let headers = new Headers();
-        this.tokenUtils.createAuthorizationHeader(headers);
-        return this.http.post(url, phone, {headers: headers}).map(res => {
-            return res.json();
-        });
+    registerPhones(phones, catadorId) {
+        let url = this.url + catadorId + '/phones/';
+        this.updateHeaders();
+        return this.http.post(url, phones, {
+            headers: this.headers
+        }).map(res => res.json());
+    }
+
+    updateHeaders() {
+        if (!this.headers.has('Authorization')) {
+            this.tokenUtils.createAuthorizationHeader(this.headers);
+        }
     }
 }
