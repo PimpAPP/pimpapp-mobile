@@ -106,7 +106,11 @@ export class CadastroCatador {
     }
 
     cadastrarPhones(phones) {
-        return this.catadoresProvider.registerPhones(phones, this.catador.id);
+        return this.catadoresProvider.registerPhones(phones, this.catador.id).subscribe(data=>{
+            console.log(data);
+        }, err =>{
+            console.log(err);
+        });;
     }
 
     selectMaterial(material){
