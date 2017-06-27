@@ -45,11 +45,14 @@ export class HomePage {
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
-        public loadingCtrl : LoadingController) {
+        public loadingCtrl : LoadingController) {        
+
+        this.presentLoadingDefault();
 
         this.geolocation.getCurrentPosition().then(resp => {
             this.openLatitude = resp.coords.latitude;
             this.openLongitude = resp.coords.longitude;
+            
         },(error) => {
             console.log('Error on getting current location: ' + error);
         });
@@ -59,6 +62,20 @@ export class HomePage {
             this.loadMap();
         });
     }
+
+    presentLoadingDefault() {
+        let loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+        });
+
+        loading.present();
+
+        setTimeout(() => {
+            loading.dismiss();
+        }, 3000);
+    }
+
+
 
     newResiduePage() {
         let modal = this.modalCtrl.create(NewResidue);

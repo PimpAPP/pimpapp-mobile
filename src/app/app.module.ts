@@ -72,6 +72,8 @@ import { UsersAPI } from '../providers/users-api';
 // import { CameraProvider } from '../providers/camera-provider';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { MaterialSlider } from './../pages/material-slider/material-slider';
+
 
 import {
  GoogleMaps,
@@ -124,7 +126,8 @@ import {
     ColetaAberta,
     ColetaAbertaRetorno2h,
     coletaaberta12h,
-    searchPage
+    searchPage,
+    MaterialSlider
     ],
   imports: [
     BrowserModule,
@@ -180,7 +183,8 @@ import {
     ColetaAberta,
     ColetaAbertaRetorno2h,
     coletaaberta12h,
-    searchPage
+    searchPage,
+    MaterialSlider
   ],
   providers: [
     StatusBar,
