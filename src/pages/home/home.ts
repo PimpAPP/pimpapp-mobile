@@ -47,9 +47,11 @@ export class HomePage {
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
         public loadingCtrl : LoadingController) {        
 
-        this.presentLoadingDefault();
+      //  this.presentLoadingDefault();
 
         this.geolocation.getCurrentPosition().then(resp => {
+            console.log('constructor location found');
+            console.log(resp);
             this.openLatitude = resp.coords.latitude;
             this.openLongitude = resp.coords.longitude;
             
@@ -109,8 +111,8 @@ export class HomePage {
     }
 
     loadMap(){
-       // let location: LatLng = new LatLng(43.0741904,-89.3809802);
-        let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
+        let location: LatLng = new LatLng(43.0741904,-89.3809802);
+      //  let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
           'controls': {
@@ -135,6 +137,7 @@ export class HomePage {
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             this.getCurrentLocation().subscribe(location =>{
+                console.log(location);
             // Change this as per Logic - Sudipta 
             let iconType:string = 'assets/icon/pin-gerador.png';
 
@@ -155,11 +158,11 @@ export class HomePage {
             let options = {timeout: 1000, enableHightAccuracy: true};
 
         this.geolocation.getCurrentPosition().then(resp => {
-            console.log('getCurrentPosition found' );
+            console.log('getCurrentPosition found : ' + resp.coords.latitude + ' , ' +  resp.coords.longitude);
             let lat = resp.coords.latitude;
             let lng = resp.coords.longitude;
             let location: LatLng = new LatLng(lat, lng);
-            this.reverseGeoCode(lat, lng);
+           // this.reverseGeoCode(lat, lng);
             observable.next(location);
         },(error) => {
             console.log('Error on getting current location: ' + error);
@@ -376,11 +379,11 @@ markerPhoto:any;
 
 
 reverseGeoCode(lat,lng){
-      let geocoder = new google.maps.Geocoder();
+     // let geocoder = new google.maps.Geocoder();
+     let geocoder = new google.maps.Geocoder();
       let request = {
           latLng: new LatLng(lat,lng)
       };
-
       geocoder.geocode(request,(data, status)=>{
             if (status == google.maps.GeocoderStatus.OK) {  
                 this.selectedAddress.lat = lat;
@@ -388,6 +391,7 @@ reverseGeoCode(lat,lng){
                 this.selectedAddress.add =  data[0].formatted_address;
             }         
       }); 
+
   }
     
 }
