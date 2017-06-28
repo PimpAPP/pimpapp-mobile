@@ -5,8 +5,14 @@ page-menu {
         background-position: top; 
         background-size: 100% 100%;
     }
+    
     .text{
      text-transform: uppercase;
+    }
+
+    h1 {
+        color: color($colors, dark);
+        font-size: 3em;
     }
 }
 

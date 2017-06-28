@@ -7,19 +7,15 @@
         <form>
             <h2 [hidden]="formValid" >Preencha todos os campos antes de prosseguir</h2>
             <ion-item>
-                <ion-input type="text" placeholder="NOME" 
+                <ion-input type="text" placeholder="Nome" 
                 [(ngModel)]="catador.name" name="name" required></ion-input>
             </ion-item>
             <br>
             <ion-item>
-                <ion-input type="text" placeholder="APELIDO" 
+                <ion-input type="text" placeholder="Apelido" 
                 [(ngModel)]="catador.nickname" name="nickname"></ion-input>
             </ion-item>
             <br>
-            <ion-item>
-                <ion-input type="text" placeholder="FRASE MARCANTE" 
-                [(ngModel)]="catador.presentation_phrase" name="presentation_phrase" maxlength="140"></ion-input>
-            </ion-item>
             <ion-list radio-group [(ngModel)]="catador.prefererUseName" name="prefererUseName">
                 <br>
                 <ion-list-header (click)="printItem()">Prefere usar</ion-list-header>
@@ -33,6 +29,11 @@
                 </ion-item>
             </ion-list>
             <br>
+            <ion-item>
+                <ion-input type="text" placeholder="Frase marcante" 
+                [(ngModel)]="catador.presentation_phrase" name="presentation_phrase" maxlength="140"></ion-input>
+            </ion-item>            
+            <br>
         </form>
     </ion-slide>
     <!-- end slide 1 --> 
@@ -41,14 +42,14 @@
         <h1 text-center>Cadastro</h1>
         <h2 text-center>CATADOR</h2>
         <ion-item>
-            <ion-textarea placeholder="HISTÓRIA DE VIDA"
+            <ion-textarea placeholder="História de vida"
             [(ngModel)]="catador.minibio"></ion-textarea>
         </ion-item>
         <br>
         <br>
         <ion-item>
             <ion-input type="text" placeholder="TELEFONE" 
-            [(ngModel)]="catador.phones[0].phone" [textMask]="{mask: masks.number}" placeholder="(00) 00000-0000"></ion-input>
+            [(ngModel)]="catador.phones[0].phone" [textMask]="{mask: masks.number}" placeholder="Telefone"></ion-input>
         </ion-item>
         <br>
         <ion-list radio-group 
@@ -113,7 +114,7 @@
         </ion-list>
         <br>
     <ion-item>
-            <ion-input type="text" [textMask]="{mask: masks.number}" placeholder="(00) 00000-0000"
+            <ion-input type="text" [textMask]="{mask: masks.number}" placeholder="Telefone"
             [(ngModel)]="catador.phones[1].phone" ></ion-input>
         </ion-item>
            
@@ -188,27 +189,32 @@
         </ion-item>
         <br>
         <ion-item>
-          <ion-textarea placeholder="REGIÃO E BAIRROS QUE COLETA" 
+            <ion-input type="text" placeholder="Endereço referência - cidade"
+            [(ngModel)]="catador.city" name="address_base"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-textarea placeholder="Região e bairros que coleta" 
             [(ngModel)]="catador.region" name="region"></ion-textarea>
         </ion-item>
         <br>
         <ion-item>
-            <ion-input type="number" placeholder="QUANTOS KILOS POR SEMANA, EM MÉDIA, COLETA?"
+            <ion-input type="number" placeholder="Quantos kg/semana, em média, coleta?"
             [(ngModel)]="catador.kg_week" name="kg_week" id="num" ></ion-input>
         </ion-item>
         <br>
         <ion-item>
-            <ion-input type="number" placeholder="QUANTOS DIAS POR SEMANA COLETA"
+            <ion-input type="number" placeholder="Quantos dias/semana coleta?"
             [(ngModel)]="catador.how_many_days_work_week" name="how_many_days_work_week"></ion-input>
         </ion-item>
         <br>
         <ion-item>
-            <ion-input type="number" placeholder="HÁ QUANTOS ANOS COLETA?"
+            <ion-input type="number" placeholder="Coleta desde que ano?"
             [(ngModel)]="catador.how_many_years_work" name="how_many_years_work"></ion-input>
         </ion-item>
         <br>
          <ion-item>
-            <ion-input type="text" placeholder="Participa de cooperativa? Qual"
+            <ion-input type="text" placeholder="Participa de cooperativa? Qual?"
             [(ngModel)]="catador.cooperative_name" name="cooperative_name"></ion-input>
         </ion-item>
          <br>
@@ -257,7 +263,7 @@
                 <ion-col col-4>
                     <img src="assets/img/Icones_materiais-lata.png" 
                         alt="Lata" (click)="selectMaterial('lata')" width="80%">
-                    <p text-center><ion-checkbox (click)="selectMaterial('lata')"></ion-checkbox>Latas</p>
+                    <p text-center><ion-checkbox (click)="selectMaterial('lata')"></ion-checkbox>Alumínio</p>
                 </ion-col>
                 <ion-col col-4>
                     <img src="assets/img/Icones_materiais-vidro.png" 
@@ -370,9 +376,11 @@
                 <ion-radio value="false"></ion-radio>
             </ion-item>
         </ion-list>
+        <br>
         <ion-icon name="camera" (click)="openCamera()">
             <h2> Adicionar foto</h2>
         </ion-icon>
+        <br><br>
         <button ion-button full color="green" (click)="registerUserNew()">CADASTRAR</button>
     </ion-slide>
 </ion-slides>
