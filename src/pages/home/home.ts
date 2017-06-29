@@ -41,43 +41,29 @@ export class HomePage {
     showProfile: boolean;
     openLatitude:any;
     openLongitude:any;
+    loading:any;
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
         public loadingCtrl : LoadingController) {        
 
-      //  this.presentLoadingDefault();
-
-        this.geolocation.getCurrentPosition().then(resp => {
-            console.log('constructor location found');
-            console.log(resp);
-            this.openLatitude = resp.coords.latitude;
-            this.openLongitude = resp.coords.longitude;
-            
-        },(error) => {
-            console.log('Error on getting current location: ' + error);
+        this.loading = this.loadingCtrl.create({
+             content: 'Please wait...'
         });
+        this.loading.present();
 
         this.showProfile = false;
         platform.ready().then(() => {
-            this.loadMap();
+            this.geolocation.getCurrentPosition().then(resp => {
+                this.openLatitude = resp.coords.latitude;
+                this.openLongitude = resp.coords.longitude;
+                this.loadMap();
+            },(error) => {
+                console.log('Error on getting current location: ' + error);
+            });
         });
     }
-
-    presentLoadingDefault() {
-        let loading = this.loadingCtrl.create({
-            content: 'Please wait...'
-        });
-
-        loading.present();
-
-        setTimeout(() => {
-            loading.dismiss();
-        }, 3000);
-    }
-
-
 
     newResiduePage() {
         let modal = this.modalCtrl.create(NewResidue);
@@ -111,8 +97,8 @@ export class HomePage {
     }
 
     loadMap(){
-        let location: LatLng = new LatLng(43.0741904,-89.3809802);
-      //  let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
+       // let location: LatLng = new LatLng(43.0741904,-89.3809802);
+        let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
           'controls': {
@@ -150,6 +136,7 @@ export class HomePage {
             this.loadCatadores();  
             // this.loadCollects();
             this.centerLocation();
+            this.loading.dismiss();
         });        
     }
 
