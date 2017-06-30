@@ -1,14 +1,14 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar color="brown" class="metarial_navbar">
       <ion-title class="metarial_title">METARIAL</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content text-center>
 
-    <ion-slides class="materialSliderSlides" #mySlider>
+    <ion-slides class="materialSliderSlides">
 
-        <ion-slide *ngFor="let slide of sliders">
+        <ion-slide *ngFor="let slide of sliders; let i of index;">
             <img src="{{slide.icon}}" alt="Metarial Slider Icon" class="materialIcon">
             <h3>{{slide.name}}</h3>
             <ion-list>
@@ -17,162 +17,11 @@
             <h4>{{slide.subdesc}}</h4>
             <p>{{slide.desc}}</p>
         </ion-slide>
-<!--
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_1.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Papel</h3>
-            <ion-list>
-                <ion-item>- 100% reciclavel e biodegradavel;</ion-item>
-                <ion-item>- Reciclamos 1/3 do produzido;</ion-item>
-                <ion-item>- tonelada reciclada poupa 22 arvores;</ion-item>
-                <ion-item>- Evite molhar, rasgar ou amassar;</ion-item>
-                <ion-item>- Nao misture papel engordurado;</ion-item>
-                <ion-item>- Lave embalagens longa vida no enxague da louca.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
 
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_2.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Aluminio</h3>
-            <ion-list>
-                <ion-item>- Em 60 dias, 1 late e produzida, comprada, coletada, reciclada e volta as prateleiras;</ion-item>
-                <ion-item>- Reciclamos 98.4% das latinhas do Brasil. E apenas 33% dos outros itens de aluminio;</ion-item>
-                <ion-item>- Reciclar gasta 95% menos energia do que produzir.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_3.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Plasticos</h3>
-            <ion-list>
-                <ion-item>- O Brasil so recicla 20% da producao;</ion-item>
-                <ion-item>- 8 bilhoes de kg/ano poluem os oceanos;</ion-item>
-                <ion-item>- Recicle sacolas, salgadinhos, saches, canudos, isopor e todos os outros plasticos;</ion-item>
-                <ion-item>- Limpe restos de alimento com ague do enxague da louca ou guardanapo usado.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_4.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Vidros</h3>
-            <ion-list>
-                <ion-item>- 100% reciclavel, e dura para sempre;</ion-item>
-                <ion-item>- Preco baixo, poucos lugares reciclam;</ion-item>
-                <ion-item>- Vidro quebrado e ainda pior;</ion-item>
-                <ion-item>- Maior numero de acidentes com catadores;</ion-item>
-                <ion-item>- Lampadas, TV, termicas e espelhos precisam de atencao especial, combine;</ion-item>
-                <ion-item>- Maior numero de acidentes com catadores.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_5.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Oleo</h3>
-            <ion-list>
-                <ion-item>- 1L no ralo = 25 mil L de agua poluida;</ion-item>
-                <ion-item>- Nunca descarte na pia ou no vaso;</ion-item>
-                <ion-item>- Depois de usado e esfriado, o oleo deveser coado num garrafa PET com tampa;</ion-item>
-                <ion-item>- Peca ao catador para levar a um ponto de coleta ou cooperativa que produz sabao.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_6.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Residuos Misturados</h3>
-            <ion-list>
-                <ion-item>- E o pior material para os catadores, seu valor e muito baixo;</ion-item>
-                <ion-item>- O Brasil perde R$ 8 bilhoes/ano enterrando reciclaveis misturados;</ion-item>
-                <ion-item>- Remedios e suas embalagens laminadas devem ser descartados nas farmacias.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-        
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_7.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Metal</h3>
-            <ion-list>
-                <ion-item>- Aco e o material mais reciclado do mundo: e 100% reciclavel, infinitas vezes;</ion-item>
-                <ion-item>- 1/4 do aco no Brasil utiliza materia reciclada;</ion-item>
-                <ion-item>- Metais reciclados estao em latas de alimentos, ferramentas, arames, vigas, automoveis e utensilios domesticos.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_8.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Eletronicos</h3>
-            <ion-list>
-                <ion-item>- 98% dos componentes de um eletronico podem ser reciclados;</ion-item>
-                <ion-item>- Tem valor mais alto, mas so 15.5% e reciclado: falta infraestrutura no Brasil;</ion-item>
-                <ion-item>- Sao altamente contaminantes : busque a destinacao correta.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_9.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Baterias</h3>
-            <ion-list>
-                <ion-item>- Sao altamente contaminantes;</ion-item>
-                <ion-item>- Estao nos celulares, telefones sem fio, maquinas fotograficas, filmadoras, laptops, brinquedos e relogios.</ion-item>
-                <ion-item>- Nao podem ser misturadas : separe e avise o catador antes da coleta.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_10.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Moveis</h3>
-            <ion-list>
-                <ion-item>- Cheque o tamanho da carroca;</ion-item>
-                <ion-item>- Combine com o catador o ponto de descarte dos moveis;</ion-item>
-                <ion-item>- Ideal: reciclagem de moveis;</ion-item>
-                <ion-item>- Garanta que o movel nao terminara em um terreno baldio ou na rua.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_11.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Entulho</h3>
-            <ion-list>
-                <ion-item>- Pode-se aproveitar 95% do material e sue reciclagem e obrigatoria;</ion-item>
-                <ion-item>- Reutilizado em ruas e estradas;</ion-item>
-                <ion-item>- Garanta que seu entulho nao acabara em um terreno baldio: cheque com sua Prefeitura o local adequado.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_12.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Outros</h3>
-            <ion-list>
-                <ion-item>- Podas de arvore podem ser compostadas e produzir energia;</ion-item>
-                <ion-item>- Em eventos e festas, organize a separacao dos reciclaveis secos em sacos grandes;</ion-item>
-                <ion-item>- Avalie e combine com o catador a coleta dos residuos nao listados neste aplicativo.</ion-item>
-            </ion-list>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img/material_sliderIcon_13.png" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>Poda</h3>
-            <ion-list>
-                <ion-item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor eros, tempor sed fringilla id, iaculis et orci. Nullam lorem orci, iaculis at odio in, porta pulvinar risus.</ion-item>
-            </ion-list>
-            <h4>Residuos misturados tem um valor medio de venda de</h4>
-            <p>Combine com o catador qual e a remuneracao adequada para cada coleta.</p>
-        </ion-slide>
-        -->
     </ion-slides>
     <div class="slideMove">
-        <button class="slideleftArrow" (click)="goToLeft()"><img src="assets/img/greenArrowLeft.png" alt="Arrow"></button>
-        <button class="slideRightArrow" (click)="goToRight()"><img src="assets/img/greenArrowRight.png" alt="Arrow"></button>
+        <button class="slideleftArrow" (click)="goToLeft(i)"><img src="assets/img/greenArrowLeft.png" alt="Arrow"></button>
+        <button class="slideRightArrow" (click)="goToRight(i)"><img src="assets/img/greenArrowRight.png" alt="Arrow"></button>
     </div>
 
 </ion-content>

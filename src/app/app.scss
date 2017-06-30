@@ -209,3 +209,14 @@ ion-app._gmaps_cdv_ .nav-decor{
         }
     }
 }    
+
+.mainContentDiv{
+    width: 100%;
+    height: 100%;
+    display: table;
+    .pageContent{
+        height: 100%;
+        display: table-cell;
+        vertical-align: top;
+    }
+}

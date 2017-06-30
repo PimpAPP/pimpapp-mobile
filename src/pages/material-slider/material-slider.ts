@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController,Platform } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 
@@ -11,21 +11,16 @@ export class MaterialSlider {
 
  @ViewChild(Slides) slides: Slides;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public alertCtrl: AlertController) {
-
-      
-      
-  }
  
-goToLeft() {
-    this.slides.slidePrev(500, true)
-};
-goToRight() {
-    this.slides.slideNext(500, true)
-  };
+  slideNum:number;
+  sliders:any;
 
-  sliders = [
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public alertCtrl: AlertController,platform: Platform) {
+
+
+
+  this.sliders = [
     {
       icon: './assets/img/material_sliderIcon_1.png',
       name: 'Papel',
@@ -171,12 +166,42 @@ goToRight() {
       icon: './assets/img/material_sliderIcon_13.png',
       name: 'Poda',
       list : [
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor eros, tempor sed fringilla id, iaculis et orci. Nullam lorem orci, iaculis at odio in, porta pulvinar risus.'
+          /*'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor eros, tempor sed fringilla id, iaculis et orci. Nullam lorem orci, iaculis at odio in, porta pulvinar risus.'*/
       ],
       desc: 'Combine com o catador qual e a remuneracao adequada para cada coleta.',
       subdesc : 'Residuos misturados tem um valor medio de venda de'
     }
-  ]
+  ];
+
+
+      console.log(navParams.get('data'));
+      this.slideNum = navParams.get('data');
+      
+      setTimeout(()=>{
+        console.log("Hello2");
+        this.slides.slideTo(this.slideNum, 0, true);
+      },300);
+      
+  }
+
+  ngOnInit(){
+
+
+   
+      
+  }
+ 
+goToLeft(index) {
+  
+    this.slides.slidePrev(500, true)
+    console.log(index);
+};
+goToRight(index) {
+    this.slides.slideNext(500, true)
+    console.log(index);
+  };
+
+
 
 
 }

@@ -21,7 +21,7 @@ export class TabsPage {
     support = MenuSupport;
     newResidue = ResidueRegister;
     searchPage =ErrorPage;
-    MaterialSlider = MaterialSlider;
+    MaterialSlider = MenuMaterials;
 
   constructor() {
 

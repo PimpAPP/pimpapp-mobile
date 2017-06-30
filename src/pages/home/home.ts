@@ -89,7 +89,7 @@ export class HomePage {
             this.map.addMarker(markerOptions)
             .then((marker: Marker) => {
                 //marker.setIcon('www/assets/icon/marker-user.png');
-                marker.setIcon('www/assets/icon/marker.png');
+                marker.setIcon('www/assets/icon/markar-user.png');
                 marker.showInfoWindow();
             });
             this.map.moveCamera(position);
