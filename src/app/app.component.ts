@@ -33,6 +33,7 @@ export class MyApp {
 
           
           this.rootPage = TabsPage;
+          
           //this.checkLandingFirstTime();
       });
   }

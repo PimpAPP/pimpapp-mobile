@@ -1,0 +1,55 @@
+.parceiros{
+    h2{
+        color: #3cb54d;
+        font-family: 'DIN-Bold';
+        font-size: 22px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    p{
+        color: #000;
+        font-size: 15px;
+        line-height: 22px;
+        margin: 0px;
+    }
+    h3{
+        color: #000;
+        font-size: 16px;
+        font-family: 'DIN-Bold';
+        font-weight: bold;
+        margin: 0px;
+    }
+    a{
+        color: #3cb54d;
+        margin-top: 15px;
+        display: inline-block;
+        font-size: 15px;
+    }
+    ion-col{
+        img{
+            width: 100%;
+        }
+    }
+    img{
+        width: 60%;
+        display: block;
+        vertical-align: top;
+        margin: 20px auto;
+    }
+    ion-list{
+        width: 90%; 
+        margin: 0px auto;
+        display: block;
+        ion-item{
+            padding-left: 0px;
+            border-bottom: none;
+            .item-inner{
+                padding-right: 0px !important;
+                border-bottom: none !important;
+                ion-label{
+                    white-space: normal;
+                }
+            }
+        }
+    }
+}

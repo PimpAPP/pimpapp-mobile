@@ -141,3 +141,71 @@ ion-app._gmaps_cdv_ .nav-decor{
             }
         }
     }
+
+
+.menuLinkNavbar{    
+    min-height: 90px;
+    .toolbar-content{
+        padding-right: 54px;
+        .titleText{
+            .toolbar-title{
+                color: #298336;
+                font-size: 26px;
+                text-align: center;
+                img{
+                    width: 80%;
+                    margin: 0px auto;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+.menuLinkSlide{
+    height: 96%;
+    display: block;
+    margin-bottom: 36px;
+    p, h4{
+        margin: 20px auto;
+        width: 90%;
+        display: block;
+    }
+    p{
+        color: #000;
+        line-height: 24px;
+        font-size: 18px;
+        strong{
+            color: #3cb54d;
+            display: inline-block;
+            font-family: 'DIN-Bold';
+            font-size: 20px;
+        }
+    }
+    h4{
+        font-size: 20px;
+        font-family: 'DIN-Bold';
+        font-weight: bold;
+        color: #3cb54d;
+    }
+}
+.menuLinkSlideGrid{
+    position: fixed;
+    bottom: 54px;
+    left: inherit;
+    right: inherit;
+    width: 180px;
+    z-index: 1111;
+    background: transparent;
+    ion-row{
+        display: block;
+        text-align: center;
+        .step{
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 35px;
+        }
+    }
+}    

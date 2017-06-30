@@ -74,6 +74,12 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { MaterialSlider } from './../pages/material-slider/material-slider';
 
+import { CatakiPage } from './../pages/cataki/cataki';
+import { PimpMyCarrocaPage } from './../pages/pimpmycarroca/pimpmycarroca';
+import { ParceirosPage } from './../pages/parceiros/parceiros';
+import { PraOndeVamosPage } from './../pages/praondevamos/praondevamos';
+import { ColaborePage } from './../pages/colabore/colabore';
+
 
 import {
  GoogleMaps,
@@ -127,7 +133,12 @@ import {
     ColetaAbertaRetorno2h,
     coletaaberta12h,
     searchPage,
-    MaterialSlider
+    MaterialSlider,
+    CatakiPage,
+    PimpMyCarrocaPage,
+    ParceirosPage,
+    PraOndeVamosPage,
+    ColaborePage
     ],
   imports: [
     BrowserModule,
@@ -184,7 +195,12 @@ import {
     ColetaAbertaRetorno2h,
     coletaaberta12h,
     searchPage,
-    MaterialSlider
+    MaterialSlider,
+    CatakiPage,
+    PimpMyCarrocaPage,
+    ParceirosPage,
+    PraOndeVamosPage,
+    ColaborePage
   ],
   providers: [
     StatusBar,
