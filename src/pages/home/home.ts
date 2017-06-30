@@ -149,7 +149,7 @@ export class HomePage {
             let lat = resp.coords.latitude;
             let lng = resp.coords.longitude;
             let location: LatLng = new LatLng(lat, lng);
-           // this.reverseGeoCode(lat, lng);
+            this.reverseGeoCode(lat, lng);
             observable.next(location);
         },(error) => {
             console.log('Error on getting current location: ' + error);

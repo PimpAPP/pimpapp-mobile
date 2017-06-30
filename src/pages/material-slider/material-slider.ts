@@ -180,7 +180,7 @@ export class MaterialSlider {
       setTimeout(()=>{
         console.log("Hello2");
         this.slides.slideTo(this.slideNum, 0, true);
-      },300);
+      },600);
       
   }
 
