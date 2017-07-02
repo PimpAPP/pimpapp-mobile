@@ -1,21 +1,3 @@
-<!--<ion-header>
-  <ion-navbar>
-
-    <ion-grid>
-      <ion-row>
-        <ion-col col-8>
-          <img src="assets/img/logo.png" alt="Logo">
-        </ion-col>
-
-        <ion-col col-4>
-          <img src="assets/img/avatar.png" alt="Avatar" width="60%" class="avatar">
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-  </ion-navbar>
-</ion-header>-->
- 
 <ion-content class="homeContent">
     <div id="map" (click)="closeSlide()">
       <span class="spanMargin"></span>
@@ -25,36 +7,8 @@
       {{selectedAddress.add}}
     </button>
 
-    <!--  <ion-card>
-        <ion-list>
-          <button ion-item (tap)="showAddressModal()">
-            <ion-icon name="ios-pin" item-left></ion-icon>
-              {{selectedAddress.add}}
-          </button>
-        </ion-list>
-      </ion-card>-->
-      <!-- hide goRegistermate dive -->
-<!--<div class="registerMateDiv" (click)="goRegisterMate()">
-  <img src="assets/img/mapIcon.png" alt="Map Icon">
-</div>-->
-
-
-
     </div>
 <div id="ngifDiv">
-
-  <!--<div style="width:100%">
-      <div style="width:30%;float:left">
-          <img src="{{markerPhoto}}" alt="Profile Image">
-      </div>
-      <div  style="width:70%;float:right">
-        <h2>Name - {{markerName}}</h2>
-        <h4>Catador Type - {{markerCatador_type}}</h4>
-        <h4>Address - {{markerAddress}}</h4>
-        <h4>Phone - {{markerPhone}}</h4>
-      </div>
-    </div>-->
-
     <ion-grid style="padding:2px">
         <ion-row>
           <ion-col col-3> <img src="{{markerPhoto}}" alt="Profile Image" style="padding-top:44px"></ion-col>
@@ -72,22 +26,10 @@
           <button (click)="closeSlide()" class="closeDiv" id="closeDiv">x</button>
     </div>
 
-    
 
-    
-
-      <!--<div class="recicle">
-          <img src="assets/img/recicle.png" alt="Logo" width="30%" (click)="newResiduePage()">
-      </div>-->
 </ion-content>
 
 <ion-footer>
-<!-- point 4 -->
-  <!--<ion-item (click)="collectsOpenPage()" text-center>
-    <div text-center>
-        <ion-icon name="arrow-down"></ion-icon>
-    </div>
-  </ion-item>-->
-  <!-- point 4 -->
+
 
 </ion-footer>

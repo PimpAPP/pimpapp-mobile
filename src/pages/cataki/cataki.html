@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar class="menuLinkNavbar">
+      <ion-title class="titleText"><img src="assets/img/catakiHeadImg.png" alt="Cataki Head Image"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    
+    <ion-slides class="menuLinkSlide">
+
+    <ion-slide class="ionSlide1">
+        <p>A ideia existe desde 2013, criar um aplicativo para encontrar os catadores de material reciclável.</p>
+        <p>
+            Cada brasileiro produz cerca de 400kg de resíduos por ano. É muita coisa! Olha, não tem como disfarçar o tamanho do problema.
+        </p>
+        <h4>Desses 400kg, só reciclamos 12kg. E desses 12kg, adivinha quem é que coleta 11kg? Os catadores.</h4>
+    </ion-slide>
+
+    <ion-slide class="ionSlide2">
+        <p>Pensa a respeito: muito antes de sustentabilidade entrar na moda, lá estavam os catadores coletando recursos que jogamos fora.</p>
+        <p>Este aplicativo quer te ajudar a encontrar os catadores, <strong>facilitando o descarte correto enquanto gera renda para estes profissionais.</strong></p>
+    </ion-slide>
+
+    <ion-slide class="ionSlide3">
+        <p>O desafio é enorme. Este é um aplicativo criado para encontrar um público que em grande medida está offline. Por isso confiamos que você, usuário, vai nos ajudar a construir.</p>
+        <p><strong>Cataki é um experimento aberto e otimista. </strong><br>
+            Estamos desenvolvendo uma alternativa necessária. E você, pessoa iluminada que baixou o app e leu até aqui, saiba que já é parte disso.</p>
+    </ion-slide>
+
+    </ion-slides>
+  
+    <ion-grid class="menuLinkSlideGrid">
+        <ion-row>
+            <ion-col (click)="goToSlide('1')" >
+                <span class="step" id="no1">1</span>
+            </ion-col>
+            <ion-col (click)="goToSlide('2')">
+                <span class="step"  id="no2">2</span>
+            </ion-col>
+            <ion-col (click)="goToSlide('3')">
+                <span class="step"  id="no3">3</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid> 
+</ion-content>
