@@ -15,54 +15,59 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'cadastro-catador.html',
 })
 export class CadastroCatador {
- @ViewChild(Slides) slides: Slides; 
-  public catador: Catador = new Catador();
-  public passwordConfirm: string = '';
-  public formValid: boolean = true;
-  masks:any;
-  number:any;
-  numbersOnly:any;
-  numbersOnlyy:any;
-  public avatar:String = '';
-  public materialRecover: MaterialRecover = new MaterialRecover();
 
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-  public catadoresProvider: CatadoresProvider, public storage: Storage, 
-  public userProvider: UsersAPI, private camera: Camera, 
-  public toastCtrl: ToastController) {
+    @ViewChild(Slides) slides: Slides; 
+    public catador: Catador = new Catador();
+    public passwordConfirm: string = '';
+    public formValid: boolean = true;
+    public requiredFields: any[];
+    masks:any;
+    number:any;
+    numbersOnly:any;
+    numbersOnlyy:any;
+    public avatar:String = '';
+    public materialRecover: MaterialRecover = new MaterialRecover();
+    public notValid: boolean = false;
 
-      this.masks = {
-			number: ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/]
-		};
-  }
+    
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+    public catadoresProvider: CatadoresProvider, public storage: Storage, 
+    public userProvider: UsersAPI, private camera: Camera, 
+    public toastCtrl: ToastController) {
+        this.masks = {
+                number: ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/]
+            };
+    }
  
-  openPage2(){
-      if (this.validForm())
+    openPage2(){
         this.navCtrl.push(CadastroCatadorPage2, { catador: this.catador });
-  }
+    }
 
   
-  validForm(){
-      this.formValid = (
-          (this.catador.name.length > 0) &&
-          (this.catador.email.length > 0) &&
-          (this.catador.password.length > 0)
-      )
-      this.formValid = true;
-      return this.formValid;
-  }
+    printItem(){
+        console.log(this.catador);
+    }
 
-  printItem(){
-      console.log(this.catador);
-  }
-
-  validPassword(){
-      return ((this.catador.password === this.passwordConfirm) && 
-              (this.catador.password.length > 7));
-  }
+    validPassword(){
+        return ((this.catador.password === this.passwordConfirm) && 
+                (this.catador.password.length > 7));
+    }
 
     registerUserNew(){
+        if (!this.catador.valid()) {
+            this.notValid = true;
+            let toast = this.toastCtrl.create({
+                message: 'Por favor preencha todos os campos obrigatórios.',
+                duration: 3000,
+                position: 'top'
+            });
+            toast.present();
+            return;
+        }
+        if (!this.validPassword()) {
+            return;
+        }
+
         console.log('register user');
         let user = {
             username: this.catador.nickname, email: this.catador.email,
@@ -81,7 +86,7 @@ export class CadastroCatador {
    registerCatador(){
         let new_material_list = [];
         this.catador.materials_collected.forEach(
-          item => { new_material_list.push(item.id)});
+            item => { new_material_list.push(item.id)});
         this.catador.materials_collected = new_material_list;
 
         this.catadoresProvider.registerCatador(this.catador)
@@ -114,9 +119,9 @@ export class CadastroCatador {
     }
 
     selectMaterial(material){
-      let materialSelected = this.materialRecover.findMaterial(material);
-      this.catador.addMaterialOrRemoveIfAlreadyIncluded(materialSelected);
-      console.log(this.catador);
+        let materialSelected = this.materialRecover.findMaterial(material);
+        this.catador.addMaterialOrRemoveIfAlreadyIncluded(materialSelected);
+        console.log(this.catador);
     }
 
     openCamera(){
@@ -140,108 +145,133 @@ export class CadastroCatador {
         }, (err) => {
             console.log('Error camera: ' + err);
         });
+        
     }
 
-   goToSlide(index) {
-        if(index=="1"){
-        this.slides.slideTo(0, 5);
-        document.getElementById('no1').style.background="#00b544";//active
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";     
+    openGallery() {
+        let options = {
+            destinationType: this.camera.DestinationType.DATA_URL,
+            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+        };
+
+        this.camera.getPicture(options).then((imageData) => {
+            let base64Image = 'data:image/jpeg;base64,' + imageData;
+            this.avatar = base64Image;
+            let toast = this.toastCtrl.create({
+                message: 'Imagem carregada com sucesso!',
+                duration: 3000,
+                position: 'top'
+            });
+            toast.present();
+
+        }, (err) => {
+            console.log('Error camera: ' + err);
+        });
     }
+
+    goToSlide(index) {
+        switch (index) {
+            case "1":
+                this.slides.slideTo(0, 5);
+                document.getElementById('no1').style.background="#00b544";//active
+                document.getElementById('no2').style.background="#7bd9a2";
+                document.getElementById('no3').style.background="#7bd9a2";
+                document.getElementById('no4').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#7bd9a2";  
+                break;
+
+            case "2":
+                this.slides.slideTo(1, 5);
+                document.getElementById('no1').style.background="#7bd9a2";
+                document.getElementById('no2').style.background="#00b544";
+                document.getElementById('no3').style.background="#7bd9a2";
+                document.getElementById('no4').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#7bd9a2";
+                break;
+
+            case "3":
+                this.slides.slideTo(2, 5);
+                document.getElementById('no1').style.background="#7bd9a2";
+                document.getElementById('no2').style.background="#7bd9a2";
+                document.getElementById('no3').style.background="#00b544";
+                document.getElementById('no4').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#7bd9a2";
+                break;
+
+            case "4":
+                this.slides.slideTo(3, 5);
+                document.getElementById('no1').style.background="#7bd9a2";
+                document.getElementById('no2').style.background="#7bd9a2";
+                document.getElementById('no3').style.background="#7bd9a2";
+                document.getElementById('no4').style.background="#00b544";
+                document.getElementById('no5').style.background="#7bd9a2";
+                break;
+
+            case "5":
+                 this.slides.slideTo(4, 5);
+                document.getElementById('no1').style.background="#7bd9a2";
+                document.getElementById('no2').style.background="#7bd9a2";
+                document.getElementById('no3').style.background="#7bd9a2";
+                document.getElementById('no4').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#00b544";
+                break;        
+
+            default:
+                break;
+        }
+
+
+    }
+
+    slideChanged() {
+        let currentIndex = this.slides.getActiveIndex();
+        //alert("Current index is"+currentIndex);
+        
+        switch (currentIndex) {
+            case 0: 
+                document.getElementById('no1').style.background="#00b544";//active
+                document.getElementById('no2').style.background="#7bd9a2";
+                document.getElementById('no3').style.background="#7bd9a2";
+                document.getElementById('no4').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#7bd9a2";               
+                break;
+
+            case 1:                
+                document.getElementById('no2').style.background="#00b544";//active
+                document.getElementById('no1').style.background="#7bd9a2";
+                document.getElementById('no3').style.background="#7bd9a2";
+                document.getElementById('no4').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#7bd9a2";
+                break;     
+        
+            case 2:  
+                document.getElementById('no1').style.background="#7bd9a2";
+                document.getElementById('no3').style.background="#00b544";
+                document.getElementById('no2').style.background="#7bd9a2";
+                document.getElementById('no4').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#7bd9a2";              
+                break;
+
+            case 3:                
+                document.getElementById('no1').style.background="#7bd9a2";
+                document.getElementById('no2').style.background="#7bd9a2";
+                document.getElementById('no4').style.background="#00b544";
+                document.getElementById('no3').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#7bd9a2";
+                break;    
+
+            case 4:
+                document.getElementById('no1').style.background="#7bd9a2";
+                document.getElementById('no2').style.background="#7bd9a2";
+                document.getElementById('no3').style.background="#7bd9a2";
+                document.getElementById('no5').style.background="#00b544";
+                document.getElementById('no4').style.background="#7bd9a2";     
+                break;
+
+            default:
+                break;
+        }
     
-    if(index=="2"){
-        if(this.validForm()){
-        this.slides.slideTo(1, 5);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#00b544";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
     }
-    else{
-        this.slides.slideTo(0, 5);
-    }
-    }
-
-    if(index=="3"){
-        this.slides.slideTo(2, 5);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#00b544";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-    }
-    if(index=="4"){
-        this.slides.slideTo(3, 5);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#00b544";
-        document.getElementById('no5').style.background="#7bd9a2";
-    }
-    if(index=="5"){
-        this.slides.slideTo(4, 5);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#00b544";
-    }
-
-}
-
-slideChanged() {
-    let currentIndex = this.slides.getActiveIndex();
-    //alert("Current index is"+currentIndex);
-     if(currentIndex == 0){
-        document.getElementById('no1').style.background="#00b544";//active
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-        
-    }
-    if(currentIndex == 1){
-        document.getElementById('no2').style.background="#00b544";//active
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-        
-    }
-    
-    if(currentIndex == 2){
-     document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#00b544";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-        
-    }
-
-    if(currentIndex == 3){
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#00b544";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-        
-    }
-    if(currentIndex == 4){
-        
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#00b544";
-        document.getElementById('no4').style.background="#7bd9a2";
-        
-    }
-   
-}
-
-
 
 }
