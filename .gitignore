@@ -10,7 +10,7 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 .vscode/
-.resources/
+resources/*
 npm-debug.log*
 
 .idea/
@@ -33,3 +33,4 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+build.sh

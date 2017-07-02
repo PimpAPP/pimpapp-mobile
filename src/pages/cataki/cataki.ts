@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Slides, ToastController } from 'ionic-angular';
+import { Slides } from 'ionic-angular';
 
 
 @Component({
