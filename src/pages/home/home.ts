@@ -41,22 +41,27 @@ export class HomePage {
     showProfile: boolean;
     openLatitude:any;
     openLongitude:any;
+    loading:any;
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
-        public loadingCtrl : LoadingController) {
+        public loadingCtrl : LoadingController) {        
 
-        this.geolocation.getCurrentPosition().then(resp => {
-            this.openLatitude = resp.coords.latitude;
-            this.openLongitude = resp.coords.longitude;
-        },(error) => {
-            console.log('Error on getting current location: ' + error);
+        this.loading = this.loadingCtrl.create({
+             content: 'Please wait...'
         });
+        this.loading.present();
 
         this.showProfile = false;
         platform.ready().then(() => {
-            this.loadMap();
+            this.geolocation.getCurrentPosition().then(resp => {
+                this.openLatitude = resp.coords.latitude;
+                this.openLongitude = resp.coords.longitude;
+                this.loadMap();
+            },(error) => {
+                console.log('Error on getting current location: ' + error);
+            });
         });
     }
 
@@ -84,7 +89,7 @@ export class HomePage {
             this.map.addMarker(markerOptions)
             .then((marker: Marker) => {
                 //marker.setIcon('www/assets/icon/marker-user.png');
-                marker.setIcon('www/assets/icon/marker.png');
+                marker.setIcon('www/assets/icon/markar-user.png');
                 marker.showInfoWindow();
             });
             this.map.moveCamera(position);
@@ -118,6 +123,7 @@ export class HomePage {
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             this.getCurrentLocation().subscribe(location =>{
+                console.log(location);
             // Change this as per Logic - Sudipta 
             let iconType:string = 'assets/icon/pin-gerador.png';
 
@@ -130,6 +136,7 @@ export class HomePage {
             this.loadCatadores();  
             // this.loadCollects();
             this.centerLocation();
+            this.loading.dismiss();
         });        
     }
 
@@ -137,7 +144,7 @@ export class HomePage {
         return Observable.create(observable =>{
 
         this.geolocation.getCurrentPosition().then(resp => {
-            console.log('getCurrentPosition found' );
+            console.log('getCurrentPosition found : ' + resp.coords.latitude + ' , ' +  resp.coords.longitude);
             let lat = resp.coords.latitude;
             let lng = resp.coords.longitude;
             let location: LatLng = new LatLng(lat, lng);
@@ -358,11 +365,11 @@ markerPhoto:any;
 
 
 reverseGeoCode(lat,lng){
-      let geocoder = new google.maps.Geocoder();
+     // let geocoder = new google.maps.Geocoder();
+     let geocoder = new google.maps.Geocoder();
       let request = {
           latLng: new LatLng(lat,lng)
       };
-
       geocoder.geocode(request,(data, status)=>{
             if (status == google.maps.GeocoderStatus.OK) {  
                 this.selectedAddress.lat = lat;
@@ -370,6 +377,7 @@ reverseGeoCode(lat,lng){
                 this.selectedAddress.add =  data[0].formatted_address;
             }         
       }); 
+
   }
     
 }
