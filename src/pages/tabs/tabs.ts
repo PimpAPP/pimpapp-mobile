@@ -7,6 +7,8 @@ import { MenuSupport } from './../menu-support/menu-support';
 import { ResidueRegister } from './../residue-register/residue-register';
 import {ErrorPage} from './../404/ErrorPage';
 
+import { MaterialSlider } from './../material-slider/material-slider';
+
 @Component({
   templateUrl: 'tabs.html'
 })
@@ -15,12 +17,15 @@ export class TabsPage {
     menu = MenuPage;
     home = HomePage;
     menuCatadorRegister = MenuCatadorRegister;
-    menuMaterials = MenuMaterials;
+    //menuMaterials = MenuMaterials;
     support = MenuSupport;
     newResidue = ResidueRegister;
     searchPage =ErrorPage;
+    MaterialSlider = MenuMaterials;
 
   constructor() {
 
   }
+
+  
 }

@@ -14,5 +14,15 @@ page-menu {
         color: color($colors, dark);
         font-size: 3em;
     }
+
+    .menuHeading{
+        font-size: 3em;
+        color: #222;
+    }
 }
 
+.mainContentDiv .pageContent {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}

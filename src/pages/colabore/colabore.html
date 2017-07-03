@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar class="menuLinkNavbar">
+      <ion-title class="titleText">COLABORE</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="praondevamos">
+    
+    <ion-slides class="menuLinkSlide">
+
+    <ion-slide class="ionSlide1">
+        <p>Te contar uma coisa: <br>
+            <strong>Cataki é uma ferramenta política.</strong> Queremos sim gerar renda e aumentar nossa reciclagem, mas esse app existe, antes de tudo, para lutar pelos catadores.
+        </p>
+        <p>
+            Por que ainda enterramos materiais valiosos em aterros sanitários? Por que quem realiza a sustentabilidade na prática ainda é marginalizado?
+        </p>
+    </ion-slide>
+
+    <ion-slide class="ionSlide2">
+        <p>O sistema atual, baseado em caminhões à diesel e horário semanal de coleta, é completamente  insuficiente. Acreditamos em uma economia circular, devolvendo o material ao ciclo de produção, poupando materia prima finita e gerando renda.</p>
+        <p>Imagina, que lindo, <br>
+            <strong>um programa de coleta operado por catadores e mediado pela tecnologia.</strong> Tudo de forma aberta e com colaboração dos usuários.
+        </p>
+    </ion-slide>
+    </ion-slides>
+  
+    <ion-grid class="menuLinkSlideGrid">
+        <ion-row>
+            <ion-col (click)="goToSlide('1')" >
+                <span class="step" id="no1">1</span>
+            </ion-col>
+            <ion-col (click)="goToSlide('2')" class="2">
+                <span class="step"  id="no2">2</span>
+            </ion-col>
+        </ion-row>
+    </ion-grid> 
+</ion-content>

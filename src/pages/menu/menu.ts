@@ -3,6 +3,13 @@ import { NavController } from 'ionic-angular';
 import { TutorialPage } from './../tutorial/tutorial';
 import { ErrorPage } from './../404/ErrorPage';
 
+import { CatakiPage } from './../cataki/cataki';
+import { PimpMyCarrocaPage } from './../pimpmycarroca/pimpmycarroca';
+import { ParceirosPage } from './../parceiros/parceiros';
+import { PraOndeVamosPage } from './../praondevamos/praondevamos';
+import { ColaborePage } from './../colabore/colabore';
+
+
 @Component({
   selector: 'page-menu',
   templateUrl: 'menu.html',
@@ -20,4 +27,23 @@ export class MenuPage {
     this.navCtrl.push(ErrorPage);
   }
 
+  goCataki(){
+    this.navCtrl.push(CatakiPage);
+  }
+
+  goPimpMyCarroca(){
+    this.navCtrl.push(PimpMyCarrocaPage);
+  }
+
+  goParceiros(){
+    this.navCtrl.push(ParceirosPage);
+  }
+
+  goParondeVamos(){
+    this.navCtrl.push(PraOndeVamosPage);
+  }
+
+  goColabore(){
+    this.navCtrl.push(ColaborePage);
+  }
 }

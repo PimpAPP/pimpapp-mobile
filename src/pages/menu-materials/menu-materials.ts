@@ -3,6 +3,9 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { CansPage } from './cans/cans';
 import { ErrorPage } from './../404/ErrorPage';
 
+import { MaterialSlider } from './../material-slider/material-slider';
+
+
 @Component({
   selector: 'menu-materials',
   templateUrl: 'menu-materials.html',
@@ -23,6 +26,10 @@ export class MenuMaterials {
 
    errorpage(){
     this.navCtrl.push(ErrorPage);
+  }
+
+  goMatSlider(i){
+    this.navCtrl.setRoot(MaterialSlider,{data:i});
   }
 
 }
