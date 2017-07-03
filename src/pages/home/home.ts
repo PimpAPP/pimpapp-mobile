@@ -48,21 +48,21 @@ export class HomePage {
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
         public loadingCtrl : LoadingController) {        
 
-        this.loading = this.loadingCtrl.create({
-             content: 'Please wait...'
-        });
-        this.loading.present();
+        // this.loading = this.loadingCtrl.create({
+        //      content: 'Please wait...'
+        // });
+        //this.loading.present();
 
-        this.showProfile = false;
-        platform.ready().then(() => {
-            this.geolocation.getCurrentPosition().then(resp => {
-                this.openLatitude = resp.coords.latitude;
-                this.openLongitude = resp.coords.longitude;
-                this.loadMap();
-            },(error) => {
-                console.log('Error on getting current location: ' + error);
-            });
-        });
+        // this.showProfile = false;
+        // this.geolocation.getCurrentPosition().then(resp => {
+        //     platform.ready().then(() => {
+        //             this.openLatitude = resp.coords.latitude;
+        //             this.openLongitude = resp.coords.longitude;
+        //             this.loadMap();
+        //     },(error) => {
+        //         console.log('Error on getting current location: ' + error);
+        //     });
+        // });
     }
 
     newResiduePage() {

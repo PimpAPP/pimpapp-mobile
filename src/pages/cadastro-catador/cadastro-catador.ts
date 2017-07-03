@@ -49,8 +49,11 @@ export class CadastroCatador {
     }
 
     validPassword(){
-        return ((this.catador.password === this.passwordConfirm) && 
-                (this.catador.password.length > 7));
+        // Password was disabled
+        return true;
+
+        // return ((this.catador.password === this.passwordConfirm) && 
+        //         (this.catador.password.length > 7));
     }
 
     registerUserNew(){
