@@ -51,14 +51,14 @@ export class HomePage {
         this.loading = this.loadingCtrl.create({
              content: 'Please wait...'
         });
-        this.loading.present();
+        // this.loading.present();
 
         this.showProfile = false;
-        platform.ready().then(() => {
-            this.geolocation.getCurrentPosition().then(resp => {
-                this.openLatitude = resp.coords.latitude;
-                this.openLongitude = resp.coords.longitude;
-                this.loadMap();
+        this.geolocation.getCurrentPosition().then(resp => {
+            platform.ready().then(() => {
+                    this.openLatitude = resp.coords.latitude;
+                    this.openLongitude = resp.coords.longitude;
+                    this.loadMap();
             },(error) => {
                 console.log('Error on getting current location: ' + error);
             });
@@ -97,7 +97,6 @@ export class HomePage {
     }
 
     loadMap(){
-       // let location: LatLng = new LatLng(43.0741904,-89.3809802);
         let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
@@ -120,20 +119,18 @@ export class HomePage {
             'bearing': 50
           }
         });
+        this.loadCatadores();  
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             this.getCurrentLocation().subscribe(location =>{
                 console.log(location);
-            // Change this as per Logic - Sudipta 
-            let iconType:string = 'assets/icon/pin-gerador.png';
+                // Change this as per Logic - Sudipta 
+                let iconType:string = 'assets/icon/pin-gerador.png';
 
-            this.createNewPoint(
-                location.latitude, 
-                location.longitude, 
-                'Sua posição',iconType);
-                this.map.moveCamera(location);
+                this.createNewPoint(location.latitude, location.longitude, 
+                    'Sua posição',iconType);
+                    this.map.moveCamera(location);
             });
-            this.loadCatadores();  
             // this.loadCollects();
             this.centerLocation();
             this.loading.dismiss();
@@ -197,7 +194,6 @@ export class HomePage {
       this.catadoresProvider.getCatadoresPositions()
         .subscribe(data => {
             this.nearest_catadores = data;
-            console.log("catadores here");
             console.log(this.nearest_catadores);
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
         });
@@ -299,12 +295,10 @@ markerPhoto:any;
            // loading.dismiss();
         });
 
-
         console.log("Add");      
 
-  
         document.getElementById('ngifDiv').style.transition='height 1s';
-        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
+       document.getElementById('ngifDiv').style.webkitTransition='height 1s';
         document.getElementById('ngifDiv').style.position='absolute';
         document.getElementById('ngifDiv').style.bottom='-20px';
         document.getElementById('ngifDiv').style.zIndex='2222';
@@ -343,13 +337,7 @@ markerPhoto:any;
                 continue;
             }
 
-           // let iconType:string = 'assets/icon/pin-catador-rs.png';
-            let iconType:string = 'assets/icon/marker-catador.png';
-
-         /*   this.createNewPoint(
-                catador.geolocation[0].latitude, 
-                catador.geolocation[0].longitude, 
-                'Catador: ' + catador.geolocation[0].reverse_geocoding,iconType);*/
+            let iconType:string = 'www/assets/icon/marker-catador.png';
 
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
@@ -361,11 +349,7 @@ markerPhoto:any;
            
     }
 
-
-
-
 reverseGeoCode(lat,lng){
-     // let geocoder = new google.maps.Geocoder();
      let geocoder = new google.maps.Geocoder();
       let request = {
           latLng: new LatLng(lat,lng)

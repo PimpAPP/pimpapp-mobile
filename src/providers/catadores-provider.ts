@@ -18,10 +18,7 @@ export class CatadoresProvider {
         this.url = this.apiProvider.url + 'api/catadores/';
         this.tokenUtils = new TokenUtils(storage);
     }
-    //url = this.apiProvider.url + 'api/nearest-catadores/?format=json';
-
-  //  url = this.apiProvider.url + 'api/catadores/?format=json';      //new added by me
-
+    
     getCatadoresPositions() {
         return this.http.get(this.url)
           .map(res => res.json() );
@@ -29,7 +26,7 @@ export class CatadoresProvider {
 
     //get data using marker Id
     getAllData(){
-        return this.http.get(this.apiProvider.url + '/api/catadores/?format=json')
+        return this.http.get(this.apiProvider.url + 'api/catadores/?format=json')
           .map(res => res.json() );
          
     }

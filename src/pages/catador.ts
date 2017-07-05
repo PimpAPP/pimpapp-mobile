@@ -43,12 +43,20 @@ export class Catador{
 
     valid(){
         return (
-            (this.name.length > 0) &&
-            (this.email.length > 0) &&
-            (this.password.length > 0)
+            (this.name.length > 0)
+            // (this.minibio.length > 0) &&
+            // (this.nickname.length > 0) &&
+            // (this.presentation_phrase.length > 0) &&
+            // (this.phones.length > 0) &&
+            // (this.address_base.length > 0) &&
+            // (this.region.length > 0) &&
+            // (this.kg_week > 0) &&
+            // (this.how_many_days_work_week > 0) &&
+            // (this.how_many_years_work > 0)
         )
     }
 
+    
     addMaterialOrRemoveIfAlreadyIncluded(material: Material){
         for(let i=0; i<this.materials_collected.length; i++){
             if (material.id === this.materials_collected[i].id){
