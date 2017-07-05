@@ -337,12 +337,12 @@ markerPhoto:any;
                 continue;
             }
 
-            let iconType:string = 'www/assets/icon/marker-catador.png';
+            let iconType:string = 'assets/icon/marker-catador.png';
 
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude, 
-                index,iconType);
+                catador.name,iconType);
 
            index = index + 1
       }
