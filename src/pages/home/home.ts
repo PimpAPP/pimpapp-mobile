@@ -123,13 +123,6 @@ export class HomePage {
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             this.getCurrentLocation().subscribe(location =>{
-                console.log(location);
-                // Change this as per Logic - Sudipta 
-                let iconType:string = 'assets/icon/pin-gerador.png';
-
-                this.createNewPoint(location.latitude, location.longitude, 
-                    'Sua posição',iconType);
-                    this.map.moveCamera(location);
             });
             // this.loadCollects();
             this.centerLocation();
