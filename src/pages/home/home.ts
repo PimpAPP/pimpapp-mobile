@@ -1,3 +1,4 @@
+import { ApiProvider } from './../../providers/api-provider';
 import { Component } from '@angular/core';
 import { NavController, Platform , LoadingController} from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -42,26 +43,35 @@ export class HomePage {
     openLatitude:any;
     openLongitude:any;
     loading:any;
+    Platform: Platform;
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
-        public loadingCtrl : LoadingController) {        
-
+        public loadingCtrl : LoadingController,  public apiProvider: ApiProvider) {
+        console.log('Construct ');
+        
         this.loading = this.loadingCtrl.create({
              content: 'Please wait...'
         });
         // this.loading.present();
+        this.showProfile = false; 
 
-        this.showProfile = false;
-        this.geolocation.getCurrentPosition().then(resp => {
-            platform.ready().then(() => {
+        this.platform.ready().then(() => {
+            console.log('Ready: ');
+            this.geolocation.getCurrentPosition({timeout: 20000, enableHighAccuracy: false}).then(resp => {
+                console.log('getCurrentPosition: ');
+                console.log(resp);
+
                     this.openLatitude = resp.coords.latitude;
                     this.openLongitude = resp.coords.longitude;
                     this.loadMap();
-            },(error) => {
-                console.log('Error on getting current location: ' + error);
-            });
+            
+            }).catch((error) => {
+                console.log('Error getting location', error);
+            });     
+        },(error) => {
+            console.log('Error ' + error);
         });
     }
 
@@ -97,6 +107,7 @@ export class HomePage {
     }
 
     loadMap(){
+        console.log('loadMap');
         let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
@@ -259,21 +270,27 @@ export class HomePage {
                 //marker.showInfoWindow();
         });
     }
-profileTitle:any;
-clickMarkerData:any;
-markerCatador_type:any;
-markerAddress:any;
-markerName:any;
-markerPhone:any;
-markerPhoto:any;
 
-   iconClicked(title){
-       let id = this.nearest_catadores[title].id;
-       console.log("parameter: " + this.nearest_catadores[title].id);
-      // this.profileTitle = title;
+    profileTitle:any;
+    clickMarkerData:any;
+    markerCatador_type:any;
+    markerAddress:any;
+    markerName:any;
+    markerPhone:any;
+    markerPhoto:any;
 
-      this.catadoresProvider.getDataUsingID(id)
-        .subscribe(data => {
+    iconClicked(title) {
+        let id = 0;
+        for (var x=0; x<this.nearest_catadores.length; x++) {
+            if (this.nearest_catadores[x].name == title) {
+                id = this.nearest_catadores[x].id;
+                break;
+            }
+        }
+       
+        // this.profileTitle = title;
+
+        this.catadoresProvider.getDataUsingID(id).subscribe(data => {
             this.clickMarkerData = data;
             if(this.clickMarkerData.catador_type){ this.markerCatador_type = this.clickMarkerData.catador_type; console.log(this.markerCatador_type); }
             if(this.clickMarkerData.address_base){ this.markerAddress = this.clickMarkerData.address_base; console.log(this.markerAddress); }
@@ -288,24 +305,24 @@ markerPhoto:any;
            // loading.dismiss();
         });
 
-        console.log("Add");      
+         console.log("Add");      
 
-        document.getElementById('ngifDiv').style.transition='height 1s';
-       document.getElementById('ngifDiv').style.webkitTransition='height 1s';
-        document.getElementById('ngifDiv').style.position='absolute';
-        document.getElementById('ngifDiv').style.bottom='-20px';
-        document.getElementById('ngifDiv').style.zIndex='2222';
-        document.getElementById('ngifDiv').style.padding='6px 12px';
-        document.getElementById('ngifDiv').style.width='100%';
-        document.getElementById('ngifDiv').style.background='#fff';
-        document.getElementById('ngifDiv').style.color='#fff';
+        document.getElementById('ngifDiv').style.transition='height 1s';
+        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
+        document.getElementById('ngifDiv').style.position='absolute';
+        document.getElementById('ngifDiv').style.bottom='-20px';
+        document.getElementById('ngifDiv').style.zIndex='2222';
+        document.getElementById('ngifDiv').style.padding='6px 12px';
+        document.getElementById('ngifDiv').style.width='100%';
+        document.getElementById('ngifDiv').style.background='#fff';
+        document.getElementById('ngifDiv').style.color='#fff';
         document.getElementById('ngifDiv').style.height='45%';
         document.getElementById('closeDiv').style.display='block';
         
-        this.map.setClickable(false);    
-    }
+        this.map.setClickable(false);    
+    }
 
-    closeSlide(){
+     closeSlide(){
         this.map.setClickable(true);
         console.log('remove');
         document.getElementById('ngifDiv').style.height='0%';
