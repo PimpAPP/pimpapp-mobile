@@ -49,7 +49,6 @@ export class HomePage {
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
         public loadingCtrl : LoadingController,  public apiProvider: ApiProvider) {
-        console.log('Construct ');
         
         this.loading = this.loadingCtrl.create({
              content: 'Please wait...'
@@ -58,15 +57,10 @@ export class HomePage {
         this.showProfile = false; 
 
         this.platform.ready().then(() => {
-            console.log('Ready: ');
             this.geolocation.getCurrentPosition({timeout: 20000, enableHighAccuracy: false}).then(resp => {
-                console.log('getCurrentPosition: ');
-                console.log(resp);
-
-                    this.openLatitude = resp.coords.latitude;
-                    this.openLongitude = resp.coords.longitude;
-                    this.loadMap();
-            
+                this.openLatitude = resp.coords.latitude;
+                this.openLongitude = resp.coords.longitude;
+                this.loadMap();
             }).catch((error) => {
                 console.log('Error getting location', error);
             });     
