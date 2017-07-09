@@ -34,14 +34,15 @@ export class MyApp {
   }
 
   checkLandingFirstTime(){
-      this.storage.ready().then(() => {
-          this.storage.get('firstAccess').then((val) => {
-              if (val==1)
-                this.rootPage = TabsPage;
-              else
-                this.rootPage = TutorialPage;
-          });
-        });
+      // this.storage.ready().then(() => {
+      //     this.storage.get('firstAccess').then((val) => {
+      //         if (val==1)
+      //           this.rootPage = TabsPage;
+      //         else
+      //           this.rootPage = TutorialPage;
+      //     });
+      //   });
+      this.rootPage = TabsPage;
   }
 
   openPage(page){

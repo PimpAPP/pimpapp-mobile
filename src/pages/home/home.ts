@@ -134,7 +134,6 @@ export class HomePage {
         return Observable.create(observable =>{
 
         this.geolocation.getCurrentPosition().then(resp => {
-            console.log('getCurrentPosition found : ' + resp.coords.latitude + ' , ' +  resp.coords.longitude);
             let lat = resp.coords.latitude;
             let lng = resp.coords.longitude;
             let location: LatLng = new LatLng(lat, lng);
@@ -187,7 +186,6 @@ export class HomePage {
       this.catadoresProvider.getCatadoresPositions()
         .subscribe(data => {
             this.nearest_catadores = data;
-            console.log(this.nearest_catadores);
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
         });
     }
@@ -220,7 +218,6 @@ export class HomePage {
                 collect.latitude, collect.longitude, 'Coleta: ' + collect.id,iconType);
 
             index = index + 1;
-            console.log("index is: "+ index);
         }
 
     }
@@ -269,8 +266,6 @@ markerPhoto:any;
 
    iconClicked(title){
        let id = this.nearest_catadores[title].id;
-       console.log("parameter: " + this.nearest_catadores[title].id);
-      // this.profileTitle = title;
 
       this.catadoresProvider.getDataUsingID(id)
         .subscribe(data => {
@@ -307,7 +302,6 @@ markerPhoto:any;
 
     closeSlide(){
         this.map.setClickable(true);
-        console.log('remove');
         document.getElementById('ngifDiv').style.height='0%';
         document.getElementById('ngifDiv').style.bottom='-20px';
         document.getElementById('ngifDiv').style.transition='height 1s';
