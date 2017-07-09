@@ -152,6 +152,12 @@ ion-app._gmaps_cdv_ .nav-decor{
                 color: #298336;
                 font-size: 26px;
                 text-align: center;
+
+                text-transform: uppercase;
+                color: color($colors, dark);
+                font-size: 3em;
+                color: #222; 
+
                 img{
                     width: 80%;
                     margin: 0px auto;

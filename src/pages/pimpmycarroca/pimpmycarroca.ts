@@ -8,32 +8,20 @@ import { Slides } from 'ionic-angular';
 })
 export class PimpMyCarrocaPage {
 
-@ViewChild(Slides) slides: Slides; 
-
-  constructor() {
-  }
-
-  goToSlide(index) {
-        if(index=="1"){
-        this.slides.slideTo(0, 2);
-        document.getElementById('no1').style.background="#00b544";//active
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";  
-    }
     
-    if(index=="2"){
-        this.slides.slideTo(1, 2);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#00b544";
-        document.getElementById('no3').style.background="#7bd9a2";    
+    @ViewChild(Slides) slides: Slides; 
+    public step: Number;
+
+    constructor() {
+        this.step = 0;
     }
 
-    if(index=="3"){
-        this.slides.slideTo(2, 2);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#00b544";
+    goToSlide(index) {
+        this.slides.slideTo(index, 2);
     }
-  }
+
+    slideChanged() {
+        this.step = this.slides.getActiveIndex();
+    }
 
 }
