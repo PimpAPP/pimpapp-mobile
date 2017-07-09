@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar class="menuLinkNavbar">
-      <ion-title class="titleText">PRA ONDE VAMOS</ion-title>
+      <ion-title class="titleText" text-wrap>PRA ONDE VAMOS</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding class="praondevamos">
     
-    <ion-slides class="menuLinkSlide">
+    <ion-slides class="menuLinkSlide" (ionSlideDidChange)="slideChanged()">
 
     <ion-slide class="ionSlide1">
         <p>Te contar uma coisa: <br>
@@ -34,15 +34,15 @@
     </ion-slides>
   
     <ion-grid class="menuLinkSlideGrid">
-        <ion-row>
-            <ion-col (click)="goToSlide('1')" >
-                <span class="step" id="no1">1</span>
+       <ion-row>
+            <ion-col (click)="goToSlide(0)" >
+                <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
             </ion-col>
-            <ion-col (click)="goToSlide('2')">
-                <span class="step"  id="no2">2</span>
+            <ion-col (click)="goToSlide(1)">
+                <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
             </ion-col>
-            <ion-col (click)="goToSlide('3')">
-                <span class="step"  id="no3">3</span>
+            <ion-col (click)="goToSlide(2)">
+                <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
             </ion-col>
         </ion-row>
     </ion-grid> 

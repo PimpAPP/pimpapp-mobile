@@ -1,5 +1,5 @@
 <ion-content class="homeContent">
-    <div id="map" (click)="closeSlide()">
+    <div #map id="map" (click)="closeSlide()">
       <span class="spanMargin"></span>
   
     <button ion-item (tap)="showAddressModal()">
@@ -7,11 +7,11 @@
       {{selectedAddress.add}}
     </button>
 
-    </div>
+</div>
 <div id="ngifDiv">
     <ion-grid style="padding:2px">
         <ion-row>
-          <ion-col col-3> <img src="{{markerPhoto}}" alt="Profile Image" style="padding-top:44px"></ion-col>
+          <ion-col col-3> <img src="{{ apiProvider.url + markerPhoto}}" alt="Profile Image" style="padding-top:44px"></ion-col>
           
           <ion-col col-9>
             <ul style="padding: 0px 6px 0px 7px;">
@@ -23,9 +23,8 @@
         </ion-row>
         
     </ion-grid>
-          <button (click)="closeSlide()" class="closeDiv" id="closeDiv">x</button>
-    </div>
-
+    <button (click)="closeSlide()" class="closeDiv" id="closeDiv">x</button>
+</div>
 
 </ion-content>
 

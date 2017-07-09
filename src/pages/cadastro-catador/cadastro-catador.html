@@ -53,9 +53,9 @@
             [(ngModel)]="catador.phones[0].phone" [textMask]="{mask: masks.number}" placeholder="Telefone"></ion-input>
         </ion-item>
         <br>
-        <ion-list radio-group 
-        [(ngModel)]="catador.phones[0].mobileOperator" name="mobileOperator"
-        [ngClass]="{'required': !catador.phones[0].mobileOperator && notValid}">
+        <ion-list radio-group text-wrap
+        [(ngModel)]="catador.phones[0].mno" name="mobileOperator"
+        [ngClass]="{'required': !catador.phones[0].mno && notValid}">
             <ion-row>
                 <ion-col col-4>
                     <ion-item class="transp">
@@ -121,7 +121,8 @@
         </ion-item>
            
         <br>
-        <ion-list radio-group [(ngModel)]="catador.phones[1].mobileOperator">
+        <ion-list radio-group text-wrap 
+        [(ngModel)]="catador.phones[1].mno">
             <ion-row>
                 <ion-col col-4>
                     <ion-item class="transp">

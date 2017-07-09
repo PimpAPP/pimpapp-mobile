@@ -4,7 +4,7 @@ import { Material } from './Material';
 export class Phone{
     // 1 vivo, 2 tim, 3 claro, 4 oi, 5 nextel, 6 outros
     public phone: string;
-    public mobileOperator: string;
+    public mno: string;
     public whatsapp: boolean = false;
 }
 
@@ -43,16 +43,16 @@ export class Catador{
 
     valid(){
         return (
-            (this.name.length > 0) &&
-            (this.minibio.length > 0) &&
-            (this.nickname.length > 0) &&
-            (this.presentation_phrase.length > 0) &&
-            (this.phones.length > 0) &&
-            (this.address_base.length > 0) &&
-            (this.region.length > 0) &&
-            (this.kg_week > 0) &&
-            (this.how_many_days_work_week > 0) &&
-            (this.how_many_years_work > 0)
+            (this.name.length > 0)
+            // (this.minibio.length > 0) &&
+            // (this.nickname.length > 0) &&
+            // (this.presentation_phrase.length > 0) &&
+            // (this.phones.length > 0) &&
+            // (this.address_base.length > 0) &&
+            // (this.region.length > 0) &&
+            // (this.kg_week > 0) &&
+            // (this.how_many_days_work_week > 0) &&
+            // (this.how_many_years_work > 0)
         )
     }
 

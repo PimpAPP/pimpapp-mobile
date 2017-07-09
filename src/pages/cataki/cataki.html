@@ -7,7 +7,7 @@
 
 <ion-content padding>
     
-    <ion-slides class="menuLinkSlide">
+    <ion-slides class="menuLinkSlide" (ionSlideDidChange)="slideChanged()">
 
     <ion-slide class="ionSlide1">
         <p>A ideia existe desde 2013, criar um aplicativo para encontrar os catadores de material reciclável.</p>
@@ -32,14 +32,14 @@
   
     <ion-grid class="menuLinkSlideGrid">
         <ion-row>
-            <ion-col (click)="goToSlide('1')" >
-                <span class="step" id="no1">1</span>
+            <ion-col (click)="goToSlide(0)" >
+                <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
             </ion-col>
-            <ion-col (click)="goToSlide('2')">
-                <span class="step"  id="no2">2</span>
+            <ion-col (click)="goToSlide(1)">
+                <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
             </ion-col>
-            <ion-col (click)="goToSlide('3')">
-                <span class="step"  id="no3">3</span>
+            <ion-col (click)="goToSlide(2)">
+                <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
             </ion-col>
         </ion-row>
     </ion-grid> 
