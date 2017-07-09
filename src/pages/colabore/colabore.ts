@@ -3,28 +3,25 @@ import { Slides } from 'ionic-angular';
 
 
 @Component({
-  selector: 'colabore',
-  templateUrl: 'colabore.html',
+    selector: 'colabore',
+    templateUrl: 'colabore.html',
 })
+
 export class ColaborePage {
 
-@ViewChild(Slides) slides: Slides; 
+    @ViewChild(Slides) slides: Slides; 
+    public step: Number;
 
-  constructor() {
-  }
+    constructor() {
+        this.step = 0;
+    }
 
-  goToSlide(index) {
-        if(index=="1"){
-        this.slides.slideTo(0, 1);
-        document.getElementById('no1').style.background="#00b544";//active
-        document.getElementById('no2').style.background="#7bd9a2";
+    goToSlide(index) {
+        this.slides.slideTo(index, 2);
     }
-    
-    if(index=="2"){
-        this.slides.slideTo(1, 1);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#00b544";  
+
+    slideChanged() {
+        this.step = this.slides.getActiveIndex();
     }
-  }
 
 }

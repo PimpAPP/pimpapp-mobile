@@ -7,7 +7,7 @@ page-menu {
     }
     
     .text{
-     text-transform: uppercase;
+        text-transform: uppercase;
     }
 
     h1 {
@@ -25,4 +25,11 @@ page-menu {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+}
+
+.pageTitle {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
 }
