@@ -282,12 +282,17 @@ export class HomePage {
 
         this.catadoresProvider.getDataUsingID(id).subscribe(data => {
             this.clickMarkerData = data;
-            if(this.clickMarkerData.catador_type){ this.markerCatador_type = this.clickMarkerData.catador_type; console.log(this.markerCatador_type); }
-            if(this.clickMarkerData.address_base){ this.markerAddress = this.clickMarkerData.address_base; console.log(this.markerAddress); }
-            if(this.clickMarkerData.name){ this.markerName = this.clickMarkerData.name; console.log(this.markerName);}
-            if(this.clickMarkerData.phones){ this.markerPhone = this.clickMarkerData.phones[0].phone; console.log(this.markerPhone);}
-            if(this.clickMarkerData.profile_photo){ this.markerPhoto = this.clickMarkerData.profile_photo;console.log(this.markerPhoto);
-            }else{ this.markerPhoto = 'assets/img/no_image.jpg'; }
+            if(this.clickMarkerData.catador_type) 
+                this.markerCatador_type = this.clickMarkerData.catador_type;
+            if(this.clickMarkerData.address_base)
+                this.markerAddress = this.clickMarkerData.address_base;
+            if(this.clickMarkerData.name) 
+                this.markerName = this.clickMarkerData.name; 
+            if(this.clickMarkerData.phones)
+                this.markerPhone = this.clickMarkerData.phones[0].phone;
+            if(this.clickMarkerData.profile_photo)
+                this.markerPhoto = this.apiProvider.url + this.clickMarkerData.profile_photo;
+            else this.markerPhoto = 'assets/img/no_image.jpg';
 
             console.log(this.clickMarkerData.email);
             console.log("individual marker data is: ");
