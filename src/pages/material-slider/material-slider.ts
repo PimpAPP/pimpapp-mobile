@@ -27,7 +27,7 @@ export class MaterialSlider {
       list : [
           '- 100% reciclável e biodegradável;' ,        
           '- Reciclamos 1/3 do produzido;',
-          '- tonelada reciclada poupa 22 árvores;', //
+          '- 1 tonelada reciclada poupa 22 árvores;',
           '- Evite molhar, rasgar ou amassar;',
           '- Não misture papel engordurado;',
           '- Lave embalagens longa vida no enxágue da louça.'
