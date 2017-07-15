@@ -161,15 +161,6 @@ export class MaterialSlider {
       ],
       desc: 'Combine com o catador qual é a remuneração adequada para cada coleta.',
       subdesc : ''
-    },
-    {
-      icon: './assets/img/material_sliderIcon_13.png',
-      name: 'Poda',
-      list : [
-          /*'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor eros, tempor sed fringilla id, iaculis et orci. Nullam lorem orci, iaculis at odio in, porta pulvinar risus.'*/
-      ],
-      desc: 'Combine com o catador qual é a remuneração adequada para cada coleta.',
-      subdesc : 'Resíduos misturados tem um valor médio de venda de'
     }
   ];
 
