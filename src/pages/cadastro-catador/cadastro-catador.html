@@ -49,8 +49,9 @@
         <br>
         <br>
         <ion-item [ngClass]="{'required': !catador.phones[0].phone && notValid}">
-            <ion-input type="text" placeholder="TELEFONE" 
-            [(ngModel)]="catador.phones[0].phone" [textMask]="{mask: masks.number}" placeholder="Telefone"></ion-input>
+            <ion-input type="text" placeholder="Telefone" 
+                    [(ngModel)]="catador.phones[0].phone" 
+                    [textMask]="{mask: masks.number}"></ion-input>
         </ion-item>
         <br>
         <ion-list radio-group text-wrap
@@ -60,37 +61,37 @@
                 <ion-col col-4>
                     <ion-item class="transp">
                         <ion-label>Vivo</ion-label>
-                        <ion-radio value="vivo"></ion-radio>
+                        <ion-radio value="V"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
                         <ion-label>Tim</ion-label>
-                        <ion-radio value="tim"></ion-radio>
+                        <ion-radio value="T"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
                         <ion-label>Claro</ion-label>
-                        <ion-radio value="claro"></ion-radio>
+                        <ion-radio value="C"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
                         <ion-label>Oi</ion-label>
-                        <ion-radio value="oi"></ion-radio>
+                        <ion-radio value="O"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
                         <ion-label>Nextel</ion-label>
-                        <ion-radio value="nextel"></ion-radio>
+                        <ion-radio value="N"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
-                        <ion-label>Outro</ion-label>
-                        <ion-radio value="outro"></ion-radio>
+                        <ion-label>Porto</ion-label>
+                        <ion-radio value="P"></ion-radio>
                     </ion-item>
                 </ion-col>
             </ion-row>
@@ -127,37 +128,37 @@
                 <ion-col col-4>
                     <ion-item class="transp">
                         <ion-label>Vivo</ion-label>
-                        <ion-radio value="vivo"></ion-radio>
+                        <ion-radio value="V"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
                         <ion-label>Tim</ion-label>
-                        <ion-radio value="tim"></ion-radio>
+                        <ion-radio value="T"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
                         <ion-label>Claro</ion-label>
-                        <ion-radio value="claro"></ion-radio>
+                        <ion-radio value="C"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
                         <ion-label>Oi</ion-label>
-                        <ion-radio value="oi"></ion-radio>
+                        <ion-radio value="O"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
                         <ion-label>Nextel</ion-label>
-                        <ion-radio value="nextel"></ion-radio>
+                        <ion-radio value="N"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col col-4>
                     <ion-item  class="transp">
-                        <ion-label>Outro</ion-label>
-                        <ion-radio value="outro"></ion-radio>
+                        <ion-label>Porto</ion-label>
+                        <ion-radio value="P"></ion-radio>
                     </ion-item>
                 </ion-col>
             </ion-row>
@@ -189,13 +190,28 @@
         <h1 text-center>Cadastro</h1>
         <h2 text-center>CATADOR</h2>
         <ion-item [ngClass]="{'required': !catador.address_base && notValid}">
-            <ion-input type="text" placeholder="Endereço referência - rua e número"
+            <ion-input type="text" placeholder="Endereço referência - Rua"
             [(ngModel)]="catador.address_base" name="address_base"></ion-input>
         </ion-item>
         <br>
+        <ion-item [ngClass]="{'required': !catador.number && notValid}">
+            <ion-input type="text" placeholder="Endereço referência - Número"
+            [(ngModel)]="catador.number" name="number"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item [ngClass]="{'required': !catador.address_region && notValid}">
+            <ion-input type="text" placeholder="Endereço referência - Bairro"
+            [(ngModel)]="catador.address_region" name="address_region"></ion-input>
+        </ion-item>
+        <br>
         <ion-item [ngClass]="{'required': !catador.city && notValid}">
-            <ion-input type="text" placeholder="Endereço referência - cidade"
-            [(ngModel)]="catador.city" name="address_base"></ion-input>
+            <ion-input type="text" placeholder="Endereço referência - Cidade"
+            [(ngModel)]="catador.city" name="city"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item [ngClass]="{'required': !catador.state && notValid}">
+            <ion-input type="text" placeholder="Endereço referência - Estado"
+            [(ngModel)]="catador.state" name="state"></ion-input>
         </ion-item>
         <br>
         <ion-item [ngClass]="{'required': !catador.region && notValid}">
@@ -203,9 +219,9 @@
             [(ngModel)]="catador.region" name="region"></ion-textarea>
         </ion-item>
         <br>
-        <ion-item [ngClass]="{'required': !catador.kg_week && notValid}"> 
-            <ion-input type="number" placeholder="Quantos kg/semana, em média, coleta?"
-            [(ngModel)]="catador.kg_week" name="kg_week" id="num" ></ion-input>
+        <ion-item [ngClass]="{'required': !catador.kg_day && notValid}"> 
+            <ion-input type="number" placeholder="Quantos kg/dia, em média, coleta?"
+            [(ngModel)]="catador.kg_day" name="kg_day" id="num" ></ion-input>
         </ion-item>
         <br>
         <ion-item [ngClass]="{'required': !catador.how_many_days_work_week && notValid}">
@@ -270,7 +286,7 @@
                 <ion-col col-4>
                     <img src="assets/img/Icones_materiais-lata.png" 
                         alt="Lata" (click)="selectMaterial('lata')" width="80%">
-                    <p text-center><ion-checkbox (click)="selectMaterial('lata')"></ion-checkbox>Alumínio</p>
+                    <p text-center><ion-checkbox (click)="selectMaterial('lata')"></ion-checkbox>Lata</p>
                 </ion-col>
                 <ion-col col-4>
                     <img src="assets/img/Icones_materiais-vidro.png" 
@@ -309,7 +325,7 @@
                 <ion-col col-4>
                     <img src="assets/img/Icones_materiais-bateria.png" 
                             alt="Lata" (click)="selectMaterial('bateria')" width="80%">
-                    <p text-center><ion-checkbox (click)="selectMaterial('bateria')"></ion-checkbox>Pilas</p>
+                    <p text-center><ion-checkbox (click)="selectMaterial('bateria')"></ion-checkbox>Baterias</p>
                 </ion-col>
             </ion-row>
             <ion-row>
@@ -330,7 +346,7 @@
                 <ion-col col-4>
                     <img src="assets/img/Icones_materiais-poda.png" 
                         alt="Lata" (click)="selectMaterial('outros')" width="80%">
-                        <p><ion-checkbox (click)="selectMaterial('outros')"></ion-checkbox> Poda</p>
+                        <p><ion-checkbox (click)="selectMaterial('outros')"></ion-checkbox>Outros</p>
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -344,7 +360,28 @@
         <ion-list radio-group>
             <ion-list-header>A Carroça equipada com itens de segurança?</ion-list-header>
             <form>
-                <ion-list radio-group [(ngModel)]="catador.safety_kit"
+                <ion-item>
+                    <ion-label>Bota</ion-label>
+                    <ion-checkbox [(ngModel)]="catador.safety_kit_boot" name="safety_kit_boot"></ion-checkbox>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Luva</ion-label>
+                    <ion-checkbox [(ngModel)]="catador.safety_kit_gloves" name="safety_kit_gloves"></ion-checkbox>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Freios</ion-label>
+                    <ion-checkbox [(ngModel)]="catador.safety_kit_brakes" name="safety_kit_brakes"></ion-checkbox>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Fitas refletivas</ion-label>
+                    <ion-checkbox [(ngModel)]="catador.safety_kit_reflective_tapes" name="safety_kit_reflective_tapes"></ion-checkbox>
+                </ion-item>
+                <ion-item class="col-md-6">
+                    <ion-label>Retrovisor</ion-label>
+                    <ion-checkbox [(ngModel)]="catador.safety_kit_rearview" name="safety_kit_rearview"></ion-checkbox>
+                </ion-item>
+
+                <!-- <ion-list radio-group [(ngModel)]="catador.safety_kit"
                 name="safety_kit">
                     <ion-item>
                         <ion-label>Sim</ion-label>
@@ -354,7 +391,7 @@
                         <ion-label>Nâo</ion-label>
                         <ion-radio value="false"></ion-radio>
                     </ion-item>
-                </ion-list>
+                </ion-list> -->
             </form>
         </ion-list>
         <br>
@@ -393,7 +430,7 @@
         </ion-icon>
 
         <br><br>
-        <button ion-button full color="green" (click)="registerUserNew()">CADASTRAR</button>
+        <button ion-button full color="green" (click)="save()">CADASTRAR</button>
     </ion-slide>
 </ion-slides>
 <br>
@@ -415,7 +452,7 @@
             <ion-icon name="arrow-round-forward" class="step"  id="no5"></ion-icon>
         </ion-col>
     </ion-row>
-</ion-grid> 
+</ion-grid>
     
 
 </ion-content>

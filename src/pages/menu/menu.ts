@@ -8,42 +8,47 @@ import { PimpMyCarrocaPage } from './../pimpmycarroca/pimpmycarroca';
 import { ParceirosPage } from './../parceiros/parceiros';
 import { PraOndeVamosPage } from './../praondevamos/praondevamos';
 import { ColaborePage } from './../colabore/colabore';
+import { CadastroCatador } from './../cadastro-catador/cadastro-catador';
 
 
 @Component({
-  selector: 'page-menu',
-  templateUrl: 'menu.html',
+    selector: 'page-menu',
+    templateUrl: 'menu.html',
 })
 export class MenuPage {
 
-  constructor(public navCtrl: NavController) {
-  }
+    constructor(public navCtrl: NavController) {
+    }
 
-  openTutorial(){
-    this.navCtrl.push(TutorialPage);
-  }
+    openTutorial() {
+        this.navCtrl.push(TutorialPage);
+    }
 
-  errorpage(){
-    this.navCtrl.push(ErrorPage);
-  }
+    errorpage() {
+        this.navCtrl.push(ErrorPage);
+    }
 
-  goCataki(){
-    this.navCtrl.push(CatakiPage);
-  }
+    goCataki() {
+        this.navCtrl.push(CatakiPage);
+    }
 
-  goPimpMyCarroca(){
-    this.navCtrl.push(PimpMyCarrocaPage);
-  }
+    goPimpMyCarroca() {
+        this.navCtrl.push(PimpMyCarrocaPage);
+    }
 
-  goParceiros(){
-    this.navCtrl.push(ParceirosPage);
-  }
+    goParceiros() {
+        this.navCtrl.push(ParceirosPage);
+    }
 
-  goParondeVamos(){
-    this.navCtrl.push(PraOndeVamosPage);
-  }
+    goParondeVamos() {
+        this.navCtrl.push(PraOndeVamosPage);
+    }
 
-  goColabore(){
-    this.navCtrl.push(ColaborePage);
-  }
+    goColabore() {
+        this.navCtrl.push(ColaborePage);
+    }
+    
+    cadastroCatador() {
+        this.navCtrl.push(CadastroCatador);
+    }
 }
