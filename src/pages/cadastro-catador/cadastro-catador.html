@@ -189,6 +189,9 @@
     <ion-slide class="ionSlide3">
         <h1 text-center>Cadastro</h1>
         <h2 text-center>CATADOR</h2>
+
+        <div #map2 id="map2"></div>
+
         <ion-item [ngClass]="{'required': !catador.address_base && notValid}">
             <ion-input type="text" placeholder="Endereço referência - Rua"
             [(ngModel)]="catador.address_base" name="address_base"></ion-input>
@@ -395,6 +398,7 @@
             </form>
         </ion-list>
         <br>
+
         <ion-list radio-group 
         [(ngModel)]="catador.has_motor_vehicle" name="has_motor_vehicle">
             <ion-list-header>A Carroça possui motor?</ion-list-header>
@@ -422,15 +426,55 @@
         </ion-list>
         <br>
 
+
+        <ion-list radio-group [(ngModel)]="catador.registered_by_another_user" name="registered_by_another_user">
+            <ion-list-header>Quem está cadastrando?</ion-list-header>
+            <ion-item>
+                <ion-label>Eu mesmo, catador/catadora</ion-label>
+                <ion-radio value="false"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Outra pessoa</ion-label>
+                <ion-radio value="true"></ion-radio>
+            </ion-item>
+        </ion-list>
+
+        <ion-item [hidden]="!catador.registered_by_another_user">
+            <ion-input type="text" placeholder="Qual seu nome?" 
+                    [(ngModel)]="catador.another_user_name" 
+                    name="another_user_name">
+            </ion-input>
+        </ion-item>
+
+        <ion-item [hidden]="!catador.registered_by_another_user">
+            <ion-input type="text" placeholder="Qual seu e-mail?" 
+                    [(ngModel)]="catador.another_user_email" 
+                    name="another_user_email">
+            </ion-input>
+        </ion-item>
+
+        <ion-item [hidden]="!catador.registered_by_another_user">
+            <ion-input type="text" placeholder="E o whatsApp?" 
+                    [(ngModel)]="catador.another_user_whatsapp" 
+                    name="another_user_whatsapp">
+            </ion-input>
+        </ion-item>
+       
+        <br>
+
         <ion-icon name="camera" (click)="openCamera()">
             <h2> Tirar Foto</h2>
         </ion-icon>
+        <br>
         <ion-icon name="camera" (click)="openGallery()">
             <h2> Selecionar Foto</h2>
         </ion-icon>
 
         <br><br>
         <button ion-button full color="green" (click)="save()">CADASTRAR</button>
+
+        <br><br>
+
     </ion-slide>
 </ion-slides>
 <br>

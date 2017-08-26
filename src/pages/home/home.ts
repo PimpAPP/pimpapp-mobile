@@ -85,7 +85,7 @@ export class HomePage {
                 zoom: 10,
                 tilt: 30
             };
-             let markerOptions: MarkerOptions = {
+            let markerOptions: MarkerOptions = {
                 position: location,
                 title: "ó você aqui"
             };

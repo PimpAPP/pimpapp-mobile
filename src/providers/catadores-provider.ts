@@ -49,10 +49,22 @@ export class CatadoresProvider {
 
     registerPhones(phones, catadorId) {
         let url = this.url + catadorId + '/phones/';
-        this.updateHeaders();
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+
         return this.http.post(url, phones, {
             headers: this.headers
         }).map(res => res.json());
+    }
+
+    updateLocation(location, catadorId) {
+        let url = this.url + catadorId + '/georef/';
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+
+        return this.http.post(url, location, {
+            headers: this.headers
+        });
     }
 
     updateHeaders() {
