@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TutorialPage } from './../tutorial/tutorial';
+import { PerfilCatador } from './../perfil-catador/perfil-catador';
 import { ErrorPage } from './../404/ErrorPage';
 
 import { CatakiPage } from './../cataki/cataki';
@@ -18,6 +19,10 @@ import { CadastroCatador } from './../cadastro-catador/cadastro-catador';
 export class MenuPage {
 
     constructor(public navCtrl: NavController) {
+    }
+
+    perfil() {
+        this.navCtrl.push(PerfilCatador);
     }
 
     openTutorial() {

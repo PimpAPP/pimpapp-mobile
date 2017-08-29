@@ -4,7 +4,7 @@ import { ResiduesProvider } from './../providers/residues-providers';
 import { LoginPage } from './../pages/login/login';
 import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catador-page5/cadastro-catador-page5';
 import { StorageService } from './../pages/storage-service';
-//import { CallNumber } from '@ionic-native/call-number';
+import { CallNumber } from '@ionic-native/call-number';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -215,6 +215,7 @@ import {
     Toast,
     LoginProvider,
     UsersAPI,
+    CallNumber,
     // CameraProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: AppStorage, useClass: AppStorage}

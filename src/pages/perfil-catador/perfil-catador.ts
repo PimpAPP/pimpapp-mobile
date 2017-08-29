@@ -10,75 +10,86 @@ import { AlertController } from 'ionic-angular';
 import { UsersAPI } from '../../providers/users-api';
 
 @Component({
-  selector: 'page-perfil-catador',
-  templateUrl: 'perfil-catador.html',
+    selector: 'page-perfil-catador',
+    templateUrl: 'perfil-catador.html',
 })
 export class PerfilCatador {
 
-  //catadorID: any = this.navParams.get("catadorID");
-  catadorID: any = 8;
-  catador: any;
-  catadorDiasTrabalhados: any;
-  material_list: any[] = [];
-  materialRecover: MaterialRecover;
+    //catadorID: any = this.navParams.get("catadorID");
+    catadorID: any = 8;
+    catador: any;
+    catadorDiasTrabalhados: any;
+    material_list: any[] = [];
+    materialRecover: MaterialRecover;
+    catadorImg: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public http: UsersAPI, public loading: LoadingController, 
-    public alertCtrl: AlertController, public callNumber: CallNumber,
-    public apiProvider: ApiProvider, public storage: Storage) {
-      this.materialRecover = new MaterialRecover();
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+        public http: UsersAPI, public loading: LoadingController,
+        public alertCtrl: AlertController, public callNumber: CallNumber,
+        public apiProvider: ApiProvider, public storage: Storage) {
+        this.materialRecover = new MaterialRecover();
+    }
 
-  ionViewWillEnter() {
-    this.storage.get('id').then((val) => {
-    let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
-      //Prepara o loading
-      let loader = this.loading.create({
-          content: 'Por favor aguarde...',
-      });
+    ionViewWillEnter() {
+        //this.storage.get('id').then((val) => {
+            //let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
+            let url = this.apiProvider.url + "api/catadores/414/";
+            //Prepara o loading
+            let loader = this.loading.create({
+                content: 'Por favor aguarde...',
+            });
 
-        loader.present().then(() => {
-            this.http.get(url).subscribe(
-              data => {
+            loader.present().then(() => {
+                this.http.get(url).subscribe(
+                    data => {
 
-                this.catador = JSON.stringify(data);
-                this.catador = JSON.parse(this.catador);
-                console.log(this.catador);
+                        this.catador = JSON.stringify(data);
+                        this.catador = JSON.parse(this.catador);
+                        console.log(this.catador);
 
-                let inicio = new Date(this.catador.works_since);
+                        this.catadorImg = '';
+                        let photoUrl = this.catador.profile_photo;
+                        if (photoUrl) {
+                            photoUrl = (photoUrl.startsWith('/')) ? 
+                                    photoUrl.substr(1, photoUrl.length) : 
+                                    photoUrl;
+                            this.catadorImg = this.apiProvider.url + photoUrl;
+                        }
 
-                if(inicio != null) {
+                        let inicio = new Date(this.catador.works_since);
 
-                  let fim = new Date();
+                        if (inicio != null) {
 
-                  let tempoTrabalhado = Math.abs(fim.getDate() - inicio.getDate());
-                  this.catadorDiasTrabalhados =  Math.ceil(tempoTrabalhado / (1000 * 3600 * 24));
+                            let fim = new Date();
 
-                } else {
-                    this.catadorDiasTrabalhados = 0;
-                }
-                this.setMaterialList(); 
-              },
-              err => {}
-            );
-            loader.dismiss();
-          });
-      });
-  }
+                            let tempoTrabalhado = Math.abs(fim.getDate() - inicio.getDate());
+                            this.catadorDiasTrabalhados = Math.ceil(tempoTrabalhado / (1000 * 3600 * 24));
 
-  setMaterialList(){
-      let material_id: number;
-      for (let i=0; i<this.catador.materials_collected.length; i++){
-          material_id = this.catador.materials_collected[i];
-          this.material_list.push(
-            this.materialRecover.findMaterialId(this.catador.materials_collected[i]));
-      }
-  }
+                        } else {
+                            this.catadorDiasTrabalhados = 0;
+                        }
+                        this.setMaterialList();
+                    },
+                    err => { }
+                );
+                loader.dismiss();
+            });
+       // });
+    }
 
-  lanchPhone(number: string){
-    this.callNumber.callNumber(number, true)
-      .then(() => console.log('Launched dialer!'))
-      .catch(() => console.log('Error launching dialer'));
-  }
+    setMaterialList() {
+        let material_id: number;
+        for (let i = 0; i < this.catador.materials_collected.length; i++) {
+            material_id = this.catador.materials_collected[i];
+            this.material_list.push(
+                this.materialRecover.findMaterialId(this.catador.materials_collected[i]));
+        }
+    }
+
+    lanchPhone(number: string) {
+        this.callNumber.callNumber(number, true)
+            .then(() => console.log('Launched dialer!'))
+            .catch(() => console.log('Error launching dialer'));
+    }
 
 }
