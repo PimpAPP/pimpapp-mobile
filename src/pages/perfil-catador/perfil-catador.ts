@@ -34,8 +34,8 @@ export class PerfilCatador {
 
     ionViewWillEnter() {
         //this.storage.get('id').then((val) => {
-            //let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
-            let url = this.apiProvider.url + "api/catadores/295/";
+            let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
+            //let url = this.apiProvider.url + "api/catadores/295/";
             //Prepara o loading
             let loader = this.loading.create({
                 content: 'Por favor aguarde...',

@@ -279,7 +279,13 @@ export class HomePage {
             }
         }
 
-        this.navCtrl.push(PerfilCatador, {catadorID: id});
+        this.navCtrl.push(PerfilCatador, 
+            {catadorID: id}, 
+            {   animate: true, 
+                direction: 'forward',
+                duration: 1000,
+                animation: 'md-transition'}
+        );
        
         // this.profileTitle = title;
 
