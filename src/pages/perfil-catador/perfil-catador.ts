@@ -15,25 +15,27 @@ import { UsersAPI } from '../../providers/users-api';
 })
 export class PerfilCatador {
 
-    //catadorID: any = this.navParams.get("catadorID");
-    catadorID: any = 8;
+    catadorID: any = this.navParams.get("catadorID");
     catador: any;
     catadorDiasTrabalhados: any;
     material_list: any[] = [];
     materialRecover: MaterialRecover;
     catadorImg: string;
+    minibioMaxSize: Number = 200;
+    showCompleteMinibio: boolean = false;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         public http: UsersAPI, public loading: LoadingController,
         public alertCtrl: AlertController, public callNumber: CallNumber,
-        public apiProvider: ApiProvider, public storage: Storage) {
+        public apiProvider: ApiProvider, public storage: Storage) {        
+        
         this.materialRecover = new MaterialRecover();
     }
 
     ionViewWillEnter() {
         //this.storage.get('id').then((val) => {
             //let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
-            let url = this.apiProvider.url + "api/catadores/414/";
+            let url = this.apiProvider.url + "api/catadores/295/";
             //Prepara o loading
             let loader = this.loading.create({
                 content: 'Por favor aguarde...',
@@ -46,6 +48,7 @@ export class PerfilCatador {
                         this.catador = JSON.stringify(data);
                         this.catador = JSON.parse(this.catador);
                         console.log(this.catador);
+                        this.showCompleteMinibio = (this.catador.minibio.length <= this.minibioMaxSize);
 
                         this.catadorImg = '';
                         let photoUrl = this.catador.profile_photo;
@@ -56,15 +59,15 @@ export class PerfilCatador {
                             this.catadorImg = this.apiProvider.url + photoUrl;
                         }
 
-                        let inicio = new Date(this.catador.works_since);
-
-                        if (inicio != null) {
-
+                        if (this.catador.how_many_years_work != null) {
+                            let inicio = new Date();
+                            inicio.setFullYear(this.catador.how_many_years_work);
+                            inicio.setMonth(1);
+                            inicio.setHours(1);
                             let fim = new Date();
 
-                            let tempoTrabalhado = Math.abs(fim.getDate() - inicio.getDate());
-                            this.catadorDiasTrabalhados = Math.ceil(tempoTrabalhado / (1000 * 3600 * 24));
-
+                            var timeDiff = Math.abs(fim.getTime() - inicio.getTime());
+                            this.catadorDiasTrabalhados = Math.ceil(timeDiff / (1000 * 3600 * 24));
                         } else {
                             this.catadorDiasTrabalhados = 0;
                         }
@@ -90,6 +93,10 @@ export class PerfilCatador {
         this.callNumber.callNumber(number, true)
             .then(() => console.log('Launched dialer!'))
             .catch(() => console.log('Error launching dialer'));
+    }
+
+    learnMore() {
+        this.showCompleteMinibio = !this.showCompleteMinibio;
     }
 
 }

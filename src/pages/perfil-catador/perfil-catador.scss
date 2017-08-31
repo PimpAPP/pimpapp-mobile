@@ -12,7 +12,11 @@ page-perfil-catador {
     }
 
     ion-content {
-        margin-top: 18%;
+        padding-top: 1%;
+        background-image: url(/assets/img/map.jpg)!important;
+        overflow-x: hidden;
+        padding-left: 0px;
+        padding: 0px;
     }
 
     p a {
@@ -35,6 +39,8 @@ page-perfil-catador {
         background-position: top; 
         min-height: 70%;
         padding: 5%;
+        padding-top: 20%;
+        padding-bottom: 25%;
 
         h1 {
             font-size: 3em;
@@ -69,4 +75,55 @@ page-perfil-catador {
         margin-bottom: 20%;
     }
 
+}
+
+
+.img-profile {
+    border-radius: 50%;
+    display:block;
+    margin:auto;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+}
+
+.catador-name {
+    font-size: 3em;
+}
+
+.catador-minibio {
+    font-size: 20px;
+}
+
+.catador-minibio-more {
+    font-size: 22px;
+    color: #ccc;
+    text-decoration: underline;
+}
+
+.row-center {
+    display: flex;
+    justify-content: center;
+}
+
+.material-img {
+    display:block;
+    margin:auto;
+    opacity: 0.4;
+    filter: alpha(opacity=50);
+}
+
+.catador-region-text {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.col-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transparent {
+    background-color: transparent;
 }

@@ -17,17 +17,19 @@
 
 @font-face{
     font-family: 'Brizzush-Rough';
-    src: url('../assets/fonts/Brizzush-Rough.ttf')
+    src: url('../assets/fonts/Brizzush-Rough.ttf') format('ttf');
+    font-weight: 200;
 }
 
 @font-face{
     font-family: 'DIN-Bold';
-    src: url('../assets/fonts/DIN-Bold.ttf')
+    src: url('../assets/fonts/DIN-Bold.ttf') format('ttf');
+    font-weight: 200;
 }
 
 @font-face{
     font-family: 'DIN-Regular';
-    src: url('../assets/fonts/DIN-Regular.ttf')
+    src: url('../assets/fonts/DIN-Regular.ttf') format('ttf');
 }
 
 @font-face {

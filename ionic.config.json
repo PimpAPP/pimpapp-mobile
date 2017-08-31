@@ -1,8 +1,15 @@
 {
-  "name": "pimp",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {}
-  }
+    "name": "pimp",
+    "app_id": "",
+    "type": "ionic-angular",
+    "integrations": {
+        "cordova": {}
+    },
+    "fonts": {
+        "src": [
+            "www/fonts/*.ttf",
+            "www/fonts/*.woff*"
+        ],
+        "dest": "www/build/fonts"
+    }
 }

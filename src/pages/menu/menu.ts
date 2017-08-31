@@ -21,10 +21,6 @@ export class MenuPage {
     constructor(public navCtrl: NavController) {
     }
 
-    perfil() {
-        this.navCtrl.push(PerfilCatador);
-    }
-
     openTutorial() {
         this.navCtrl.push(TutorialPage);
     }

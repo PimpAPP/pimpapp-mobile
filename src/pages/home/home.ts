@@ -4,6 +4,7 @@ import { NavController, Platform , LoadingController} from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
 import { CatadoresProvider } from './../../providers/catadores-provider';
+import { PerfilCatador } from './../perfil-catador/perfil-catador';
 import { CollectsProvider } from './../../providers/collects-provider';
 import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
@@ -277,44 +278,46 @@ export class HomePage {
                 break;
             }
         }
+
+        this.navCtrl.push(PerfilCatador, {catadorID: id});
        
         // this.profileTitle = title;
 
-        this.catadoresProvider.getDataUsingID(id).subscribe(data => {
-            this.clickMarkerData = data;
-            if(this.clickMarkerData.catador_type) 
-                this.markerCatador_type = this.clickMarkerData.catador_type;
-            if(this.clickMarkerData.address_base)
-                this.markerAddress = this.clickMarkerData.address_base;
-            if(this.clickMarkerData.name) 
-                this.markerName = this.clickMarkerData.name; 
-            if(this.clickMarkerData.phones)
-                this.markerPhone = this.clickMarkerData.phones[0].phone;
-            if(this.clickMarkerData.profile_photo)
-                this.markerPhoto = this.apiProvider.url + this.clickMarkerData.profile_photo;
-            else this.markerPhoto = 'assets/img/no_image.jpg';
+//         this.catadoresProvider.getDataUsingID(id).subscribe(data => {
+//             this.clickMarkerData = data;
+//             if(this.clickMarkerData.catador_type) 
+//                 this.markerCatador_type = this.clickMarkerData.catador_type;
+//             if(this.clickMarkerData.address_base)
+//                 this.markerAddress = this.clickMarkerData.address_base;
+//             if(this.clickMarkerData.name) 
+//                 this.markerName = this.clickMarkerData.name; 
+//             if(this.clickMarkerData.phones)
+//                 this.markerPhone = this.clickMarkerData.phones[0].phone;
+//             if(this.clickMarkerData.profile_photo)
+//                 this.markerPhoto = this.apiProvider.url + this.clickMarkerData.profile_photo;
+//             else this.markerPhoto = 'assets/img/no_image.jpg';
 
-            console.log(this.clickMarkerData.email);
-            console.log("individual marker data is: ");
-            console.log(this.clickMarkerData);
-           // loading.dismiss();
-        });
+//             console.log(this.clickMarkerData.email);
+//             console.log("individual marker data is: ");
+//             console.log(this.clickMarkerData);
+//            // loading.dismiss();
+//         });
 
-         console.log("Add");      
+//          console.log("Add");      
 
-        document.getElementById('ngifDiv').style.transition='height 1s';
-        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
-        document.getElementById('ngifDiv').style.position='absolute';
-        document.getElementById('ngifDiv').style.bottom='-20px';
-        document.getElementById('ngifDiv').style.zIndex='2222';
-        document.getElementById('ngifDiv').style.padding='6px 12px';
-        document.getElementById('ngifDiv').style.width='100%';
-        document.getElementById('ngifDiv').style.background='#fff';
-        document.getElementById('ngifDiv').style.color='#fff';
-        document.getElementById('ngifDiv').style.height='45%';
-        document.getElementById('closeDiv').style.display='block';
+//         document.getElementById('ngifDiv').style.transition='height 1s';
+//         document.getElementById('ngifDiv').style.webkitTransition='height 1s';
+//         document.getElementById('ngifDiv').style.position='absolute';
+//         document.getElementById('ngifDiv').style.bottom='-20px';
+//         document.getElementById('ngifDiv').style.zIndex='2222';
+//         document.getElementById('ngifDiv').style.padding='6px 12px';
+//         document.getElementById('ngifDiv').style.width='100%';
+//         document.getElementById('ngifDiv').style.background='#fff';
+//         document.getElementById('ngifDiv').style.color='#fff';
+//         document.getElementById('ngifDiv').style.height='45%';
+//         document.getElementById('closeDiv').style.display='block';
         
-        this.map.setClickable(false);    
+//         this.map.setClickable(false);    
     }
 
      closeSlide(){
