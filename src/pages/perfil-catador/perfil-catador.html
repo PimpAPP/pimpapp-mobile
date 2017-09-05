@@ -6,7 +6,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content id="perfil-catador-content">
 
     <img src="{{ catadorImg }}" *ngIf="catador?.profile_photo" class="img-profile">
 
@@ -166,7 +166,7 @@
             </a>
         </ion-col>
         <ion-col col-4 class="col-center">
-            <img src="assets/img/Icones_mapamenu-12.png" alt="Telefone" width="40%" (click)="lanchPhone(catador?.phones[0]?.phone)">
+            <img src="assets/img/Icones_mapamenu-12.png" alt="Telefone" width="40%" (click)="launchPhone(catador?.phones[0]?.phone)">
         </ion-col>
         <ion-col col-4 class="col-center">
             <img src="assets/img/Icones_mapamenu-17.png" alt="Apoie" width="40%">

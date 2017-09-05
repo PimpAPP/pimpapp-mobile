@@ -4,14 +4,14 @@ import { NavController, Platform , LoadingController} from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
 import { CatadoresProvider } from './../../providers/catadores-provider';
-import { PerfilCatador } from './../perfil-catador/perfil-catador';
 import { CollectsProvider } from './../../providers/collects-provider';
+import { PerfilCatador } from './../perfil-catador/perfil-catador';
 import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
 import { CollectsOpen } from './../collects-open/catador-collects';
 import { AutocompletePage } from './../autocomplete/autocomplete';
 import { ResidueRegister } from './../residue-register/residue-register';
-import { NgZone } from '@angular/core';
+import { NgZone, ViewChild } from '@angular/core';
 
 
 import { 
@@ -45,6 +45,10 @@ export class HomePage {
     openLongitude:any;
     loading:any;
     Platform: Platform;
+    catadorId: any;
+    showCatadorProfile: boolean = false;
+    @ViewChild(PerfilCatador) perfilCatadorChild;
+
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
@@ -58,12 +62,15 @@ export class HomePage {
         this.showProfile = false; 
 
         this.platform.ready().then(() => {
-            this.geolocation.getCurrentPosition({timeout: 20000, enableHighAccuracy: false}).then(resp => {
+            this.geolocation.getCurrentPosition({timeout: 6000, enableHighAccuracy: false}).then(resp => {
                 this.openLatitude = resp.coords.latitude;
                 this.openLongitude = resp.coords.longitude;
-                this.loadMap();
+                this.loadMap(15);
             }).catch((error) => {
-                console.log('Error getting location', error);
+                console.log('Error getting location - Focando no Brasil', error);
+                this.openLatitude = -13.702797;
+                this.openLongitude = -69.686511;
+                this.loadMap(3);
             });     
         },(error) => {
             console.log('Error ' + error);
@@ -101,7 +108,7 @@ export class HomePage {
         });
     }
 
-    loadMap(){
+    loadMap(zoom){
         console.log('loadMap');
         let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
         this.map = new GoogleMap('map', {
@@ -120,16 +127,16 @@ export class HomePage {
           },
           'camera': {
             'latLng': location,
-            'tilt': 30,
-            'zoom': 15,
-            'bearing': 50
+            'tilt': 0,
+            'zoom': zoom,
+            'bearing': 0
           }
         });
         this.loadCatadores();  
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-            this.getCurrentLocation().subscribe(location =>{
-            });
+            // this.getCurrentLocation().subscribe(location =>{
+            // });
             // this.loadCollects();
             this.centerLocation();
             this.loading.dismiss();
@@ -278,61 +285,46 @@ export class HomePage {
                 break;
             }
         }
-
-        this.navCtrl.push(PerfilCatador, 
-            {catadorID: id}, 
-            {   animate: true, 
-                direction: 'forward',
-                duration: 1000,
-                animation: 'md-transition'}
-        );
        
-        // this.profileTitle = title;
+        this.catadorId = id;
+        this.showCatadorProfile = true;
+        // Open Página do Catador
+        // this.navCtrl.push(PerfilCatador, 
+        //     {catadorID: id}, 
+        //     {   animate: true, 
+        //         direction: 'forward',
+        //         duration: 1000,
+        //         animation: 'md-transition'}
+        // );
 
-//         this.catadoresProvider.getDataUsingID(id).subscribe(data => {
-//             this.clickMarkerData = data;
-//             if(this.clickMarkerData.catador_type) 
-//                 this.markerCatador_type = this.clickMarkerData.catador_type;
-//             if(this.clickMarkerData.address_base)
-//                 this.markerAddress = this.clickMarkerData.address_base;
-//             if(this.clickMarkerData.name) 
-//                 this.markerName = this.clickMarkerData.name; 
-//             if(this.clickMarkerData.phones)
-//                 this.markerPhone = this.clickMarkerData.phones[0].phone;
-//             if(this.clickMarkerData.profile_photo)
-//                 this.markerPhoto = this.apiProvider.url + this.clickMarkerData.profile_photo;
-//             else this.markerPhoto = 'assets/img/no_image.jpg';
+        this.perfilCatadorChild.updateData(id);
 
-//             console.log(this.clickMarkerData.email);
-//             console.log("individual marker data is: ");
-//             console.log(this.clickMarkerData);
-//            // loading.dismiss();
-//         });
-
-//          console.log("Add");      
-
-//         document.getElementById('ngifDiv').style.transition='height 1s';
-//         document.getElementById('ngifDiv').style.webkitTransition='height 1s';
-//         document.getElementById('ngifDiv').style.position='absolute';
-//         document.getElementById('ngifDiv').style.bottom='-20px';
-//         document.getElementById('ngifDiv').style.zIndex='2222';
-//         document.getElementById('ngifDiv').style.padding='6px 12px';
-//         document.getElementById('ngifDiv').style.width='100%';
-//         document.getElementById('ngifDiv').style.background='#fff';
-//         document.getElementById('ngifDiv').style.color='#fff';
-//         document.getElementById('ngifDiv').style.height='45%';
-//         document.getElementById('closeDiv').style.display='block';
+        document.getElementById('ngifDiv').style.transition='height 1s';
+        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
+        document.getElementById('ngifDiv').style.position='absolute';
+        document.getElementById('ngifDiv').style.bottom='-20px';
+        document.getElementById('ngifDiv').style.zIndex='2222';
+        document.getElementById('ngifDiv').style.padding='6px 12px';
+        document.getElementById('ngifDiv').style.width='100%';
+        document.getElementById('ngifDiv').style.background='#fff';
+        document.getElementById('ngifDiv').style.color='#fff';
+        document.getElementById('ngifDiv').style.height='75%';
+        document.getElementById('closeDiv').style.display='block';
         
-//         this.map.setClickable(false);    
+        this.map.setClickable(false);    
     }
 
      closeSlide(){
-        this.map.setClickable(true);
-        document.getElementById('ngifDiv').style.height='0%';
-        document.getElementById('ngifDiv').style.bottom='-20px';
+         this.map.setClickable(true);
+         document.getElementById('ngifDiv').style.height='0%';
+         document.getElementById('ngifDiv').style.bottom='-20px';
         document.getElementById('ngifDiv').style.transition='height 1s';
         document.getElementById('ngifDiv').style.webkitTransition='height 1s';
         document.getElementById('closeDiv').style.display='none';
+
+        setTimeout(function() {
+            this.showCatadorProfile = false;
+        }, 300);
     }
 
     goRegisterMate() {

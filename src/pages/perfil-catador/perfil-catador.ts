@@ -2,7 +2,7 @@ import { ApiProvider } from '../../providers/api-provider';
 import { Storage } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number';
 import { MaterialRecover } from './../MaterialRecover';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -15,7 +15,9 @@ import { UsersAPI } from '../../providers/users-api';
 })
 export class PerfilCatador {
 
-    catadorID: any = this.navParams.get("catadorID");
+    //catadorID: any = this.navParams.get("catadorID");
+    //@Input() catadorID: string;
+
     catador: any;
     catadorDiasTrabalhados: any;
     material_list: any[] = [];
@@ -32,9 +34,10 @@ export class PerfilCatador {
         this.materialRecover = new MaterialRecover();
     }
 
-    ionViewWillEnter() {
+    updateData(id) {
+        console.log("catadorID: " + id);
         //this.storage.get('id').then((val) => {
-            let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
+            let url = this.apiProvider.url + "api/catadores/" + id + "/";
             //let url = this.apiProvider.url + "api/catadores/295/";
             //Prepara o loading
             let loader = this.loading.create({
@@ -44,13 +47,14 @@ export class PerfilCatador {
             loader.present().then(() => {
                 this.http.get(url).subscribe(
                     data => {
-
+                        this.catadorImg = '';
                         this.catador = JSON.stringify(data);
                         this.catador = JSON.parse(this.catador);
                         console.log(this.catador);
-                        this.showCompleteMinibio = (this.catador.minibio.length <= this.minibioMaxSize);
+                        this.showCompleteMinibio = (this.catador.minibio && 
+                                this.catador.minibio.length <= this.minibioMaxSize);
 
-                        this.catadorImg = '';
+                        
                         let photoUrl = this.catador.profile_photo;
                         if (photoUrl) {
                             photoUrl = (photoUrl.startsWith('/')) ? 
@@ -78,9 +82,12 @@ export class PerfilCatador {
                 loader.dismiss();
             });
        // });
+
+       window.scrollTo(0, 0);
     }
 
     setMaterialList() {
+        console.log("setMaterialList");
         let material_id: number;
         for (let i = 0; i < this.catador.materials_collected.length; i++) {
             material_id = this.catador.materials_collected[i];
@@ -89,7 +96,7 @@ export class PerfilCatador {
         }
     }
 
-    lanchPhone(number: string) {
+    launchPhone(number: string) {
         this.callNumber.callNumber(number, true)
             .then(() => console.log('Launched dialer!'))
             .catch(() => console.log('Error launching dialer'));
