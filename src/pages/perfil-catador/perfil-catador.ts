@@ -15,7 +15,7 @@ import { UsersAPI } from '../../providers/users-api';
 })
 export class PerfilCatador {
 
-    //catadorID: any = this.navParams.get("catadorID");
+    catadorID: any = this.navParams.get("catadorID");
     //@Input() catadorID: string;
 
     catador: any;
@@ -34,56 +34,61 @@ export class PerfilCatador {
         this.materialRecover = new MaterialRecover();
     }
 
+    ngAfterViewInit() {
+        if (this.catadorID) {
+            this.update();
+        }    
+    }
+
     updateData(id) {
-        console.log("catadorID: " + id);
-        //this.storage.get('id').then((val) => {
-            let url = this.apiProvider.url + "api/catadores/" + id + "/";
-            //let url = this.apiProvider.url + "api/catadores/295/";
-            //Prepara o loading
-            let loader = this.loading.create({
-                content: 'Por favor aguarde...',
-            });
+        this.catadorID = id;
+        this.update();
+    }
 
-            loader.present().then(() => {
-                this.http.get(url).subscribe(
-                    data => {
-                        this.catadorImg = '';
-                        this.catador = JSON.stringify(data);
-                        this.catador = JSON.parse(this.catador);
-                        console.log(this.catador);
-                        this.showCompleteMinibio = (this.catador.minibio && 
-                                this.catador.minibio.length <= this.minibioMaxSize);
+    update() {
+        let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
+        //Prepara o loading
+        let loader = this.loading.create({
+            content: 'Por favor aguarde...',
+        });
 
-                        
-                        let photoUrl = this.catador.profile_photo;
-                        if (photoUrl) {
-                            photoUrl = (photoUrl.startsWith('/')) ? 
-                                    photoUrl.substr(1, photoUrl.length) : 
-                                    photoUrl;
-                            this.catadorImg = this.apiProvider.url + photoUrl;
-                        }
+        loader.present().then(() => {
+            this.http.get(url).subscribe(
+                data => {
+                    this.catadorImg = '';
+                    this.catador = JSON.stringify(data);
+                    this.catador = JSON.parse(this.catador);
+                    console.log(this.catador);
+                    this.showCompleteMinibio = (this.catador.minibio && 
+                            this.catador.minibio.length <= this.minibioMaxSize);
 
-                        if (this.catador.how_many_years_work != null) {
-                            let inicio = new Date();
-                            inicio.setFullYear(this.catador.how_many_years_work);
-                            inicio.setMonth(1);
-                            inicio.setHours(1);
-                            let fim = new Date();
+                    
+                    let photoUrl = this.catador.profile_photo;
+                    if (photoUrl) {
+                        photoUrl = (photoUrl.startsWith('/')) ? 
+                                photoUrl.substr(1, photoUrl.length) : 
+                                photoUrl;
+                        this.catadorImg = this.apiProvider.url + photoUrl;
+                    }
 
-                            var timeDiff = Math.abs(fim.getTime() - inicio.getTime());
-                            this.catadorDiasTrabalhados = Math.ceil(timeDiff / (1000 * 3600 * 24));
-                        } else {
-                            this.catadorDiasTrabalhados = 0;
-                        }
-                        this.setMaterialList();
-                    },
-                    err => { }
-                );
-                loader.dismiss();
-            });
-       // });
+                    if (this.catador.how_many_years_work != null) {
+                        let inicio = new Date();
+                        inicio.setFullYear(this.catador.how_many_years_work);
+                        inicio.setMonth(1);
+                        inicio.setHours(1);
+                        let fim = new Date();
 
-       window.scrollTo(0, 0);
+                        var timeDiff = Math.abs(fim.getTime() - inicio.getTime());
+                        this.catadorDiasTrabalhados = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    } else {
+                        this.catadorDiasTrabalhados = 0;
+                    }
+                    this.setMaterialList();
+                },
+                err => { }
+            );
+            loader.dismiss();
+        });
     }
 
     setMaterialList() {

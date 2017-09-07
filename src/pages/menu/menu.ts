@@ -52,4 +52,16 @@ export class MenuPage {
     cadastroCatador() {
         this.navCtrl.push(CadastroCatador);
     }
+
+
+    openCatadorPage() {
+        // Open Página do Catador
+        this.navCtrl.push(PerfilCatador, 
+            {catadorID: 296}, 
+            {   animate: true, 
+                direction: 'forward',
+                duration: 1000,
+                animation: 'md-transition'}
+        );
+    }
 }

@@ -72,6 +72,7 @@ export class HomePage {
                 this.openLongitude = -69.686511;
                 this.loadMap(3);
             });     
+
         },(error) => {
             console.log('Error ' + error);
         });
@@ -171,7 +172,6 @@ export class HomePage {
     }
 
     showAddressModal(){
-
         const modal = this.modalCtrl.create(AutocompletePage);
 
         this.map.setClickable(false);
@@ -269,6 +269,7 @@ export class HomePage {
                 //marker.showInfoWindow();
         });
     }
+
     profileTitle:any;
     clickMarkerData:any;
     markerCatador_type:any;
@@ -288,14 +289,6 @@ export class HomePage {
        
         this.catadorId = id;
         this.showCatadorProfile = true;
-        // Open Página do Catador
-        // this.navCtrl.push(PerfilCatador, 
-        //     {catadorID: id}, 
-        //     {   animate: true, 
-        //         direction: 'forward',
-        //         duration: 1000,
-        //         animation: 'md-transition'}
-        // );
 
         this.perfilCatadorChild.updateData(id);
 

@@ -17,19 +17,23 @@
 
 @font-face{
     font-family: 'Brizzush-Rough';
-    src: url('../assets/fonts/Brizzush-Rough.ttf') format('ttf');
+    //src: url('../assets/fonts/Brizzush-Rough.ttf') format('ttf');
+    src: url('../assets/fonts/Brizzush-Rough.woff') format('woff');
     font-weight: 200;
 }
 
+
 @font-face{
     font-family: 'DIN-Bold';
-    src: url('../assets/fonts/DIN-Bold.ttf') format('ttf');
+    //src: url('../assets/fonts/DIN-Bold.ttf') format('ttf');
+    src: url('../assets/fonts/DIN-Bold.woff') format('woff');
     font-weight: 200;
 }
 
 @font-face{
     font-family: 'DIN-Regular';
-    src: url('../assets/fonts/DIN-Regular.ttf') format('ttf');
+    //src: url('../assets/fonts/DIN-Regular.ttf') format('ttf');
+    src: url('../assets/fonts/DIN-Regular.woff') format('woff');
 }
 
 @font-face {
@@ -45,18 +49,21 @@
 
 h1 {
     font-family: "Brizzush-Rough";
-    color: color($colors, green);
+    //color: color($colors, green);
+    color: #00ba45;
 }
 
 
 ion-title {
     font-family: "Brizzush-Rough";
-    color: color($colors, green);
+    //color: color($colors, green);
+    color: #00ba45;
 }
 
 h2, h3 {
     font-family: "DIN-Bold";
-    color: color($colors, green);
+    //color: color($colors, green);
+    color: #00ba45;
 }
 
 p {
@@ -227,4 +234,22 @@ ion-app._gmaps_cdv_ .nav-decor{
         display: table-cell;
         vertical-align: top;
     }
+}
+
+.col-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 450px) {
+ 
+
+
 }
