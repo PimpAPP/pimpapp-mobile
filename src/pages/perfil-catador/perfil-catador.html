@@ -7,9 +7,9 @@
 
 <ion-content id="perfil-catador-content">
 
-    <div *ngIf="catador?.profile_photo">     
+    <div [hidden]="!catadorImg">     
         <div class="profile-header-background"></div>
-        <img src="{{ catadorImg }}" class="img-profile">
+        <img src="{{ catadorImg }}" class="img-profile" (error)="photoOnError()">
     </div>
     <div *ngIf="!catador?.profile_photo" style="margin-top: 50px !important"></div>
     

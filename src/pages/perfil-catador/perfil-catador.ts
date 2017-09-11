@@ -94,6 +94,7 @@ export class PerfilCatador {
     setMaterialList() {
         console.log("setMaterialList");
         let material_id: number;
+        this.material_list = [];
         for (let i = 0; i < this.catador.materials_collected.length; i++) {
             material_id = this.catador.materials_collected[i];
             this.material_list.push(
@@ -109,6 +110,12 @@ export class PerfilCatador {
 
     learnMore() {
         this.showCompleteMinibio = !this.showCompleteMinibio;
+    }
+
+
+    photoOnError() {
+        console.log('photoOnError3. ');
+        this.catadorImg = '';
     }
 
 }

@@ -88,7 +88,12 @@ export class HomePage {
     }
 
     centerLocation(){
-        this.getCurrentLocation().subscribe(location =>{
+        // this.getCurrentLocation().subscribe(location =>{
+            console.log('centerLocation');
+            //console.log(location);
+
+            var location = new LatLng(this.openLatitude, this.openLongitude);
+
             let position: CameraPosition = {
                 target: location,
                 zoom: 10,
@@ -106,7 +111,7 @@ export class HomePage {
                 marker.showInfoWindow();
             });
             this.map.moveCamera(position);
-        });
+        // });
     }
 
     loadMap(zoom){
@@ -287,9 +292,9 @@ export class HomePage {
             }
         }
        
+        console.log(id);
         this.catadorId = id;
         this.showCatadorProfile = true;
-
         this.perfilCatadorChild.updateData(id);
 
         document.getElementById('ngifDiv').style.transition='height 1s';
