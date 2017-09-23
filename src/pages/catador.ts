@@ -42,12 +42,14 @@ export class Catador {
     public safety_kit_brakes: boolean = false;
     public safety_kit_reflective_tapes: boolean = false;
     public safety_kit_rearview: boolean = false;
+    public carroca_pimpada: boolean = false;
     public registered_by_another_user: boolean = false;
     public another_user_name: string = '';
     public another_user_email: string = '';
     public another_user_whatsapp: string = '';
     public image: string = '';
     public user: string = '';
+    public modified_date: any;
 
     constructor() {
         this.phones[0] = new Phone();

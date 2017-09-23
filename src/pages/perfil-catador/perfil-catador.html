@@ -1,8 +1,7 @@
-<ion-header>
+<!-- <ion-header>
     <ion-navbar>
-        <!-- <ion-title class="titleText"></ion-title> -->
     </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 
 <ion-content id="perfil-catador-content">
@@ -23,6 +22,40 @@
         <h2 text-center>"{{ catador?.presentation_phrase }}"</h2>
     </div>
 
+    <div *ngIf="catador?.phones[0]?.phone">
+        <h2 text-center>{{ catador?.phones[0]?.phone }}</h2>
+    </div>
+
+    <hr>
+    
+    <ion-row *ngIf="catador?.phones?.length" id="phones" >
+        <ion-col col-6 class="col-center">
+            <a text-center href="https://api.whatsapp.com/send?phone={{ catador.phones[0].phone }}&text=Ol%C3%A1%20catador,%20quero%20confirmar%20a%20minha%20coleta%20com%20voc%C3%AA">
+                <img src="assets/img/Icones_mapamenu-11.png" alt="Whats app" width="40%">
+            </a>
+        </ion-col>
+        <ion-col col-6 class="col-center">
+            <img src="assets/img/Icones_mapamenu-12.png" alt="Telefone" width="40%" (click)="launchPhone(catador?.phones[0]?.phone)">
+        </ion-col>
+    </ion-row>
+
+    <hr>
+
+    <div *ngIf="catador?.region">
+        <h3 text-center style="color: black">Locais onde coleta:</h3>
+        <h3 text-center>{{ catador?.region }}</h3>
+    </div>
+
+    <h2 text-center style="color: black">TRABALHA RECICLANDO</h2>
+
+    <ion-row class="row-center">
+        <ion-col col-3 *ngFor="let material of material_list">
+            <img src="assets/img/{{ material.icon }}" alt="{{ material.name }}" width="80%" class="material-img">
+            <p text-center>{{ material.name }}</p>
+        </ion-col>
+    </ion-row>
+    <br />
+
     <div *ngIf="catador?.minibio">
         <p text-center class="catador-minibio">
             <span *ngIf="showCompleteMinibio">
@@ -39,26 +72,15 @@
             </a>
         </p>
     </div>
-    <br />    
 
-    <h2 text-center style="color: black">TRABALHA RECICLANDO</h2>
-
-    <ion-row class="row-center">
-        <ion-col col-3 *ngFor="let material of material_list">
-            <img src="assets/img/{{ material.icon }}" alt="{{ material.name }}" width="80%" class="material-img">
-            <p text-center>{{ material.name }}</p>
-        </ion-col>
-    </ion-row>
-    <br />
-
-    <ion-row *ngIf="catador?.region" class="row-center">
+    <!-- <ion-row *ngIf="catador?.region" class="row-center">
         <ion-col col-4 class="col-right">
             <img src="assets/img/Icones_mapamenu-15.png" class="icon-map-region" alt="Pin Mapa">
         </ion-col>    
         <ion-col col-8>
             <h2 class="catador-region-text" class="text-map-region">{{ catador?.region }}</h2>
         </ion-col>    
-    </ion-row>
+    </ion-row> -->
 
     <ion-row class="row-center">
         <div id="perfil-catador">
@@ -82,7 +104,16 @@
 
     <ion-row class="row-center">
         <ion-list>                
-            <ion-item class="transparent">
+            <ion-item class="transparent" text-wrap>
+                <ion-thumbnail item-left *ngIf="catador?.carroca_pimpada">
+                    <img src="assets/img/Checkbox2.png">
+                </ion-thumbnail>
+                <ion-thumbnail item-left *ngIf="!catador?.carroca_pimpada">
+                    <img src="assets/img/Checkbox1.png">
+                </ion-thumbnail> 
+                <p class="safety-kit-label">Carroça grafitada/pimpada?</p>
+            </ion-item>
+            <!-- <ion-item class="transparent">
                 <ion-thumbnail item-left *ngIf="catador?.has_smartphone_with_internet">
                     <img src="assets/img/Checkbox2.png">
                 </ion-thumbnail>
@@ -144,28 +175,12 @@
                     <img src="assets/img/Checkbox1.png">
                 </ion-thumbnail>
                 <p class="safety-kit-label">Retrovisor</p>
-            </ion-item>
+            </ion-item> -->
         </ion-list> 
     </ion-row>
 
     <p text-center>
         <a style="text-decoration: underline;">ATUALIZAR CADASTRO</a>
     </p>
-
-    <hr>
-
-    <ion-row *ngIf="catador?.phones?.length" id="phones" >
-        <ion-col col-4 class="col-center">
-            <a text-center href="https://api.whatsapp.com/send?phone={{ catador.phones[0].phone }}&text=Ol%C3%A1%20catador,%20quero%20confirmar%20a%20minha%20coleta%20com%20voc%C3%AA">
-              <img src="assets/img/Icones_mapamenu-11.png" alt="Whats app" width="40%">
-            </a>
-        </ion-col>
-        <ion-col col-4 class="col-center">
-            <img src="assets/img/Icones_mapamenu-12.png" alt="Telefone" width="40%" (click)="launchPhone(catador?.phones[0]?.phone)">
-        </ion-col>
-        <ion-col col-4 class="col-center">
-            <img src="assets/img/Icones_mapamenu-17.png" alt="Apoie" width="40%">
-        </ion-col>
-    </ion-row>
 
 </ion-content>

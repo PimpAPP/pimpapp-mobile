@@ -57,7 +57,7 @@ export class MenuPage {
     openCatadorPage() {
         // Open Página do Catador
         this.navCtrl.push(PerfilCatador, 
-            {catadorID: 296}, 
+            {catadorID: 325}, 
             {   animate: true, 
                 direction: 'forward',
                 duration: 1000,

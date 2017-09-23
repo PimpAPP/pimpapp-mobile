@@ -283,14 +283,14 @@ export class HomePage {
     markerPhone:any;
     markerPhoto:any;
 
-    iconClicked(title) {
-        let id = 0;
-        for (var x=0; x<this.nearest_catadores.length; x++) {
-            if (this.nearest_catadores[x].name == title) {
-                id = this.nearest_catadores[x].id;
-                break;
-            }
-        }
+    iconClicked(id) {
+        // let id = 0;
+        // for (var x=0; x<this.nearest_catadores.length; x++) {
+        //     if (this.nearest_catadores[x].name == title) {
+        //         id = this.nearest_catadores[x].id;
+        //         break;
+        //     }
+        // }
        
         console.log(id);
         this.catadorId = id;
@@ -345,7 +345,8 @@ export class HomePage {
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude, 
-                catador.name,iconType);
+                // catador.name,iconType);
+                catador.id,iconType);
 
            index = index + 1
       }
