@@ -107,4 +107,16 @@ export class Catador {
         this.materials_collected.push(material);
     }
 
+    getModifiedDate() {
+        if (!this.modified_date) return null;
+        var data = new Date(this.modified_date)
+        var dia: any = data.getDate();
+        if (dia.toString().length == 1)
+            dia = "0"+dia;
+        var mes: any = data.getMonth()+1;
+        if (mes.toString().length == 1)
+            mes = "0"+mes;
+        var ano = data.getFullYear();  
+        return dia+"/"+mes+"/"+ano;
+    }
 }

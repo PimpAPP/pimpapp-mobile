@@ -118,4 +118,7 @@ export class PerfilCatador {
         this.catadorImg = '';
     }
 
+    // getModifiedDate() {
+    //     this.catador.getModifiedDate();
+    // }
 }

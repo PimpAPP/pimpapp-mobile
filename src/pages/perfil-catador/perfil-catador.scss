@@ -90,7 +90,7 @@ page-perfil-catador {
     object-fit: cover;
     width: 150px;
     height: 150px;
-    margin-top: 76px;
+    margin-top: 20px;
 }
 
 .catador-name {
@@ -148,7 +148,7 @@ page-perfil-catador {
     top: 0;
     position: absolute;
     z-index: -1;
-    height: 150px;
+    height: 100px;
 }
 
 .icon-map-region {
@@ -164,6 +164,12 @@ page-perfil-catador {
 .safety-kit-label {
     font-size: 2rem !important;
     color: black !important;
+}
+
+.modified-date {
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 50px;
 }
 
 @media screen and (max-width: 450px) {

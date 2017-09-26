@@ -32,6 +32,7 @@ declare var google:any;
 })
 export class HomePage {
  
+    @ViewChild(PerfilCatador) perfilCatadorChild;
     map: GoogleMap;
     nearest_catadores: any;
     nearest_collects: any;
@@ -47,7 +48,14 @@ export class HomePage {
     Platform: Platform;
     catadorId: any;
     showCatadorProfile: boolean = false;
-    @ViewChild(PerfilCatador) perfilCatadorChild;
+    profileTitle:any;
+    clickMarkerData:any;
+    markerCatador_type:any;
+    markerAddress:any;
+    markerName:any;
+    markerPhone:any;
+    markerPhoto:any;
+    
 
  
     constructor(public navCtrl: NavController, public platform: Platform,
@@ -275,14 +283,6 @@ export class HomePage {
         });
     }
 
-    profileTitle:any;
-    clickMarkerData:any;
-    markerCatador_type:any;
-    markerAddress:any;
-    markerName:any;
-    markerPhone:any;
-    markerPhoto:any;
-
     iconClicked(id) {
         // let id = 0;
         // for (var x=0; x<this.nearest_catadores.length; x++) {
@@ -297,27 +297,34 @@ export class HomePage {
         this.showCatadorProfile = true;
         this.perfilCatadorChild.updateData(id);
 
-        document.getElementById('ngifDiv').style.transition='height 1s';
-        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
-        document.getElementById('ngifDiv').style.position='absolute';
-        document.getElementById('ngifDiv').style.bottom='-20px';
-        document.getElementById('ngifDiv').style.zIndex='2222';
-        document.getElementById('ngifDiv').style.padding='6px 12px';
-        document.getElementById('ngifDiv').style.width='100%';
-        document.getElementById('ngifDiv').style.background='#fff';
-        document.getElementById('ngifDiv').style.color='#fff';
-        document.getElementById('ngifDiv').style.height='75%';
+        var div = document.getElementById('ngifDiv');
+
+        div.style.transition='height 1s';
+        div.style.webkitTransition='height 1s';
+        // div.style.position='relative';
+        div.style.position='absolute';
+        div.style.bottom='-20px';
+        div.style.zIndex='2222';
+        div.style.padding='6px 12px';
+        div.style.width='100%';
+        div.style.background='#fff';
+        div.style.color='#fff';
+        div.style.height='75%';
         document.getElementById('closeDiv').style.display='block';
+
+        var topPos = div.offsetTop;
+        div.scrollTop = topPos;
         
         this.map.setClickable(false);    
     }
 
      closeSlide(){
          this.map.setClickable(true);
-         document.getElementById('ngifDiv').style.height='0%';
-         document.getElementById('ngifDiv').style.bottom='-20px';
-        document.getElementById('ngifDiv').style.transition='height 1s';
-        document.getElementById('ngifDiv').style.webkitTransition='height 1s';
+        var div = document.getElementById('ngifDiv');
+         div.style.height='0%';
+         div.style.bottom='-20px';
+        div.style.transition='height 1s';
+        div.style.webkitTransition='height 1s';
         document.getElementById('closeDiv').style.display='none';
 
         setTimeout(function() {

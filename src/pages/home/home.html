@@ -10,7 +10,7 @@
     </div>
 
     <div id="ngifDiv" [hidden]="!showCatadorProfile">
-        <button (click)="closeSlide()" class="closeDiv" id="closeDiv">x</button>
+        <button [hidden]="true" (click)="closeSlide()" class="closeDiv" id="closeDiv">x</button>
 
         <page-perfil-catador></page-perfil-catador>
     </div>
