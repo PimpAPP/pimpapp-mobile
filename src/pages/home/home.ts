@@ -96,30 +96,37 @@ export class HomePage {
     }
 
     centerLocation(){
-        // this.getCurrentLocation().subscribe(location =>{
-            console.log('centerLocation');
-            //console.log(location);
+        var location = new LatLng(this.openLatitude, this.openLongitude);
 
-            var location = new LatLng(this.openLatitude, this.openLongitude);
+        let position: CameraPosition = {
+            target: location,
+            zoom: 15,
+            tilt: 30
+        };
 
-            let position: CameraPosition = {
-                target: location,
-                zoom: 10,
-                tilt: 30
-            };
-            let markerOptions: MarkerOptions = {
+        let markerOptions: MarkerOptions;
+        let iconURL:string = 'assets/icon/marker-user.png';
+
+        if (this.platform.is('ios')) {
+            markerOptions = {
                 position: location,
-                title: "ó você aqui"
+                title: "ó você aqui",
+                icon: { url : iconURL },
             };
+        }else{
+            markerOptions = {
+                position: location,
+                title: "ó você aqui",
+                icon: { url : "file:///android_asset/www/" + iconURL },
+            };            
+        }
 
-            this.map.addMarker(markerOptions)
-            .then((marker: Marker) => {
-                //marker.setIcon('www/assets/icon/marker-user.png');
-                //marker.setIcon('www/assets/icon/markar-user.png');
-                marker.showInfoWindow();
-            });
-            this.map.moveCamera(position);
-        // });
+        this.map.addMarker(markerOptions)
+        .then((marker: Marker) => {
+            marker.showInfoWindow();
+        });
+       
+        this.map.moveCamera(position);
     }
 
     loadMap(zoom){

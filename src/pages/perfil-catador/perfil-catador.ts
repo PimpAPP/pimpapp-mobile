@@ -3,9 +3,10 @@ import { Storage } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number';
 import { MaterialRecover } from './../MaterialRecover';
 import { Component, Input } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { UsersAPI } from '../../providers/users-api';
 
@@ -25,11 +26,15 @@ export class PerfilCatador {
     catadorImg: string;
     minibioMaxSize: Number = 200;
     showCompleteMinibio: boolean = false;
+    noImageSrc = 'assets/img/no_image.jpg';
+    public avatar: String = '';
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         public http: UsersAPI, public loading: LoadingController,
         public alertCtrl: AlertController, public callNumber: CallNumber,
-        public apiProvider: ApiProvider, public storage: Storage) {        
+        public apiProvider: ApiProvider, public storage: Storage,
+        private camera: Camera, public toastCtrl: ToastController,
+        public userProvider: UsersAPI) {        
         
         this.materialRecover = new MaterialRecover();
     }
@@ -55,7 +60,7 @@ export class PerfilCatador {
         loader.present().then(() => {
             this.http.get(url).subscribe(
                 data => {
-                    this.catadorImg = '';
+                    this.catadorImg = this.noImageSrc;
                     this.catador = JSON.stringify(data);
                     this.catador = JSON.parse(this.catador);
                     console.log(this.catador);
@@ -114,11 +119,75 @@ export class PerfilCatador {
 
 
     photoOnError() {
-        console.log('photoOnError3. ');
-        this.catadorImg = '';
+        this.catadorImg = this.noImageSrc;
     }
 
-    // getModifiedDate() {
-    //     this.catador.getModifiedDate();
-    // }
+    getPhoto(type) {
+        if (!this.catador || !this.catador.user) {
+            let toast = this.toastCtrl.create({
+                message: 'Usuário não encontrado',
+                duration: 3000,
+                position: 'top'
+            });
+            toast.present();
+            return;
+        }
+
+        let options: CameraOptions;
+
+        if (type == 'camera') {
+            options = {
+                quality: 40,
+                destinationType: this.camera.DestinationType.DATA_URL,
+                encodingType: this.camera.EncodingType.JPEG,
+                mediaType: this.camera.MediaType.PICTURE
+            }
+        } else {
+            options = {
+                destinationType: this.camera.DestinationType.DATA_URL,
+                sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+            };
+        }
+
+        this.camera.getPicture(options).then((imageData) => {
+            let base64Image = 'data:image/jpeg;base64,' + imageData;
+            this.avatar = base64Image;
+            this.catadorImg = base64Image;            
+
+            this.cadastrarAvatar(this.catador.user);
+            let toast = this.toastCtrl.create({
+                message: 'Enviando imagem...',
+                duration: 5000,
+                position: 'bottom'
+            });
+            toast.present();
+
+        }, (err) => {
+            console.log('Error camera: ' + err);
+        });
+
+    }
+        
+    cadastrarAvatar(userId) {        
+        if (!this.avatar) return;
+
+        return this.userProvider.addAvatar({ avatar: this.avatar }, userId).subscribe(data => {
+            let toast = this.toastCtrl.create({
+                message: 'Imagem enviada com sucesso',
+                duration: 5000,
+                position: 'top'
+            });
+            toast.present();
+        }, err => {
+            console.log(err);
+            let toast = this.toastCtrl.create({
+                message: 'Erro ao enviar imagem. Por favor tente novamente mais tarde.',
+                duration: 5000,
+                position: 'top'
+            });
+            toast.present();
+        });
+    }
+
+
 }
