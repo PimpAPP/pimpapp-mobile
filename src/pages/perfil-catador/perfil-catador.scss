@@ -172,6 +172,53 @@ page-perfil-catador {
     margin-bottom: 50px;
 }
 
+.btn-image {
+    background-color: #757575 !important;
+    opacity: 0.8;
+    margin-left: 13px;
+    padding: 10px;
+    height: 30px;
+}
+
+.material-slide {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.material-slide-item {
+    display: inline-block;
+    text-decoration: none;
+    width: 25%;
+}
+
+.material-left-arrow {
+    font-size: 50px;
+}
+
+.material-right-arrow {
+    font-size: 50px;
+}
+
+.material-name {
+    word-wrap: break-word;
+}
+
+.slider-row {
+    width: 120%;
+    margin-left: -10%;
+}
+.img-inactive {
+    opacity: 0.2;
+}
+
+.ion-icon-cataki {
+    padding-right: 0 !important;
+}
+
+.change-image-text {
+    color: gray;
+}
+
 @media screen and (max-width: 450px) {
     
     .catador-name {
@@ -186,6 +233,10 @@ page-perfil-catador {
         margin-bottom: 40px !important;
         padding-left: 30px;
         padding-right: 30px;
+    }
+
+    .material-name {
+        font-size: 11px;
     }
     
 }
@@ -215,6 +266,11 @@ page-perfil-catador {
         margin-bottom: 30px !important;
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    .slider-row {
+        width: 114%;
+        margin-left: -7%;
     }
     
 }

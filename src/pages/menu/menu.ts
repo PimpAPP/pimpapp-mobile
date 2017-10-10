@@ -10,6 +10,7 @@ import { ParceirosPage } from './../parceiros/parceiros';
 import { PraOndeVamosPage } from './../praondevamos/praondevamos';
 import { ColaborePage } from './../colabore/colabore';
 import { CadastroCatador } from './../cadastro-catador/cadastro-catador';
+import { CadastroCatadorWebPage } from './../cadastro-catador-web/cadastro-catador-web';
 
 
 @Component({
@@ -53,11 +54,14 @@ export class MenuPage {
         this.navCtrl.push(CadastroCatador);
     }
 
+    cadastroCatadorWeb() {
+        this.navCtrl.push(CadastroCatadorWebPage);
+    }
 
     openCatadorPage() {
         // Open Página do Catador
         this.navCtrl.push(PerfilCatador, 
-            {catadorID: 332}, 
+            {catadorID: 325},  //325 e 343
             {   animate: true, 
                 direction: 'forward',
                 duration: 1000,

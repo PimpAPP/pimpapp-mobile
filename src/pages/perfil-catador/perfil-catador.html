@@ -10,32 +10,21 @@
         <div class="profile-header-background"></div>
         <img src="{{ catadorImg }}" class="img-profile" (error)="photoOnError()">
 
-        <ion-row *ngIf="catadorImg == noImageSrc">
-            <ion-col col-12 class="col-center">
-                <button ion-button icon-start color="dark" (click)="getPhoto('camera')">
-                    <ion-icon name="camera"></ion-icon>
+        <ion-row>
+            <ion-col col-12 class="col-center" *ngIf="catadorImg == noImageSrc">
+                <h5 text-center class="change-image-text" >
+                    <span>Adicionar foto:</span>
+                    <!-- <span *ngIf="catadorImg != noImageSrc">Alterar foto:</span> -->
+                </h5>
+
+                <button ion-button icon-start color="dark" class="btn-image" (click)="getPhoto('camera')">
+                    <ion-icon name="camera" class="ion-icon-cataki"></ion-icon>
                 </button>
-                <button ion-button icon-start color="dark" (click)="getPhoto('gallery')">
-                    <ion-icon name="ios-folder-open"></ion-icon>
-                    Selecionar Foto
+                <button ion-button icon-start class="btn-image" (click)="getPhoto('gallery')">
+                    <ion-icon name="ios-folder-open" class="ion-icon-cataki"></ion-icon>
                 </button>
             </ion-col>
-        </ion-row>        
-
-        <!-- <button ion-button full 
-                (click)="sendImage()" 
-                color="dark" 
-                *ngIf="catadorImg == noImageSrc">Enviar imagem</button> -->
-
-        <!-- <div *ngIf="catadorImg == noImageSrc">
-            <ion-icon name="camera" (click)="openCamera()">
-                <h2> Tirar Foto</h2>
-            </ion-icon>
-            <br>
-            <ion-icon name="camera" (click)="openGallery()">
-                <h2> Selecionar Foto</h2>
-            </ion-icon>
-        </div>     -->
+        </ion-row>    
 
     </div>
     <!-- <div *ngIf="!catador?.profile_photo" style="margin-top: 50px !important"></div> -->
@@ -74,23 +63,47 @@
         <hr>
     </div>  
 
-    <div *ngIf="catador?.region">
-        <h3 text-center style="color: black">Locais onde coleta:</h3>
+    <div>
+        <h3 text-center>{{ catador?.address_region }} 
+            <span [hidden]="!catador?.address_region || !catador?.city">,</span>
+        {{ catador?.city }}</h3>
+        <h3 text-center style="color: black" [hidden]="!catador?.region">Coleta em</h3>
         <h3 text-center>{{ catador?.region }}</h3>
     </div>
 
-    <h2 text-center style="color: black" [hidden]="material_list.length <= 0">TRABALHA RECICLANDO</h2>
+    <h2 text-center style="color: black" [hidden]="material_list.length <= 0">Trabalha reciclando</h2>
 
-    <ion-row class="row-center">
-        <ion-col col-3 *ngFor="let material of material_list">
+    <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
+        <ion-col col-1 class="col-center" (click)="scrollSlideToLeft()"
+                [hidden]="material_list.length <= 4">
+            <ion-icon class="material-left-arrow" name="ios-arrow-back"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+            <div class="material-slide" id="material-slide">
+                <div *ngFor="let material of material_list" class="material-slide-item">
+                    <img src="assets/img/{{ material.icon }}" alt="{{ material.name }}" width="80%" class="material-img">
+                    <p text-center class="material-name" text-wrap>{{ material.name }}</p>
+                </div>
+            </div>        
+        </ion-col>
+        <ion-col col-1 class="col-center" (click)="scrollSlideToRight()"
+                [hidden]="material_list.length <= 4">
+            <ion-icon class="material-right-arrow " name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+
+        <!-- <ion-col col-3 *ngFor="let material of material_list">
             <img src="assets/img/{{ material.icon }}" alt="{{ material.name }}" width="80%" class="material-img">
             <p text-center>{{ material.name }}</p>
-        </ion-col>
+        </ion-col> -->
     </ion-row>
     <br />
 
     <div *ngIf="catador?.minibio">
+        <h3 text-center style="color: black">História de vida</h3>
         <p text-center class="catador-minibio">
+            {{ catador.minibio }}
+        </p>
+        <!-- <p text-center class="catador-minibio">
             <span *ngIf="showCompleteMinibio">
                 {{ catador.minibio }}
             </span>
@@ -103,7 +116,7 @@
                 <span *ngIf="!showCompleteMinibio">CLIQUE PARA LER MAIS</span>
                 <span *ngIf="showCompleteMinibio">CLIQUE PARA LER MENOS</span>
             </a>
-        </p>
+        </p> -->
     </div>
 
     <!-- <ion-row *ngIf="catador?.region" class="row-center">
@@ -152,13 +165,15 @@
                 <h2 class="safety-kit-label">Carroça grafitada/pimpada?</h2>
                 <ion-item>
                     <ion-thumbnail item-left>
-                        <img [src]="catador?.carroca_pimpada ? 'assets/img/Checkbox2.png' : 'assets/img/Checkbox1.png'" >
+                        <img src="assets/img/Checkbox2.png" 
+                                [ngClass]="{'img-inactive': !catador?.carroca_pimpada}">
                     </ion-thumbnail>
                     <p class="safety-kit-label">Sim</p>
                 </ion-item>
                 <ion-item>
-                    <ion-thumbnail item-left *ngIf="!catador?.carroca_pimpada">
-                        <img [src]="!catador?.carroca_pimpada ? 'assets/img/Checkbox2.png' : 'assets/img/Checkbox1.png'" >
+                    <ion-thumbnail item-left>
+                        <img src="assets/img/Checkbox-red.png" 
+                                [ngClass]="{'img-inactive': catador?.carroca_pimpada}">
                     </ion-thumbnail> 
                     <p class="safety-kit-label">Não</p>
                 </ion-item>

@@ -1,8 +1,8 @@
-import { ApiProvider } from './../../providers/api-provider';
 import { Component } from '@angular/core';
-import { NavController, Platform , LoadingController} from 'ionic-angular';
+import { NavController, Platform , LoadingController, Navbar } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
+import { ApiProvider } from './../../providers/api-provider';
 import { CatadoresProvider } from './../../providers/catadores-provider';
 import { CollectsProvider } from './../../providers/collects-provider';
 import { PerfilCatador } from './../perfil-catador/perfil-catador';
@@ -33,6 +33,8 @@ declare var google:any;
 export class HomePage {
  
     @ViewChild(PerfilCatador) perfilCatadorChild;
+    @ViewChild(Navbar) navBar: Navbar;
+
     map: GoogleMap;
     nearest_catadores: any;
     nearest_collects: any;
@@ -54,8 +56,7 @@ export class HomePage {
     markerAddress:any;
     markerName:any;
     markerPhone:any;
-    markerPhoto:any;
-    
+    markerPhoto:any;   
 
  
     constructor(public navCtrl: NavController, public platform: Platform,
@@ -70,7 +71,7 @@ export class HomePage {
         this.showProfile = false; 
 
         this.platform.ready().then(() => {
-            this.geolocation.getCurrentPosition({timeout: 6000, enableHighAccuracy: false}).then(resp => {
+            this.geolocation.getCurrentPosition({timeout: 20000, enableHighAccuracy: true}).then(resp => {
                 this.openLatitude = resp.coords.latitude;
                 this.openLongitude = resp.coords.longitude;
                 this.loadMap(15);
@@ -84,6 +85,21 @@ export class HomePage {
         },(error) => {
             console.log('Error ' + error);
         });
+    }
+
+    /**
+     * Action called by the back button.
+     */
+    backButtonAction() {
+        console.log("backButtonAction");
+        if (this.showCatadorProfile) {
+            console.log("Não fecha");
+            this.closeProfile();
+        } else {
+            console.log("Fecha");
+            this.platform.exitApp();
+            // this.navCtrl.setRoot(AnotherPage);  <-- if you wanted to go to another page
+        }
     }
 
     newResiduePage() {
@@ -322,10 +338,10 @@ export class HomePage {
         var topPos = div.offsetTop;
         div.scrollTop = topPos;
         
-        this.map.setClickable(false);    
+        this.map.setClickable(false);
     }
 
-     closeSlide(){
+     closeProfile(){
          this.map.setClickable(true);
         var div = document.getElementById('ngifDiv');
          div.style.height='0%';
@@ -334,9 +350,9 @@ export class HomePage {
         div.style.webkitTransition='height 1s';
         document.getElementById('closeDiv').style.display='none';
 
-        setTimeout(function() {
+        // setTimeout(function() {
             this.showCatadorProfile = false;
-        }, 300);
+        // }, 300);
     }
 
     goRegisterMate() {

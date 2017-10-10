@@ -2,13 +2,14 @@ import { ApiProvider } from '../../providers/api-provider';
 import { Storage } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number';
 import { MaterialRecover } from './../MaterialRecover';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { AlertController, Content } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
 import { UsersAPI } from '../../providers/users-api';
+
+declare var $: any;
 
 @Component({
     selector: 'page-perfil-catador',
@@ -16,6 +17,7 @@ import { UsersAPI } from '../../providers/users-api';
 })
 export class PerfilCatador {
 
+    @ViewChild(Content) content: Content;
     catadorID: any = this.navParams.get("catadorID");
     //@Input() catadorID: string;
 
@@ -47,7 +49,13 @@ export class PerfilCatador {
 
     updateData(id) {
         this.catadorID = id;
+        this.scrollToTop();
         this.update();
+    }
+
+    scrollToTop() {
+        console.log('Scroll to top called!');
+        this.content.scrollToTop();
     }
 
     update() {
@@ -188,6 +196,16 @@ export class PerfilCatador {
             toast.present();
         });
     }
+    
+    scrollSlideToRight() {
+        var slider = document.getElementById("material-slide");
+        slider.scrollLeft = slider.scrollLeft + 
+                (document.getElementsByClassName('material-slide-item')[0]['offsetWidth'] * 4);
+    }
 
-
+    scrollSlideToLeft() {
+        var slider = document.getElementById("material-slide");
+        slider.scrollLeft = slider.scrollLeft - 
+                (document.getElementsByClassName('material-slide-item')[0]['offsetWidth'] * 4);
+    }
 }

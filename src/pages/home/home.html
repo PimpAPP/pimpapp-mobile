@@ -1,16 +1,16 @@
 <ion-content class="homeContent">
-    <div #map id="map" (click)="closeSlide()">
-        <span class="spanMargin"></span>
-  
+    <div #map id="map" (click)="closeProfile()">
+        
+        <!-- <span class="spanMargin"></span>  
         <button ion-item (tap)="showAddressModal()">
-        <ion-icon name="ios-pin" item-left></ion-icon>
-        {{selectedAddress.add}}
-        </button>
+            <ion-icon name="ios-pin" item-left></ion-icon>
+            {{selectedAddress.add}}
+        </button> -->
 
     </div>
 
     <div id="ngifDiv" [hidden]="!showCatadorProfile">
-        <button [hidden]="true" (click)="closeSlide()" class="closeDiv" id="closeDiv">x</button>
+        <button [hidden]="true" (click)="closeProfile()" class="closeDiv" id="closeDiv">x</button>
 
         <page-perfil-catador></page-perfil-catador>
     </div>
