@@ -80,13 +80,14 @@ import { ParceirosPage } from './../pages/parceiros/parceiros';
 import { PraOndeVamosPage } from './../pages/praondevamos/praondevamos';
 import { ColaborePage } from './../pages/colabore/colabore';
 import { CadastroCatadorWebPage } from './../pages/cadastro-catador-web/cadastro-catador-web';
-
+import { MenuCadastroComponent } from '../pages/menu-cadastro/menu-cadastro';
 
 
 import {
     GoogleMaps,
 
 } from '@ionic-native/google-maps';
+
 
 @NgModule({
     declarations: [
@@ -102,6 +103,7 @@ import {
         Feedback4,
         TabsPage,
         MenuPage,
+        MenuCadastroComponent,
         TutorialPage,
         TutorialPage2,
         TutorialPage3,
@@ -141,7 +143,8 @@ import {
         ParceirosPage,
         PraOndeVamosPage,
         ColaborePage,
-        CadastroCatadorWebPage
+        CadastroCatadorWebPage,
+    MenuCadastroComponent
     ],
     imports: [
         BrowserModule,
@@ -165,6 +168,7 @@ import {
         Feedback4,
         TabsPage,
         MenuPage,
+        MenuCadastroComponent,
         TutorialPage,
         TutorialPage2,
         TutorialPage3,

@@ -1,3 +1,276 @@
 page-perfil-cooperativa {
+    ion-header {
+        text-align: center;
+    }
+    ion-header img {
+        position: absolute;
+        margin-top: -12%;
+        width: 30%;
+        height: auto;
+        left: 30%;
+        border-radius: 50%;
+    }
 
+    ion-content {
+        padding-top: 1%;
+        background-image: url(../assets/img/map.jpg)!important;
+        overflow-x: hidden;
+        padding-left: 0px;
+        padding: 0px;
+    }
+
+    p a {
+        color: color($colors, green);
+    }
+
+    a {
+        color: color($colors, grey);
+        font-size: 1.3em;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+
+    #perfil-catador {
+        background-image: url('../assets/img/papelao.png') !important;
+        background-size: 120%;
+        background-repeat: no-repeat;
+        background-position: top; 
+        min-height: 70%;
+        padding: 5%;
+        padding-top: 20%;
+        padding-bottom: 25%;
+
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            color: green;
+        }
+
+        h2 {
+            text-align: center;
+            color: green;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        p { 
+            line-height: 15px;
+        }
+    }
+
+   .item-md ion-thumbnail img, .item-ios ion-thumbnail img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .item-md ion-thumbnail, .item-ios ion-thumbnail {
+        min-width: 10px;
+        min-height: 10px;
+    }
+
+    .item-md.item-block .item-inner,
+    .item-ios.item-block .item-inner {
+        border: none;
+    }
+
+    #phones {
+        margin-bottom: 0%;
+    }
+
+}
+
+.img-profile {
+    border-radius: 50%;
+    display:block;
+    margin:auto;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.cooperativa-name {
+    font-size: 3em;
+}
+
+.cooperativa-nickname {
+    font-family: 'DIN-Regular' !important;
+}
+
+.cooperativa-minibio {
+    font-size: 20px;
+}
+
+.cooperativa-minibio-more {
+    font-size: 22px;
+    color: #ccc;
+    text-decoration: underline;
+}
+
+.row-center {
+    display: flex;
+    justify-content: center;
+}
+
+.material-img {
+    display:block;
+    margin:auto;
+    // opacity: 0.4;
+    filter: alpha(opacity=50);
+}
+
+.cooperativa-region-text {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+#perfil-cooperativa-content > div.scroll-content {
+    margin-top: 0px !important;
+    margin-bottom: 40px !important;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.profile-header-background {
+    background-image: url(../assets/img/topo_papelao.jpg) !important;
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: -1;
+    height: 100px;
+}
+
+.icon-map-region {
+    max-width: none;
+    height: 100px;
+}
+
+.text-map-region {
+    font-size: 25px;
+    font-family: "DIN-Regular";
+}
+
+.safety-kit-label {
+    font-size: 2rem !important;
+    color: black !important;
+}
+
+.modified-date {
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 50px;
+}
+
+.btn-image {
+    background-color: #757575 !important;
+    opacity: 0.8;
+    margin-left: 13px;
+    padding: 10px;
+    height: 30px;
+}
+
+.material-slide {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.material-slide-item {
+    display: inline-block;
+    text-decoration: none;
+    width: 25%;
+}
+
+.material-left-arrow {
+    font-size: 50px;
+}
+
+.material-right-arrow {
+    font-size: 50px;
+}
+
+.material-name {
+    word-wrap: break-word;
+}
+
+.slider-row {
+    width: 120%;
+    margin-left: -10%;
+}
+.img-inactive {
+    opacity: 0.2;
+}
+
+.ion-icon-cataki {
+    padding-right: 0 !important;
+}
+
+.change-image-text {
+    color: gray;
+}
+
+@media screen and (max-width: 450px) {
+    
+    .cooperativa-name {
+        font-size: 2.5em;
+    }
+
+    #perfil-catador {
+        background-size: 130% !important;
+    }    
+
+    #perfil-cooperativa-content > div.scroll-content {
+        margin-bottom: 40px !important;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .material-name {
+        font-size: 11px;
+    }
+    
+}
+
+@media screen and (max-width: 380px) {
+    
+    #perfil-catador {
+        background-size: 145% !important;
+    }    
+
+    #perfil-cooperativa-content > div.scroll-content {
+        margin-bottom: 40px !important;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+}
+
+
+@media screen and (max-width: 350px) {
+    
+    #perfil-catador {
+        background-size: 145% !important;
+    }    
+
+    #perfil-cooperativa-content > div.scroll-content {
+        margin-bottom: 30px !important;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .slider-row {
+        width: 114%;
+        margin-left: -7%;
+    }
+    
 }

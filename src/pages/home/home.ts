@@ -71,7 +71,7 @@ export class HomePage {
         this.showProfile = false; 
 
         this.platform.ready().then(() => {
-            this.geolocation.getCurrentPosition({timeout: 20000, enableHighAccuracy: true}).then(resp => {
+            this.geolocation.getCurrentPosition({timeout: 40000, enableHighAccuracy: true}).then(resp => {
                 this.openLatitude = resp.coords.latitude;
                 this.openLongitude = resp.coords.longitude;
                 this.loadMap(15);
@@ -91,7 +91,6 @@ export class HomePage {
      * Action called by the back button.
      */
     backButtonAction() {
-        console.log("backButtonAction");
         if (this.showCatadorProfile) {
             console.log("Não fecha");
             this.closeProfile();
@@ -146,7 +145,6 @@ export class HomePage {
     }
 
     loadMap(zoom){
-        console.log('loadMap');
         let location: LatLng = new LatLng(this.openLatitude,this.openLongitude);
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
@@ -315,7 +313,6 @@ export class HomePage {
         //     }
         // }
        
-        console.log(id);
         this.catadorId = id;
         this.showCatadorProfile = true;
         this.perfilCatadorChild.updateData(id);

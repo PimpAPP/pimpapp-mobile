@@ -29,6 +29,7 @@ export class PerfilCatador {
     minibioMaxSize: Number = 200;
     showCompleteMinibio: boolean = false;
     noImageSrc = 'assets/img/no_image.jpg';
+    whatsapp: any;
     public avatar: String = '';
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -54,8 +55,13 @@ export class PerfilCatador {
     }
 
     scrollToTop() {
-        console.log('Scroll to top called!');
         this.content.scrollToTop();
+        
+        setTimeout(function() {
+            var div = document.querySelector('#perfil-catador-content > div.scroll-content');
+            console.log(div);
+            div.scrollTop = 0;
+        });
     }
 
     update() {
@@ -71,7 +77,6 @@ export class PerfilCatador {
                     this.catadorImg = this.noImageSrc;
                     this.catador = JSON.stringify(data);
                     this.catador = JSON.parse(this.catador);
-                    console.log(this.catador);
                     this.showCompleteMinibio = (this.catador.minibio && 
                             this.catador.minibio.length <= this.minibioMaxSize);
 
@@ -97,6 +102,22 @@ export class PerfilCatador {
                         this.catadorDiasTrabalhados = 0;
                     }
                     this.setMaterialList();
+
+                    var phone = '';
+                    
+                    if (this.catador.phones && this.catador.phones[0]) {
+                        let parts = this.catador.phones[0].phone.split(' ');
+                        phone = parts[1].replace('-', '').replace('_', '');
+                        if (phone.length == 9) {
+                            // Necessário remover o 9 para que o whatsapp
+                            // encontre o número
+                            phone = phone.substring(1);
+                        }
+                        phone = parts[0] + phone                            
+                    }    
+                    
+                    this.whatsapp = phone;
+                    console.log(this.whatsapp);
                 },
                 err => { }
             );
@@ -105,7 +126,6 @@ export class PerfilCatador {
     }
 
     setMaterialList() {
-        console.log("setMaterialList");
         let material_id: number;
         this.material_list = [];
         for (let i = 0; i < this.catador.materials_collected.length; i++) {

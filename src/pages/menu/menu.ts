@@ -11,6 +11,8 @@ import { PraOndeVamosPage } from './../praondevamos/praondevamos';
 import { ColaborePage } from './../colabore/colabore';
 import { CadastroCatador } from './../cadastro-catador/cadastro-catador';
 import { CadastroCatadorWebPage } from './../cadastro-catador-web/cadastro-catador-web';
+import { MenuCadastroComponent } from './../menu-cadastro/menu-cadastro';
+import { PerfilCooperativa } from './../perfil-cooperativa/perfil-cooperativa';
 
 
 @Component({
@@ -58,14 +60,12 @@ export class MenuPage {
         this.navCtrl.push(CadastroCatadorWebPage);
     }
 
-    openCatadorPage() {
-        // Open Página do Catador
-        this.navCtrl.push(PerfilCatador, 
-            {catadorID: 325},  //325 e 343
-            {   animate: true, 
-                direction: 'forward',
-                duration: 1000,
-                animation: 'md-transition'}
-        );
+    openCadastro() {
+        this.navCtrl.push(MenuCadastroComponent);
     }
+
+    openCooperativaPage() {
+        this.navCtrl.push(PerfilCooperativa);
+    }
+
 }
