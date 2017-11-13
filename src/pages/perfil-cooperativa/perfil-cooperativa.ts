@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { MaterialRecover } from './../MaterialRecover';
 
 import { UsersAPI } from '../../providers/users-api';
 
@@ -16,14 +17,19 @@ export class PerfilCooperativa {
     cooperativaID: any = 1;
     cooperativa: any;
     cooperativaDiasTrabalhados: any;
+    material_list: any[] = [];
+    materialRecover: MaterialRecover;
+    cooperativaImg: string;
+    noImageSrc = 'assets/img/no_image.jpg';
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         public http: UsersAPI, public loading: LoadingController,
         public alertCtrl: AlertController, public apiProvider: ApiProvider) {
+
+        this.materialRecover = new MaterialRecover();
     }
 
     ionViewWillEnter() {
-
         let url = this.apiProvider.url + "api/cooperatives/" + this.cooperativaID + "/";
 
         //Prepara o loading
@@ -37,6 +43,14 @@ export class PerfilCooperativa {
 
                     this.cooperativa = JSON.stringify(data);
                     this.cooperativa = JSON.parse(this.cooperativa);
+                    console.log(this.cooperativa);
+                    this.cooperativaImg = this.apiProvider.url + this.cooperativa.image;
+
+                    this.material_list = [];
+                    for (let i = 0; i < this.cooperativa.materials_collected.length; i++) {
+                        this.material_list.push(
+                            this.materialRecover.findMaterialId(this.cooperativa.materials_collected[i]));
+                    }
 
                     // let inicio = new Date(this.cooperativa.works_since);
 
@@ -74,6 +88,10 @@ export class PerfilCooperativa {
     generateArray(obj){
         if (!obj) return [];
         return Object.keys(obj).map((key)=>{ return {key:key, value:obj[key]}});
+    }
+
+    photoOnError() {
+        this.cooperativaImg = this.noImageSrc;
     }
 
 }

@@ -2,7 +2,8 @@
     
     <div [hidden]="!cooperativa?.image">
         <div class="profile-header-background"></div>
-        <img src="{{ apiProvider.url + cooperativa?.image }}" class="img-profile" (error)="photoOnError()">
+        <img src="{{ cooperativaImg }}" class="img-profile" 
+                (error)="photoOnError()">
     </div>
     <!-- <div *ngIf="!catador?.profile_photo" style="margin-top: 50px !important"></div> -->
     <div *ngIf="!catador?.profile_photo"></div>
@@ -15,35 +16,31 @@
     
     <div *ngIf="cooperativa?.phrase">
         <h2 text-center>"{{ cooperativa?.phrase }}"</h2>
-    </div>
-
-    <div *ngIf="catador?.phones[0]?.phone">
-        <hr>
-        <h2 text-center style="color: black;">{{ cooperativa?.phones[0]?.phone }}</h2>
-
-        <ion-row *ngIf="catador?.phones?.length" id="phones" >
-            <ion-col col-6 class="col-center">
-                <a text-center href="https://api.whatsapp.com/send?phone=55{{ whatsapp }}&text=Ol%C3%A1%20catador,%20quero%20confirmar%20a%20minha%20coleta%20com%20voc%C3%AA">
-                    <img src="assets/img/Icones_mapamenu-11.png" alt="Whats app" width="40%">
-                </a>
-            </ion-col>
-            <ion-col col-6 class="col-center">
-                <img src="assets/img/Icones_mapamenu-12.png" alt="Telefone" width="40%" (click)="launchPhone(catador?.phones[0]?.phone)">
-            </ion-col>
-        </ion-row>
-
-        <hr>
-    </div>  
+    </div>   
 
     <div>
-        <h3 text-center>{{ catador?.address_region }} 
-            <span [hidden]="!catador?.address_region || !catador?.city">,</span>
-        {{ catador?.city }}</h3>
-        <h3 text-center style="color: black" [hidden]="!catador?.region">Coleta em</h3>
-        <h3 text-center>{{ catador?.region }}</h3>
+        <h3 text-center>{{ cooperativa?.address }}</h3>
+        <h3 text-center style="color: black" [hidden]="!cooperativa?.region_where_operates">Região onde opera:</h3>
+        <h3 text-center [hidden]="!cooperativa?.region_where_operates">{{ cooperativa?.region_where_operates }}</h3>
     </div>
 
-    <h2 text-center style="color: black" [hidden]="material_list.length <= 0">Trabalha reciclando</h2>
+    <div>
+        <h3 text-center style="color: black" 
+                [hidden]="!cooperativa?.how_many_cooperators">Total de colaboradores</h3>
+        <h3 text-center>{{ cooperativa?.how_many_cooperators }}</h3>
+    </div>
+
+    <div>
+        <h3 text-center style="color: black" 
+                [hidden]="!cooperativa?.email">E-mail</h3>
+        <h3 text-center>{{ cooperativa?.email }}</h3>
+    </div>
+
+    <div>
+        <h3 text-center style="color: black" 
+                [hidden]="!cooperativa?.email">Fundado em</h3>
+        <h3 text-center>{{ cooperativa?.founded_in }}</h3>
+    </div>
 
     <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
         <ion-col col-1 class="col-center" (click)="scrollSlideToLeft()"
@@ -62,37 +59,13 @@
                 [hidden]="material_list.length <= 4">
             <ion-icon class="material-right-arrow " name="ios-arrow-forward"></ion-icon>
         </ion-col>
-    </ion-row>
-    <br />
 
-    <div *ngIf="catador?.minibio">
-        <h3 text-center style="color: black">História de vida</h3>
-        <p text-center class="catador-minibio">
-            {{ catador.minibio }}
-        </p>
-    </div>
-
-    <ion-row class="row-center">
-        <ion-list>                
-            <div *ngIf="catador">
-                <h2 class="safety-kit-label">Carroça grafitada/pimpada?</h2>
-                <ion-item>
-                    <ion-thumbnail item-left>
-                        <img src="assets/img/Checkbox2.png" 
-                                [ngClass]="{'img-inactive': !catador?.carroca_pimpada}">
-                    </ion-thumbnail>
-                    <p class="safety-kit-label">Sim</p>
-                </ion-item>
-                <ion-item>
-                    <ion-thumbnail item-left>
-                        <img src="assets/img/Checkbox-red.png" 
-                                [ngClass]="{'img-inactive': catador?.carroca_pimpada}">
-                    </ion-thumbnail> 
-                    <p class="safety-kit-label">Não</p>
-                </ion-item>
-            </div>
-        </ion-list> 
+        <!-- <ion-col col-3 *ngFor="let material of material_list">
+            <img src="assets/img/{{ material.icon }}" alt="{{ material.name }}" width="80%" class="material-img">
+            <p text-center>{{ material.name }}</p>
+        </ion-col> -->
     </ion-row>
+
 </ion-content>
 
 
