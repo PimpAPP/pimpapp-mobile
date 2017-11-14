@@ -43,7 +43,7 @@
     </div>
 
     <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
-        <ion-col col-1 class="col-center" (click)="scrollSlideToLeft()"
+        <ion-col col-1 class="col-center" (click)="scrollSlideToLeft('material-slide')"
                 [hidden]="material_list.length <= 4">
             <ion-icon class="material-left-arrow" name="ios-arrow-back"></ion-icon>
         </ion-col>
@@ -55,8 +55,37 @@
                 </div>
             </div>        
         </ion-col>
-        <ion-col col-1 class="col-center" (click)="scrollSlideToRight()"
+        <ion-col col-1 class="col-center" (click)="scrollSlideToRight('material-slide')"
                 [hidden]="material_list.length <= 4">
+            <ion-icon class="material-right-arrow " name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+
+        <!-- <ion-col col-3 *ngFor="let material of material_list">
+            <img src="assets/img/{{ material.icon }}" alt="{{ material.name }}" width="80%" class="material-img">
+            <p text-center>{{ material.name }}</p>
+        </ion-col> -->
+    </ion-row>
+
+    <ion-row class="row-center slider-row" [hidden]="cooperativa?.partners.length <= 0">
+        
+        <ion-col col-12>
+            <h3 text-center style="color: black">Parceiros</h3>
+        </ion-col>    
+
+        <ion-col col-1 class="col-center" (click)="scrollSlideToLeft('partner-slide')"
+                [hidden]="cooperativa?.partners.length <= 4">
+            <ion-icon class="material-left-arrow" name="ios-arrow-back"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+            <div class="material-slide" id="partner-slide">
+                <div *ngFor="let partner of cooperativa?.partners" class="material-slide-item">
+                    <img src="{{ apiProvider.url + partner.image }}" alt="{{ partner.name }}" width="80%" class="material-img">
+                    <p text-center class="material-name" text-wrap>{{ partner.name }}</p>
+                </div>
+            </div>        
+        </ion-col>
+        <ion-col col-1 class="col-center" (click)="scrollSlideToRight('partner-slide')"
+                [hidden]="cooperativa?.partners.length <= 4">
             <ion-icon class="material-right-arrow " name="ios-arrow-forward"></ion-icon>
         </ion-col>
 

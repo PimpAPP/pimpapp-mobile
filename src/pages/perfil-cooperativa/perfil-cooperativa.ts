@@ -40,7 +40,6 @@ export class PerfilCooperativa {
         loader.present().then(() => {
             this.http.get(url).subscribe(
                 data => {
-
                     this.cooperativa = JSON.stringify(data);
                     this.cooperativa = JSON.parse(this.cooperativa);
                     console.log(this.cooperativa);
@@ -52,27 +51,20 @@ export class PerfilCooperativa {
                             this.materialRecover.findMaterialId(this.cooperativa.materials_collected[i]));
                     }
 
-                    // let inicio = new Date(this.cooperativa.works_since);
-
-                    // if (inicio != null) {
-
-                    //     let fim = new Date();
-
-                    //     let tempoTrabalhado = Math.abs(fim.getDate() - inicio.getDate());
-                    //     this.cooperativaDiasTrabalhados = Math.ceil(tempoTrabalhado / (1000 * 3600 * 24));
-
-                    // } else {
-
-                    //     this.cooperativaDiasTrabalhados = 0;
-
-                    // }
-
-                    // console.log("Catador: " + JSON.stringify(this.cooperativa));
-
+                    this.http.get(url + 'partners/').subscribe(res=>{
+                        var partners = res;
+                        if (partners) {
+                            for (var i=0; i<=partners.length; i++) {
+                                if (!partners[i] || !partners[i].image) continue;
+                                if (partners[i].image.startsWith('/')) {
+                                    partners[i].image = partners[i].image.slice(1);
+                                }
+                            }
+                        }
+                        this.cooperativa.partners = partners;
+                    });
                 },
                 err => {
-
-
 
                 }
             );
@@ -92,6 +84,18 @@ export class PerfilCooperativa {
 
     photoOnError() {
         this.cooperativaImg = this.noImageSrc;
+    }
+
+    scrollSlideToRight(id) {
+        var slider = document.getElementById(id);
+        slider.scrollLeft = slider.scrollLeft + 
+                (document.getElementsByClassName('material-slide-item')[0]['offsetWidth'] * 4);
+    }
+
+    scrollSlideToLeft(id) {
+        var slider = document.getElementById(id);
+        slider.scrollLeft = slider.scrollLeft - 
+                (document.getElementsByClassName('material-slide-item')[0]['offsetWidth'] * 4);
     }
 
 }
