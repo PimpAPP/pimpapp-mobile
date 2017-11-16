@@ -4,6 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
 import { ApiProvider } from './../../providers/api-provider';
 import { CatadoresProvider } from './../../providers/catadores-provider';
+import { CooperativesProvider } from './../../providers/cooperatives-provider';
 import { CollectsProvider } from './../../providers/collects-provider';
 import { PerfilCatador } from './../perfil-catador/perfil-catador';
 import { ModalController } from 'ionic-angular';
@@ -61,8 +62,9 @@ export class HomePage {
  
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
-        public collectsProvider: CollectsProvider, public modalCtrl: ModalController, public zone:NgZone,
-        public loadingCtrl : LoadingController,  public apiProvider: ApiProvider) {
+        public collectsProvider: CollectsProvider, public modalCtrl: ModalController, 
+        public zone:NgZone, public loadingCtrl : LoadingController,  
+        public apiProvider: ApiProvider, public cooperativesProvider: CooperativesProvider) {
         
         this.loading = this.loadingCtrl.create({
              content: 'Please wait...'
@@ -167,7 +169,8 @@ export class HomePage {
             'bearing': 0
           }
         });
-        this.loadCatadores();  
+        this.loadCatadores(); 
+        // this.loadCooperatives(); 
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             // this.getCurrentLocation().subscribe(location =>{
@@ -230,11 +233,37 @@ export class HomePage {
 
 
     loadCatadores(){
-      this.catadoresProvider.getCatadoresPositions()
-        .subscribe(data => {
+        this.catadoresProvider.getCatadoresPositions()
+                .subscribe(data => {
             this.nearest_catadores = data;
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
         });
+    }
+
+    loadCooperatives(){
+        // this.cooperativesProvider.getCooperatives().subscribe(data => {
+        //     let index = 0;
+        //     console.log(data);
+        //     while (index < data.length ){
+        //         let cooperative = data[index];
+                
+        //         if (!cooperative.latitude || !cooperative.longitude) {
+        //             index = index + 1
+        //             continue;
+        //         }
+    
+        //         let iconType:string = 'assets/icon/cooperative.png';
+    
+        //         this.createNewPoint(
+        //             cooperative.latitude, 
+        //             cooperative.longitude, 
+        //             // catador.name,iconType);
+        //             cooperative.id,
+        //             iconType);
+    
+        //         index = index + 1
+        //     }
+        // });
     }
 
     loadCollects(){
@@ -376,23 +405,22 @@ export class HomePage {
                 catador.id,iconType);
 
            index = index + 1
-      }
+        }
            
     }
 
-reverseGeoCode(lat,lng){
-     let geocoder = new google.maps.Geocoder();
-      let request = {
-          latLng: new LatLng(lat,lng)
-      };
-      geocoder.geocode(request,(data, status)=>{
+    reverseGeoCode(lat,lng){
+        let geocoder = new google.maps.Geocoder();
+        let request = {
+            latLng: new LatLng(lat,lng)
+        };
+        geocoder.geocode(request,(data, status)=>{
             if (status == google.maps.GeocoderStatus.OK) {  
                 this.selectedAddress.lat = lat;
                 this.selectedAddress.lng =lng;
                 this.selectedAddress.add =  data[0].formatted_address;
             }         
-      }); 
-
-  }
+        }); 
+    }
     
 }

@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CatadoresProvider } from './../providers/catadores-provider';
+import { CooperativesProvider } from './../providers/cooperatives-provider';
 import { CollectsProvider } from './../providers/collects-provider';
 import { NewResidue } from './../pages/new-residue/new-residue';
 import { CollectsOpen } from './../pages/collects-open/catador-collects';
@@ -216,6 +217,7 @@ import {
         GoogleMaps,
         ApiProvider,
         CatadoresProvider,
+        CooperativesProvider,
         ResiduesProvider,
         StorageService,
         CollectsProvider,
