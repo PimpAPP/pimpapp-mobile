@@ -243,7 +243,7 @@ export class HomePage {
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
 
             // Chamar as cooperativas só após carregar os catadores.
-            // this.loadCooperatives();
+            this.loadCooperatives();
         });
     }
 
