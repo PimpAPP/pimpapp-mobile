@@ -13,7 +13,6 @@ import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
 
 
-
 @Component({
     templateUrl: 'app.html',
 })

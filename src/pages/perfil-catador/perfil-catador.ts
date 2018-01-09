@@ -2,7 +2,7 @@ import { ApiProvider } from '../../providers/api-provider';
 import { Storage } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number';
 import { MaterialRecover } from './../MaterialRecover';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController, Content } from 'ionic-angular';
@@ -19,7 +19,6 @@ export class PerfilCatador {
 
     @ViewChild(Content) content: Content;
     catadorID: any = this.navParams.get("catadorID");
-    //@Input() catadorID: string;
 
     catador: any;
     catadorDiasTrabalhados: any;
@@ -59,7 +58,6 @@ export class PerfilCatador {
         
         setTimeout(function() {
             var div = document.querySelector('#perfil-catador-content > div.scroll-content');
-            console.log(div);
             div.scrollTop = 0;
         });
     }
@@ -141,7 +139,7 @@ export class PerfilCatador {
             .catch(() => console.log('Error launching dialer'));
     }
 
-    learnMore() {
+    readMore() {
         this.showCompleteMinibio = !this.showCompleteMinibio;
     }
 

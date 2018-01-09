@@ -1,6 +1,6 @@
-<ion-content id="page-perfil-cooperativa">
+<ion-content id="perfil-cooperativa-content">
     
-    <div [hidden]="!cooperativa?.image">
+    <div [hidden]="!cooperativa?.user?.photo">
         <div class="profile-header-background"></div>
         <img src="{{ cooperativaImg }}" class="img-profile" 
                 (error)="photoOnError()">
@@ -16,30 +16,25 @@
     
     <div *ngIf="cooperativa?.phrase">
         <h2 text-center>"{{ cooperativa?.phrase }}"</h2>
-    </div>   
+    </div> 
+    
+    <div [hidden]="!cooperativa?.history">
+        <h3 text-center style="color: black">História</h3>
+        <h3 class="history" *ngIf="showCompleteHistory">{{ cooperativa?.history }}</h3>
+        <h3 class="history" *ngIf="!showCompleteHistory && cooperativa?.history">{{ cooperativa?.history.substr(0, historyMaxSize) }}...</h3>
+
+        <p text-center *ngIf="cooperativa?.history && cooperativa?.history.length > historyMaxSize">
+            <a (click)="readMore()" class="catador-history-more">
+                <span *ngIf="!showCompleteHistory">CLIQUE PARA LER MAIS</span>
+                <span *ngIf="showCompleteHistory">CLIQUE PARA LER MENOS</span>
+            </a>
+        </p>
+    </div>
 
     <div>
         <h3 text-center>{{ cooperativa?.address }}</h3>
         <h3 text-center style="color: black" [hidden]="!cooperativa?.region_where_operates">Região onde opera:</h3>
         <h3 text-center [hidden]="!cooperativa?.region_where_operates">{{ cooperativa?.region_where_operates }}</h3>
-    </div>
-
-    <div>
-        <h3 text-center style="color: black" 
-                [hidden]="!cooperativa?.how_many_cooperators">Total de colaboradores</h3>
-        <h3 text-center>{{ cooperativa?.how_many_cooperators }}</h3>
-    </div>
-
-    <div>
-        <h3 text-center style="color: black" 
-                [hidden]="!cooperativa?.email">E-mail</h3>
-        <h3 text-center>{{ cooperativa?.email }}</h3>
-    </div>
-
-    <div>
-        <h3 text-center style="color: black" 
-                [hidden]="!cooperativa?.email">Fundado em</h3>
-        <h3 text-center>{{ cooperativa?.founded_in }}</h3>
     </div>
 
     <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
@@ -65,6 +60,42 @@
             <p text-center>{{ material.name }}</p>
         </ion-col> -->
     </ion-row>
+
+    <div>
+        <h3 text-center style="color: black" 
+                [hidden]="!cooperativa?.how_many_cooperators">Total de cooperados</h3>
+        <h3 text-center>{{ cooperativa?.how_many_cooperators }}</h3>
+    </div>
+
+    <div *ngIf="cooperativa?.phones[0]?.phone">
+        <hr>
+        <h2 text-center style="color: black;">{{ cooperativa?.phones[0]?.phone }}</h2>
+
+        <ion-row *ngIf="cooperativa?.phones?.length" id="phones" >
+            <ion-col col-6 class="col-center">
+                <a text-center href="https://api.whatsapp.com/send?phone=55{{ whatsapp }}">
+                    <img src="assets/img/Icones_mapamenu-11.png" alt="Whats app" width="40%">
+                </a>
+            </ion-col>
+            <ion-col col-6 class="col-center">
+                <img src="assets/img/Icones_mapamenu-12.png" alt="Telefone" width="40%" (click)="launchPhone(cooperativa?.phones[0]?.phone)">
+            </ion-col>
+        </ion-row>
+
+        <hr>
+    </div> 
+
+    <div>
+        <h3 text-center style="color: black" 
+                [hidden]="!cooperativa?.email">E-mail</h3>
+        <h3 text-center>{{ cooperativa?.email }}</h3>
+    </div>
+
+    <div>
+        <h3 text-center style="color: black" 
+                [hidden]="!cooperativa?.founded_in">Fundado em</h3>
+        <h3 text-center>{{ formatDate(cooperativa?.founded_in) }}</h3>
+    </div>
 
     <ion-row class="row-center slider-row" [hidden]="cooperativa?.partners.length <= 0">
         
@@ -95,24 +126,5 @@
         </ion-col> -->
     </ion-row>
 
+    <br>
 </ion-content>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <ion-content padding>
-    <p *ngFor="let i of generateArray(cooperativa)" ng-if="cooperativa.id">
-        <b>{{ i.key }}: </b> {{ i.value }} <br>
-    </p>
-</ion-content> -->

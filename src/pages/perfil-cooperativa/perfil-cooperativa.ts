@@ -1,9 +1,10 @@
 import { ApiProvider } from '../../providers/api-provider';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { AlertController, Content } from 'ionic-angular';
 import { MaterialRecover } from './../MaterialRecover';
+import { CallNumber } from '@ionic-native/call-number';
 
 import { UsersAPI } from '../../providers/users-api';
 
@@ -13,25 +14,38 @@ import { UsersAPI } from '../../providers/users-api';
 })
 export class PerfilCooperativa {
 
-    //cooperativaID: any = this.navParams.get("cooperativaID");
-    cooperativaID: any = 1;
+    @ViewChild(Content) content: Content;
+
+    cooperativaID: any = this.navParams.get("cooperativaID");
+    // cooperativaID: any = 10;
     cooperativa: any;
     cooperativaDiasTrabalhados: any;
     material_list: any[] = [];
     materialRecover: MaterialRecover;
     cooperativaImg: string;
     noImageSrc = 'assets/img/no_image.jpg';
+    historyMaxSize: Number = 200;
+    showCompleteHistory: boolean = false;
+    whatsapp: any;
+
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         public http: UsersAPI, public loading: LoadingController,
-        public alertCtrl: AlertController, public apiProvider: ApiProvider) {
+        public alertCtrl: AlertController, public apiProvider: ApiProvider,
+        public callNumber: CallNumber) {
 
         this.materialRecover = new MaterialRecover();
     }
 
-    ionViewWillEnter() {
-        let url = this.apiProvider.url + "api/cooperatives/" + this.cooperativaID + "/";
+    ngAfterViewInit() {
+        if (this.cooperativaID) {
+            this.update();
+        }    
+    }
 
+    update() {
+        let url = this.apiProvider.url + "api/cooperatives/" + this.cooperativaID + "/";
+        
         //Prepara o loading
         let loader = this.loading.create({
             content: 'Por favor aguarde...',
@@ -43,12 +57,25 @@ export class PerfilCooperativa {
                     this.cooperativa = JSON.stringify(data);
                     this.cooperativa = JSON.parse(this.cooperativa);
                     console.log(this.cooperativa);
-                    this.cooperativaImg = this.apiProvider.url + this.cooperativa.image;
+                    if (this.cooperativa.user && this.cooperativa.user.photo)
+                        this.cooperativaImg = this.apiProvider.url + this.cooperativa.user.photo.replace(/^\//, '');
 
                     this.material_list = [];
                     for (let i = 0; i < this.cooperativa.materials_collected.length; i++) {
                         this.material_list.push(
                             this.materialRecover.findMaterialId(this.cooperativa.materials_collected[i]));
+                    }
+
+                    if (this.cooperativa 
+                            && this.cooperativa.phones 
+                            && this.cooperativa.phones[0] 
+                            && this.cooperativa.phones[0].phone) {
+                        this.whatsapp = this.cooperativa.phones[0].phone;
+                        this.whatsapp = this.whatsapp
+                                .replace(' ', '') 
+                                .replace('(', '')
+                                .replace(')', '')
+                                .replace('-', '');
                     }
 
                     this.http.get(url + 'partners/').subscribe(res=>{
@@ -70,7 +97,6 @@ export class PerfilCooperativa {
             );
             loader.dismiss();
         });
-
     }
 
     ionViewDidLoad() {
@@ -96,6 +122,37 @@ export class PerfilCooperativa {
         var slider = document.getElementById(id);
         slider.scrollLeft = slider.scrollLeft - 
                 (document.getElementsByClassName('material-slide-item')[0]['offsetWidth'] * 4);
+    }
+
+    updateData(id) {
+        this.cooperativaID = id;
+        this.scrollToTop();
+        this.update();
+    }
+
+    scrollToTop() {
+        this.content.scrollToTop();
+        
+        setTimeout(function() {
+            var div = document.querySelector('#perfil-cooperativa-content > div.scroll-content');
+            div.scrollTop = 0;
+        });
+    }
+
+    launchPhone(number: string) {
+        this.callNumber.callNumber(number, true)
+            .then(() => console.log('Launched dialer!'))
+            .catch(() => console.log('Error launching dialer'));
+    }
+
+    readMore() {
+        this.showCompleteHistory = !this.showCompleteHistory;
+    }
+
+    formatDate(date) {
+        if (!date) return;
+        var parts = date.split('-');        
+        return parts[2] + '/' + parts[1] + '/' + parts[0];
     }
 
 }

@@ -13,7 +13,7 @@ export class CooperativesProvider {
 
 
     constructor(public http: Http, public apiProvider: ApiProvider) { 
-        this.url = this.apiProvider.url + 'api/cooperative/';
+        this.url = this.apiProvider.url + 'api/cooperatives/';
     }
     
     updateHeaders() {

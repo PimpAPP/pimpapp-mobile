@@ -7,6 +7,7 @@ import { CatadoresProvider } from './../../providers/catadores-provider';
 import { CooperativesProvider } from './../../providers/cooperatives-provider';
 import { CollectsProvider } from './../../providers/collects-provider';
 import { PerfilCatador } from './../perfil-catador/perfil-catador';
+import { PerfilCooperativa } from './../perfil-cooperativa/perfil-cooperativa';
 import { ModalController } from 'ionic-angular';
 import { NewResidue } from './../new-residue/new-residue';
 import { CollectsOpen } from './../collects-open/catador-collects';
@@ -34,23 +35,22 @@ declare var google:any;
 export class HomePage {
  
     @ViewChild(PerfilCatador) perfilCatadorChild;
+    @ViewChild(PerfilCooperativa) perfilCooperativaChild;
     @ViewChild(Navbar) navBar: Navbar;
 
     map: GoogleMap;
     nearest_catadores: any;
     nearest_collects: any;
+    nearest_cooperativas: any;
     selectedAddress={
         add:"",
         lat:0,
         lng:0
     };
-    showProfile: boolean;
     openLatitude:any;
     openLongitude:any;
     loading:any;
     Platform: Platform;
-    catadorId: any;
-    showCatadorProfile: boolean = false;
     profileTitle:any;
     clickMarkerData:any;
     markerCatador_type:any;
@@ -58,6 +58,11 @@ export class HomePage {
     markerName:any;
     markerPhone:any;
     markerPhoto:any;   
+
+    showProfile: boolean = false;
+    showCatadorProfile: boolean = false;
+    showCooperativaProfile: boolean = false;
+    
 
  
     constructor(public navCtrl: NavController, public platform: Platform,
@@ -93,7 +98,7 @@ export class HomePage {
      * Action called by the back button.
      */
     backButtonAction() {
-        if (this.showCatadorProfile) {
+        if (this.showProfile) {
             console.log("Não fecha");
             this.closeProfile();
         } else {
@@ -169,8 +174,7 @@ export class HomePage {
             'bearing': 0
           }
         });
-        this.loadCatadores(); 
-        // this.loadCooperatives(); 
+        this.loadCatadores();
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             // this.getCurrentLocation().subscribe(location =>{
@@ -237,33 +241,41 @@ export class HomePage {
                 .subscribe(data => {
             this.nearest_catadores = data;
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
+
+            // Chamar as cooperativas só após carregar os catadores.
+            // this.loadCooperatives();
         });
     }
 
     loadCooperatives(){
-        // this.cooperativesProvider.getCooperatives().subscribe(data => {
-        //     let index = 0;
-        //     console.log(data);
-        //     while (index < data.length ){
-        //         let cooperative = data[index];
+        this.cooperativesProvider.getCooperatives().subscribe(data => {
+            let index = 0;
+            console.log(data);
+            this.nearest_cooperativas = JSON.parse(data['_body']);
+
+            console.log('Total de cooperativas: ' + this.nearest_cooperativas.length);
+            while (index < this.nearest_cooperativas.length ){
+                let cooperative = this.nearest_cooperativas[index];
                 
-        //         if (!cooperative.latitude || !cooperative.longitude) {
-        //             index = index + 1
-        //             continue;
-        //         }
+                if (!cooperative.hasOwnProperty('latitude') || 
+                        !cooperative.hasOwnProperty('longitude')) {
+                    index = index + 1
+                    continue;
+                }
     
-        //         let iconType:string = 'assets/icon/cooperative.png';
+                let iconType:string = 'assets/icon/cooperative-small2.png';
+                // let iconType:string = 'assets/icon/marker-user.png';
     
-        //         this.createNewPoint(
-        //             cooperative.latitude, 
-        //             cooperative.longitude, 
-        //             // catador.name,iconType);
-        //             cooperative.id,
-        //             iconType);
+                this.createNewPoint(
+                    cooperative.latitude,
+                    cooperative.longitude,
+                    cooperative.id,
+                    iconType,
+                    'cooperativa');
     
-        //         index = index + 1
-        //     }
-        // });
+                index = index + 1
+            }
+        });
     }
 
     loadCollects(){
@@ -291,14 +303,18 @@ export class HomePage {
 
 
             this.createNewPoint(
-                collect.latitude, collect.longitude, 'Coleta: ' + collect.id,iconType);
+                collect.latitude, 
+                collect.longitude, 
+                'Coleta: ' + collect.id,
+                iconType,
+                'coleta');
 
             index = index + 1;
         }
 
     }
 
-    createNewPoint(lat, long, title, iconURL){
+    createNewPoint(lat, long, title, iconURL, type){
         //Creating the Position
         let position: LatLng = new LatLng(lat, long);
 
@@ -312,15 +328,15 @@ export class HomePage {
                // title: title,
                 icon: { url : iconURL },
                 //markerClick:this.iconClicked
-                 markerClick:(()=>{this.iconClicked(title)})
+                 markerClick:(()=>{this.iconClicked(title, type)})
             };
         }else{
             marker = {
                 position: position,
-               // title: title,
+                // title: title,
                 icon: { url : "file:///android_asset/www/" + iconURL },
-               // markerClick:this.iconClicked
-              markerClick:(()=>{this.iconClicked(title)})
+                // markerClick:this.iconClicked
+                markerClick:(()=>{this.iconClicked(title, type)})
             };            
         }
 
@@ -333,7 +349,7 @@ export class HomePage {
         });
     }
 
-    iconClicked(id) {
+    iconClicked(id, type) {
         // let id = 0;
         // for (var x=0; x<this.nearest_catadores.length; x++) {
         //     if (this.nearest_catadores[x].name == title) {
@@ -341,10 +357,25 @@ export class HomePage {
         //         break;
         //     }
         // }
-       
-        this.catadorId = id;
-        this.showCatadorProfile = true;
-        this.perfilCatadorChild.updateData(id);
+
+        this.showProfile = true;
+
+        switch (type) {
+            case 'catador':
+                this.showCooperativaProfile = false;
+                this.showCatadorProfile = true;
+                this.perfilCatadorChild.updateData(id);
+                break;
+
+            case 'cooperativa':
+                this.showCatadorProfile = false;
+                this.showCooperativaProfile = true;
+                this.perfilCooperativaChild.updateData(id);
+                break;
+
+            default:
+                break;
+        }
 
         var div = document.getElementById('ngifDiv');
 
@@ -367,17 +398,19 @@ export class HomePage {
         this.map.setClickable(false);
     }
 
-     closeProfile(){
-         this.map.setClickable(true);
+    closeProfile(){
+        this.map.setClickable(true);
         var div = document.getElementById('ngifDiv');
-         div.style.height='0%';
-         div.style.bottom='-20px';
+        div.style.height='0%';
+        div.style.bottom='-20px';
         div.style.transition='height 1s';
         div.style.webkitTransition='height 1s';
         document.getElementById('closeDiv').style.display='none';
 
         // setTimeout(function() {
+            this.showProfile = false;
             this.showCatadorProfile = false;
+            this.showCooperativaProfile = false;
         // }, 300);
     }
 
@@ -401,8 +434,9 @@ export class HomePage {
             this.createNewPoint(
                 catador.geolocation[0].latitude, 
                 catador.geolocation[0].longitude, 
-                // catador.name,iconType);
-                catador.id,iconType);
+                catador.id,
+                iconType,
+                'catador');
 
            index = index + 1
         }
