@@ -8,19 +8,20 @@
                 <!-- <button ion-button full>FALE CONOSCO</button>-->
             </div>    
 
-            <button ion-button full (click)="goCataki()" color="dark" class="text">Historia do Cataki</button>
-            <button ion-button full (click)="goPimpMyCarroca()" color="dark" class="text">PIMP MY CARROÇA</button>
-            <button ion-button full (click)="goParceiros()" color="dark" class="text">PARCEIROS</button>
-            <button ion-button full (click)="goParondeVamos()" color="dark" class="text">Pra Onde Vamos</button>
-            <button ion-button full (click)="goColabore()" color="dark" class="text">Colabore</button>
+            <button ion-button full (click)="goCataki()" color="dark" class="text">{{ "MENU.HISTORY" | translate:param }}</button>
+            <button ion-button full (click)="goPimpMyCarroca()" color="dark" class="text">{{ "MENU.PIMP" | translate:param }}</button>
+            <button ion-button full (click)="goParceiros()" color="dark" class="text">{{ "MENU.PARTNERS" | translate:param }}</button>
+            <button ion-button full (click)="goParondeVamos()" color="dark" class="text">{{ "MENU.WHERE-ARE-WE-GOING" | translate:param }}</button>
+            <button ion-button full (click)="goColabore()" color="dark" class="text">{{ "MENU.COLLABORATE" | translate:param }}</button>
             <!-- <button ion-button full (click)="cadastroCatador()" color="dark" class="text">Cadastro de catador</button> -->
-            <button ion-button full (click)="cadastroCatadorWeb()" color="dark" class="text">Cadastre +1 catador</button>
+            <button ion-button full (click)="cadastroCatadorWeb()" color="dark" class="text">{{ "MENU.CATADOR-REGISTER" | translate:param }}</button>
             <!-- <button ion-button full (click)="openCadastro()" color="dark" class="text">Quero cadastrar</button> -->
 
             <!-- PARA TESTE -->
             <!-- <button ion-button full (click)="openCatadorPage()" color="dark" class="text">Perfil do catador</button> -->
             <!-- <button ion-button full (click)="openCooperativaPage()" color="dark" class="text">Perfil cooperativa</button> -->
             <!-- <button ion-button full (click)="openSplash()" color="dark" class="text">openSplash</button> -->
+            <!-- <button ion-button full (click)="openLangPage()" color="dark" class="text">Linguagem</button> -->
         </div>
     </div>
 </ion-content>

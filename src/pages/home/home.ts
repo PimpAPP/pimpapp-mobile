@@ -14,6 +14,10 @@ import { CollectsOpen } from './../collects-open/catador-collects';
 import { AutocompletePage } from './../autocomplete/autocomplete';
 import { ResidueRegister } from './../residue-register/residue-register';
 import { NgZone, ViewChild } from '@angular/core';
+import { DatabaseProvider } from './../../providers/database/database-provider';
+import { LangProvider } from './../../providers/lang/lang-provider';
+import { LangPage } from './../lang-page/lang-page';
+import { TranslateService } from '@ngx-translate/core';
 
 
 import { 
@@ -69,7 +73,9 @@ export class HomePage {
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, 
         public zone:NgZone, public loadingCtrl : LoadingController,  
-        public apiProvider: ApiProvider, public cooperativesProvider: CooperativesProvider) {
+        public apiProvider: ApiProvider, public cooperativesProvider: CooperativesProvider,
+        private dbProvider: DatabaseProvider, private langProvider: LangProvider,
+        private translate: TranslateService) {
         
         this.loading = this.loadingCtrl.create({
              content: 'Please wait...'
@@ -77,7 +83,26 @@ export class HomePage {
         // this.loading.present();
         this.showProfile = false; 
 
+        this.translate.setDefaultLang('pt_BR');
+
         this.platform.ready().then(() => {
+            //Criando o banco de dados
+            this.dbProvider.createDatabase().then(() => {                
+                this.langProvider.get(1).then(lang => {
+                    if (lang) {
+                        this.translate.use(lang.value);
+                    } else {
+                        this.navCtrl.push(LangPage);
+                    }
+                }, error => {
+                    console.log(error);
+                });
+ 
+            }).catch((error) => {
+                console.log('error');
+            });
+
+            // Buscando posição atual
             this.geolocation.getCurrentPosition({timeout: 40000, enableHighAccuracy: true}).then(resp => {
                 this.openLatitude = resp.coords.latitude;
                 this.openLongitude = resp.coords.longitude;
@@ -87,7 +112,7 @@ export class HomePage {
                 this.openLatitude = -13.702797;
                 this.openLongitude = -69.686511;
                 this.loadMap(3);
-            });     
+            });
 
         },(error) => {
             console.log('Error ' + error);
@@ -250,10 +275,10 @@ export class HomePage {
     loadCooperatives(){
         this.cooperativesProvider.getCooperatives().subscribe(data => {
             let index = 0;
-            console.log(data);
+            // console.log(data);
             this.nearest_cooperativas = JSON.parse(data['_body']);
 
-            console.log('Total de cooperativas: ' + this.nearest_cooperativas.length);
+            // console.log('Total de cooperativas: ' + this.nearest_cooperativas.length);
             while (index < this.nearest_cooperativas.length ){
                 let cooperative = this.nearest_cooperativas[index];
                 
