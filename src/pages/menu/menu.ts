@@ -27,6 +27,7 @@ export class MenuPage {
     constructor(public navCtrl: NavController, 
         private splashScreen: SplashScreen, 
         private translate: TranslateService) {
+            
     }
 
     openTutorial() {
@@ -80,7 +81,7 @@ export class MenuPage {
     openSplash() {
         this.splashScreen.show();
     }
-    
+
     openLangPage() {
         this.navCtrl.push(LangPage);
     }
