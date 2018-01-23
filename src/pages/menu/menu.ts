@@ -13,6 +13,7 @@ import { CadastroCatador } from './../cadastro-catador/cadastro-catador';
 import { CadastroCatadorWebPage } from './../cadastro-catador-web/cadastro-catador-web';
 import { MenuCadastroComponent } from './../menu-cadastro/menu-cadastro';
 import { PerfilCooperativa } from './../perfil-cooperativa/perfil-cooperativa';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { PerfilCooperativa } from './../perfil-cooperativa/perfil-cooperativa';
 })
 export class MenuPage {
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController, private splashScreen: SplashScreen) {
     }
 
     openTutorial() {
@@ -68,4 +69,7 @@ export class MenuPage {
         this.navCtrl.push(PerfilCooperativa);
     }
 
+    openSplash() {
+        this.splashScreen.show();
+    }
 }
