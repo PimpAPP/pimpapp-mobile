@@ -65,6 +65,10 @@ export class MenuPage {
         this.navCtrl.push(MenuCadastroComponent);
     }
 
+    openCatadorPage() {
+        this.navCtrl.push(PerfilCatador);
+    }
+
     openCooperativaPage() {
         this.navCtrl.push(PerfilCooperativa);
     }

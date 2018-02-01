@@ -18,7 +18,8 @@ declare var $: any;
 export class PerfilCatador {
 
     @ViewChild(Content) content: Content;
-    catadorID: any = this.navParams.get("catadorID");
+    // catadorID: any = this.navParams.get("catadorID");
+    catadorID = 35;
 
     catador: any;
     catadorDiasTrabalhados: any;
@@ -115,7 +116,7 @@ export class PerfilCatador {
                     }    
                     
                     this.whatsapp = phone;
-                    console.log(this.whatsapp);
+                    console.log(this.catador);
                 },
                 err => { }
             );
@@ -213,6 +214,25 @@ export class PerfilCatador {
             });
             toast.present();
         });
+    }
+
+    getModifiedDate() {
+        var options = {  
+            weekday: "long", year: "numeric", month: "short",  
+            day: "numeric", hour: "2-digit", minute: "2-digit"  
+        }; 
+
+        if (this.catador) {
+            var date = new Date(this.catador.modified_date);
+            return date.toLocaleTimeString("pt-br", options);
+        } else {
+            return '';
+        }        
+    }
+
+    openUpdatePage() {
+        var url = 'http://www.cataki.org/#/cadastro/' + this.catador.id;
+        window.open(url, '_system', 'location=yes');
     }
     
     scrollSlideToRight() {

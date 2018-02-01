@@ -163,14 +163,14 @@
 
             <div *ngIf="catador">
                 <h2 class="safety-kit-label">Carroça grafitada/pimpada?</h2>
-                <ion-item>
+                <ion-item style="background-color: unset;">
                     <ion-thumbnail item-left>
                         <img src="assets/img/Checkbox2.png" 
                                 [ngClass]="{'img-inactive': !catador?.carroca_pimpada}">
                     </ion-thumbnail>
                     <p class="safety-kit-label">Sim</p>
                 </ion-item>
-                <ion-item>
+                <ion-item style="background-color: unset;">
                     <ion-thumbnail item-left>
                         <img src="assets/img/Checkbox-red.png" 
                                 [ngClass]="{'img-inactive': catador?.carroca_pimpada}">
@@ -245,17 +245,19 @@
         </ion-list> 
     </ion-row>
 
-    <!-- <p text-center>
-        <a style="text-decoration: underline;">ATUALIZAR CADASTRO</a>
-    </p> -->
+    <ion-row class="row-center">
+        <button ion-button full class="btn-register" (click)="openUpdatePage()">
+            Alterar Cadastro
+        </button>
+    </ion-row>
 
-    <!-- <ion-row>      
+    <ion-row>      
         <ion-col col-12 class="col-center"> 
             <p text-center [hidden]="!catador?.modified_date"
                     class="modified-date">
                 Última atualização: {{ getModifiedDate() }} 
             </p>
         </ion-col>    
-    </ion-row> -->
+    </ion-row>
 
 </ion-content>
