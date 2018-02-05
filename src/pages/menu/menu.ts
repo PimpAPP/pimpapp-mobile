@@ -81,7 +81,7 @@ export class MenuPage {
     openSplash() {
         this.splashScreen.show();
     }
-
+    
     openLangPage() {
         this.navCtrl.push(LangPage);
     }
