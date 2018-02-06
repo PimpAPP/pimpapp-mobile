@@ -218,13 +218,14 @@ export class PerfilCatador {
 
     getModifiedDate() {
         var options = {  
-            weekday: "long", year: "numeric", month: "short",  
-            day: "numeric", hour: "2-digit", minute: "2-digit"  
+            year: "numeric", 
+            month: "short",  
+            day: "numeric"  
         }; 
 
         if (this.catador) {
             var date = new Date(this.catador.modified_date);
-            return date.toLocaleTimeString("pt-br", options);
+            return date.toLocaleDateString("pt-br", options);
         } else {
             return '';
         }        

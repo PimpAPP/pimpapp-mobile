@@ -85,6 +85,7 @@ page-perfil-catador {
 .btn-register {
     background-color: #2ca538;
     color: white;
+    margin-bottom: 18px;
 }
 
 .img-profile {
@@ -138,7 +139,8 @@ page-perfil-catador {
 
 #perfil-catador-content > div.scroll-content {
     margin-top: 0px !important;
-    margin-bottom: 50px !important;
+    // margin-bottom: 50px !important;
+    margin-bottom: 12px !important;
     padding-left: 60px;
     padding-right: 60px;
 }
@@ -172,8 +174,9 @@ page-perfil-catador {
 
 .modified-date {
     color: gray;
-    font-size: 12px;
-    margin-bottom: 50px;
+    font-size: 16px;
+    // margin-bottom: 50px;
+    font-style: italic;
 }
 
 .btn-image {
@@ -234,7 +237,7 @@ page-perfil-catador {
     }    
 
     #perfil-catador-content > div.scroll-content {
-        margin-bottom: 70px !important;
+        // margin-bottom: 70px !important;
         padding-left: 30px;
         padding-right: 30px;
     }
@@ -252,7 +255,7 @@ page-perfil-catador {
     }    
 
     #perfil-catador-content > div.scroll-content {
-        margin-bottom: 50px !important;
+        // margin-bottom: 50px !important;
         padding-left: 30px;
         padding-right: 30px;
     }
@@ -267,7 +270,7 @@ page-perfil-catador {
     }    
 
     #perfil-catador-content > div.scroll-content {
-        margin-bottom: 50px !important;
+        // margin-bottom: 50px !important;
         padding-left: 20px;
         padding-right: 20px;
     }
