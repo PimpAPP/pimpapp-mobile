@@ -7,6 +7,7 @@ import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController, Content } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { HostListener } from '@angular/core';
 import { UsersAPI } from '../../providers/users-api';
 
 declare var $: any;
@@ -19,7 +20,7 @@ export class PerfilCatador {
 
     @ViewChild(Content) content: Content;
     // catadorID: any = this.navParams.get("catadorID");
-    catadorID = 35;
+    catadorID = 418;
 
     catador: any;
     catadorDiasTrabalhados: any;
@@ -247,4 +248,19 @@ export class PerfilCatador {
         slider.scrollLeft = slider.scrollLeft - 
                 (document.getElementsByClassName('material-slide-item')[0]['offsetWidth'] * 4);
     }
+
+    showArrow(side) {
+        if (this.material_list.length <= 4) 
+            return false;
+
+        var slider = document.getElementById("material-slide");
+
+        if (side == 'left') {
+            return slider.scrollLeft != 0;
+        } else if (side == 'right') {
+            var max = slider.scrollWidth - slider.clientWidth
+            return slider.scrollLeft < max;
+        }
+    }
+
 }

@@ -74,11 +74,12 @@
 
     <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
         <ion-col col-1 class="col-center" (click)="scrollSlideToLeft()"
-                [hidden]="material_list.length <= 4">
+                [ngClass]="{'hide-arrow': !showArrow('left')}"
+                style="margin-top: -30px;">
             <ion-icon class="material-left-arrow" name="ios-arrow-back"></ion-icon>
         </ion-col>
         <ion-col col-10>
-            <div class="material-slide" id="material-slide">
+            <div class="material-slide" id="material-slide" (scroll)="onScroll($event)">
                 <div *ngFor="let material of material_list" class="material-slide-item">
                     <img src="assets/img/{{ material.icon }}" alt="{{ material.name }}" width="80%" class="material-img">
                     <p text-center class="material-name" text-wrap>{{ material.name }}</p>
@@ -86,7 +87,8 @@
             </div>        
         </ion-col>
         <ion-col col-1 class="col-center" (click)="scrollSlideToRight()"
-                [hidden]="material_list.length <= 4">
+                [ngClass]="{'hide-arrow': !showArrow('right')}"
+                style="margin-top: -30px;">
             <ion-icon class="material-right-arrow " name="ios-arrow-forward"></ion-icon>
         </ion-col>
 
