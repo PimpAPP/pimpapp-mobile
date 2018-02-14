@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.pimp473818" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.cataki.mobileapp" version="1.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Cataki</name>
     <description>Cataki App</description>
     <author email="pimpmycarroca@gmail.com" href="http://cataki.org/">Cataki.org</author>
@@ -35,6 +35,36 @@
     <platform name="ios">
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
         <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" />
+        <icon height="57" src="resources/ios/icon/icon.png" width="57" />
+        <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
+        <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
+        <icon height="80" src="resources/ios/icon/icon-40@2x.png" width="80" />
+        <icon height="120" src="resources/ios/icon/icon-40@3x.png" width="120" />
+        <icon height="50" src="resources/ios/icon/icon-50.png" width="50" />
+        <icon height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
+        <icon height="60" src="resources/ios/icon/icon-60.png" width="60" />
+        <icon height="120" src="resources/ios/icon/icon-60@2x.png" width="120" />
+        <icon height="180" src="resources/ios/icon/icon-60@3x.png" width="180" />
+        <icon height="72" src="resources/ios/icon/icon-72.png" width="72" />
+        <icon height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
+        <icon height="76" src="resources/ios/icon/icon-76.png" width="76" />
+        <icon height="152" src="resources/ios/icon/icon-76@2x.png" width="152" />
+        <icon height="167" src="resources/ios/icon/icon-83.5@2x.png" width="167" />
+        <icon height="29" src="resources/ios/icon/icon-small.png" width="29" />
+        <icon height="58" src="resources/ios/icon/icon-small@2x.png" width="58" />
+        <icon height="87" src="resources/ios/icon/icon-small@3x.png" width="87" />
+        <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
+        <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
+        <splash height="1242" src="resources/ios/splash/Default-Landscape-736h.png" width="2208" />
+        <splash height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="2048" src="resources/ios/splash/Default-Landscape@~ipadpro.png" width="2732" />
+        <splash height="768" src="resources/ios/splash/Default-Landscape~ipad.png" width="1024" />
+        <splash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="2732" src="resources/ios/splash/Default-Portrait@~ipadpro.png" width="2048" />
+        <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
+        <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
+        <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
@@ -53,28 +83,28 @@
     <allow-navigation href="http://ionic.local/*" />
     <allow-navigation href="http://192.168.0.100:8100" />
     <engine name="android" spec="^6.2.3" />
-    <engine name="ios" spec="^4.4.0" />
-    <plugin name="cordova-plugin-camera" spec="^2.4.1">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
-    </plugin>
-    <plugin name="cordova-plugin-compat" spec="~1.1.0" />
-    <plugin name="cordova-plugin-console" spec="^1.0.7" />
-    <plugin name="cordova-plugin-device" spec="^1.1.6" />
+    <engine name="ios" spec="4.5.4" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="cordova-plugin-console" spec="^1.1.0" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
+    <plugin name="cordova-plugin-device" spec="^1.1.7" />
+    <plugin name="cordova-plugin-splashscreen" spec="^4.1.0" />
+    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
-        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value=" " />
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Use your GPS to locate you." />
     </plugin>
-    <plugin name="cordova-plugin-googlemaps" spec="^1.4.0">
+    <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
+    <plugin name="cordova-sqlite-storage" spec="^2.2.0" />
+    <plugin name="cordova-plugin-compat" spec="^1.2.0" />
+    <plugin name="call-number" spec="^1.0.1" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.2.4">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDS7AxBMmoeRanMxs4-VJJ87I9hMKp-d1E" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyCMKcHCSyv6WT4tK0eKs7aTSWNI07dsfdM" />
-        <variable name="NSLOCATIONWHENINUSEUSAGEDESCRIPTION" value="Show your location on the map" />
-        <variable name="NSLOCATIONALWAYSUSAGEDESCRIPTION" value="Trace your location on the map" />
+        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="We need to use your GPS to locate you to show near recyclable material pickers." />
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="We need to use your GPS to locate you to show near recyclable material pickers." />
     </plugin>
-    <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
-    <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
-    <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
-    <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
-    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.2">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="Use your camera to take a photo." />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Use your library to select a photo." />
+    </plugin>
 </widget>
