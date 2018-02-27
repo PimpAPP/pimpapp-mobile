@@ -67,29 +67,6 @@ export class HomePage {
     showCatadorProfile: boolean = false;
     showCooperativaProfile: boolean = false;
 
-    mapOptions = {
-        'backgroundColor': 'white',
-        'controls': {
-            'compass': true,
-            // 'myLocationButton': true,
-            'indoorPicker': true,//,
-            'zoom': true
-        },
-        'gestures': {
-            'scroll': true,
-            'tilt': true,
-            'rotate': true,
-            'zoom': true
-        },
-        'camera': {
-            // 'latLng': location,
-            'tilt': 0,
-            // 'zoom': zoom,
-            'bearing': 0,
-            'target': []
-        }
-    }
-
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, 
@@ -127,12 +104,14 @@ export class HomePage {
             this.geolocation.getCurrentPosition({timeout: 40000, enableHighAccuracy: true}).then(resp => {
                 this.openLatitude = resp.coords.latitude;
                 this.openLongitude = resp.coords.longitude;
-                this.loadMap(15);
+                this.loadCatadores();
+                // this.loadMap(15);
             }).catch((error) => {
                 console.log('Error getting location - Focando no Brasil', error);
                 this.openLatitude = -13.702797;
                 this.openLongitude = -69.686511;
-                this.loadMap(3);
+                this.loadCatadores();
+                // this.loadMap(3);
             });
 
         }, (error) => {
@@ -140,18 +119,15 @@ export class HomePage {
         });
     }
 
-    /**
-     * Action called by the back button.
-     */
-    backButtonAction() {
-        if (this.showProfile) {
-            console.log("Não fecha");
-            this.closeProfile();
-        } else {
-            console.log("Fecha");
-            this.platform.exitApp();
-            // this.navCtrl.setRoot(AnotherPage);  <-- if you wanted to go to another page
-        }
+    loadCatadores() {
+        this.catadoresProvider.getCatadoresPositions()
+            .subscribe(data => {
+                this.nearest_catadores = data;
+                var target = this.NearestCity(this.openLatitude, this.openLongitude);
+                // Chamar as cooperativas só após carregar os catadores.
+                // this.loadCooperatives();
+                this.loadMap(15, target);
+            });
     }
 
     newResiduePage() {
@@ -163,15 +139,8 @@ export class HomePage {
         this.navCtrl.push(CollectsOpen);
     }
 
-    centerLocation() {
+    setCurrentPosition() {
         var location = new LatLng(this.openLatitude, this.openLongitude);
-
-        let position: CameraPosition = {
-            target: location,
-            // zoom: 15,
-            tilt: 30
-        };
-
         let markerOptions: MarkerOptions;
         let iconURL: string = 'assets/icon/marker-user.png';
 
@@ -193,20 +162,48 @@ export class HomePage {
             .then((marker: Marker) => {
                 marker.showInfoWindow();
             });
-
-        this.map.moveCamera(position);
     }
 
-    loadMap(zoom) {
+    loadMap(zoom, target?) {
         let location: LatLng = new LatLng(this.openLatitude, this.openLongitude);
-        this.map = new GoogleMap('map', this.mapOptions);
+        this.map = new GoogleMap('map', {
+            'backgroundColor': 'white',
+            'controls': {
+                'compass': true,
+                // 'myLocationButton': true,
+                'indoorPicker': true,//,
+                'zoom': true
+            },
+            'gestures': {
+                'scroll': true,
+                'tilt': true,
+                'rotate': true,
+                'zoom': true
+            },
+            'camera': {
+                // 'latLng': location,
+                'tilt': 0,
+                // 'zoom': zoom,
+                'bearing': 0,
+                'target': target
+            }
+        });
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             // this.getCurrentLocation().subscribe(location =>{
             // });
             // this.loadCollects();
-            this.centerLocation();
-            this.loadCatadores();
+            
+            // this.centerLocation();
+            // this.loadCatadores();
+            this.setCurrentPosition();
+            this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
+            this.map.getCameraPosition().then((position) => {
+                position.zoom = position.zoom - 0.5;
+                this.map.moveCamera(position);
+            });
+
+            
         });
     }
 
@@ -258,18 +255,6 @@ export class HomePage {
             }
         });
         modal.present();
-    }
-
-    loadCatadores() {
-        this.catadoresProvider.getCatadoresPositions()
-            .subscribe(data => {
-                this.nearest_catadores = data;
-                this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
-                this.NearestCity(this.openLatitude, this.openLongitude);
-                this.loading.dismiss();
-                // Chamar as cooperativas só após carregar os catadores.
-                // this.loadCooperatives();
-            });
     }
 
     loadCooperatives() {
@@ -522,12 +507,32 @@ export class HomePage {
             this.nearest_catadores[closest].geolocation[0].longitude
         );
         var latlng = new LatLng(this.openLatitude, this.openLongitude);
-        this.mapOptions.camera.target = [
-            latlng,
-            latlngCatador
-        ]
 
-        this.map.setOptions(this.mapOptions);        
+        // this.map.setCameraTarget([
+        //     latlng,
+        //     latlngCatador
+        // ])
+
+        // this.map.setOptions(this.mapOptions);
+
+        return [latlng, latlngCatador]; 
+        // - RETORNAR O TARGET ANTES DE CRIAR O MAPA
+        // - SE N FUNCIONAR: ATUALIZAR O PLUGIN PRA USAR O FITBOUNDS
+    }
+
+
+    /**
+     * Action called by the back button.
+     */
+    backButtonAction() {
+        if (this.showProfile) {
+            console.log("Não fecha");
+            this.closeProfile();
+        } else {
+            console.log("Fecha");
+            this.platform.exitApp();
+            // this.navCtrl.setRoot(AnotherPage);  <-- if you wanted to go to another page
+        }
     }
 
 }
