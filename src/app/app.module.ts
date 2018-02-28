@@ -6,11 +6,15 @@ import { CadastroCatadorPage5 } from './../pages/cadastro-catador/cadastro-catad
 import { StorageService } from './../pages/storage-service';
 import { CallNumber } from '@ionic-native/call-number';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { SQLite } from '@ionic-native/sqlite';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CatadoresProvider } from './../providers/catadores-provider';
@@ -83,12 +87,16 @@ import { ColaborePage } from './../pages/colabore/colabore';
 import { CadastroCatadorWebPage } from './../pages/cadastro-catador-web/cadastro-catador-web';
 import { MenuCadastroComponent } from '../pages/menu-cadastro/menu-cadastro';
 
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { DatabaseProvider } from '../providers/database/database-provider';
+import { LangProvider } from '../providers/lang/lang-provider';
 
-import {
-    GoogleMaps,
+import { LangPage } from './../pages/lang-page/lang-page';
 
-} from '@ionic-native/google-maps';
 
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+}
 
 @NgModule({
     declarations: [
@@ -145,15 +153,25 @@ import {
         PraOndeVamosPage,
         ColaborePage,
         CadastroCatadorWebPage,
-    MenuCadastroComponent
+        MenuCadastroComponent,
+        LangPage
     ],
     imports: [
         BrowserModule,
         IonicModule.forRoot(MyApp, ResidueRegister),
         IonicStorageModule.forRoot(),
         HttpModule,
+        HttpClientModule,
         IonAlphaScrollModule,
-        TextMaskModule
+        TextMaskModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                //useFactory: HttpLoaderFactory,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        })
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -209,7 +227,8 @@ import {
         ParceirosPage,
         PraOndeVamosPage,
         ColaborePage,
-        CadastroCatadorWebPage
+        CadastroCatadorWebPage,
+        LangPage
     ],
     providers: [
         StatusBar,
@@ -227,6 +246,9 @@ import {
         UsersAPI,
         CallNumber,
         // CameraProvider,
+        SQLite,
+        DatabaseProvider,
+        LangProvider,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         { provide: AppStorage, useClass: AppStorage }
     ]

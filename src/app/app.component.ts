@@ -11,7 +11,9 @@ import { CadastroGerador } from './../pages/cadastro-gerador/cadastro-gerador';
 import { CadastroCatador } from './../pages/cadastro-catador/cadastro-catador';
 import { PerfilGerador } from './../pages/perfil-gerador/perfil-gerador';
 import { PerfilCatador } from './../pages/perfil-catador/perfil-catador';
-
+import { DatabaseProvider } from './../providers/database/database-provider';
+import { LangProvider } from './../providers/lang/lang-provider';
+import { LangPage } from './../pages/lang-page/lang-page';
 
 @Component({
     templateUrl: 'app.html',
@@ -22,14 +24,15 @@ export class MyApp {
     rootPage: any;
     public menu: MenuController;
 
-    constructor(platform: Platform, statusBar: StatusBar,
+    constructor(private platform: Platform, statusBar: StatusBar,
         public menuCtrl: MenuController, public storage: Storage,
         public storageService: StorageService, public app: App,
-        public loginProvider: LoginProvider) {
+        public loginProvider: LoginProvider,
+        private dbProvider: DatabaseProvider, private langProvider: LangProvider) {
 
         platform.ready().then(() => {
             statusBar.styleDefault();
-            this.checkLandingFirstTime();
+            this.checkLandingFirstTime();    
         });
 
         platform.registerBackButtonAction(() => {
@@ -82,7 +85,11 @@ export class MyApp {
                 this.nav.push(CadastroGerador);
                 this.menuCtrl.close();
                 break;
-        }
+            case 'lang':
+                this.nav.push(LangPage);
+                this.menuCtrl.close();
+                break;
+        }   
     }
 
 
