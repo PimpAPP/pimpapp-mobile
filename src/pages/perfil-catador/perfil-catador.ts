@@ -117,7 +117,7 @@ export class PerfilCatador {
                     }    
                     
                     this.whatsapp = phone;
-                    console.log(this.catador);
+                    // console.log(this.catador);
                 },
                 err => { }
             );
