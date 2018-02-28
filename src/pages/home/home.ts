@@ -26,7 +26,8 @@ import {
     LatLng,
     MarkerOptions,
     Marker,
-    CameraPosition
+    CameraPosition,
+    AnimateCameraOptions
 } from '@ionic-native/google-maps';
 
 declare var google: any;
@@ -190,20 +191,25 @@ export class HomePage {
         });
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-            // this.getCurrentLocation().subscribe(location =>{
-            // });
-            // this.loadCollects();
-            
             // this.centerLocation();
             // this.loadCatadores();
             this.setCurrentPosition();
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
-            this.map.getCameraPosition().then((position) => {
-                position.zoom = position.zoom - 0.5;
-                this.map.moveCamera(position);
+            let position: AnimateCameraOptions = {
+                target: target,
+                tilt: 0,
+                duration: 1000
+            };
+        
+            this.map.animateCamera(position).then(() => {
+                // Deveria ser possível pegar o zoom atual e redefini-lo com um 
+                // menor valor. Mas ao fazer isso com o getCameraPosition() o
+                // o zoom não é aplicado.
+                this.map.getCameraPosition().then((position) => {
+                    position.zoom = position.zoom - 0.5;
+                    this.map.moveCamera(position);
+                }); 
             });
-
-            
         });
     }
 
@@ -506,18 +512,14 @@ export class HomePage {
             this.nearest_catadores[closest].geolocation[0].latitude, 
             this.nearest_catadores[closest].geolocation[0].longitude
         );
-        var latlng = new LatLng(this.openLatitude, this.openLongitude);
+        var latlng = new LatLng(
+            this.openLatitude,
+            this.openLongitude
+        );
 
-        // this.map.setCameraTarget([
-        //     latlng,
-        //     latlngCatador
-        // ])
-
-        // this.map.setOptions(this.mapOptions);
-
-        return [latlng, latlngCatador]; 
-        // - RETORNAR O TARGET ANTES DE CRIAR O MAPA
-        // - SE N FUNCIONAR: ATUALIZAR O PLUGIN PRA USAR O FITBOUNDS
+        console.log(this.openLatitude);
+        console.log([latlng, latlngCatador]);
+        return [latlng, latlngCatador];
     }
 
 
