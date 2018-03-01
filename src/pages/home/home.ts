@@ -86,20 +86,20 @@ export class HomePage {
 
         this.platform.ready().then(() => {
             //Criando o banco de dados
-            this.dbProvider.createDatabase().then(() => {                
-                this.langProvider.get(1).then(lang => {
-                    if (lang) {
-                        this.translate.use(lang.value);
-                    } else {
-                        this.navCtrl.push(LangPage);
-                    }
-                }, error => {
-                    console.log(error);
-                });
+            // this.dbProvider.createDatabase().then(() => {                
+            //     this.langProvider.get(1).then(lang => {
+            //         if (lang) {
+            //             this.translate.use(lang.value);
+            //         } else {
+            //             this.navCtrl.push(LangPage);
+            //         }
+            //     }, error => {
+            //         console.log(error);
+            //     });
  
-            }).catch((error) => {
-                console.log('error');
-            });
+            // }).catch((error) => {
+            //     console.log('error');
+            // });
 
             // Buscando posição atual
             this.geolocation.getCurrentPosition({timeout: 40000, enableHighAccuracy: true}).then(resp => {
