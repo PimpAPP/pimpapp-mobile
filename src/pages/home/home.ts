@@ -63,6 +63,7 @@ export class HomePage {
     markerName: any;
     markerPhone: any;
     markerPhoto: any;
+    mapZoom = 3;
 
     showProfile: boolean = false;
     showCatadorProfile: boolean = false;
@@ -105,12 +106,14 @@ export class HomePage {
             this.geolocation.getCurrentPosition({timeout: 40000, enableHighAccuracy: true}).then(resp => {
                 this.openLatitude = resp.coords.latitude;
                 this.openLongitude = resp.coords.longitude;
+                this.mapZoom = 15;
                 this.loadCatadores();
                 // this.loadMap(15);
             }).catch((error) => {
                 console.log('Error getting location - Focando no Brasil', error);
                 this.openLatitude = -13.702797;
                 this.openLongitude = -69.686511;
+                this.mapZoom = 3;
                 this.loadCatadores();
                 // this.loadMap(3);
             });
@@ -127,7 +130,7 @@ export class HomePage {
                 var target = this.NearestCity(this.openLatitude, this.openLongitude);
                 // Chamar as cooperativas só após carregar os catadores.
                 // this.loadCooperatives();
-                this.loadMap(15, target);
+                this.loadMap(this.mapZoom, target);
             });
     }
 
@@ -184,7 +187,7 @@ export class HomePage {
             'camera': {
                 'latLng': location,
                 'tilt': 0,
-                // 'zoom': zoom,
+                'zoom': zoom,
                 'bearing': 0,
                 // 'target': target
             }
@@ -195,21 +198,25 @@ export class HomePage {
             // this.loadCatadores();
             this.setCurrentPosition();
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
-            let position: AnimateCameraOptions = {
-                target: target,
-                tilt: 0,
-                duration: 1000
-            };
-        
-            this.map.animateCamera(position).then(() => {
-                // Deveria ser possível pegar o zoom atual e redefini-lo com um 
-                // menor valor. Mas ao fazer isso com o getCameraPosition() o
-                // o zoom não é aplicado.
-                this.map.getCameraPosition().then((position) => {
-                    position.zoom = position.zoom - 0.5;
-                    this.map.moveCamera(position);
-                }); 
-            });
+            // this.setZoomOnNearestCatador(target);
+        });
+    }
+
+    setZoomOnNearestCatador(target) {
+        let position: AnimateCameraOptions = {
+            target: target,
+            tilt: 0,
+            duration: 1000
+        };
+    
+        this.map.animateCamera(position).then(() => {
+            // Deveria ser possível pegar o zoom atual e redefini-lo com um 
+            // menor valor. Mas ao fazer isso com o getCameraPosition() o
+            // o zoom não é aplicado.
+            this.map.getCameraPosition().then((position) => {
+                position.zoom = position.zoom - 0.5;
+                this.map.moveCamera(position);
+            }); 
         });
     }
 
