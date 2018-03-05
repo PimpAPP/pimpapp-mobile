@@ -202,6 +202,8 @@ export class HomePage {
         });
     }
 
+// Testando push 
+
     setZoomOnNearestCatador(target) {
         let position: AnimateCameraOptions = {
             target: target,
