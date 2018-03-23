@@ -126,10 +126,8 @@ export class HomePage {
     loadCatadores() {
         this.catadoresProvider.getCatadoresPositions()
             .subscribe(data => {
-                this.nearest_catadores = data;
+                this.nearest_catadores = data; 
                 var target = this.NearestCity(this.openLatitude, this.openLongitude);
-                // Chamar as cooperativas só após carregar os catadores.
-                // this.loadCooperatives();
                 this.loadMap(this.mapZoom, target);
             });
     }
@@ -194,10 +192,9 @@ export class HomePage {
         });
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-            // this.centerLocation();
-            // this.loadCatadores();
             this.setCurrentPosition();
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
+            this.loadCooperatives();
             // this.setZoomOnNearestCatador(target);
         });
     }
@@ -288,7 +285,7 @@ export class HomePage {
                     continue;
                 }
 
-                let iconType: string = 'assets/icon/cooperative-small2.png';
+                let iconType: string = 'assets/icon/cooperative-small3.png';
                 // let iconType:string = 'assets/icon/marker-user.png';
 
                 this.createNewPoint(
@@ -525,9 +522,6 @@ export class HomePage {
             this.openLatitude,
             this.openLongitude
         );
-
-        console.log(this.openLatitude);
-        console.log([latlng, latlngCatador]);
         return [latlng, latlngCatador];
     }
 

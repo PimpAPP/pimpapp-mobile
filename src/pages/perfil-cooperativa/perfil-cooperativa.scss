@@ -82,10 +82,12 @@ page-perfil-cooperativa {
     }
 
     .history {
-        color: gray;
-        font-size: 14px;
-        text-align: justify;
-        text-justify: inter-word;
+        color: #252323;
+        font-family: "DIN-Regular";
+        font-size: 20px;
+        text-align: center !important;
+        // text-align: justify;
+        // text-justify: inter-word;
     }
 
     .catador-history-more {
@@ -184,6 +186,12 @@ page-perfil-cooperativa {
     font-size: 16px;
     // margin-bottom: 50px;
     font-style: italic;
+}
+
+.btn-update {
+    background-color: #2ca538;
+    color: white;
+    margin-bottom: 18px;
 }
 
 .btn-image {
