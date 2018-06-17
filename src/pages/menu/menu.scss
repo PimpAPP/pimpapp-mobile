@@ -1,6 +1,6 @@
 page-menu {
     .content-ios, .content-android {
-        background-color: #dadace;
+        background-color: color($colors, background);
     }
 }
 
@@ -46,6 +46,15 @@ h1 {
 
     li a:hover, li a:active {
         color: color($colors, green);
+
+        .menu-caret svg path {
+            fill: #fff;
+        }
+
+    }
+
+    li a .menu-caret {
+        float: right;
     }
 
 
