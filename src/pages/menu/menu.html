@@ -1,14 +1,27 @@
 <ion-content padding>
-    <h1>SOBRE NÓS<small>Pode chegar, vamos nos conhecer ;)</small></h1>
-    <ul>
-        <li><a (click)="goComeceAqui()">{{ "MENU.STARTHERE" | translate:param }}</a></li>
-        <li><a (click)="goCataki()">{{ "MENU.HISTORY" | translate:param }}</a></li>
-        <li><a (click)="goPimpMyCarroca()">{{ "MENU.PIMP" | translate:param }}</a></li>
-        <li><a (click)="goParceiros()">{{ "MENU.PARTNERS" | translate:param }}</a></li>
-        <li><a (click)="goParondeVamos()">{{ "MENU.WHERE-ARE-WE-GOING" | translate:param }}</a></li>
-        <li><a (click)="goColabore()">{{ "MENU.COLLABORATE" | translate:param }}</a></li>
-        <li><a (click)="openCatadorPage()">Perfil do catador</a></li>
-        <li><a (click)="openCooperativaPage()">Perfil cooperativa</a></li>
-    </ul>
-    <img src="assets/img/menu-illustration.svg">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+                <h1>SOBRE NÓS<small>Pode chegar, vamos nos conhecer ;)</small></h1>
+            </ion-col>
+            <ion-col col-12>
+                <ul class="menu-container">
+                    <li><a (click)="goComeceAqui()">{{ "MENU.STARTHERE" | translate:param }}</a></li>
+                    <li><a (click)="goCataki()">{{ "MENU.HISTORY" | translate:param }}</a></li>
+                    <li><a (click)="goPimpMyCarroca()">{{ "MENU.PIMP" | translate:param }}</a></li>
+                    <li><a (click)="goParceiros()">{{ "MENU.PARTNERS" | translate:param }}</a></li>
+                    <li><a (click)="goParondeVamos()">{{ "MENU.WHERE-ARE-WE-GOING" | translate:param }}</a></li>
+                    <li><a (click)="goColabore()">{{ "MENU.COLLABORATE" | translate:param }}</a></li>
+                    <!-- PARA TESTE 
+                    <li><a (click)="openCatadorPage()">Perfil do catador</a></li>
+                    <li><a (click)="openCooperativaPage()">Perfil cooperativa</a></li> -->
+                </ul>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <img src="assets/img/menu-illustration.svg">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
