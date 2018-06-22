@@ -86,6 +86,7 @@ import { PraOndeVamosPage } from './../pages/praondevamos/praondevamos';
 import { ColaborePage } from './../pages/colabore/colabore';
 import { CadastroCatadorWebPage } from './../pages/cadastro-catador-web/cadastro-catador-web';
 import { MenuCadastroComponent } from '../pages/menu-cadastro/menu-cadastro';
+import { MenuAjudaPage } from '../pages/menu-ajuda/menu-ajuda';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { DatabaseProvider } from '../providers/database/database-provider';
@@ -113,6 +114,7 @@ export function createTranslateLoader(http: HttpClient) {
         TabsPage,
         MenuPage,
         MenuCadastroComponent,
+        MenuAjudaPage,
         TutorialPage,
         TutorialPage2,
         TutorialPage3,
@@ -188,6 +190,7 @@ export function createTranslateLoader(http: HttpClient) {
         TabsPage,
         MenuPage,
         MenuCadastroComponent,
+        MenuAjudaPage,
         TutorialPage,
         TutorialPage2,
         TutorialPage3,

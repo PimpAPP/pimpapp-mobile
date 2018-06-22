@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HomePage } from './../home/home';
+import { CadastroCatadorWebPage } from './../cadastro-catador-web/cadastro-catador-web';
 import { MenuPage } from './../menu/menu';
 import { MenuCatadorRegister } from './../menu-catador-register/menu-catador-register';
 import { MenuMaterials } from './../menu-materials/menu-materials';
@@ -20,6 +21,7 @@ export class TabsPage {
     newResidue = ResidueRegister;
     searchPage =ErrorPage;
     MaterialSlider = MenuMaterials;
+    cadastro = CadastroCatadorWebPage;
 
   constructor() {
 

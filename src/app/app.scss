@@ -47,9 +47,34 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Overpass Regular'), local('Overpass-Regular'), url('../assets/fonts/Overpass-Regular.woff') format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Overpass Bold'), local('Overpass-Bold'), url('../assets/fonts/Overpass-Bold.woff') format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Overpass Black'), local('Overpass-Black'), url('../assets/fonts/Overpass-Black.woff') format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }  
+
 h1 {
     // font-family: "Brizzush-Rough";
     //color: color($colors, green);
+    color: color($colors, green);
     // color: #00ba45;
 }
 
@@ -57,12 +82,13 @@ h1 {
 ion-title {
     font-family: "Brizzush-Rough";
     //color: color($colors, green);
-    color: #00ba45;
+    color: color($colors, green);
 }
 
 h2, h3 {
     font-family: "DIN-Bold";
     //color: color($colors, green);
+    color: color($colors, green);
 }
 
 .font-green {
@@ -74,8 +100,7 @@ h2, h3 {
 }
 
 p {
-    font-family: "DIN-Regular";
-    color: #252323;
+    color: black;
     font-size: 1.2em;
 }
 
@@ -253,6 +278,41 @@ ion-app._gmaps_cdv_ .nav-decor{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+ion-icon {
+    &[class*="menu-"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        width: 3em;
+        height: 2.6em;
+        color: #ffffff !important;
+    }
+    // custom icons
+    &[class*="menu-menu"] {
+        mask-image: url(../assets/icon/menu/menu-menu.svg);
+    }
+    &[class*="menu-cadastro"] {
+        mask-image: url(../assets/icon/menu/menu-cadastro.svg);
+    }
+    &[class*="menu-mapa"] {
+        mask-image: url(../assets/icon/menu/menu-mapa.svg);
+    }
+    &[class*="menu-materiais"] {
+        mask-image: url(../assets/icon/menu/menu-materiais.svg);
+    }
+    &[class*="menu-ajuda"] {
+        mask-image: url(../assets/icon/menu/menu-ajuda.svg);
+    }
+}
+
+// Change background color on tabmenu selected
+.tabs-md .tab-button[aria-selected=true] {
+    background: #369728;
 }
 
 .content-md hr {
