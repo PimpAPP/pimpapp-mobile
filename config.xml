@@ -58,7 +58,6 @@
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
     </plugin>
-    <plugin name="cordova-plugin-compat" spec="~1.1.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value=" " />
@@ -76,4 +75,5 @@
     <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <plugin name="cordova-plugin-compat" spec="^1.2.0" />
 </widget>
