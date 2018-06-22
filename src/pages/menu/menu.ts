@@ -13,6 +13,7 @@ import { ColaborePage } from './../colabore/colabore';
 import { CadastroCatador } from './../cadastro-catador/cadastro-catador';
 import { CadastroCatadorWebPage } from './../cadastro-catador-web/cadastro-catador-web';
 import { MenuCadastroComponent } from './../menu-cadastro/menu-cadastro';
+import { MenuAjudaPage } from './../menu-ajuda/menu-ajuda';
 import { PerfilCooperativa } from './../perfil-cooperativa/perfil-cooperativa';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LangPage } from './../lang-page/lang-page';
@@ -85,5 +86,9 @@ export class MenuPage {
     openLangPage() {
         this.navCtrl.push(LangPage);
     }
+
+    openMenuAjuda() {
+        this.navCtrl.push(MenuAjudaPage);
+    }    
 
 }
