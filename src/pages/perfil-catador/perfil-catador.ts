@@ -19,9 +19,9 @@ declare var $: any;
 export class PerfilCatador {
 
     @ViewChild(Content) content: Content;
-    catadorID: any = this.navParams.get("catadorID");
-    // catadorID = 539;
-    // catadorID = 40;
+    // catadorID: any = this.navParams.get("catadorID");
+    catadorID = 539;
+    // catadorID = 5;
 
     catador: any;
     catadorDiasTrabalhados: any;
@@ -251,17 +251,19 @@ export class PerfilCatador {
     }
 
     showArrow(side) {
-        if (this.material_list.length <= 4) 
+        // setTimeout(() => {
+            if (this.material_list.length <= 4) 
             return false;
 
-        var slider = document.getElementById("material-slide");
+            var slider = document.getElementById("material-slide");
 
-        if (side == 'left') {
-            return slider.scrollLeft != 0;
-        } else if (side == 'right') {
-            var max = slider.scrollWidth - slider.clientWidth
-            return slider.scrollLeft < max;
-        }
+            if (side == 'left') {
+                return slider.scrollLeft != 0;
+            } else if (side == 'right') {
+                var max = slider.scrollWidth - slider.clientWidth
+                return slider.scrollLeft < max;
+            }
+        // }, 100);
     }
 
 }

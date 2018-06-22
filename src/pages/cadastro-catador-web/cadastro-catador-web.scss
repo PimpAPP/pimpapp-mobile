@@ -1,14 +1,25 @@
 .cadastro-catador-web {
-    text-align: center;
-    padding: 30px;
-}
-
-.cadastro-catador-web img{
-    width: 80%;
+    background-color: color($colors, background);
 }
 
 .link {
-    color: #3cb54d;
-    font-family: 'DIN-Bold';
-    font-size: 22px;
+    color: color($colors, primary);
+}
+
+h1 {
+    font-family: 'Overpass';
+    font-weight: 900;
+
+    small {
+        font-weight: 400;
+        font-size: 1em;
+        color: black;
+        display: block;
+        margin-top: 5px;
+    }
+    margin: 0;
+}
+
+p {
+    -webkit-margin-before: 0;
 }

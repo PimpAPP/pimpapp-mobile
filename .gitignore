@@ -10,7 +10,9 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 .vscode/
-resources/*
+resources/android/*
+resources/ios/*
+resources/windows/*
 npm-debug.log*
 .
 .idea/

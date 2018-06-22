@@ -1,28 +1,28 @@
-<ion-content padding>
-    <div class="mainContentDiv">
-        <div class="pageContent">
-
-            <div class="pageTitle">
-                <span class="spanMargin"></span>
-                <h1 text-center class="menuHeading">SOBRE NÓS</h1>
-                <!-- <button ion-button full>FALE CONOSCO</button>-->
-            </div>    
-
-            <button ion-button full (click)="goCataki()" color="dark" class="text">{{ "MENU.HISTORY" | translate:param }}</button>
-            <button ion-button full (click)="goPimpMyCarroca()" color="dark" class="text">{{ "MENU.PIMP" | translate:param }}</button>
-            <button ion-button full (click)="goParceiros()" color="dark" class="text">{{ "MENU.PARTNERS" | translate:param }}</button>
-            <button ion-button full (click)="goParondeVamos()" color="dark" class="text">{{ "MENU.WHERE-ARE-WE-GOING" | translate:param }}</button>
-            <button ion-button full (click)="goColabore()" color="dark" class="text">{{ "MENU.COLLABORATE" | translate:param }}</button>
-            <!-- <button ion-button full (click)="cadastroCatador()" color="dark" class="text">Cadastro de catador</button> -->
-            <button ion-button full (click)="cadastroCatadorWeb()" color="dark" class="text">{{ "MENU.CATADOR-REGISTER" | translate:param }}</button>
-            <!-- <button ion-button full (click)="openCadastro()" color="dark" class="text">Quero cadastrar</button> -->
-
-            <!-- PARA TESTE -->
-            <button ion-button full (click)="openCatadorPage()" color="dark" class="text">Perfil do catador</button>
-            <button ion-button full (click)="openCooperativaPage()" color="dark" class="text">Perfil cooperativa</button>
-            
-            <!-- <button ion-button full (click)="openSplash()" color="dark" class="text">openSplash</button> -->
-            <!-- <button ion-button full (click)="openLangPage()" color="dark" class="text">Linguagem</button> -->
-        </div>
-    </div>
+<ion-content class="page-menu" padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+                <h1>SOBRE NÓS<small>Pode chegar, vamos nos conhecer ;)</small></h1>
+            </ion-col>
+            <ion-col col-12>
+                <ul class="menu-container">
+                    <li><a (click)="cadastroCatadorWeb()">{{ "MENU.STARTHERE" | translate:param }}<span class="menu-caret">&gt;</span></a></li>
+                    <li><a (click)="goCataki()">{{ "MENU.HISTORY" | translate:param }}<span class="menu-caret">&gt;</span></a></li>
+                    <li><a (click)="goPimpMyCarroca()">{{ "MENU.PIMP" | translate:param }}<span class="menu-caret">&gt;</span></a></li>
+                    <li><a (click)="goParceiros()">{{ "MENU.PARTNERS" | translate:param }}<span class="menu-caret">&gt;</span></a></li>
+                    <li><a (click)="goParondeVamos()">{{ "MENU.WHERE-ARE-WE-GOING" | translate:param }}<span class="menu-caret">&gt;</span></a></li>
+                    <li><a (click)="goColabore()">{{ "MENU.COLLABORATE" | translate:param }}<span class="menu-caret">&gt;</span></a></li>
+                    <!-- PARA TESTE 
+                    <li><a (click)="openMenuAjuda()">AJUDA<span class="menu-caret">&gt;</span></a></li>
+                    <!-- <li><a (click)="openCatadorPage()">Perfil do catador</a></li>
+                    <li><a (click)="openCooperativaPage()">Perfil cooperativa</a></li> -->
+                </ul>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <img src="assets/img/menu-illustration.svg">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
