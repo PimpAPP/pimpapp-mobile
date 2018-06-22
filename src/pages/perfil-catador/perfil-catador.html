@@ -1,76 +1,51 @@
-<!-- <ion-header>
-    <ion-navbar>
-    </ion-navbar>
-</ion-header> -->
-
-
 <ion-content id="perfil-catador-content">
 
     <div>
         <div class="profile-header-background"></div>
         <img src="{{ catadorImg }}" class="img-profile" (error)="photoOnError()">
-
-        <!-- <ion-row>
-            <ion-col col-12 class="col-center" *ngIf="catadorImg == noImageSrc">
-                <h5 text-center class="change-image-text" >
-                    <span>Adicionar foto:</span>
-                </h5>
-
-                <button ion-button icon-start color="dark" class="btn-image" (click)="getPhoto('camera')">
-                    <ion-icon name="camera" class="ion-icon-cataki"></ion-icon>
-                </button>
-                <button ion-button icon-start class="btn-image" (click)="getPhoto('gallery')">
-                    <ion-icon name="ios-folder-open" class="ion-icon-cataki"></ion-icon>
-                </button>
-            </ion-col>
-        </ion-row>     -->
-
     </div>
-    <!-- <div *ngIf="!catador?.profile_photo" style="margin-top: 50px !important"></div> -->
+    
     <div *ngIf="!catador?.profile_photo"></div>
     
-    <h1 text-center class="catador-name" style="margin-bottom: 0px;">
-        {{ catador?.name }}
-        <span [hidden]="!catador?.nickname">, </span>
-    </h1>
-    <div *ngIf="catador?.nickname" >
-        <h3 text-center style="color: black; margin-top: 0px; margin-bottom: 0px;">mas pode me chamar de </h3>
-        <h1 text-center class="catador-name" style="margin-top: 0px; margin-bottom: 30px;"><i>"{{ catador?.nickname }}"</i></h1>
+    <div *ngIf="catador?.nickname">
+        <h1 style="margin-bottom: 0px;" class="catador-name">{{ catador?.name }},</h1> mas pode me chamar de 
+        <h1 class="catador-name font-green" style="margin-top: 0px; margin-bottom: 30px;"><i>"{{ catador?.nickname }}"</i></h1>
     </div>
-     
-    <!-- <h3 text-center class="catador-nickname">({{ catador?.nickname }})</h3> -->
-    
-    <div *ngIf="catador?.presentation_phrase">
-        <h2 text-center>"{{ catador?.presentation_phrase }}"</h2>
+    <div *ngIf="!catador?.nickname">
+        <h1 style="margin-bottom: 0px;" class="font-green">
+            {{ catador?.name }}
+        </h1>
     </div>
 
     <div *ngIf="catador?.phones[0]?.phone">
         <hr>
-        <h2 text-center style="color: black;">{{ catador?.phones[0]?.phone }}</h2>
-
-        <ion-row *ngIf="catador?.phones?.length" id="phones" class="row-center">
-            <!-- <ion-col col-6 class="col-center">
-                <a text-center href="https://api.whatsapp.com/send?phone=55{{ whatsapp }}&text=Ol%C3%A1%20catador,%20quero%20confirmar%20a%20minha%20coleta%20com%20voc%C3%AA">
-                    <img src="assets/img/Icones_mapamenu-11.png" alt="Whats app" width="40%">
-                </a>
-            </ion-col> -->
-            <ion-col col-6 class="col-center">
-                <img src="assets/img/Icones_mapamenu-12.png" alt="Telefone" width="40%" (click)="launchPhone(catador?.phones[0]?.phone)">
+        <ion-row align-items-center>
+            <ion-col col-2>
+                <img src="assets/img/Icones_mapamenu-12.png" alt="Telefone" 
+                        width="50%" (click)="launchPhone(catador?.phones[0]?.phone)">
+            </ion-col>
+            <ion-col col-10>
+                <h4 style="margin: 0px;">{{ catador?.phones[0]?.phone }}</h4>
             </ion-col>
         </ion-row>
-
-        <hr>
+        <hr *ngIf="catador?.presentation_phrase">
     </div>  
 
-    <div>
-        <h3 text-center>{{ catador?.address_region }} 
-            <span [hidden]="!catador?.address_region || !catador?.city">,</span>
-        {{ catador?.city }}</h3>
-        <h3 text-center style="color: black" [hidden]="!catador?.region">Coleta em</h3>
-        <h3 text-center>{{ catador?.region }}</h3>
+    <div *ngIf="catador?.presentation_phrase">
+        <p style="margin: 0px;">"{{ catador?.presentation_phrase }}"</p>
+        <hr>
     </div>
 
-    <h2 text-center style="color: black" [hidden]="material_list.length <= 0">Trabalha reciclando</h2>
+    <div>
+        <h3 class="font-green" [hidden]="!catador?.region">ENDEREÇO</h3>
+        <p>{{ catador?.address_region }} 
+            <span [hidden]="!catador?.address_region || !catador?.city">,</span>
+            {{ catador?.city }}</p>
+        <h3 class="font-green" [hidden]="!catador?.region">COLETA EM</h3>
+        <p>{{ catador?.region }}</p>
+    </div>
+
+    <h2 class="font-green" [hidden]="material_list.length <= 0">RECICLA</h2>
 
     <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
         <ion-col col-1 class="col-center" (click)="scrollSlideToLeft()"
@@ -79,7 +54,7 @@
             <ion-icon class="material-left-arrow" name="ios-arrow-back"></ion-icon>
         </ion-col>
         <ion-col col-10>
-            <div class="material-slide" id="material-slide" (scroll)="onScroll($event)">
+            <div class="material-slide" id="material-slide">
                 <div *ngFor="let material of material_list" class="material-slide-item">
                     <img src="assets/img/{{ material.icon }}" alt="{{ material.name }}" width="80%" class="material-img">
                     <p text-center class="material-name" text-wrap>{{ material.name }}</p>
@@ -100,8 +75,9 @@
     <br />
 
     <div *ngIf="catador?.minibio">
-        <h3 text-center style="color: black">História de vida</h3>
-        <p text-center class="catador-minibio">
+        <h3 class="font-green">HISTÓRIA DE VIDA</h3>
+        <!-- <p text-center class="catador-minibio"> -->
+        <p>
             {{ catador.minibio }}
         </p>
         <!-- <p text-center class="catador-minibio">
@@ -120,50 +96,10 @@
         </p> -->
     </div>
 
-    <!-- <ion-row *ngIf="catador?.region" class="row-center">
-        <ion-col col-4 class="col-right">
-            <img src="assets/img/Icones_mapamenu-15.png" class="icon-map-region" alt="Pin Mapa">
-        </ion-col>    
-        <ion-col col-8>
-            <h2 class="catador-region-text" class="text-map-region">{{ catador?.region }}</h2>
-        </ion-col>    
-    </ion-row> -->
-
-    <!-- <ion-row class="row-center">
-        <div id="perfil-catador">
-            <h1>+ Perfil</h1>
-            <p>{{ catador?.name }} coleta em média</p>
-            <h2>{{ catador?.kg_day }} kg/dia</h2>
-            <p>Até hoje a estimativa é de que já tenha coletado</p>
-            <h2>{{ catador?.kg_day * catadorDiasTrabalhados}}/kg</h2>
-            <p>de recicláveis!</p>
-        </div>
-
-    </ion-row>
-    <br /> -->
-
-    <!-- <ion-row>
-        <ion-col col-12 class="col-center">
-            <h3 text-center>CARROÇA EQUIPADA COM </h3>
-            <img src="assets/img/catador_verde.png" width="30%" alt="Kit carroça">
-        </ion-col>
-    </ion-row> -->
-
-    <ion-row class="row-center">
-
-        <ion-list>                
-            <!-- <ion-item class="transparent" text-wrap>
-                <ion-thumbnail item-left *ngIf="catador?.carroca_pimpada">
-                    <img src="assets/img/Checkbox2.png">
-                </ion-thumbnail>
-                <ion-thumbnail item-left *ngIf="!catador?.carroca_pimpada">
-                    <img src="assets/img/Checkbox1.png">
-                </ion-thumbnail> 
-                <p class="safety-kit-label">Carroça grafitada/pimpada?</p>
-            </ion-item> -->
-
+    <ion-row>
+        <ion-list>
             <div *ngIf="catador">
-                <h2 class="safety-kit-label">Carroça grafitada/pimpada?</h2>
+                <h3 class="font-green">CARROÇA GRAFITADA/PIMPADA?</h3>
                 <ion-item style="background-color: unset;" *ngIf="catador?.carroca_pimpada">
                     <ion-thumbnail item-left>
                         <img src="assets/img/Checkbox2.png">
@@ -177,77 +113,13 @@
                     <p class="safety-kit-label">Não</p>
                 </ion-item>
             </div>
-
-            <!-- <ion-item class="transparent">
-                <ion-thumbnail item-left *ngIf="catador?.has_smartphone_with_internet">
-                    <img src="assets/img/Checkbox2.png">
-                </ion-thumbnail>
-                <ion-thumbnail item-left *ngIf="!catador?.has_smartphone_with_internet">
-                    <img src="assets/img/Checkbox1.png">
-                </ion-thumbnail>
-                <p class="safety-kit-label">Smartphone e Internet</p>
-            </ion-item>
-            <ion-item class="transparent">
-                <ion-thumbnail item-left *ngIf="catador?.has_motor_vehicle">
-                    <img src="assets/img/Checkbox2.png">
-                </ion-thumbnail>
-                <ion-thumbnail item-left *ngIf="!catador?.has_motor_vehicle">
-                    <img src="assets/img/Checkbox1.png">
-                </ion-thumbnail>
-                <p class="safety-kit-label">Motor</p>
-            </ion-item>
-            <ion-item class="transparent">
-                <ion-thumbnail item-left *ngIf="catador?.safety_kit_boot">
-                    <img src="assets/img/Checkbox2.png">
-                </ion-thumbnail>
-                <ion-thumbnail item-left *ngIf="!catador?.safety_kit_boot">
-                    <img src="assets/img/Checkbox1.png">
-                </ion-thumbnail>
-                <p class="safety-kit-label">Bota</p>
-            </ion-item>
-            <ion-item class="transparent">
-                <ion-thumbnail item-left *ngIf="catador?.safety_kit_gloves">
-                    <img src="assets/img/Checkbox2.png">
-                </ion-thumbnail>
-                <ion-thumbnail item-left *ngIf="!catador?.safety_kit_gloves">
-                    <img src="assets/img/Checkbox1.png">
-                </ion-thumbnail>
-                <p class="safety-kit-label">Luva</p>
-            </ion-item>
-            <ion-item class="transparent">
-                <ion-thumbnail item-left *ngIf="catador?.safety_kit_brakes">
-                    <img src="assets/img/Checkbox2.png">
-                </ion-thumbnail>
-                <ion-thumbnail item-left *ngIf="!catador?.safety_kit_brakes">
-                    <img src="assets/img/Checkbox1.png">
-                </ion-thumbnail>
-                <p class="safety-kit-label">Freios</p>
-            </ion-item>
-            <ion-item class="transparent">
-                <ion-thumbnail item-left *ngIf="catador?.safety_kit_reflective_tapes">
-                    <img src="assets/img/Checkbox2.png">
-                </ion-thumbnail>
-                <ion-thumbnail item-left *ngIf="!catador?.safety_kit_reflective_tapes">
-                    <img src="assets/img/Checkbox1.png">
-                </ion-thumbnail>
-                <p class="safety-kit-label">Fitas Refletivas</p>
-            </ion-item>   
-            <ion-item class="transparent">
-                <ion-thumbnail item-left *ngIf="catador?.safety_kit_rearview">
-                    <img src="assets/img/Checkbox2.png">
-                </ion-thumbnail>
-                <ion-thumbnail item-left *ngIf="!catador?.safety_kit_rearview">
-                    <img src="assets/img/Checkbox1.png">
-                </ion-thumbnail>
-                <p class="safety-kit-label">Retrovisor</p>
-            </ion-item> -->
         </ion-list> 
     </ion-row>
 
     <ion-row class="row-center">
         <ion-col col-12 class="col-center"> 
             <p text-center [hidden]="!catador?.modified_date" class="modified-date">
-                Atualizado em: {{ getModifiedDate() }} 
+                Atualizado em: <span class="font-green"> {{ getModifiedDate() }} </span>
             </p>
         </ion-col>    
     </ion-row>
@@ -256,6 +128,10 @@
         <button ion-button round class="btn-update" (click)="openUpdatePage()">
             Atualizar Cadastro
         </button>
+    </ion-row>
+
+    <ion-row>
+        <br>
     </ion-row>
 
 </ion-content>

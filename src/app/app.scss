@@ -72,9 +72,10 @@
   }  
 
 h1 {
-    font-family: "Brizzush-Rough";
+    // font-family: "Brizzush-Rough";
     //color: color($colors, green);
     color: color($colors, green);
+    // color: #00ba45;
 }
 
 
@@ -88,6 +89,14 @@ h2, h3 {
     font-family: "DIN-Bold";
     //color: color($colors, green);
     color: color($colors, green);
+}
+
+.font-green {
+    color: #00ba45;
+}
+
+.bold { 
+    font-family: "DIN-Bold";
 }
 
 p {
@@ -269,6 +278,11 @@ ion-app._gmaps_cdv_ .nav-decor{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+.content-md hr {
+    background-color: black;
+    height: 2px;
 }
 
 @media screen and (max-width: 450px) {
