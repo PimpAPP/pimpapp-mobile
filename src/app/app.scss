@@ -280,6 +280,41 @@ ion-app._gmaps_cdv_ .nav-decor{
     align-items: flex-end;
 }
 
+ion-icon {
+    &[class*="menu-"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        width: 3em;
+        height: 2.6em;
+        color: #ffffff !important;
+    }
+    // custom icons
+    &[class*="menu-menu"] {
+        mask-image: url(../assets/icon/menu/menu-menu.svg);
+    }
+    &[class*="menu-cadastro"] {
+        mask-image: url(../assets/icon/menu/menu-cadastro.svg);
+    }
+    &[class*="menu-mapa"] {
+        mask-image: url(../assets/icon/menu/menu-mapa.svg);
+    }
+    &[class*="menu-materiais"] {
+        mask-image: url(../assets/icon/menu/menu-materiais.svg);
+    }
+    &[class*="menu-ajuda"] {
+        mask-image: url(../assets/icon/menu/menu-ajuda.svg);
+    }
+}
+
+// Change background color on tabmenu selected
+.tabs-md .tab-button[aria-selected=true] {
+    background: #369728;
+}
+
 .content-md hr {
     background-color: black;
     height: 2px;
