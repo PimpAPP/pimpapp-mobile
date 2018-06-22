@@ -28,7 +28,7 @@ $colors: (
   brown: #c69b74,
   grey:   #dedede,
   primary:    #387ef5,
-  secondary:  #32db64,
+  secondary:  #40a926,//#32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
@@ -80,3 +80,6 @@ $control-height: 40px;
 
 @import "roboto";
 @import "noto-sans";
+
+$tabs-ios-tab-icon-color: red;
+$tabs-md-tab-icon-color-active: red;
