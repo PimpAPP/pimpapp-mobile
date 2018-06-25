@@ -16,8 +16,8 @@ export class PerfilCooperativa {
 
     @ViewChild(Content) content: Content;
 
-    cooperativaID: any = this.navParams.get("cooperativaID");
-    // cooperativaID: any = 20;
+    // cooperativaID: any = this.navParams.get("cooperativaID");
+    cooperativaID: any = 20;
     // cooperativaID: any = 10;
     cooperativa: any;
     cooperativaDiasTrabalhados: any;

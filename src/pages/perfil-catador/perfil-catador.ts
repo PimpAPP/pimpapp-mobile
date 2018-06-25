@@ -19,8 +19,8 @@ declare var $: any;
 export class PerfilCatador {
 
     @ViewChild(Content) content: Content;
-    catadorID: any = this.navParams.get("catadorID");
-    // catadorID = 539;
+    // catadorID: any = this.navParams.get("catadorID");
+    catadorID = 539;
     // catadorID = 5;
 
     catador: any;
