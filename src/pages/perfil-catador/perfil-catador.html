@@ -8,13 +8,13 @@
     <div *ngIf="!catador?.profile_photo"></div>
     
     <div *ngIf="catador?.nickname">
-        <h1 style="margin-bottom: 0px;" class="catador-name">{{ catador?.name }},</h1> mas pode me chamar de 
-        <h1 class="catador-name font-green" style="margin-top: 0px; margin-bottom: 30px;"><i>"{{ catador?.nickname }}"</i></h1>
+        <h3 style="margin-bottom: 0px;" class="font-green">{{ catador?.name }},</h3> mas pode me chamar de 
+        <h3 class="font-green" style="margin-top: 0px; margin-bottom: 30px;"><i>"{{ catador?.nickname }}"</i></h3>
     </div>
     <div *ngIf="!catador?.nickname">
-        <h1 style="margin-bottom: 0px;" class="font-green">
+        <h3 style="margin-bottom: 0px;" class="font-green">
             {{ catador?.name }}
-        </h1>
+        </h3>
     </div>
 
     <div *ngIf="catador?.phones[0]?.phone">
@@ -49,7 +49,7 @@
 
     <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
         <ion-col col-1 class="col-center" (click)="scrollSlideToLeft()"
-                [ngClass]="{'hide-arrow': !showArrow('left')}"
+                [hidden]="material_list.length <= 4"
                 style="margin-top: -30px;">
             <ion-icon class="material-left-arrow" name="ios-arrow-back"></ion-icon>
         </ion-col>
@@ -62,7 +62,7 @@
             </div>        
         </ion-col>
         <ion-col col-1 class="col-center" (click)="scrollSlideToRight()"
-                [ngClass]="{'hide-arrow': !showArrow('right')}"
+                [hidden]="material_list.length <= 4"
                 style="margin-top: -30px;">
             <ion-icon class="material-right-arrow " name="ios-arrow-forward"></ion-icon>
         </ion-col>

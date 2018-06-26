@@ -5,6 +5,7 @@ import { LoadingController } from 'ionic-angular';
 import { AlertController, Content } from 'ionic-angular';
 import { MaterialRecover } from './../MaterialRecover';
 import { CallNumber } from '@ionic-native/call-number';
+import { Slides } from 'ionic-angular';
 
 import { UsersAPI } from '../../providers/users-api';
 
@@ -15,10 +16,12 @@ import { UsersAPI } from '../../providers/users-api';
 export class PerfilCooperativa {
 
     @ViewChild(Content) content: Content;
+    @ViewChild(Slides) gallerySlides: Slides;
+    
 
-    // cooperativaID: any = this.navParams.get("cooperativaID");
-    cooperativaID: any = 20;
-    // cooperativaID: any = 10;
+    cooperativaID: any = this.navParams.get("cooperativaID");
+    // cooperativaID: any = 20;
+    // cooperativaID: any = 1;
     cooperativa: any;
     cooperativaDiasTrabalhados: any;
     material_list: any[] = [];
@@ -85,18 +88,28 @@ export class PerfilCooperativa {
                                 .replace('-', '');
                     }
 
-                    this.http.get(url + 'partners/').subscribe(res=>{
-                        var partners = res;
-                        if (partners) {
-                            for (var i=0; i<=partners.length; i++) {
-                                if (!partners[i] || !partners[i].image) continue;
-                                if (partners[i].image.startsWith('/')) {
-                                    partners[i].image = partners[i].image.slice(1);
-                                }
+                    if (this.cooperativa.partners) {
+                        for (var i=0; i<=this.cooperativa.partners.length; i++) {
+                            if (!this.cooperativa.partners[i] || !this.cooperativa.partners[i].image) 
+                                continue;
+                            if (this.cooperativa.partners[i].image.startsWith('/')) {
+                                this.cooperativa.partners[i].image = this.cooperativa.partners[i].image.slice(1);
                             }
                         }
-                        this.cooperativa.partners = partners;
-                    });
+                    }
+
+                    if (this.cooperativa.photos) {
+                        for (var i=0; i<=this.cooperativa.photos.length; i++) {
+                            if (!this.cooperativa.photos[i] || !this.cooperativa.photos[i].full_photo) 
+                                continue;
+                            if (this.cooperativa.photos[i].full_photo.startsWith('/')) {
+                                this.cooperativa.photos[i].full_photo = 
+                                this.apiProvider.url + this.cooperativa.photos[i].full_photo.slice(1);
+                            }
+                        }
+                    }
+
+                    console.log(this.cooperativa);
                 },
                 err => {
 
@@ -161,7 +174,7 @@ export class PerfilCooperativa {
     getModifiedDate() {
         var options = {  
             year: "numeric", 
-            month: "short",  
+            month: 'numeric',//"short",  
             day: "numeric"  
         }; 
 
@@ -177,6 +190,14 @@ export class PerfilCooperativa {
         var url = 'http://www.cataki.org/#/cooperativa/' + this.cooperativa.id;
         // var url = 'http://localhost:4200/#/cooperativa/' + this.cooperativa.id;
         window.open(url, '_system', 'location=yes');
+    }
+
+    slideNext(){
+        this.gallerySlides.slideNext();
+    }
+
+    slidePrev(){
+        this.gallerySlides.slidePrev();
     }
 
 }

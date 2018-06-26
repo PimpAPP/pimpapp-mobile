@@ -32,35 +32,6 @@ page-perfil-cooperativa {
         font-size: 3em;
     }
 
-    #perfil-catador {
-        background-image: url('../assets/img/papelao.png') !important;
-        background-size: 120%;
-        background-repeat: no-repeat;
-        background-position: top; 
-        min-height: 70%;
-        padding: 5%;
-        padding-top: 20%;
-        padding-bottom: 25%;
-
-        h1 {
-            font-size: 3em;
-            text-align: center;
-            color: green;
-        }
-
-        h2 {
-            text-align: center;
-            color: green;
-        }
-
-        p {
-            text-align: center;
-        }
-
-        p { 
-            line-height: 15px;
-        }
-    }
 
    .item-md ion-thumbnail img, .item-ios ion-thumbnail img {
         width: 40px;
@@ -81,15 +52,6 @@ page-perfil-cooperativa {
         margin-bottom: 0%;
     }
 
-    .history {
-        color: #252323;
-        font-family: "DIN-Regular";
-        font-size: 20px;
-        text-align: center !important;
-        // text-align: justify;
-        // text-justify: inter-word;
-    }
-
     .catador-history-more {
         font-size: 20px;
         color: #ccc;
@@ -106,6 +68,7 @@ page-perfil-cooperativa {
     width: 150px;
     height: 150px;
     margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .cooperativa-name {
@@ -182,16 +145,16 @@ page-perfil-cooperativa {
 }
 
 .modified-date {
-    color: gray;
-    font-size: 16px;
+    color: #b7b7b7;
+    font-size: 13px;
     // margin-bottom: 50px;
-    font-style: italic;
+    // font-style: italic;
 }
 
 .btn-update {
     background-color: #2ca538;
     color: white;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 }
 
 .btn-image {
@@ -223,6 +186,11 @@ page-perfil-cooperativa {
 
 .material-name {
     word-wrap: break-word;
+}
+
+.partner-name {
+    word-wrap: break-word;
+    color: #b7b7b7;
 }
 
 .slider-row {
@@ -259,6 +227,10 @@ page-perfil-cooperativa {
 
     .material-name {
         font-size: 11px;
+    }
+    
+    .partner-name {
+        font-size: 12px;
     }
     
 }
