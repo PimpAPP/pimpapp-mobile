@@ -13,7 +13,7 @@ page-perfil-catador {
 
     ion-content {
         padding-top: 1%;
-        background-image: url(../assets/img/map.jpg)!important;
+        // background-image: url(../assets/img/map.jpg)!important;
         overflow-x: hidden;
         padding: 0px;
     }
@@ -58,6 +58,7 @@ page-perfil-catador {
             line-height: 15px;
         }
     }
+    
 
    .item-md ion-thumbnail img, .item-ios ion-thumbnail img {
         width: 40px;
@@ -99,6 +100,7 @@ page-perfil-catador {
     height: 150px;
     margin-top: 20px;
     margin-bottom: 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.56);
 }
 
 .catador-name {
@@ -229,6 +231,13 @@ page-perfil-catador {
     color: gray;
 }
 
+.name-middle-text {
+    color: black;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: "Roboto";
+}
+
 @media screen and (max-width: 450px) {
     
     .catador-name {
@@ -284,3 +293,12 @@ page-perfil-catador {
     }
     
 }
+
+// #arrow-header-up {
+// 	width: 0;
+// 	height: 0;
+// 	border-left: 50px solid transparent;
+// 	border-right: 50px solid transparent;
+//     // border-bottom: 100px solid red;
+//     background-image: url(../assets/img/topo_papelao.jpg) !important;
+// }

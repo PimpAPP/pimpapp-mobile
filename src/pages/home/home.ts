@@ -285,7 +285,7 @@ export class HomePage {
                     continue;
                 }
 
-                let iconType: string = 'assets/icon/cooperative-small3.png';
+                let iconType: string = 'assets/icon/marker_cooperativa.png';
                 // let iconType:string = 'assets/icon/marker-user.png';
 
                 this.createNewPoint(
@@ -399,34 +399,49 @@ export class HomePage {
                 break;
         }
 
-        var div = document.getElementById('ngifDiv');
+        var profileDiv = document.getElementById('profileDiv');
+        var mapDiv = document.getElementById('map');
 
-        div.style.transition = 'height 1s';
-        div.style.webkitTransition = 'height 1s';
-        // div.style.position='relative';
-        div.style.position = 'absolute';
-        div.style.bottom = '-20px';
-        div.style.zIndex = '2222';
-        div.style.padding = '6px 12px';
-        div.style.width = '100%';
-        div.style.background = '#fff';
-        div.style.color = '#fff';
-        div.style.height = '75%';
+        mapDiv.style.transition = 'height 1s';
+        mapDiv.style.webkitTransition = 'height 1s';
+
+        profileDiv.style.transition = 'height 1s';
+        profileDiv.style.webkitTransition = 'height 1s';
+        profileDiv.style.position = 'absolute';
+        profileDiv.style.bottom = '-20px';
+        profileDiv.style.zIndex = '2222';
+        profileDiv.style.padding = '6px 12px';
+        profileDiv.style.width = '100%';
+        profileDiv.style.background = '#fff';
+        profileDiv.style.color = '#fff';
+        profileDiv.style.height = '75%';
+
+        mapDiv.style.height = '30%';
+        
         document.getElementById('closeDiv').style.display = 'block';
 
-        var topPos = div.offsetTop;
-        div.scrollTop = topPos;
+        var topPos = profileDiv.offsetTop;
+        profileDiv.scrollTop = topPos;
 
         this.map.setClickable(false);
+        var pos = this.map.getCameraPosition()['target'];
+        console.log(pos);
+        // this.map.setCenter
     }
 
     closeProfile() {
         this.map.setClickable(true);
-        var div = document.getElementById('ngifDiv');
-        div.style.height = '0%';
-                div.style.bottom = '-20px';
-        div.style.transition = 'height 1s';
-        div.style.webkitTransition = 'height 1s';
+        var profileDiv = document.getElementById('profileDiv');
+        var mapDiv = document.getElementById('map');
+        profileDiv.style.height = '0%';
+        profileDiv.style.bottom = '-20px';
+        profileDiv.style.transition = 'height 1s';
+        profileDiv.style.webkitTransition = 'height 1s';
+
+        mapDiv.style.transition = 'height 1s';
+        mapDiv.style.webkitTransition = 'height 1s';
+        mapDiv.style.height = '100%';
+
         document.getElementById('closeDiv').style.display = 'none';
 
         // setTimeout(function() {

@@ -93,6 +93,7 @@ import { DatabaseProvider } from '../providers/database/database-provider';
 import { LangProvider } from '../providers/lang/lang-provider';
 
 import { LangPage } from './../pages/lang-page/lang-page';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -166,6 +167,7 @@ export function createTranslateLoader(http: HttpClient) {
         HttpClientModule,
         IonAlphaScrollModule,
         TextMaskModule,
+        IonicImageViewerModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

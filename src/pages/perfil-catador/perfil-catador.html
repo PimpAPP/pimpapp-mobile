@@ -1,20 +1,28 @@
 <ion-content id="perfil-catador-content">
 
     <div>
-        <div class="profile-header-background"></div>
-        <img src="{{ catadorImg }}" class="img-profile" (error)="photoOnError()">
+        <div class="profile-header-background">
+            <!-- <div id="arrow-header-up"></div> -->
+        </div>
+        <img src="{{ catadorImg }}" class="img-profile" 
+                (error)="photoOnError()" imageViewer>
     </div>
     
     <div *ngIf="!catador?.profile_photo"></div>
     
     <div *ngIf="catador?.nickname">
-        <h3 style="margin-bottom: 0px;" class="font-green">{{ catador?.name }},</h3> mas pode me chamar de 
-        <h3 class="font-green" style="margin-top: 0px; margin-bottom: 30px;"><i>"{{ catador?.nickname }}"</i></h3>
+        <h3 class="font-green" style="margin-top: 0px; margin-bottom: 30px;">
+            {{ catador?.name }}, <span class="name-middle-text">mas pode me chamar de</span> <i>{{ catador?.nickname }}</i>
+        </h3>
     </div>
     <div *ngIf="!catador?.nickname">
         <h3 style="margin-bottom: 0px;" class="font-green">
             {{ catador?.name }}
         </h3>
+    </div>
+
+    <div *ngIf="catador?.presentation_phrase">
+        <p style="margin: 0px;">{{ catador?.presentation_phrase }}</p>
     </div>
 
     <div *ngIf="catador?.phones[0]?.phone">
@@ -28,22 +36,30 @@
                 <h4 style="margin: 0px;">{{ catador?.phones[0]?.phone }}</h4>
             </ion-col>
         </ion-row>
-        <hr *ngIf="catador?.presentation_phrase">
+        <!-- <hr *ngIf="catador?.presentation_phrase"> -->
     </div>  
 
-    <div *ngIf="catador?.presentation_phrase">
-        <p style="margin: 0px;">"{{ catador?.presentation_phrase }}"</p>
+    <div>
         <hr>
+        <ion-row align-items-center>
+            <ion-col col-2>
+                <img src="assets/img/Icones_mapamenu-15.png" width="55%" >
+            </ion-col>
+            <ion-col col-10>
+                <p style="margin: 0px;">{{ catador?.region }}</p>
+            </ion-col>
+        </ion-row>
+        <hr>
+        
+        <!-- <h3 class="font-green" [hidden]="!catador?.region">COLETA EM</h3> -->
     </div>
 
-    <div>
+    <!-- <div>
         <h3 class="font-green" [hidden]="!catador?.region">ENDEREÇO</h3>
         <p>{{ catador?.address_region }} 
             <span [hidden]="!catador?.address_region || !catador?.city">,</span>
             {{ catador?.city }}</p>
-        <h3 class="font-green" [hidden]="!catador?.region">COLETA EM</h3>
-        <p>{{ catador?.region }}</p>
-    </div>
+    </div> -->
 
     <h2 class="font-green" [hidden]="material_list.length <= 0">RECICLA</h2>
 
@@ -96,9 +112,9 @@
         </p> -->
     </div>
 
-    <ion-row>
+    <ion-row [hidden]="!catador?.carroca_pimpada">
         <ion-list>
-            <div *ngIf="catador">
+            <div>
                 <h3 class="font-green">CARROÇA GRAFITADA/PIMPADA?</h3>
                 <ion-item style="background-color: unset;" *ngIf="catador?.carroca_pimpada">
                     <ion-thumbnail item-left>

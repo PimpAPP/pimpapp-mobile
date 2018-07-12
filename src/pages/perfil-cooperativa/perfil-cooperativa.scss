@@ -13,7 +13,7 @@ page-perfil-cooperativa {
 
     ion-content {
         padding-top: 1%;
-        background-image: url(../assets/img/map.jpg)!important;
+        // background-image: url(../assets/img/map.jpg)!important;
         overflow-x: hidden;
         padding-left: 0px;
         padding: 0px;
@@ -69,6 +69,7 @@ page-perfil-cooperativa {
     height: 150px;
     margin-top: 20px;
     margin-bottom: 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.56);
 }
 
 .cooperativa-name {

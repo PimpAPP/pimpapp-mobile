@@ -20,7 +20,6 @@ export class PerfilCooperativa {
     
 
     cooperativaID: any = this.navParams.get("cooperativaID");
-    // cooperativaID: any = 20;
     // cooperativaID: any = 1;
     cooperativa: any;
     cooperativaDiasTrabalhados: any;

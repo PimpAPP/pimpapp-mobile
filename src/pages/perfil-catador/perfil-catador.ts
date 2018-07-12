@@ -22,7 +22,7 @@ export class PerfilCatador {
     catadorID: any = this.navParams.get("catadorID");
     // catadorID = 539;
     // catadorID = 5;
-
+    
     catador: any;
     catadorDiasTrabalhados: any;
     material_list: any[] = [];
@@ -66,6 +66,7 @@ export class PerfilCatador {
     }
 
     update() {
+        this.catador = {};
         let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
         //Prepara o loading
         let loader = this.loading.create({

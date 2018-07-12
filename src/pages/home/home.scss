@@ -1,92 +1,114 @@
 
-    .homeContent{
-        position: relative;
-        transition: 1s all ease-in-out;
-        #map {
-            height: 100%;
-            position: relative;
-            z-index: 111;
-        }
+.homeContent{
+    position: relative;
+    transition: 1s all ease-in-out;
+    box-shadow: 2px 2px 2px grey;
+}
+
+#map {
+    height: 100%;
+    position: relative;
+    z-index: 111;
+}
 //sudipta
 
-        .data-text{color:#000 !important;}
+.data-text{color:#000 !important;}
 
-        .btn-footer {
-            width: 18%;
-        }
+.btn-footer {
+    width: 18%;
+}
 
-        .avatar {
-            float: right;
-        }
+.avatar {
+    float: right;
+}
 
-        .recicle {
-            width: 100%;
-            height: 20%;
-            position: absolute;
-            bottom: 10%;
-            text-align: center;
-            z-index: 1;
-        } 
-        .registerMateDiv{
-            width: 80px;
-            height: 80px;
-            margin: 0px auto;
-            border-radius: 100%;
-            display: block;
-            position: fixed;
-            bottom: 23%;
-            left: 0px;
-            right: 0px;
-            img{
-                width: 100%;
-                display: block;
-            }
-        }
-        .showInfoDetails{
-            position: absolute;
-            bottom: 50%;
-            width: 90%;
-            height: 50px;
-            margin: 0px auto;
-            left: 0px;
-            right: 0px;
-            z-index: 1111;
-            background: #000;
-        }
-
-        #ngifDiv{
-            height:0%;
-            transition: height 1s ;
-            -webkit-transition: height 1s;
-            position: relative;
-            bottom: -20px;
-            z-index: 2222;
-            width: 100%;
-            background: #fff;
-           padding: 0px !important;
-            color: #fff;
-            .closeDiv{
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                width: 24px;
-                height: 24px;
-                background: #ccc;
-                border-radius:4px;
-                color: #121212;
-                font-weight: bold;
-                font-size: 15px;
-                text-align: center;
-                display: block;
-                line-height: 15px;
-                z-index: 3333;
-                display: none;
-            }
-
-            
-        }
-        
-        
+.recicle {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 10%;
+    text-align: center;
+    z-index: 1;
+} 
+.registerMateDiv{
+    width: 80px;
+    height: 80px;
+    margin: 0px auto;
+    border-radius: 100%;
+    display: block;
+    position: fixed;
+    bottom: 23%;
+    left: 0px;
+    right: 0px;
+    img{
+        width: 100%;
+        display: block;
     }
+}
+.showInfoDetails{
+    position: absolute;
+    bottom: 50%;
+    width: 90%;
+    height: 50px;
+    margin: 0px auto;
+    left: 0px;
+    right: 0px;
+    z-index: 1111;
+    background: #000;
+}
 
+#profileDiv{
+        height: 0%;
+        transition: height 1s;
+        -webkit-transition: height 1s;
+        position: relative;
+        bottom: -20px;
+        z-index: 2222;
+        width: 100%;
+        background: #fff;
+    padding: 0px !important;
+        color: #fff;
+
+    .closeDiv{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+        background: #ccc;
+        border-radius:4px;
+        color: #121212;
+        font-weight: bold;
+        font-size: 15px;
+        text-align: center;
+        display: block;
+        line-height: 15px;
+        z-index: 3333;
+        display: none;
+    }
+}    
+
+// #profileDiv:after, #profileDiv:before {
+//     bottom: 100%;
+//     left: 50%;
+//     border: solid transparent;
+//     content: " ";
+//     height: 0;
+//     width: 0;
+//     position: absolute;
+//     pointer-events: none;
+// }
+
+// #profileDiv:after {
+//     border-color: rgba(136, 183, 213, 0);
+//     border-bottom-color: #cfa376;
+//     border-width: 26px;
+//     margin-left: -26px;
+// }
+// #profileDiv:before {
+//     border-color: rgba(194, 225, 245, 0);
+//     border-bottom-color: #c19871;
+//     border-width: 32px;
+//     margin-left: -32px;
+// }
 

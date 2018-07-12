@@ -2,7 +2,7 @@
     
     <div>
         <div class="profile-header-background"></div>
-        <img src="{{ cooperativaImg }}" class="img-profile" (error)="photoOnError()">
+        <img src="{{ cooperativaImg }}" class="img-profile" (error)="photoOnError()" imageViewer>
     </div>
     <div *ngIf="!cooperativa?.profile_photo"></div>
 

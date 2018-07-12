@@ -51,6 +51,7 @@
         "cordova-sqlite-storage": "^2.0.4",
         "font-awesome": "^4.7.0",
         "ionic-angular": "^3.0.1",
+        "ionic-img-viewer": "^2.9.0",
         "ionic-native": "^2.9.0",
         "ionic-plugin-keyboard": "^2.2.1",
         "ionic2-alpha-scroll": "^1.1.2",
