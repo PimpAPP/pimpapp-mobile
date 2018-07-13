@@ -1,29 +1,38 @@
-menu-support {
-    ion-content {
-        background-image: url('../assets/img/fundo-papelao.jpg') !important;
-        background-repeat: no-repeat;
-        background-position: top; 
-        background-size: 100% 100%;
-    }
-
-    h1 {
-        color: color($colors, dark);
-        font-size: 3em;
-    }
-
-    h3 {
-        color: color($colors, light);
-    }
-
-    h4 a {
-        color: color($colors, dark);
-    }
-
-    p {
-        font-size: 1.5em;
-    }
-    .text{
-     text-transform: uppercase;
-    }
+.menu-support {
+    background-color: color($colors, background);
 }
 
+h1 {
+    font-family: 'Overpass';
+    font-weight: 900;
+
+    small {
+        font-weight: 400;
+        font-size: 1em;
+        color: black;
+        display: block;
+        margin-top: 5px;
+    }
+    margin: 0;
+}
+
+p {
+    -webkit-margin-before: 0;
+}
+
+hr {
+    background-color: #f5f5f5 !important;
+}
+
+.header-text {
+    font-size: 20px;
+}
+
+.link {
+    color: color($colors, primary);
+}
+
+.body-titlle {
+    font-weight: 600;
+    font-size: 2rem;
+}

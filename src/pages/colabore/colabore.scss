@@ -1,7 +1,40 @@
+.colabore {
+    background-color: color($colors, background);
+}
+
+p {
+    text-align: left !important;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.menuLinkSlideGrid {
+    width: 94%;
+    bottom: 66px;
+}
+
+.pimp-img {
+    width: 80% !important;
+}
+.pimp-email {
+    border-radius: 20px;
+    background-color: #ffffff;
+    padding: 10px;
+    width: fit-content;
+}
+
 .btn-control {
-    background: #7bd9a2;
+    background: #868686;
 }
 
 .active{
     background: #00b544;
+}
+
+@media (min-width: 425px) {
+
+    .pimp-img {
+        width: 300px !important;
+    }
+
 }
