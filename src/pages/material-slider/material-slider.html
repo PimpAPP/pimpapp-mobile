@@ -1,24 +1,26 @@
-<!--<ion-header>
-  <ion-navbar color="brown" class="metarial_navbar">
-      <ion-title class="metarial_title">METARIAL</ion-title>
-  </ion-navbar>
-</ion-header>-->
-
-<ion-content text-center cache-view="false">
+<ion-content cache-view="false">
 
     <ion-slides class="materialSliderSlides">
+        <ion-slide *ngFor="let slide of sliders; let i of index;" class="scroll-content">
+            <img src="{{ slide.bg }}" alt="Metarial Slider Icon" class="material-bg">
+            
+            <div class="content-box">
+                <h1>{{ slide.name }}</h1><br>
+                <p *ngFor="let listitem of slide.list">{{ listitem }}</p>
 
-        <ion-slide *ngFor="let slide of sliders; let i of index;">
-            <img src="{{slide.icon}}" alt="Metarial Slider Icon" class="materialIcon">
-            <h3>{{slide.name}}</h3>
-            <ion-list>
-                <ion-item *ngFor="let listitem of slide.list">{{listitem}}</ion-item>
-            </ion-list>            
-            <h4>{{slide.subdesc}}</h4>
-            <p>{{slide.desc}}</p>
+                <div class='hr-box'>
+                    <hr class="hr">
+                    <img src='{{ slide.icon }}' alt=''>
+                </div>
+
+                <div class="desc-box">
+                    <p class="font-green">{{slide.desc}}</p>
+                </div>
+
+            </div>
         </ion-slide>
-
     </ion-slides>
+    
     <div class="slideMove">
         <button class="slideleftArrow" (click)="goToLeft(i)"><img src="assets/img/greenArrowLeft.png" alt="Arrow"></button>
         <button class="slideRightArrow" (click)="goToRight(i)"><img src="assets/img/greenArrowRight.png" alt="Arrow"></button>

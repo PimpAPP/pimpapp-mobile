@@ -1,49 +1,99 @@
-<ion-header>
-  <ion-navbar class="menuLinkNavbar">
-      <ion-title class="titleText" text-wrap>PRA ONDE VAMOS</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
 <ion-content padding class="praondevamos">
-    
-    <ion-slides class="menuLinkSlide" (ionSlideDidChange)="slideChanged()">
 
-    <ion-slide class="ionSlide1">
-        <p>Te contar uma coisa: <br>
-            <strong>Cataki é uma ferramenta política.</strong> Queremos sim gerar renda e aumentar nossa reciclagem, esse app existe, antes de tudo, para lutar por trabalho digno.
-        </p>
-        <p>
-            Por que ainda enterramos materiais valiosos em aterros sanitários? Por que quem realiza a sustentabilidade na prática ainda é marginalizado?
-        </p>
-    </ion-slide>
-
-    <ion-slide class="ionSlide2">
-        <p>O sistema atual, baseado em caminhões à diesel e horário semanal de coleta, é completamente  insuficiente. Acreditamos em uma economia circular, devolvendo o material ao ciclo de produção, poupando materia prima finita e gerando renda.</p>
-        <p>Imagina, que lindo, <br>
-            <strong>um programa de coleta operado por catadores e mediado pela tecnologia.</strong> Tudo de forma aberta e com colaboração dos usuários.
-        </p>
-    </ion-slide>
-
-    <ion-slide class="ionSlide3">
-        <h4>Podemos aumentar a reciclagem enquanto melhoramos a renda. Todo recurso que gerarmos será investido na ferramenta e nos catadores.</h4>
-        <p>Está é a primeira versão do Cataki, ainda temos muito o que fazer por aqui.</p>
-        <p>Tudo isso para dizer que: bora trabalhar! E pode chegar, a porta está aberta.</p>
-    </ion-slide>
-
-    </ion-slides>
-  
-    <ion-grid class="menuLinkSlideGrid">
-       <ion-row>
-            <ion-col (click)="goToSlide(0)" >
-                <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
-            </ion-col>
-            <ion-col (click)="goToSlide(1)">
-                <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
-            </ion-col>
-            <ion-col (click)="goToSlide(2)">
-                <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+                <h1>PRA ONDE VAMOS</h1>
+                <br>
             </ion-col>
         </ion-row>
-    </ion-grid> 
+
+        <ion-row>
+            <ion-col col-12>
+                <ion-slides (ionSlideDidChange)="slideChanged()">
+
+                    <ion-slide class="ionSlide1">
+                        <p>
+                            Te contar uma coisa: 
+                            <span class="font-green">Cataki é uma ferramenta política.</span> Queremos sim gerar renda e aumentar nossa reciclagem, esse app existe, antes de tudo, para lutar por trabalho digno.
+                        </p>
+                        <br>
+                        <p>
+                            Por que ainda enterramos materiais valiosos em aterros sanitários? Por que quem realiza a sustentabilidade na prática ainda é marginalizado?
+                        </p>
+                        <br>
+                        <p>
+                            O sistema atual, baseado em caminhões à diesel e horário semanal de coleta, é completamente  insuficiente. Acreditamos em uma economia circular, devolvendo o material ao ciclo de produção, poupando materia prima finita e gerando renda.
+                        </p>
+                    </ion-slide>
+                
+                    <ion-slide class="ionSlide2">     
+                        <p>
+                            <span class="font-green">Acreditamos em uma economia circular</span>, devolvendo o material ao ciclo de produção, poupando matéria-prima finita e gerando renda.
+                        </p>
+                        <br>
+                        <p>
+                            Imagina, que lindo,
+                            <span class="font-green">um programa de coleta operado por catadores e mediado pela tecnologia.</span> Tudo de forma aberta e com colaboração dos usuários.
+                        </p>
+                        <br>
+                        <p>Podemos aumentar a reciclagem enquanto melhoramos a renda. Todo recurso que gerarmos será investido na ferramenta e nos catadores.</p>
+                    </ion-slide>
+
+                    <ion-slide class="ionSlide2">
+                        <p>Está é a primeira versão do Cataki, ainda temos muito o que fazer por aqui.</p>
+                        <br>
+                        <p>Tudo isso para dizer que: bora trabalhar! E pode chegar, a porta está aberta.</p>
+                        <!-- <div class="center-align">
+                            <img src="assets/img/pra-onde-vamos.jpg" class="praondevamos-img">
+                        </div><br> -->
+                    </ion-slide>
+
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-12>
+                <div [hidden]="step != 2" class="praondevamos-imb-box">
+                    <img src="assets/img/pra-onde-vamos.jpg" class="praondevamos-img">
+                </div>
+            </ion-col>
+        </ion-row>
+    
+        <ion-row>
+            <ion-col col-12>
+                <ion-grid class="menuLinkSlideGrid">
+                    <ion-row>
+                        <ion-col (click)="goToSlide(0)" >
+                            <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
+                        </ion-col>
+                        <ion-col (click)="goToSlide(1)">
+                            <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
+                        </ion-col>
+                        <ion-col (click)="goToSlide(2)">
+                            <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid> 
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
 </ion-content>
+
+
+<!-- <ion-grid class="menuLinkSlideGrid">
+    <ion-row>
+        <ion-col (click)="goToSlide(0)" >
+            <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
+        </ion-col>
+        <ion-col (click)="goToSlide(1)">
+            <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
+        </ion-col>
+        <ion-col (click)="goToSlide(2)">
+            <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
+        </ion-col>
+    </ion-row>
+</ion-grid>  -->

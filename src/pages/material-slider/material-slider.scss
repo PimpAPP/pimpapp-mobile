@@ -1,130 +1,121 @@
-material-slider{
+h1 {
+    color: #00ba45;
+    font-family: 'Overpass';
+    font-weight: 900;
+    margin: 0;
+}
+
+.content-box {
+    // margin-top: 20px;
+    text-align: left;
+    padding: 25px;
+    margin-bottom: 70px;
+}
+
+.slideMove{
+    position: fixed;
+    // top: 30%;
+    bottom: 15%;
+    left: 0px;
+    width: 100%;
+    z-index: 999;
+}
+
+button{
+    background: none;
+    position: absolute;
+    top: 0px; 
+    img{
+        width: 12px;
+        height: 13px;
+    }               
+}
+.slideRightArrow{
+    right: 8%;
+    background-color: #f5f5f5;
+    border-radius: 50px;
+    padding: 5px 5px 5px 5px;
+}
+.slideleftArrow{
+    left: 8%;
+    background-color: #f5f5f5;
+    border-radius: 50px;
+    padding: 5px 5px 5px 5px;
+}
+
+.materialSliderSlides{
     position: relative;
-    .slideMove{
-        position: fixed;
-        top: 30%;
-        left: 0px;
-        width: 100%;
-        z-index: 999;
-        button{
-            background: none;
-            position: absolute;
-            top: 0px; 
-            img{
-                width: 15px;
-            }               
-        }
-        .slideRightArrow{
-            right: 8%;
-        }
-        .slideleftArrow{
-            left: 8%;
-        }
-    }
-    .materialSliderSlides{
-        position: relative;
-        margin: 0px;
-        height: 100%;
-        text-align: center;
-        .materialIcon{
-            width: 70px;
-            margin: 0px auto;
-            display: block;
-        }
-        h3{
-            color: #00842b;
-            text-transform: uppercase;
-            font-family: 'Brizzush-Rough';
-            font-size: 32px;
-        }
-        ion-list{
-            ion-item{
-                border: none !important;
-                padding: 0px;
-                min-height: auto;
-                line-height: 24px;
-                background: none;
-                .item-inner{
-                    border: none !important;
-                    padding: 0px !important;                
-                    ion-label{
-                        margin: 0px;
-                        text-align: center;
-                        white-space: normal;
-                    }
-                }
+    margin: 0px;
+    height: 100%;
+    text-align: center;
+    background-color: #dadace;
+}
+
+ion-list{
+    ion-item{
+        border: none !important;
+        padding: 0px;
+        min-height: auto;
+        line-height: 24px;
+        background: none;
+        .item-inner{
+            border: none !important;
+            padding: 0px !important;                
+            ion-label{
+                margin: 0px;
+                text-align: center;
+                white-space: normal;
             }
         }
-        h4{
-            font-size: 1.7rem;
-            line-height: 24px;
-            font-weight: normal;
-        }
-        p{
-            color: #00842b;
-            font-weight: bold;
-            font-family: 'DIN-Bold';
-        }
-        ion-slide{
-            padding: 0px 10%;
-            margin: 0px auto;
-        }
-        ion-slide:nth-child(1){
-            background: url('../assets/img/material_slideBg_1.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(2){
-            background: url('../assets/img/material_slideBg_2.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(3){
-            background: url('../assets/img/material_slideBg_3.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(4){
-            background: url('../assets/img/material_slideBg_4.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(5){
-            background: url('../assets/img/material_slideBg_5.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(6){
-            background: url('../assets/img/material_slideBg_6.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(7){
-            background: url('../assets/img/material_slideBg_7.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(8){
-            background: url('../assets/img/material_slideBg_8.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(9){
-            background: url('../assets/img/material_slideBg_9.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(10){
-            background: url('../assets/img/material_slideBg_10.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(11){
-            background: url('../assets/img/material_slideBg_11.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(12){
-            background: url('../assets/img/material_slideBg_12.png') no-repeat top center;
-            background-size: cover;
-        }
-        ion-slide:nth-child(13){
-            background: url('../assets/img/material_slideBg_13.png') no-repeat top center;
-            background-size: cover;
-        }        
     }
-    @media screen and (max-width:360px){
-        .materialSliderSlides{
-            min-height: 120%;
-        }
+}
+
+
+.material-bg{
+    width: 70px;
+    margin: 0px auto;
+    display: block;
+}
+
+.slide-zoom {
+    height: 100%;
+}
+
+.swiper-slide {
+    padding: 0px !important;
+}
+
+.hr {
+    border:none;
+    border: 1px solid #d7d7d7;
+    position: absolute;
+    width: 88%;
+}
+
+.hr-box { 
+    text-align: center;
+    height: 80px;
+    margin-top: 35px;
+}
+
+.hr-box img {
+    position: relative;
+    top: -30px;
+    padding:0 5px;
+}
+
+.desc-box {
+    font-size: 22px !important;
+    font-weight: 500;
+    padding: 0px 35px 0px 35px;
+}
+
+.desc-box p {
+    text-align: center !important;
+}
+
+@media screen and (max-width:360px){
+    .materialSliderSlides{
+        min-height: 120%;
     }
 }

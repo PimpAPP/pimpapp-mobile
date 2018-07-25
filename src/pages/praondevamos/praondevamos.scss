@@ -1,17 +1,33 @@
 .praondevamos{
-    .ionSlide1, .ionSlide2{
-        p{
-            strong{
-                display: inline;
-            }
-        }
-    }
+    background-color: color($colors, background);
+}
 
-    .btn-control {
-        background: #7bd9a2;
-    }
+p {
+    text-align: left !important;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
 
-    .active{
-        background: #00b544;
-    }
+.menuLinkSlideGrid {
+    width: 94%;
+    bottom: 66px;
+}
+
+.btn-control {
+    background: #868686;
+}
+
+.active{
+    background: #00b544;
+}
+
+.praondevamos-imb-box {
+    width: 100%;
+    position: fixed;
+    bottom: 60px;
+    margin-left: -26px;
+}
+
+.praondevamos-img {
+
 }
