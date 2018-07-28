@@ -1,58 +1,69 @@
-<ion-header>
-  <ion-navbar class="menuLinkNavbar">
-      <ion-title class="titleText" text-wrap>O PIMP MY CARROCA</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
 <ion-content padding class="pimpMyCarrocaContent">
-    
-    <ion-slides class="menuLinkSlide" (ionSlideDidChange)="slideChanged()">
 
-        <ion-slide class="ionSlide1">
-            <img src="assets/img/pimpMyCarrocaImage.png" alt="Pimp My Carroca Image">
-            <p>
-                O <strong>PIMP MY CARROÇA</strong> é um movimento que luta pelo reconhecimento dos catadores de materiais recicláveis.
-                Utiliza grafite e ativismo para promover seu trabalho de reciclagem
-            </p>
-        </ion-slide>
-
-        <ion-slide class="ionSlide2">
-            <p>Desde 2012, fazemos ações colaborativas como: </p>
-            <h4>
-                - Pimp My Carroça;<br>
-                - Pimpex; <br>
-                - Pimp Nossa Cooperativa; <br>
-                - Pimp Nosso Ecoponto; <br>
-                - Desafio Pimp;<br>
-                - Exposições de arte;
-            </h4>
-            <p>...além de dezenas ações ativistas. </p>
-        </ion-slide>
-
-        <ion-slide class="ionSlide3">
-            <p>Já rodamos pelo menos 
-                <strong>42 cidades</strong> em <strong>12 países</strong>, com o engajamento de quase 
-                <strong>2000 voluntários e 750 artistas,</strong> apoiando o trabalho de mais de 
-                <strong>850 catadores</strong>. E queremos mais!
-            </p>
-            <img src="assets/img/pimpMyCarrocaImage2.png" alt="Pimp My Carroca Image">
-            <p>pimpmycarroca.com</p>
-        </ion-slide>
-
-    </ion-slides>
-  
-    <ion-grid class="menuLinkSlideGrid">
+    <ion-grid>
         <ion-row>
-            <ion-col (click)="goToSlide(0)" >
-                <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
-            </ion-col>
-            <ion-col (click)="goToSlide(1)">
-                <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
-            </ion-col>
-            <ion-col (click)="goToSlide(2)">
-                <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
+            <ion-col col-12>
+                <h1>O PIMP MY CARROÇA</h1>
+                <br>
             </ion-col>
         </ion-row>
-    </ion-grid> 
+
+        <ion-row>
+            <ion-col col-12>
+                <ion-slides (ionSlideDidChange)="slideChanged()">
+
+                    <ion-slide class="ionSlide1">
+                        <p>
+                            O PIMP MY CARROÇA é um movimento que luta pelo reconhecimento dos catadores de materiais recicláveis.
+                            Utiliza grafite e ativismo para promover seu trabalho de reciclagem.
+                        </p>
+                        <br>
+                        <p>Desde 2012, além de dezenas ações artivistas, fazemos ações colaborativas como: </p>
+                        <br>
+                        <p class="font-green" style="margin-left: 50px;">
+                            - Pimp My Carroça;<br>
+                            - Pimpex; <br>
+                            - Pimp Nossa Cooperativa; <br>
+                            - Pimp Nosso Ecoponto; <br>
+                            - Desafio Pimp;<br>
+                            - Exposições de arte; 
+                        </p>
+                    </ion-slide>
+                
+                    <ion-slide class="ionSlide2"> 
+                        <p>
+                            Já rodamos pelo menos <span class="font-green">42 cidades</span> em <span class="font-green">12 países</span>, 
+                            com o engajamento de quase <span class="font-green">2000 voluntários</span> do mundo todo <span class="font-green">e 750 artistas</span>,
+                            apoiando o trabalho de mais de <span class="font-green">850 catadores</span>. E queremos mais!
+                        </p>
+                        <br>
+                        <img src="assets/img/pimpMyCarrocaImage.png" alt="Pimp My Carroca Image" style="width: 250px;">
+                        <br>
+                        <p text-center>
+                            Saiba mais em<br>
+                            <span class="font-green">pimpmycarroca.com</span>
+                        </p>
+                    </ion-slide>
+
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+    
+        <ion-row>
+            <ion-col col-12>
+                <ion-grid class="menuLinkSlideGrid">
+                    <ion-row>
+                        <ion-col (click)="goToSlide(0)" >
+                            <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
+                        </ion-col>
+                        <ion-col (click)="goToSlide(1)">
+                            <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid> 
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
 </ion-content>

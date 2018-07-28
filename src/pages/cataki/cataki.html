@@ -1,46 +1,76 @@
-<ion-header>
-  <ion-navbar class="menuLinkNavbar">
-      <ion-title class="titleText"><img src="assets/img/catakiHeadImg.png" alt="Cataki Head Image"></ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content padding class="praondevamos">
 
-
-<ion-content padding>
-    
-    <ion-slides class="menuLinkSlide" (ionSlideDidChange)="slideChanged()">
-
-    <ion-slide class="ionSlide1">
-        <p>A ideia existe desde 2013, criar um aplicativo para encontrar os catadores de material reciclável.</p>
-        <p>
-            Cada brasileiro produz cerca de 400kg de resíduos por ano. É muita coisa! Não tem como disfarçar o tamanho do problema.
-        </p>
-        <h4>Desses 400kg, só reciclamos 12kg. E desses 12kg, adivinha quem coleta 11kg? Os catadores.</h4>
-    </ion-slide>
-
-    <ion-slide class="ionSlide2">
-        <p>Pense a respeito: muito antes de sustentabilidade entrar na moda, lá estavam os catadores coletando recursos que jogamos fora.</p>
-        <p>Este aplicativo quer te ajudar a encontrar os catadores, <strong>facilitando o descarte correto enquanto gera renda para estes profissionais.</strong></p>
-    </ion-slide>
-
-    <ion-slide class="ionSlide3">
-        <p>O desafio é enorme. Este é um aplicativo criado para encontrar um público que em grande medida está offline. Por isso confiamos que você, usuário, vai nos ajudar a construir.</p>
-        <p><strong>Cataki é um experimento aberto e otimista. </strong><br>
-            Estamos desenvolvendo uma alternativa necessária. E você, pessoa iluminada que baixou o app e leu até aqui, saiba que já é parte disso.</p>
-    </ion-slide>
-
-    </ion-slides>
-  
-    <ion-grid class="menuLinkSlideGrid">
+    <ion-grid>
         <ion-row>
-            <ion-col (click)="goToSlide(0)" >
-                <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
-            </ion-col>
-            <ion-col (click)="goToSlide(1)">
-                <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
-            </ion-col>
-            <ion-col (click)="goToSlide(2)">
-                <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
+            <ion-col col-12>
+                <h1>HISTÓRIA DO CATAKI</h1>
+                <br>
             </ion-col>
         </ion-row>
-    </ion-grid> 
+
+        <ion-row>
+            <ion-col col-12>
+                <ion-slides (ionSlideDidChange)="slideChanged()">
+
+                    <ion-slide class="ionSlide1">
+                        <p>
+                            A ideia existe desde 2013, criar um aplicativo para encontrar os catadores de materiais recicláveis. Essa é uma 
+                            demanda que fomos percebendo a cada passo que dávamos com o Pimp My Carroça.
+                        </p>
+                        <br>
+                        <p>
+                            Cada brasileiro produz cerca de 400kg de resíduos por ano. É muita coisa! Não tem como disfarçar o tamanho do problema.
+                        </p>
+                        <br>
+
+                        <p class="font-green">Desses 400kg, só reciclamos 12kg. E desses 12kg, adivinha quem coleta 11kg? Os catadores.</p>
+                    </ion-slide>
+                
+                    <ion-slide class="ionSlide2">     
+                        <p>Pense a respeito: muito antes de sustentabilidade entrar na moda, lá estavam os catadores coletando recursos que jogamos fora.</p>
+                        <br>
+                        <p class="font-green">Este aplicativo quer te ajudar a encontrar os catadores, facilitando o descarte correto enquanto gera renda para estes profissionais.</p>
+                    </ion-slide>
+
+                    <ion-slide class="ionSlide2">
+                        <p>O desafio é enorme. Este é um aplicativo criado para encontrar um público que em grande medida está offline. Por isso confiamos que você, usuário, vai nos ajudar a construir.</p>
+                        <br>
+                        <p><span class="font-green">Cataki é um experimento aberto e otimista. </span>
+                            Estamos desenvolvendo uma alternativa necessária. E você, pessoa iluminada que baixou o app e leu até aqui, saiba que já é parte disso.</p>
+                    </ion-slide>
+
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-12>
+                <div [hidden]="step != 1" class="history-imb-box">
+                    <img src="assets/img/historia-carroca.jpg" class="history-carroca-img">
+                </div>
+                <div [hidden]="step != 2" class="history-imb-box">
+                    <img src="assets/img/historia-person.png" class="history-person-img">
+                </div>
+            </ion-col>
+        </ion-row>
+    
+        <ion-row>
+            <ion-col col-12>
+                <ion-grid class="menuLinkSlideGrid">
+                    <ion-row>
+                        <ion-col (click)="goToSlide(0)" >
+                            <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
+                        </ion-col>
+                        <ion-col (click)="goToSlide(1)">
+                            <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
+                        </ion-col>
+                        <ion-col (click)="goToSlide(2)">
+                            <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid> 
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
 </ion-content>

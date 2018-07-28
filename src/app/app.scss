@@ -76,6 +76,7 @@ h1 {
     //color: color($colors, green);
     color: color($colors, green);
     // color: #00ba45;
+    font-size: 30px;
 }
 
 
@@ -101,7 +102,8 @@ h2, h3 {
 
 p {
     color: black;
-    font-size: 1.2em;
+    font-size: 1.2em !important;
+    text-align: left !important;
 }
 
 .tabs-md .tabbar, .tabs-ios .tabbar, .tabs-wp .tabbar {
