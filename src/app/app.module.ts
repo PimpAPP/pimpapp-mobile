@@ -31,10 +31,6 @@ import { Feedback4 } from './../pages/feedback/feedback-4/feedback-4';
 import { MenuPage } from './../pages/menu/menu';
 import { TabsPage } from './../pages/tabs/tabs';
 import { TutorialPage } from './../pages/tutorial/tutorial';
-import { TutorialPage2 } from './../pages/tutorial/page2/page2';
-import { TutorialPage3 } from './../pages/tutorial/page3/page3';
-import { TutorialPage4 } from './../pages/tutorial/page4/page4';
-import { TutorialPage5 } from './../pages/tutorial/page5/page5';
 import { CadastroCatadorPage3 } from './../pages/cadastro-catador/cadastro-catador-page3/cadastro-catador-page3';
 import { CadastroCatadorPage2 } from './../pages/cadastro-catador/cadastro-catador-page2/cadastro-catador-page2';
 import { CadastroCatadorPage4 } from './../pages/cadastro-catador/cadastro-catador-page4/cadastro-catador-page4';
@@ -117,10 +113,6 @@ export function createTranslateLoader(http: HttpClient) {
         MenuCadastroComponent,
         MenuAjudaPage,
         TutorialPage,
-        TutorialPage2,
-        TutorialPage3,
-        TutorialPage4,
-        TutorialPage5,
         MenuCatadorRegister,
         MenuMaterials,
         CansPage,
@@ -194,10 +186,6 @@ export function createTranslateLoader(http: HttpClient) {
         MenuCadastroComponent,
         MenuAjudaPage,
         TutorialPage,
-        TutorialPage2,
-        TutorialPage3,
-        TutorialPage4,
-        TutorialPage5,
         MenuCatadorRegister,
         MenuMaterials,
         CansPage,

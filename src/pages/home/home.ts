@@ -18,7 +18,8 @@ import { DatabaseProvider } from './../../providers/database/database-provider';
 import { LangProvider } from './../../providers/lang/lang-provider';
 import { LangPage } from './../lang-page/lang-page';
 import { TranslateService } from '@ngx-translate/core';
-
+import { TutorialPage } from '../tutorial/tutorial';
+import { Storage } from '@ionic/storage';
 
 import {
     GoogleMap,
@@ -29,6 +30,8 @@ import {
     CameraPosition,
     AnimateCameraOptions
 } from '@ionic-native/google-maps';
+
+
 
 declare var google: any;
 
@@ -74,8 +77,9 @@ export class HomePage {
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, 
         public zone:NgZone, public loadingCtrl : LoadingController,  
         public apiProvider: ApiProvider, public cooperativesProvider: CooperativesProvider,
-        private dbProvider: DatabaseProvider, private langProvider: LangProvider,
-        private translate: TranslateService) {
+        private translate: TranslateService, public storage: Storage) {
+
+        this.openTutorial();
         
         this.loading = this.loadingCtrl.create({
             content: 'Please wait...'
@@ -120,6 +124,18 @@ export class HomePage {
 
         }, (error) => {
             console.log('Error ' + error);
+        });
+    }
+
+    openTutorial() {
+        this.storage.ready().then(() => {
+            this.storage.get('firstAccess').then((val) => {
+                if (val == 1) {
+                    // this.navCtrl.push(TutorialPage);
+                    const modal = this.modalCtrl.create(TutorialPage);
+                    modal.present();
+                }
+            });
         });
     }
 

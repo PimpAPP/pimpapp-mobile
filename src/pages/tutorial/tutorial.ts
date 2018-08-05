@@ -1,135 +1,35 @@
-import { Storage } from '@ionic/storage';
-import { TabsPage } from './../tabs/tabs';
-import { Component , ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Slides, ViewController } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
-import { TutorialPage2 } from './page2/page2';
-
-import { Slides } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
-  selector: 'page-tutorial',
-  templateUrl: 'tutorial.html',
+    selector: 'page-tutorial',
+    templateUrl: 'tutorial.html',
 })
 export class TutorialPage {
-  @ViewChild(Slides) slides: Slides;  
-  public show_final = false;
+    
+    @ViewChild(Slides) slides: Slides; 
+    public step: Number;
 
-  constructor(public navCtrl: NavController, public storage: Storage) {
-      
-  }
-
-    goHome(){
-      this.storage.set('firstAccess', 1);
-      this.navCtrl.push(TabsPage);
+    constructor(public navCtrl: NavController,
+            public viewCtrl: ViewController, public storage: Storage) {
+        this.step = 0;
     }
-
-  openPage2(){
-    this.navCtrl.push(TutorialPage2);
-  }
-
 
     goToSlide(index) {
-        if(index=="1"){
-        this.slides.slideTo(0, 5);
-        document.getElementById('no1').style.background="#00b544";//active
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";     
-    }
-    
-    if(index=="2"){
-        this.slides.slideTo(1, 5);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#00b544";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
+        this.slides.slideTo(index, 2);
     }
 
-    if(index=="3"){
-        this.slides.slideTo(2, 5);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#00b544";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-    }
-    if(index=="4"){
-        this.slides.slideTo(3, 5);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#00b544";
-        document.getElementById('no5').style.background="#7bd9a2";
-    }
-    if(index=="5"){
-        this.slides.slideTo(4, 5);
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#00b544";
-        this.show_final = true;
+    slideChanged() {
+        this.step = this.slides.getActiveIndex();
     }
 
+    close() {
+        this.storage.set('firstAccess', 0).then((val) => {
+            this.viewCtrl.dismiss();
+        });
+    }
 }
-
-slideChanged() {
-    let currentIndex = this.slides.getActiveIndex();
-    //alert("Current index is"+currentIndex);
-     if(currentIndex == 0){
-          document.getElementById('no1').style.background="#00b544";//active
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-        
-    }
-    if(currentIndex == 1){
-        document.getElementById('no2').style.background="#00b544";//active
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-        
-    }
-    
-    if(currentIndex == 2){
-     document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#00b544";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-        
-    }
-
-    if(currentIndex == 3){
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no4').style.background="#00b544";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#7bd9a2";
-        
-    }
-    if(currentIndex == 4){
-        
-        document.getElementById('no1').style.background="#7bd9a2";
-        document.getElementById('no2').style.background="#7bd9a2";
-        document.getElementById('no3').style.background="#7bd9a2";
-        document.getElementById('no5').style.background="#00b544";
-        document.getElementById('no4').style.background="#7bd9a2";
-        
-    }
-   
-}
-}
-
-
-
-
-
-
-
-
