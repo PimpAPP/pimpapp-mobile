@@ -130,7 +130,7 @@ export class HomePage {
     openTutorial() {
         this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
-                if (val == 1) {
+                if (val == null || val == 1) {
                     // this.navCtrl.push(TutorialPage);
                     const modal = this.modalCtrl.create(TutorialPage);
                     modal.present();

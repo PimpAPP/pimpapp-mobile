@@ -21,6 +21,8 @@
         "@ionic-native/call-number": "^3.14.0",
         "@ionic-native/camera": "^3.6.1",
         "@ionic-native/core": "^3.6.1",
+        "@ionic-native/file": "^4.11.0",
+        "@ionic-native/file-transfer": "^4.11.0",
         "@ionic-native/geolocation": "^3.12.1",
         "@ionic-native/google-maps": "^3.6.1",
         "@ionic-native/http": "^3.4.4",
@@ -36,11 +38,14 @@
         "ajv": "^5.2.0",
         "angular2-text-mask": "^8.0.1",
         "call-number": "^1.0.1",
-        "cordova-android": "^6.4.0",
+        "cordova-android": "7.0.0",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-device": "^1.1.6",
+        "cordova-plugin-file": "^6.0.1",
+        "cordova-plugin-file-opener2": "git+https://github.com/JuanjoPP/cordova-plugin-file-opener2.git",
+        "cordova-plugin-file-transfer": "^1.7.1",
         "cordova-plugin-geolocation": "^2.4.3",
         "cordova-plugin-googlemaps": "^1.4.0",
         "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
@@ -58,7 +63,7 @@
         "ionicons": "3.0.0",
         "jquery": "^3.2.1",
         "localforage": "1.4.0",
-        "mx.ferreyra.callnumber": "~0.0.2",
+        "mx.ferreyra.callnumber": "0.0.2",
         "rxjs": "^5.4.1",
         "sw-toolbox": "3.4.0",
         "typescript": "^2.2.2",
@@ -107,11 +112,14 @@
                 "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
             },
             "mx.ferreyra.callnumber": {},
-            "cordova-plugin-compat": {}
+            "cordova-plugin-compat": {},
+            "cordova-plugin-file": {},
+            "cordova-plugin-file-transfer": {},
+            "call-number": {}
         },
         "platforms": [
-            "android",
-            "ios"
+            "ios",
+            "android"
         ]
     }
 }

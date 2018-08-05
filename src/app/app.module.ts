@@ -82,7 +82,6 @@ import { PraOndeVamosPage } from './../pages/praondevamos/praondevamos';
 import { ColaborePage } from './../pages/colabore/colabore';
 import { CadastroCatadorWebPage } from './../pages/cadastro-catador-web/cadastro-catador-web';
 import { MenuCadastroComponent } from '../pages/menu-cadastro/menu-cadastro';
-import { MenuAjudaPage } from '../pages/menu-ajuda/menu-ajuda';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { DatabaseProvider } from '../providers/database/database-provider';
@@ -90,7 +89,9 @@ import { LangProvider } from '../providers/lang/lang-provider';
 
 import { LangPage } from './../pages/lang-page/lang-page';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
-
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+// import { FileOpener } from '@ionic-native/file-opener';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -111,7 +112,6 @@ export function createTranslateLoader(http: HttpClient) {
         TabsPage,
         MenuPage,
         MenuCadastroComponent,
-        MenuAjudaPage,
         TutorialPage,
         MenuCatadorRegister,
         MenuMaterials,
@@ -184,7 +184,6 @@ export function createTranslateLoader(http: HttpClient) {
         TabsPage,
         MenuPage,
         MenuCadastroComponent,
-        MenuAjudaPage,
         TutorialPage,
         MenuCatadorRegister,
         MenuMaterials,
@@ -242,6 +241,9 @@ export function createTranslateLoader(http: HttpClient) {
         SQLite,
         DatabaseProvider,
         LangProvider,
+        // FileOpener,
+        File,
+        FileTransfer,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         { provide: AppStorage, useClass: AppStorage }
     ]
