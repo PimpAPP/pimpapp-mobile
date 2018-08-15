@@ -1,5 +1,8 @@
 <ion-content cache-view="false">
 
+    <div (click)="close()" class="close-box">
+        <div class="close-btn">X</div>
+    </div>
     <ion-slides class="materialSliderSlides">
         <ion-slide *ngFor="let slide of sliders; let i of index;" class="scroll-content">
             <img src="{{ slide.bg }}" alt="Metarial Slider Icon" class="material-bg">
@@ -22,8 +25,8 @@
     </ion-slides>
     
     <div class="slideMove">
-        <button class="slideleftArrow" (click)="goToLeft(i)"><img src="assets/img/greenArrowLeft.png" alt="Arrow"></button>
-        <button class="slideRightArrow" (click)="goToRight(i)"><img src="assets/img/greenArrowRight.png" alt="Arrow"></button>
+        <button class="slideleftArrow" (click)="goToLeft()"><img src="assets/img/greenArrowLeft.png" alt="Arrow"></button>
+        <button class="slideRightArrow" (click)="goToRight()"><img src="assets/img/greenArrowRight.png" alt="Arrow"></button>
     </div>
 
 </ion-content>

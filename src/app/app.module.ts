@@ -88,10 +88,11 @@ import { DatabaseProvider } from '../providers/database/database-provider';
 import { LangProvider } from '../providers/lang/lang-provider';
 
 import { LangPage } from './../pages/lang-page/lang-page';
+import { PdfModal } from './../pages/pdf-modal/pdf-modal';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
-// import { FileOpener } from '@ionic-native/file-opener';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -149,7 +150,8 @@ export function createTranslateLoader(http: HttpClient) {
         ColaborePage,
         CadastroCatadorWebPage,
         MenuCadastroComponent,
-        LangPage
+        LangPage,
+        PdfModal
     ],
     imports: [
         BrowserModule,
@@ -160,6 +162,7 @@ export function createTranslateLoader(http: HttpClient) {
         IonAlphaScrollModule,
         TextMaskModule,
         IonicImageViewerModule,
+        PdfViewerModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -220,7 +223,8 @@ export function createTranslateLoader(http: HttpClient) {
         PraOndeVamosPage,
         ColaborePage,
         CadastroCatadorWebPage,
-        LangPage
+        LangPage,
+        PdfModal
     ],
     providers: [
         StatusBar,

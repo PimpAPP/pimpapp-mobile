@@ -5,24 +5,26 @@
             </ion-row>
             <ion-row>
                 <ion-col col-12>
-                    <p>Por enquanto, o cadastro está disponível apenas pelo site <span class="link">cataki.org</span></p>
-                    <p>Enquanto ele não fica pronto via aplicativo, clique no botão abaixo e cadastre via navegador.</p>
+                    <!-- <span class="link">cataki.org</span> -->
+                    <p>É catador?</p>
+                    <p>Quer cadastrar um catador(a) ou cooperativa?</p>
+                    <p>Clique em uma das opções abaixo.</p>
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col col-12>
-                    <button onclick="window.open('http://www.cataki.org/#/cadastro', '_system', 'location=yes'); return false;" ion-button color="primary" full round>+ 1 CATADOR(A) &#92;o/</button>
+                    <button onclick="window.open('http://www.cataki.org/#/cadastro', '_system', 'location=yes'); return false;" ion-button color="primary" full round>+ 1 CATADOR(A)</button>
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col col-12>
-                    <button onclick="window.open('http://www.cataki.org/#/cooperativa', '_system', 'location=yes'); return false;" ion-button color="primary" full round>+ 1 COPERATIVA &#92;o/&#92;o/&#92;o/</button>
+                    <button onclick="window.open('http://www.cataki.org/#/cooperativa', '_system', 'location=yes'); return false;" ion-button color="primary" full round>+ 1 COPERATIVA</button>
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col col-12>
                     <p><br />Quer ajuda? Veja o nosso</p>
-                    <button ion-button color="light" full round>GUIA DE CADASTRO</button>
+                    <button ion-button color="light" full round (click)="openGuiaCadastro()">GUIA DE CADASTRO</button>
                 </ion-col>
             </ion-row>
     </ion-grid>

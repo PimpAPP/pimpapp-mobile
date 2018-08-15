@@ -1,3 +1,4 @@
+import { IonicApp } from 'ionic-angular';
 import { App, Platform, MenuController, NavController, ViewController } from 'ionic-angular';
 import { TabsPage } from './../pages/tabs/tabs';
 import { LoginProvider } from './../providers/login-provider';
@@ -22,18 +23,28 @@ export class MyApp {
 
     constructor(private platform: Platform, statusBar: StatusBar,
         public menuCtrl: MenuController, public app: App,
-        public loginProvider: LoginProvider) {
+        public loginProvider: LoginProvider, private _ionicApp: IonicApp) {
 
         platform.ready().then(() => {
             statusBar.styleDefault();
         });
 
         platform.registerBackButtonAction(() => {
-            let nav = app.getActiveNav();
-            let activeView: ViewController = nav.getActive();
+            // Close any active modals or overlays
+            let activePortal = this._ionicApp._loadingPortal.getActive() ||
+                this._ionicApp._modalPortal.getActive() ||
+                this._ionicApp._toastPortal.getActive() ||
+                this._ionicApp._overlayPortal.getActive();
+            if (activePortal) {
+                activePortal.dismiss();
+                return;
+            }
 
             // If the function backButtonAction exists in the current page
             // it will be called
+            let nav = app.getActiveNav();
+            let activeView: ViewController = nav.getActive();
+            
             if (activeView != null) {
                 if (nav.canGoBack()) {
                     nav.pop();
@@ -41,6 +52,7 @@ export class MyApp {
                     activeView.instance.backButtonAction();
                 else nav.parent.select(0); // goes to the first tab
             }
+
         });
     }
 

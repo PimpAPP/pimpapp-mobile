@@ -22,10 +22,10 @@
     </div>
 
     <div *ngIf="catador?.presentation_phrase">
-        <p style="margin: 0px;">{{ catador?.presentation_phrase }}</p>
+        <p style="margin: 0px;" text-center>{{ catador?.presentation_phrase }}</p>
     </div>
 
-    <div *ngIf="catador?.phones[0]?.phone">
+    <div *ngIf="catador && catador?.phones &&catador?.phones[0]?.phone">
         <hr>
         <ion-row align-items-center>
             <ion-col col-2>
@@ -61,7 +61,7 @@
             {{ catador?.city }}</p>
     </div> -->
 
-    <h2 class="font-green" [hidden]="material_list.length <= 0">RECICLA</h2>
+    <h2 class="font-green" [hidden]="material_list.length <= 0" text-center>RECICLA</h2>
 
     <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
         <ion-col col-1 class="col-center" (click)="scrollSlideToLeft()"
@@ -91,9 +91,9 @@
     <br />
 
     <div *ngIf="catador?.minibio">
-        <h3 class="font-green">HISTÓRIA DE VIDA</h3>
+        <h3 class="font-green" text-center>HISTÓRIA DE VIDA</h3>
         <!-- <p text-center class="catador-minibio"> -->
-        <p>
+        <p text-center>
             {{ catador.minibio }}
         </p>
         <!-- <p text-center class="catador-minibio">

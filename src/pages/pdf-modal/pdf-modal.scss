@@ -1,0 +1,22 @@
+pdf-modal {
+
+    .close-box {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 999;
+        border: 1px solid #fff;
+        border-radius: 30px;
+        padding: 5px;
+    }
+
+    .close-btn {
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+    .pdf-content {
+
+    }
+
+}

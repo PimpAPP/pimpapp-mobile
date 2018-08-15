@@ -14,13 +14,13 @@ p {
 }
 
 .pimp-img {
-    width: 80% !important;
+    width: 60% !important;
 }
 .pimp-email {
     border-radius: 20px;
     background-color: #ffffff;
     padding: 10px;
-    width: fit-content;
+    // width: fit-content;
 }
 
 .btn-control {
@@ -34,7 +34,7 @@ p {
 @media (min-width: 425px) {
 
     .pimp-img {
-        width: 300px !important;
+        width: 270px !important;
     }
 
 }

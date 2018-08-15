@@ -1,6 +1,9 @@
 menu-materials {
     p {
-        color: color($colors, secondary);
         font-size: 1.2em;
     }   
+
+    .menu-materials {
+        background-color: color($colors, background);
+    }
 }

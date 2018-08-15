@@ -10,7 +10,7 @@
     </div>
 
     <div id="profileDiv" [hidden]="!showProfile">
-        <button [hidden]="true" (click)="closeProfile()" class="closeDiv" id="closeDiv">x</button>        
+        <button (click)="closeProfile()" class="closeDiv" id="closeDiv">x</button>        
         <page-perfil-catador [hidden]="!showCatadorProfile"></page-perfil-catador>
         <page-perfil-cooperativa [hidden]="!showCooperativaProfile"></page-perfil-cooperativa>
     </div>

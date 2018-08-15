@@ -19,8 +19,8 @@ export class PerfilCooperativa {
     @ViewChild(Slides) gallerySlides: Slides;
     
 
-    cooperativaID: any = this.navParams.get("cooperativaID");
-    // cooperativaID: any = 1;
+    // cooperativaID: any = this.navParams.get("cooperativaID");
+    cooperativaID: any = 27;
     cooperativa: any;
     cooperativaDiasTrabalhados: any;
     material_list: any[] = [];

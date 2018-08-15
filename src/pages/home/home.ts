@@ -301,7 +301,7 @@ export class HomePage {
                     continue;
                 }
 
-                let iconType: string = 'assets/icon/marker_cooperativa.png';
+                let iconType: string = 'assets/icon/marker_cooperativa-2.png';
                 // let iconType:string = 'assets/icon/marker-user.png';
 
                 this.createNewPoint(
@@ -482,7 +482,7 @@ export class HomePage {
                 continue;
             }
 
-            let iconType: string = 'assets/icon/marker-catador.png';
+            let iconType: string = 'assets/icon/marker-catador-2.png';
 
             this.createNewPoint(
                 catador.geolocation[0].latitude,

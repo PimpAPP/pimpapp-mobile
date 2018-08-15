@@ -7,6 +7,7 @@ import { TutorialPage } from '../tutorial/tutorial';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { ApiProvider } from '../../providers/api-provider';
+import { PdfModal } from '../pdf-modal/pdf-modal';
 
 
 @Component({
@@ -37,6 +38,7 @@ export class MenuSupport {
 
     openCataDuvidas() {
         let path = null;
+        let fileName = 'cata-duvidas.pdf';
 
         if (this.platform.is('ios')) {
             path = this.file.documentsDirectory;
@@ -44,33 +46,50 @@ export class MenuSupport {
             path = this.file.dataDirectory;
         }
 
-        const transfer = this.transfer.create();
-        let url = this.apiProvider.url + 'api/get_docs/1/';
-        transfer.download(url, path + 'cata-duvidas.pdf').then(entry => {
-            let url = entry.toURL();
-            // this.fileOpener.open(url, 'application/pdf')
-            //         .then(() => console.log('File is opened'))
-            //         .catch(e => console.log('Error opening file', e));
-        });
+        this.file.checkFile(path, fileName).then(
+            (files) => {
+                const modal = this.modalCtrl.create(PdfModal, { src: path + fileName });
+                modal.present();
+            }
+        ).catch(
+            (err) => {
+                const transfer = this.transfer.create();
+                let url = this.apiProvider.url + 'api/get_docs/1/';
+                transfer.download(url, path + fileName).then(entry => {
+                    let url = entry.toURL();
+                    const modal = this.modalCtrl.create(PdfModal, { src: url });
+                    modal.present();
+                });
+            }
+        );
     }
 
     openGuiaCadastro() {
         let path = null;
-
         if (this.platform.is('ios')) {
             path = this.file.documentsDirectory;
         } else if (this.platform.is('android')) {
             path = this.file.dataDirectory;
         }
+
+        let fileName = 'guia-cadastro.pdf';
         
-        const transfer = this.transfer.create();
-        let url = this.apiProvider.url + 'api/get_docs/2/';
-        transfer.download(url, path + 'guia-cadastro.pdf').then(entry => {
-            let url = entry.toURL();
-            // this.fileOpener.open(url, 'application/pdf')
-            //         .then(() => console.log('File is opened'))
-            //         .catch(e => console.log('Error opening file', e));
-        });
+        this.file.checkFile(path, fileName).then(
+            (files) => {
+                const modal = this.modalCtrl.create(PdfModal, { src: path + fileName });
+                modal.present();
+            }
+        ).catch(
+            (err) => {
+                const transfer = this.transfer.create();
+                let url = this.apiProvider.url + 'api/get_docs/2/';
+                transfer.download(url, path + fileName).then(entry => {
+                    let url = entry.toURL();
+                    const modal = this.modalCtrl.create(PdfModal, { src: url });
+                    modal.present();
+                });
+            }
+        );
     }
 
 }

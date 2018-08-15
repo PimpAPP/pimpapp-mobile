@@ -6,15 +6,15 @@
     </div>
     <div *ngIf="!cooperativa?.profile_photo"></div>
 
-    <h3 class="font-green">
+    <h3 class="font-green" text-center>
         {{ cooperativa?.name }}
     </h3>
     <br>
         
     <!-- <h3 text-center class="catador-nickname">({{ catador?.nickname }})</h3> -->
     
-    <div *ngIf="cooperativa?.phrase">
-        <p>{{ cooperativa?.phrase }}</p>
+    <div *ngIf="cooperativa?.phrase"> 
+        <p text-center>{{ cooperativa?.phrase }}</p>
     </div> 
 
     <div *ngIf="cooperativa?.phones[0]?.phone">
@@ -32,7 +32,7 @@
 
     <div *ngIf="cooperativa?.email">
         <hr>
-        <p>{{ cooperativa?.email }}</p>
+        <p text-center>{{ cooperativa?.email }}</p>
     </div> 
 
     <!-- <div>
@@ -44,7 +44,7 @@
 
     <div [hidden]="material_list.length <= 0">
         <hr>
-        <h3 class="font-green">RECICLA</h3>
+        <h3 class="font-green" text-center>RECICLA</h3>
     </div>
 
     <ion-row class="row-center slider-row" [hidden]="material_list.length <= 0">
@@ -72,8 +72,8 @@
     </ion-row>
 
     <div [hidden]="!cooperativa?.history">
-        <h3 class="font-green">HISTÓRIA</h3>
-        <P >{{ cooperativa?.history }}</P>
+        <h3 class="font-green" text-center>HISTÓRIA</h3>
+        <p text-center>{{ cooperativa?.history }}</p>
 
         <!-- <h3 class="history" *ngIf="showCompleteHistory">{{ cooperativa?.history }}</h3> -->
         <!-- <h3 class="history" *ngIf="!showCompleteHistory && cooperativa?.history">{{ cooperativa?.history.substr(0, historyMaxSize) }}...</h3> -->
@@ -96,14 +96,14 @@
 
     <div [hidden]="!cooperativa?.founded_in">
         <br>
-        <p>Fundada em <span class="font-green">{{ formatDate(cooperativa?.founded_in) }}</span></p>
+        <p text-center>Fundada em <span class="font-green">{{ formatDate(cooperativa?.founded_in) }}</span></p>
         <br>
     </div>
 
     <!-- GALLERY -->
     <ion-row class="row-center" *ngIf="cooperativa?.photos && cooperativa?.photos.length">
         <ion-col col-12>
-            <h3 class="font-green">GALERIA DE FOTOS</h3>
+            <h3 class="font-green" text-center>GALERIA DE FOTOS</h3>
         </ion-col> 
 
         <ion-slides initialSlide=0 loop=true autoplay=3000 speed=2000>
@@ -116,7 +116,7 @@
     <!-- PARTNERS -->
     <ion-row class="row-center row" [hidden]="cooperativa?.partners.length <= 0">
         <ion-col col-12>
-            <h3 class="font-green">PARCEIROS</h3>
+            <h3 class="font-green" text-center>PARCEIROS</h3>
         </ion-col>    
 
         <ion-col col-4 *ngFor="let partner of cooperativa?.partners">

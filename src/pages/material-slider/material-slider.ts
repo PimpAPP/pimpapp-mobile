@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 
@@ -16,7 +16,14 @@ export class MaterialSlider {
 
     constructor(public navCtrl: NavController, 
         public navParams: NavParams,
-        public alertCtrl: AlertController) {
+        public alertCtrl: AlertController,
+        public loadingCtrl: LoadingController) {
+
+        let loading = this.loadingCtrl.create({
+            content: ''
+        });
+
+        loading.present();
 
         this.sliders = [
             {
@@ -64,7 +71,7 @@ export class MaterialSlider {
                 icon: './assets/img/materiais/icon-vidro.jpg',
                 name: 'Vidros',
                 list: [
-                    '- 100% reciclável, e dura para sempre;',
+                    '- 100% reciclável e dura para sempre;',
                     '- Preço baixo, poucos lugares reciclam;',
                     '- Vidro quebrado é ainda pior;',
                     '- Maior número de acidentes com catadores;',
@@ -118,7 +125,7 @@ export class MaterialSlider {
                 list: [
                     '- 98% dos componentes de um eletrônico podem ser reciclados;',
                     '- Tem valor mais alto, mas só 15.5% é reciclado: falta infraestrutura no Brasil;',
-                    '- São altamente contaminantes : busque a destinação correta.'
+                    '- São altamente contaminantes: busque a destinação correta.'
                 ],
                 desc: 'Combine com o catador qual é a remuneração adequada para cada coleta.',
                 subdesc: ''
@@ -130,7 +137,7 @@ export class MaterialSlider {
                 list: [
                     '- São altamente contaminantes;',
                     '- Estão nos celulares, telefones sem fio, máquinas fotográficas, filmadoras, laptops, brinquedos e relógios.',
-                    '- Não podem ser misturadas : separe e avise o catador antes da coleta.'
+                    '- Não podem ser misturadas: separe e avise o catador antes da coleta.'
                 ],
                 desc: 'Combine com o catador qual é a remuneração adequada para cada coleta.',
                 subdesc: ''
@@ -174,25 +181,34 @@ export class MaterialSlider {
             }
         ];
 
-
-        console.log(navParams.get('data'));
         this.slideNum = navParams.get('data');
 
         setTimeout(() => {
-            console.log("Hello2");
             this.slides.slideTo(this.slideNum, 0, true);
-        }, 600);
+            loading.dismiss();
+        }, 500);
 
     }
 
-    goToLeft(index) {
-        this.slides.slidePrev(500, true)
-        console.log(index);
+    goToLeft() {
+        if (this.slides.isBeginning()) {
+            this.navCtrl.pop();
+        } else {
+            this.slides.slidePrev(500, true)
+        }
     };
 
-    goToRight(index) {
-        this.slides.slideNext(500, true)
-        console.log(index);
+    goToRight() {
+        if (this.slides.isEnd()) {
+            this.navCtrl.pop();
+        } else {
+            this.slides.slideNext(500, true)
+        }
     };
+
+    close() {
+        this.navCtrl.pop();
+    }
+    
 
 }

@@ -7,29 +7,29 @@ import { MaterialSlider } from './../material-slider/material-slider';
 
 
 @Component({
-  selector: 'menu-materials',
-  templateUrl: 'menu-materials.html',
+    selector: 'menu-materials',
+    templateUrl: 'menu-materials.html',
 })
 export class MenuMaterials {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public alertCtrl: AlertController) {
-  }
-
-  openPage(page){
-    switch (page){
-      case 'cans':
-          this.navCtrl.push(CansPage);
-      break;
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+        public alertCtrl: AlertController) {
     }
-  }
 
-   errorpage(){
-    this.navCtrl.push(ErrorPage);
-  }
+    openPage(page) {
+        switch (page) {
+            case 'cans':
+                this.navCtrl.push(CansPage);
+                break;
+        }
+    }
 
-  goMatSlider(i){
-    this.navCtrl.setRoot(MaterialSlider,{data:i});
-  }
+    errorpage() {
+        this.navCtrl.push(ErrorPage);
+    }
+
+    goMatSlider(i) {
+        this.navCtrl.push(MaterialSlider, { data: i });
+    }
 
 }

@@ -1,0 +1,14 @@
+<ion-content padding>
+
+    <div (click)="close()" class="close-box">
+        <div class="close-btn">X</div>
+    </div>
+
+    <div *ngIf="src" class="pdf-content">
+        <pdf-viewer [src]="src" 
+                    [render-text]="true"
+                    style="display: block;"
+                    [fit-to-page]="true"></pdf-viewer>
+    </div>
+
+</ion-content>

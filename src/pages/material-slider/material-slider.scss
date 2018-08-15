@@ -1,121 +1,141 @@
-h1 {
-    color: #00ba45;
-    font-family: 'Overpass';
-    font-weight: 900;
-    margin: 0;
-}
+material-slider {
+        
 
-.content-box {
-    // margin-top: 20px;
-    text-align: left;
-    padding: 25px;
-    margin-bottom: 70px;
-}
+    h1 {
+        color: #00ba45;
+        font-family: 'Overpass';
+        font-weight: 900;
+        margin: 0;
+    }
 
-.slideMove{
-    position: fixed;
-    // top: 30%;
-    bottom: 15%;
-    left: 0px;
-    width: 100%;
-    z-index: 999;
-}
+    .content-box {
+        // margin-top: 20px;
+        text-align: left;
+        padding: 25px;
+        margin-bottom: 70px;
+    }
 
-button{
-    background: none;
-    position: absolute;
-    top: 0px; 
-    img{
-        width: 12px;
-        height: 13px;
-    }               
-}
-.slideRightArrow{
-    right: 8%;
-    background-color: #f5f5f5;
-    border-radius: 50px;
-    padding: 5px 5px 5px 5px;
-}
-.slideleftArrow{
-    left: 8%;
-    background-color: #f5f5f5;
-    border-radius: 50px;
-    padding: 5px 5px 5px 5px;
-}
+    .slideMove{
+        position: fixed;
+        // top: 30%;
+        bottom: 15%;
+        left: 0px;
+        width: 100%;
+        z-index: 999;
+    }
 
-.materialSliderSlides{
-    position: relative;
-    margin: 0px;
-    height: 100%;
-    text-align: center;
-    background-color: #dadace;
-}
-
-ion-list{
-    ion-item{
-        border: none !important;
-        padding: 0px;
-        min-height: auto;
-        line-height: 24px;
+    button{
         background: none;
-        .item-inner{
+        position: absolute;
+        top: 0px; 
+        img{
+            width: 12px;
+            height: 13px;
+        }               
+    }
+    .slideRightArrow{
+        right: 8%;
+        background-color: #f5f5f5;
+        border-radius: 50px;
+        padding: 5px 5px 5px 5px;
+    }
+    .slideleftArrow{
+        left: 8%;
+        background-color: #f5f5f5;
+        border-radius: 50px;
+        padding: 5px 5px 5px 5px;
+    }
+
+    .materialSliderSlides{
+        position: relative;
+        margin: 0px;
+        height: 100%;
+        text-align: center;
+        background-color: #dadace;
+    }
+
+    ion-list{
+        ion-item{
             border: none !important;
-            padding: 0px !important;                
-            ion-label{
-                margin: 0px;
-                text-align: center;
-                white-space: normal;
+            padding: 0px;
+            min-height: auto;
+            line-height: 24px;
+            background: none;
+            .item-inner{
+                border: none !important;
+                padding: 0px !important;                
+                ion-label{
+                    margin: 0px;
+                    text-align: center;
+                    white-space: normal;
+                }
             }
         }
     }
-}
 
 
-.material-bg{
-    width: 70px;
-    margin: 0px auto;
-    display: block;
-}
-
-.slide-zoom {
-    height: 100%;
-}
-
-.swiper-slide {
-    padding: 0px !important;
-}
-
-.hr {
-    border:none;
-    border: 1px solid #d7d7d7;
-    position: absolute;
-    width: 88%;
-}
-
-.hr-box { 
-    text-align: center;
-    height: 80px;
-    margin-top: 35px;
-}
-
-.hr-box img {
-    position: relative;
-    top: -30px;
-    padding:0 5px;
-}
-
-.desc-box {
-    font-size: 22px !important;
-    font-weight: 500;
-    padding: 0px 35px 0px 35px;
-}
-
-.desc-box p {
-    text-align: center !important;
-}
-
-@media screen and (max-width:360px){
-    .materialSliderSlides{
-        min-height: 120%;
+    .material-bg{
+        margin: 0px auto;
+        display: block;
     }
+
+    .slide-zoom {
+        height: 100%;
+    }
+
+    .swiper-slide {
+        padding: 0px !important;
+    }
+
+    .hr {
+        border:none;
+        border: 1px solid #d7d7d7;
+        position: absolute;
+        width: 88%;
+    }
+
+    .hr-box { 
+        text-align: center;
+        height: 80px;
+        margin-top: 35px;
+    }
+
+    .hr-box img {
+        position: relative;
+        top: -30px;
+        padding:0 5px;
+    }
+
+    .desc-box {
+        font-size: 22px !important;
+        font-weight: 500;
+        padding: 0px 35px 0px 35px;
+    }
+
+    .desc-box p {
+        text-align: center !important;
+    }
+
+    .close-box {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 999;
+        border: 1px solid #fff;
+        border-radius: 30px;
+        padding: 5px;
+        background-color: #00ba46;
+    }
+
+    .close-btn {
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+    @media screen and (max-width:360px){
+        .materialSliderSlides{
+            min-height: 120%;
+        }
+    }
+
 }
