@@ -10,12 +10,12 @@
     
     <div *ngIf="!catador?.profile_photo"></div>
     
-    <div *ngIf="catador?.nickname">
+    <div *ngIf="catador?.nickname" text-center>
         <h3 class="font-green" style="margin-top: 0px; margin-bottom: 30px;">
             {{ catador?.name }}, <span class="name-middle-text">mas pode me chamar de</span> <i>{{ catador?.nickname }}</i>
         </h3>
     </div>
-    <div *ngIf="!catador?.nickname">
+    <div *ngIf="!catador?.nickname" text-center>
         <h3 style="margin-bottom: 0px;" class="font-green">
             {{ catador?.name }}
         </h3>
@@ -67,7 +67,7 @@
         <ion-col col-1 class="col-center" (click)="scrollSlideToLeft()"
                 [hidden]="material_list.length <= 4"
                 style="margin-top: -30px;">
-            <ion-icon class="material-left-arrow" name="ios-arrow-back"></ion-icon>
+            <ion-icon class="material-left-arrow" name="ios-arrow-back" [hidden]="!showLeftSliderArrow"></ion-icon>
         </ion-col>
         <ion-col col-10>
             <div class="material-slide" id="material-slide">
@@ -80,7 +80,7 @@
         <ion-col col-1 class="col-center" (click)="scrollSlideToRight()"
                 [hidden]="material_list.length <= 4"
                 style="margin-top: -30px;">
-            <ion-icon class="material-right-arrow " name="ios-arrow-forward"></ion-icon>
+            <ion-icon class="material-right-arrow" name="ios-arrow-forward" [hidden]="!showRightSliderArrow"></ion-icon>
         </ion-col>
 
         <!-- <ion-col col-3 *ngFor="let material of material_list">

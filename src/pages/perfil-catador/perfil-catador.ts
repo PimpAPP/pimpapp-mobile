@@ -10,7 +10,6 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { HostListener } from '@angular/core';
 import { UsersAPI } from '../../providers/users-api';
 
-declare var $: any;
 
 @Component({
     selector: 'page-perfil-catador',
@@ -33,6 +32,8 @@ export class PerfilCatador {
     noImageSrc = 'assets/img/no_image.jpg';
     whatsapp: any;
     public avatar: String = '';
+    showRightSliderArrow = true;
+    showLeftSliderArrow = false;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         public http: UsersAPI, public loading: LoadingController,
@@ -47,8 +48,20 @@ export class PerfilCatador {
     ngAfterViewInit() {
         if (this.catadorID) {
             this.update();
-        }    
+        }
+
+        var slider = document.getElementById('material-slide')
+        if (slider) {
+            slider.addEventListener("scroll", (e)=> {
+                // Check if it is the end of scroll
+                this.showRightSliderArrow = !(slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth);
+
+                // Check if it is the begin of scroll
+                this.showLeftSliderArrow = !(slider.scrollLeft <= 0);
+            });
+        }
     }
+    
 
     updateData(id) {
         this.catadorID = id;
@@ -125,7 +138,7 @@ export class PerfilCatador {
             );
             loader.dismiss();
         });
-    }
+    }    
 
     setMaterialList() {
         let material_id: number;
@@ -135,6 +148,7 @@ export class PerfilCatador {
             this.material_list.push(
                 this.materialRecover.findMaterialId(this.catador.materials_collected[i]));
         }
+        
     }
 
     launchPhone(number: string) {
@@ -146,7 +160,6 @@ export class PerfilCatador {
     readMore() {
         this.showCompleteMinibio = !this.showCompleteMinibio;
     }
-
 
     photoOnError() {
         this.catadorImg = this.noImageSrc;

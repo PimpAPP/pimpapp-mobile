@@ -47,7 +47,7 @@ export class MaterialSlider {
                 name: 'Alumínio',
                 list: [
                     '- Em 60 dias, 1 lata é produzida, comprada, coletada, reciclada e volta as prateleiras;',
-                    '- Reciclamos 98.4% das latinhas do Brasil. E apenas 33% dos outros itens de alumínio;',
+                    '- Reciclamos 98,4% das latinhas do Brasil. E apenas 33% dos outros itens de alumínio;',
                     '- Reciclar gasta 95% menos energia do que produzir.',
                 ],
                 desc: 'Combine com o catador qual é a remuneração adequada para cada coleta.',
@@ -124,7 +124,7 @@ export class MaterialSlider {
                 name: 'Eletrônicos',
                 list: [
                     '- 98% dos componentes de um eletrônico podem ser reciclados;',
-                    '- Tem valor mais alto, mas só 15.5% é reciclado: falta infraestrutura no Brasil;',
+                    '- Tem valor mais alto, mas só 15,5% é reciclado: falta infraestrutura no Brasil;',
                     '- São altamente contaminantes: busque a destinação correta.'
                 ],
                 desc: 'Combine com o catador qual é a remuneração adequada para cada coleta.',
