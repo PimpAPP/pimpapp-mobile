@@ -63,7 +63,6 @@ import { coletaaberta12h } from './../pages/coletaaberta12h/coletaaberta12h';
 
 import { TextMaskModule } from 'angular2-text-mask';
 
-import { IonAlphaScrollModule } from 'ionic2-alpha-scroll';
 
 import { AppStorage } from '../providers/app-storage';
 
@@ -159,7 +158,6 @@ export function createTranslateLoader(http: HttpClient) {
         IonicStorageModule.forRoot(),
         HttpModule,
         HttpClientModule,
-        IonAlphaScrollModule,
         TextMaskModule,
         IonicImageViewerModule,
         PdfViewerModule,
