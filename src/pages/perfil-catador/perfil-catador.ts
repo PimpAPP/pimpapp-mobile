@@ -9,6 +9,7 @@ import { AlertController, Content } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { HostListener } from '@angular/core';
 import { UsersAPI } from '../../providers/users-api';
+import { CatadoresProvider } from '../../providers/catadores-provider';
 
 
 @Component({
@@ -18,9 +19,9 @@ import { UsersAPI } from '../../providers/users-api';
 export class PerfilCatador {
 
     @ViewChild(Content) content: Content;
-    // catadorID: any = this.navParams.get("catadorID");
-    catadorID = 539;
-    // catadorID = 5;
+    catadorID: any = this.navParams.get("catadorID");
+    // catadorID = 539;
+    // catadorID = 41;
     
     catador: any;
     catadorDiasTrabalhados: any;
@@ -40,7 +41,7 @@ export class PerfilCatador {
         public alertCtrl: AlertController, public callNumber: CallNumber,
         public apiProvider: ApiProvider, public storage: Storage,
         private camera: Camera, public toastCtrl: ToastController,
-        public userProvider: UsersAPI) {        
+        public userProvider: UsersAPI, public catadoresProvider: CatadoresProvider) {        
         
         this.materialRecover = new MaterialRecover();
     }
@@ -151,8 +152,16 @@ export class PerfilCatador {
         
     }
 
-    launchPhone(number: string) {
-        this.callNumber.callNumber(number, true)
+    launchPhone(phone: string) {
+
+        this.catadoresProvider.addCallStatistic(this.catador.id, phone)
+                .subscribe(res => {
+            console.log(res);
+        }, error => {
+            console.log(error);
+        });
+        
+        this.callNumber.callNumber(phone, true)
             .then(() => console.log('Launched dialer!'))
             .catch(() => console.log('Error launching dialer'));
     }

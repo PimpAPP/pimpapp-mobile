@@ -31,7 +31,6 @@ export class CatadoresProvider {
          
     }
 
-
     //get data using marker Id
     getDataUsingID(id){
         return this.http.get(this.url + id + '/?format=json')
@@ -72,4 +71,20 @@ export class CatadoresProvider {
             this.tokenUtils.createAuthorizationHeader(this.headers);
         }
     }
+
+    addCallStatistic(catador, phone) {
+        let url = this.apiProvider.url + 'api/add_statistic/';
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+
+        var data = {
+            'catador': catador,
+            'phone': phone
+        }
+
+        return this.http.post(url, data, {
+            headers: this.headers
+        });
+    }
+
 }

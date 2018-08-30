@@ -38,8 +38,8 @@ export class LoginPage {
         });
     }
     
-  gotoHome(){
-    this.navCtrl.setRoot(TabsPage);
-  }
+    gotoHome(){
+        this.navCtrl.setRoot(TabsPage);
+    }
 
 }
