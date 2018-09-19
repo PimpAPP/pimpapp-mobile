@@ -1,34 +1,36 @@
 <ion-content padding class="tutorial">
     
-    <ion-grid>
-
-        <ion-row class="slide-menu-row menu-top">
+    <ion-grid style="height: 100%;">
+        <ion-row class="slide-menu-top-row menu-top">
             <ion-col col-10 class="col-vertical" center>
                 <div class="menuLinkSlideGrid">
                     <ion-row>
-                        <ion-col (click)="goToSlide(0)" >
+                        <ion-col (click)="goToSlide(0)" class="top-col">
                             <span class="step btn-control" [ngClass]="{'active': (step == 0)}">1</span>
                         </ion-col>
-                        <ion-col (click)="goToSlide(1)">
+                        <ion-col (click)="goToSlide(1)" class="top-col">
                             <span class="step btn-control" [ngClass]="{'active': (step == 1)}">2</span>
                         </ion-col>
-                        <ion-col (click)="goToSlide(2)">
+                        <ion-col (click)="goToSlide(2)" class="top-col">
                             <span class="step btn-control" [ngClass]="{'active': (step == 2)}">3</span>
                         </ion-col>
-                        <ion-col (click)="goToSlide(3)">
+                        <ion-col (click)="goToSlide(3)" class="top-col">
                             <span class="step btn-control" [ngClass]="{'active': (step == 3)}">4</span>
                         </ion-col>
-                        <ion-col (click)="goToSlide(4)">
+                        <ion-col (click)="goToSlide(4)" class="top-col">
                             <span class="step btn-control" [ngClass]="{'active': (step == 4)}">5</span>
                         </ion-col>
-                        <ion-col (click)="goToSlide(5)">
+                        <ion-col (click)="goToSlide(5)" class="top-col">
                             <span class="step btn-control" [ngClass]="{'active': (step == 5)}">6</span>
                         </ion-col>
-                        <ion-col (click)="goToSlide(6)">
+                        <ion-col (click)="goToSlide(6)" class="top-col">
                             <span class="step btn-control" [ngClass]="{'active': (step == 6)}">7</span>
                         </ion-col>
-                        <ion-col (click)="goToSlide(7)">
+                        <ion-col (click)="goToSlide(7)" class="top-col">
                             <span class="step btn-control" [ngClass]="{'active': (step == 7)}">8</span>
+                        </ion-col>
+                        <ion-col (click)="goToSlide(8)" class="top-col">
+                            <span class="step btn-control" [ngClass]="{'active': (step == 8)}">9</span>
                         </ion-col>
                     </ion-row>
                 </div> 
@@ -41,40 +43,129 @@
             </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row class="slide-menu-middle-row">
             <ion-col col-12 class="tutorial-col">
-                <ion-slides (ionSlideDidChange)="slideChanged()">
+                <ion-slides (ionSlideDidChange)="slideChanged()" class="tutorial-slides">
 
+                    <!-- SLIDE 1 -->
                     <ion-slide class="tutorial-slide ionSlide1">
-                        <img src="assets/img/tutorial/tutorial-1.jpg">
+                        <div class="top-box">
+                            <p text-center>Seja bem-vindo ao</p>
+                            <img src="assets/img/catakiHeadImg.png">
+                        </div>
+
+                        <div class="middle-box">
+                            <img src="assets/img/tutorial/map.jpg" class="middle-img">
+                        </div>
+
+                        <div class="bottom-box">
+                            <p text-center>
+                                São os catadores 
+                                <span><img src="assets/img/Icones_catador.png" class="img-1"></span> 
+                                e as coooperativas 
+                                <span><img src="assets/img/Icones_cooperativa.png" class="img-2"></span>
+                                que realizarão sua coleta. Navegue pelo mapa,
+                                encontre o mais próximo e veja seu perfil.
+                            </p>
+                        </div>
+
                     </ion-slide>
 
+                    <!-- SLIDE 2 -->
                     <ion-slide class="tutorial-slide ionSlide2">
-                        <img src="assets/img/tutorial/tutorial-2.jpg">
+                        <div class="top-box">
+                            <img src="assets/img/tutorial/tutorial-2.jpg" class="top-img">
+                        </div>
+                        <div class="bottom-box">
+                            <p text-center>
+                                São os catadores 
+                                <span><img src="assets/img/Icones_catador.png" class="img-1"></span> 
+                                e as coooperativas 
+                                <span><img src="assets/img/Icones_cooperativa.png" class="img-2"></span>
+                                que realizarão sua coleta. Navegue pelo mapa,
+                                encontre o mais próximo e veja seu perfil.
+                            </p>
+                        </div>
                     </ion-slide>
 
-                    <ion-slide class="tutorial-slide ionSlide3">
-                        <img src="assets/img/tutorial/tutorial-3.jpg">
+                    <!-- SLIDE 3 -->
+                    <ion-slide class="tutorial-slide bg-logo ionSlide3">
+                        <span class="text text-1">
+                            Pesquise no item materiais no menu sobre o material que quer descartar: a forma de separar e seu valor
+                        </span>
+
+                        <span class="text text-2">
+                            Identifique os materiais que cada catador(a) e cooperativa coletam
+                        </span>
+
+                        <span class="text text-3">
+                            Lembre que o (a) catador (a) está prestando um serviço para você, negocie sua coleta
+                        </span>
+
+                        <span class="text text-4">
+                            Carroça e celular são ferramentas que falham. Tenha paciência. Se necessário, entre em contato com a gente ;-)
+                        </span>
+
+                        <img src="assets/img/tutorial/menu-botton.jpg" class="menu-img">
                     </ion-slide>
 
-                    <ion-slide class="tutorial-slide ionSlide4">
-                        <img src="assets/img/tutorial/tutorial-4.jpg">
+                    <!-- SLIDE 4 -->
+                    <ion-slide class="tutorial-slide bg-logo ionSlide4">
+                        <span class="text text-1">
+                            Aqui você encontra mais informações sobre a nossa história, parceiros, proposta de contato. 
+                            Clique para entender mais sobre o cataki.
+                        </span>
+                        <img src="assets/img/tutorial/menu-botton.jpg" class="menu-img">
                     </ion-slide>
 
-                    <ion-slide class="tutorial-slide ionSlide5">
-                        <img src="assets/img/tutorial/tutorial-5.jpg">
+                    <!-- SLIDE 5 -->
+                    <ion-slide class="tutorial-slide bg-logo ionSlide5">
+                        <span class="text text-1">
+                            Aqui você pode fazer o cadastro de catadores (as) e cooperativas O contato telefônico e a 
+                            localização são muito importantes para que a coleta seja realizada
+                        </span>
+
+                        <img src="assets/img/tutorial/menu-botton.jpg" class="menu-img">
                     </ion-slide>
 
-                    <ion-slide class="tutorial-slide ionSlide6">
-                        <img src="assets/img/tutorial/tutorial-6.jpg">
+                    <!-- SLIDE 6 -->
+                    <ion-slide class="tutorial-slide bg-logo ionSlide6">
+                        <span class="text text-1">
+                            Este é o mapa do cataki, onde você vai encontrar catadores(as) e cooperativas para 
+                            fazer sua coleta
+                        </span>
+
+                        <img src="assets/img/tutorial/menu-botton.jpg" class="menu-img">
                     </ion-slide>
 
-                    <ion-slide class="tutorial-slide ionSlide7">
-                        <img src="assets/img/tutorial/tutorial-7.jpg">
+                    <!-- SLIDE 7 -->
+                    <ion-slide class="tutorial-slide bg-logo ionSlide7">
+                        <span class="text text-1">
+                            Clique no item materiais
+                        </span>
+
+                        <img src="assets/img/tutorial/menu-botton.jpg" class="menu-img">
                     </ion-slide>
 
+                    <!-- SLIDE 8 -->
+                    <ion-slide class="tutorial-slide bg-logo ionSlide8">
+                        <span class="text text-1">
+                            Caso tenha dúvidas com o uso do aplicativo ou com o cadastro, aqui você encontrará ajuda 
+                            e poderá rever este tutorial
+                        </span>
+                        <img src="assets/img/tutorial/menu-botton.jpg" class="menu-img">
+                    </ion-slide>
+
+                    <!-- SLIDE 9 -->
                     <ion-slide class="tutorial-slide ionSlide8">
-                        <img src="assets/img/tutorial/tutorial-8.jpg">
+                        <div class="top-box">
+                            <img src="assets/img/tutorial/tutorial-9.jpg" class="top-img">
+                        </div>
+                        <div class="bottom-box">
+                            <p text-center>
+                                Obrigado(a) e seguimos juntos(as) nessa causal
+                            </p>
+                        </div>
                     </ion-slide>
 
                 </ion-slides>

@@ -92,6 +92,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MapFilter } from '../pages/map-filter/map-filter';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -150,7 +151,8 @@ export function createTranslateLoader(http: HttpClient) {
         CadastroCatadorWebPage,
         MenuCadastroComponent,
         LangPage,
-        PdfModal
+        PdfModal,
+        MapFilter
     ],
     imports: [
         BrowserModule,
@@ -222,7 +224,8 @@ export function createTranslateLoader(http: HttpClient) {
         ColaborePage,
         CadastroCatadorWebPage,
         LangPage,
-        PdfModal
+        PdfModal,
+        MapFilter
     ],
     providers: [
         StatusBar,

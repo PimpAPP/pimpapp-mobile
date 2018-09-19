@@ -257,7 +257,7 @@ export class PerfilCatador {
     }
 
     openUpdatePage() {
-        var url = 'http://www.cataki.org/#/cadastro/' + this.catador.id;
+        var url = 'http://www.cataki.org/cadastro/' + this.catador.id;
         window.open(url, '_system', 'location=yes');
     }
     

@@ -21,6 +21,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { TutorialPage } from '../tutorial/tutorial';
 import { Storage } from '@ionic/storage';
 
+
 import {
     GoogleMap,
     GoogleMapsEvent,
@@ -30,6 +31,8 @@ import {
     CameraPosition,
     AnimateCameraOptions
 } from '@ionic-native/google-maps';
+import { SearchFilter } from '../search-filter';
+import { MapFilter } from '../map-filter/map-filter';
 
 
 
@@ -46,6 +49,7 @@ export class HomePage {
     @ViewChild(PerfilCooperativa) perfilCooperativaChild;
     @ViewChild(Navbar) navBar: Navbar;
 
+    searchFilter = new SearchFilter();
     map: GoogleMap;
     nearest_catadores: any;
     nearest_collects: any;
@@ -79,14 +83,7 @@ export class HomePage {
         public apiProvider: ApiProvider, public cooperativesProvider: CooperativesProvider,
         private translate: TranslateService, public storage: Storage) {
 
-        this.openTutorial();
-        
-        this.loading = this.loadingCtrl.create({
-            content: 'Please wait...'
-        });
-        // this.loading.present();
         this.showProfile = false;
-
         this.translate.setDefaultLang('pt_BR');
 
         this.platform.ready().then(() => {
@@ -127,11 +124,32 @@ export class HomePage {
         });
     }
 
+    search() {
+        this.loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+        });
+        this.loading.present();
+
+        this.map.clear();
+
+        this.catadoresProvider.search(this.searchFilter).subscribe(data => {
+            this.nearest_catadores = data;
+            this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
+            this.loadCooperatives();
+            this.loading.dismiss();
+        });
+    }
+
+    openFilter() {
+        const modal = this.modalCtrl.create(MapFilter);
+        modal.present();
+    }
+
     openTutorial() {
         this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val == null || val == 1) {
-                    // this.navCtrl.push(TutorialPage);
+                    this.navCtrl.push(TutorialPage);
                     const modal = this.modalCtrl.create(TutorialPage);
                     modal.present();
                 }
@@ -286,6 +304,8 @@ export class HomePage {
     }
 
     loadCooperatives() {
+        // this.searchFilter
+        
         this.cooperativesProvider.getCooperatives().subscribe(data => {
             let index = 0;
             // console.log(data);
@@ -555,7 +575,6 @@ export class HomePage {
         );
         return [latlng, latlngCatador];
     }
-
 
     /**
      * Action called by the back button.

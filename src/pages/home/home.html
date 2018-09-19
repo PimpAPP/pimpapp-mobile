@@ -1,4 +1,16 @@
 <ion-content class="homeContent">
+
+    <div class="top">
+        <input type="text" placeholder="Pesquise aqui" [(ngModel)]="searchFilter.search">
+
+        <button ion-button icon-only small (click)="search()">
+            <ion-icon name="search"></ion-icon>
+        </button>
+        <button ion-button icon-only small (click)="openFilter()">
+            <ion-icon name="options"></ion-icon>
+        </button>
+    </div>
+
     <div #map id="map" (click)="closeProfile()">
         
         <!-- <span class="spanMargin"></span>  

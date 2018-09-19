@@ -13,12 +13,26 @@ page-tutorial {
         padding: 0px !important;
     }
 
+    .top-col {
+        padding: 0px !important;
+    }
+
     .tutorial-col {
         padding: 0px !important;
+        height: 100%;
+    }
+
+    .tutorial-slides {
+        height: 100%;
     }
 
     .tutorial-slide {
         width: 100% !important;
+        height: 100% !important;
+    }
+
+    .swiper-slide img {
+        // margin-top: -25px;
     }
 
     .menuLinkSlideGrid {
@@ -37,7 +51,7 @@ page-tutorial {
     }
 
     .close-btn {
-        font-size: 35px !important;
+        font-size: 15px !important;
         background-color: unset;
         font-weight: 100;
         color: #ffffff;
@@ -47,16 +61,156 @@ page-tutorial {
         color: #ffffff;
     }
 
-    .slide-menu-row {
+    .slide-menu-top-row {
         align-items: center;
     }
 
-    .menu-top {
+    .slide-menu-middle-row {
+        height: 100%;
+    }
+
+    // slides
+
+    .ionSlide1 {
+        height: 100%;
+        width: 100%;
+    }
+
+    .ionSlide1 .top-box, .ionSlide2 .top-box {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        background-color: #cdd5c0;
+    }
+
+    .ionSlide1 .top-box img {
+        width: 220px;
+    }
+
+    .ionSlide2 .top-img {
+        width: 80%;
+    }
+
+    .middle-img {
+        height: 350px;
+        width: 100%;
+    }
+
+    .ionSlide1 .middle-box {
+        height: 415px;
+    }
+
+    .bottom-box {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        background-color: #cdd5c0;
+        padding: 10px;
+    }
+
+    .bottom-box .img-1 {
+        width: 40px;
+        height: auto;
+    }
+
+    .bottom-box .img-2 {
+        width: 20px;
+        height: auto;
+    }
+
+    .bottom-box p {
+        font-size: 14px !important;
+    }
+
+    .ionSlide2 .bottom-box {
 
     }
 
-    .menu-bottom {
+    .ionSlide3 {
 
+    }
+
+    .bg-logo::after {
+        content: "";
+        background: url("/assets/img/tutorial/marca.png");
+        background-repeat: no-repeat;
+        opacity: 0.2;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;   
+    }
+
+    .menu-img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .text {
+        // border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        position: absolute;
+        font-size: 13px;
+        width: 200px;
+        opacity: 0.7;
+    }
+
+    .ionSlide3 .text-1 {
+        background-color: #23c1e5;
+        top: 15px;
+        left: 35px;
+    }
+
+    .ionSlide3 .text-2 {
+        background-color: #fbdc00;
+        top: 100px;
+        left: 35px;
+    }
+
+    .ionSlide3 .text-3 {
+        background-color: #d95eb4;
+        top: 170px;
+        left: 35px;
+    }
+
+    .ionSlide3 .text-4 {
+        background-color: #fb9c12;
+        top: 240px;
+        left: 35px;
+    }
+
+    .ionSlide4 .text-1 {
+        background-color: #3dc5e1;
+        bottom: 90px;
+        left: 10px;
+    }
+
+    .ionSlide5 .text-1 {
+        background-color: #f7dd1b;
+        bottom: 90px;
+        left: 90px;
+    }
+
+    .ionSlide6 .text-1 {
+        background-color: #d95eb4;
+        bottom: 90px;
+        right: 7px;
+    }
+
+    .ionSlide7 .text-1 {
+        background-color: #fb9c12;
+        bottom: 90px;
+        right: 7px;
+    }
+
+    .ionSlide8 .text-1 {
+        background-color: #27b93f;
+        bottom: 90px;
+        right: 7px;
     }
 
 }

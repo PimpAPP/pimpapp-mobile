@@ -186,7 +186,7 @@ export class PerfilCooperativa {
     }
 
     openUpdatePage() {
-        var url = 'http://www.cataki.org/#/cooperativa/' + this.cooperativa.id;
+        var url = 'http://www.cataki.org/cooperativa/' + this.cooperativa.id;
         // var url = 'http://localhost:4200/#/cooperativa/' + this.cooperativa.id;
         window.open(url, '_system', 'location=yes');
     }

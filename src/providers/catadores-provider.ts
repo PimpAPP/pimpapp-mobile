@@ -5,6 +5,7 @@ import { Catador } from './../pages/catador';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { SearchFilter } from '../pages/search-filter';
 
 
 @Injectable()
@@ -21,6 +22,11 @@ export class CatadoresProvider {
     
     getCatadoresPositions() {
         return this.http.get(this.url)
+          .map(res => res.json() );
+    }
+
+    search(filter: SearchFilter) {
+        return this.http.get(this.url + filter.getAsUrlParams())
           .map(res => res.json() );
     }
 
