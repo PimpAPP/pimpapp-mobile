@@ -6,32 +6,24 @@ home-page {
         box-shadow: 2px 2px 2px grey;
     }
 
-    .top input {
-        margin-top: 5px;
-        // background-color: rgb(134,22,28) !important;
-        border-radius: 50px !important;
-        padding: 5px 5px !important;
-        border: none !important;
-        height: auto !important;
-        width: 70% !important;
-        text-align: center !important;
-        // color: white !important;
-    }
-    
-    .top input:focus {
-        border: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
+    .scroll-content {
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
     }
 
-    .top button {
-        margin-top: -8px;
+    .top {
+        background-color: #40a926;
+    }
+
+    .top ion-icon {
+        color: white;
+        font-size: 25px;
     }
 
     #map {
-        height: 93%;
+        height: 95%;
         position: relative;
-        z-index: 111;
+        // z-index: 111;
     }
 
     #profileDiv {

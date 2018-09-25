@@ -34,8 +34,6 @@ import {
 import { SearchFilter } from '../search-filter';
 import { MapFilter } from '../map-filter/map-filter';
 
-
-
 declare var google: any;
 
 @Component({
@@ -75,6 +73,7 @@ export class HomePage {
     showProfile: boolean = false;
     showCatadorProfile: boolean = false;
     showCooperativaProfile: boolean = false;
+
 
     constructor(public navCtrl: NavController, public platform: Platform,
         private geolocation: Geolocation, public catadoresProvider: CatadoresProvider,
@@ -128,9 +127,11 @@ export class HomePage {
         this.loading = this.loadingCtrl.create({
             content: 'Please wait...'
         });
+
         this.loading.present();
 
-        this.map.clear();
+        if (this.map) // To work in browser
+            this.map.clear();
 
         this.catadoresProvider.search(this.searchFilter).subscribe(data => {
             this.nearest_catadores = data;
@@ -140,9 +141,22 @@ export class HomePage {
         });
     }
 
+    callbackFilter = (_params) => {
+        return new Promise((resolve, reject) => {
+            this.searchFilter = this.searchFilter;
+            this.search();
+            resolve();
+        });
+   }
+
     openFilter() {
-        const modal = this.modalCtrl.create(MapFilter);
-        modal.present();
+        this.navCtrl.push(
+            MapFilter, 
+            { 
+                searchFilter: this.searchFilter ,
+                callback: this.callbackFilter
+            },
+            { animate: true })
     }
 
     openTutorial() {
@@ -304,12 +318,9 @@ export class HomePage {
     }
 
     loadCooperatives() {
-        // this.searchFilter
-        
-        this.cooperativesProvider.getCooperatives().subscribe(data => {
+        this.cooperativesProvider.search(this.searchFilter).subscribe(data => {
             let index = 0;
-            // console.log(data);
-            this.nearest_cooperativas = JSON.parse(data['_body']);
+            this.nearest_cooperativas = data;
 
             // console.log('Total de cooperativas: ' + this.nearest_cooperativas.length);
             while (index < this.nearest_cooperativas.length ){
@@ -408,14 +419,6 @@ export class HomePage {
     }
 
     iconClicked(id, type) {
-        // let id = 0;
-        // for (var x=0; x<this.nearest_catadores.length; x++) {
-        //     if (this.nearest_catadores[x].name == title) {
-        //         id = this.nearest_catadores[x].id;
-        //         break;
-        //     }
-        // }
-
         this.showProfile = true;
 
         switch (type) {
@@ -551,28 +554,38 @@ export class HomePage {
         var mindif = 99999;
         var closest;
 
-        for (var index = 0; index < this.nearest_catadores.length; ++index) {
-            try {
-                var catadorLatitude = this.nearest_catadores[index].geolocation[0].latitude;
-                var catadorLongitude = this.nearest_catadores[index].geolocation[0].longitude;
+        if (this.nearest_catadores.length > 0) {
+            for (var index = 0; index < this.nearest_catadores.length; ++index) {
+                try {
+                    var catadorLatitude = this.nearest_catadores[index].geolocation[0].latitude;
+                    var catadorLongitude = this.nearest_catadores[index].geolocation[0].longitude;
 
-                var dif = this.PythagorasEquirectangular(latitude, longitude, catadorLatitude, catadorLongitude);
-                if (dif < mindif) {
-                    closest = index;
-                    mindif = dif;
-                }
-            } catch (error) {
-                // do nothing
-            }    
+                    var dif = this.PythagorasEquirectangular(latitude, longitude, catadorLatitude, catadorLongitude);
+                    if (dif < mindif) {
+                        closest = index;
+                        mindif = dif;
+                    }
+                } catch (error) {
+                    // do nothing
+                }    
+            }
+            var latlngCatador = new LatLng(
+                this.nearest_catadores[closest].geolocation[0].latitude, 
+                this.nearest_catadores[closest].geolocation[0].longitude
+            );
+
+        } else {
+            var latlngCatador = new LatLng(
+                this.openLatitude,
+                this.openLongitude
+            );
         }
-        var latlngCatador = new LatLng(
-            this.nearest_catadores[closest].geolocation[0].latitude, 
-            this.nearest_catadores[closest].geolocation[0].longitude
-        );
+
         var latlng = new LatLng(
             this.openLatitude,
             this.openLongitude
         );
+
         return [latlng, latlngCatador];
     }
 

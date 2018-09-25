@@ -93,6 +93,7 @@ import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MapFilter } from '../pages/map-filter/map-filter';
+import { MaterialRecover } from '../pages/MaterialRecover';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -247,6 +248,7 @@ export function createTranslateLoader(http: HttpClient) {
         DatabaseProvider,
         LangProvider,
         // FileOpener,
+        MaterialRecover,
         File,
         FileTransfer,
         { provide: ErrorHandler, useClass: IonicErrorHandler },

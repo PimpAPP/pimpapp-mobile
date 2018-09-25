@@ -2,7 +2,7 @@
     
     <ion-grid style="height: 100%;">
         <ion-row class="slide-menu-top-row menu-top">
-            <ion-col col-10 class="col-vertical" center>
+            <ion-col col-12 class="col-vertical" center>
                 <div class="menuLinkSlideGrid">
                     <ion-row>
                         <ion-col (click)="goToSlide(0)" class="top-col">
@@ -35,12 +35,10 @@
                     </ion-row>
                 </div> 
             </ion-col>
-            <ion-col col-2 text-center class="col-vertical">
-                <div (click)="close()">
-                    <div class="close-btn">X</div>
-                    <div class="close-text">Fechar</div>
-                </div>
-            </ion-col>
+            <div (click)="close()" class="close-box">
+                <div class="close-btn">X</div>
+                <!-- <div class="close-text">Fechar</div> -->
+            </div>
         </ion-row>
 
         <ion-row class="slide-menu-middle-row">
@@ -99,7 +97,7 @@
                         </span>
 
                         <span class="text text-3">
-                            Lembre que o (a) catador (a) está prestando um serviço para você, negocie sua coleta
+                            Lembre que o (a) catador (a) está prestando um serviço para você, <b>negocie o valor da sua coleta</b>
                         </span>
 
                         <span class="text text-4">
@@ -112,7 +110,7 @@
                     <!-- SLIDE 4 -->
                     <ion-slide class="tutorial-slide bg-logo ionSlide4">
                         <span class="text text-1">
-                            Aqui você encontra mais informações sobre a nossa história, parceiros, proposta de contato. 
+                            Aqui você encontra mais informações sobre a nossa história, parceiros, proposta e contato. 
                             Clique para entender mais sobre o cataki.
                         </span>
                         <img src="assets/img/tutorial/menu-botton.jpg" class="menu-img">
@@ -121,7 +119,7 @@
                     <!-- SLIDE 5 -->
                     <ion-slide class="tutorial-slide bg-logo ionSlide5">
                         <span class="text text-1">
-                            Aqui você pode fazer o cadastro de catadores (as) e cooperativas O contato telefônico e a 
+                            Aqui você pode fazer o cadastro de catadores (as) e cooperativas. O contato telefônico e a 
                             localização são muito importantes para que a coleta seja realizada
                         </span>
 
@@ -141,7 +139,8 @@
                     <!-- SLIDE 7 -->
                     <ion-slide class="tutorial-slide bg-logo ionSlide7">
                         <span class="text text-1">
-                            Clique no item materiais
+                            Trabalhamos com 12 tipos de materiais, cada um com características próprias.
+                            Clique para entender melhor como eles funcionam.
                         </span>
 
                         <img src="assets/img/tutorial/menu-botton.jpg" class="menu-img">
@@ -157,15 +156,18 @@
                     </ion-slide>
 
                     <!-- SLIDE 9 -->
-                    <ion-slide class="tutorial-slide ionSlide8">
+                    <ion-slide class="tutorial-slide ionSlide9">
                         <div class="top-box">
                             <img src="assets/img/tutorial/tutorial-9.jpg" class="top-img">
-                        </div>
-                        <div class="bottom-box">
                             <p text-center>
-                                Obrigado(a) e seguimos juntos(as) nessa causal
+                                Obrigado(a) e seguimos juntos(as) nessa causa
                             </p>
                         </div>
+                        <!-- <div class="bottom-box">
+                            <p text-center>
+                                Obrigado(a) e seguimos juntos(as) nessa causa
+                            </p>
+                        </div> -->
                     </ion-slide>
 
                 </ion-slides>

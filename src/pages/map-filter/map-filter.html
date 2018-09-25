@@ -1,3 +1,66 @@
 <ion-content padding>
 
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+                <ion-list>
+                    <ion-item>
+                        <ion-label color="primary" stacked text-wrap>
+                            Digite aqui o nome do(a) catadores(as); o nome da cooperativa;
+                        </ion-label>
+                        <ion-input [(ngModel)]="searchFilter.search" placeholder="Pesquisa"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Nome</ion-label>
+                        <ion-checkbox [(ngModel)]="searchFilter.name"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Apelido</ion-label>
+                        <ion-checkbox [(ngModel)]="searchFilter.nickname"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Endereço</ion-label>
+                        <ion-checkbox [(ngModel)]="searchFilter.address"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Materiais</ion-label>
+                        <ion-select [(ngModel)]="materialsList" multiple="true">
+                            <ion-option>Misturado</ion-option>
+                            <ion-option>Papel</ion-option>
+                            <ion-option>Lata</ion-option>
+                            <ion-option>Plástico</ion-option>
+                            <ion-option>Vidro</ion-option>
+                            <ion-option>Metal</ion-option>
+                            <ion-option>Óleo</ion-option>
+                            <ion-option>Móveis</ion-option>
+                            <ion-option>Eletrônico</ion-option>
+                            <ion-option>Entulho</ion-option>
+                            <ion-option>Bateria</ion-option>
+                            <ion-option>Outros</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-12 class="btn-col">
+                <button ion-button icon-end (click)="ok()">
+                    Ok
+                    <ion-icon name="search"></ion-icon>
+                </button>
+                <button ion-button icon-end (click)="clean()">
+                    Limpar
+                    <ion-icon name="brush"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+
 </ion-content>
