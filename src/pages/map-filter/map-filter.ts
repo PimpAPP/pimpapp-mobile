@@ -3,6 +3,9 @@ import { AlertController, NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { SearchFilter } from '../search-filter';
+import { Keyboard } from '@ionic-native/keyboard';
+import { Renderer } from '@angular/core';
+import { UtilDataService } from '../../services/util-data.service';
 
 
 @Component({
@@ -11,14 +14,33 @@ import { SearchFilter } from '../search-filter';
 })
 export class MapFilter {
 
+    
     searchFilter = new SearchFilter();
     callBackFunction: any;
-    materialsList = []
+    public stateList: any;
+    public cityList: any;
+    materialsList = {
+        misturado: false,
+        papel: false,
+        lata: false,
+        plastico: false,
+        vidro: false,
+        metal: false,
+        oleo: false,
+        moveis: false,
+        eletronico: false,
+        entulho: false,
+        bateria: false,
+        outros: false
+    };
 
     constructor(public navCtrl: NavController, 
             params: NavParams, 
             private alertCtrl: AlertController,
-            public materialRecover: MaterialRecover) {
+            public materialRecover: MaterialRecover,
+            public keyboard: Keyboard, 
+            public renderer: Renderer,
+            public utilDataService: UtilDataService) {
         
         this.searchFilter = params.get('searchFilter');
         this.callBackFunction = params.get('callback');
@@ -27,10 +49,27 @@ export class MapFilter {
         if (this.searchFilter.materials.length > 0) {
             for (var x=0; x<this.searchFilter.materials.length; x++){
                 let material = this.materialRecover.findMaterialId(this.searchFilter.materials[x]);
-                this.materialsList.push(material['name']);
+                this.materialsList[this.replaceSpecialChars(material['name'].toLowerCase())] = true;
             }
         }
 
+        this.utilDataService.getStateAndCityList().subscribe((res) => {
+            // this.startCityAndStateSelect();
+            this.stateList = res;
+            this.onSelectState(this.searchFilter.state);
+        });
+
+    }
+
+    onSelectState(name: any) {
+        this.cityList = [];
+        for (var x=0; x<this.stateList.length; x++) {
+            var state = this.stateList[x];
+
+            if (state['nome'] == name) {
+                this.cityList = state['cidades'];
+            }
+        }
     }
 
     ok() {
@@ -48,12 +87,6 @@ export class MapFilter {
             return;
         }
 
-        this.searchFilter.materials = [];
-        this.materialsList.forEach(material => {
-            this.selectMaterial(this.replaceSpecialChars(material.toLowerCase()));
-        });
-
-        // this.viewCtrl.dismiss(this.searchFilter);
         this.callBackFunction(this.searchFilter).then(()=>{
             this.navCtrl.pop();
         });
@@ -71,14 +104,38 @@ export class MapFilter {
     }
 
     clean() {
-        this.searchFilter = new SearchFilter();
-        this.searchFilter.search = '';
-        this.materialsList = [];
+        this.searchFilter.clean();
+        this.materialsList = {
+            misturado: false,
+            papel: false,
+            lata: false,
+            plastico: false,
+            vidro: false,
+            metal: false,
+            oleo: false,
+            moveis: false,
+            eletronico: false,
+            entulho: false,
+            bateria: false,
+            outros: false
+        }
+
+        setTimeout(() => {
+            this.searchFilter.materials = [];
+        }, 200);
     }
 
     selectMaterial(material) {
         let materialSelected = this.materialRecover.findMaterial(material);
         this.searchFilter.addMaterialOrRemoveIfAlreadyIncluded(materialSelected);
+    }
+
+    searchKeyPress(e) {
+        // console.log(e.keyCode);
+        if (e.keyCode == 13) {
+            // this.keyboard.close();
+            this.renderer.invokeElementMethod(e.target, 'blur');
+        }
     }
     
 }

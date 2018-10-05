@@ -24,11 +24,18 @@ page-tutorial {
 
     .tutorial-slides {
         height: 100%;
+        position: relative;
+        overflow: auto;
     }
 
     .tutorial-slide {
         width: 100% !important;
         height: 100% !important;
+    }
+
+    .tutorial-slide .slide-zoom {
+        height: 120%;
+        overflow: auto;
     }
 
     .swiper-slide img {
@@ -82,7 +89,16 @@ page-tutorial {
         width: 100%;
     }
 
-    .ionSlide1 .top-box, .ionSlide2 .top-box {
+    .ionSlide1 .top-box {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        background-color: #cdd5c0;
+        padding-bottom: 10px;
+        z-index: 900;
+    }
+
+    .ionSlide2 .top-box {
         position: absolute;
         top: 0px;
         width: 100%;
@@ -109,6 +125,9 @@ page-tutorial {
 
     .ionSlide1 .middle-box {
         height: 415px;
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
     }
 
     .bottom-box {
@@ -155,7 +174,7 @@ page-tutorial {
     }
 
     .menu-img {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
     }
@@ -181,16 +200,31 @@ page-tutorial {
         border-right: 10px solid transparent;
     }
 
+    .ionSlide3 .text-box {
+        margin: auto;
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
+        width: 260px;
+        // position: absolute;
+        // left: 50%;
+        // transform: translateX(-50%);
+        // top: 10px;
+    }
+
     .ionSlide3 .text {
-        width: 230px;
+        width: 260px;
+        position: relative;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .ionSlide3 .text:before {
+        content: none !important;
     }
 
     .ionSlide3 .text-1 {
         background-color: #23c1e5;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-
     }
 
     .ionSlide3 .text-1:before {
@@ -199,9 +233,6 @@ page-tutorial {
 
     .ionSlide3 .text-2 {
         background-color: #fbdc00;
-        top: 106px;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .ionSlide3 .text-2:before {
@@ -210,9 +241,6 @@ page-tutorial {
 
     .ionSlide3 .text-3 {
         background-color: #d95eb4;
-        top: 172px;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .ionSlide3 .text-3:before {
@@ -221,9 +249,6 @@ page-tutorial {
 
     .ionSlide3 .text-4 {
         background-color: #fb9c12;
-        top: 255px;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .ionSlide3 .text-4:before {
@@ -232,7 +257,7 @@ page-tutorial {
 
     .ionSlide4 .text-1 {
         background-color: #3dc5e1;
-        bottom: 70px;
+        bottom: 85px;
         left: 10px;
     }
 
@@ -242,7 +267,7 @@ page-tutorial {
 
     .ionSlide5 .text-1 {
         background-color: #f7dd1b;
-        bottom: 70px;
+        bottom: 85px;
         left: 90px;
     }
 
@@ -252,7 +277,7 @@ page-tutorial {
 
     .ionSlide6 .text-1 {
         background-color: #d95eb4;
-        bottom: 70px;
+        bottom: 85px;
         right: 7px;
     }
 
@@ -262,7 +287,7 @@ page-tutorial {
 
     .ionSlide7 .text-1 {
         background-color: #fb9c12;
-        bottom: 70px;
+        bottom: 85px;
         right: 7px;
     }
 
@@ -273,7 +298,7 @@ page-tutorial {
 
     .ionSlide8 .text-1 {
         background-color: #27b93f;
-        bottom: 70px;
+        bottom: 85px;
         right: 7px;
     }
 
@@ -283,8 +308,9 @@ page-tutorial {
     }
 
     .ionSlide9 .top-box{
-        position: absolute;
-        top: 0px;
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
         width: 100%;
     }
 
@@ -292,5 +318,50 @@ page-tutorial {
         padding: 20px;
     }
 
+    @media screen and (orientation:landscape) {
+        
+        .menu-img {
+            width: 100%;
+        }
+
+        .ionSlide3 .text-box {
+            width: 400px;
+            height: 130%;
+            padding-top: 75px;
+        }
+
+        .ionSlide3 .text {
+            width: 400px;
+        }
+
+        .ionSlide3 .text {
+            margin-bottom: 5px;
+        }
+
+        .ionSlide4 .text-1 {
+            bottom: 40%;
+        }
+
+        .ionSlide5 .text-1 {
+            bottom: 40%;
+        }
+
+        .ionSlide6 .text-1 {
+            bottom: 40%;
+        }
+
+        .ionSlide7 .text-1 {
+            bottom: 40%;
+        }
+
+        .ionSlide8 .text-1 {
+            bottom: 40%;
+        }
+
+        .ionSlide9 .top-box {
+            padding-top: 180px;
+        }
+
+    }
 
 }

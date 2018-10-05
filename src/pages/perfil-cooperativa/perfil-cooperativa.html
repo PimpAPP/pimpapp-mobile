@@ -2,7 +2,8 @@
     
     <div>
         <div class="profile-header-background"></div>
-        <img src="{{ cooperativaImg }}" class="img-profile" (error)="photoOnError()" imageViewer>
+        <img src="{{ cooperativaImg }}" class="img-profile" (error)="photoOnError()" [hidden]="photoLoading" imageViewer>
+        <ion-spinner class="img-profile img-loading" [hidden]="!photoLoading"></ion-spinner>
     </div>
     <div *ngIf="!cooperativa?.profile_photo"></div>
 

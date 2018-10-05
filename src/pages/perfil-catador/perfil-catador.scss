@@ -1,4 +1,10 @@
 page-perfil-catador {
+
+    .scroll-content {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
     ion-header {
         text-align: center;
     }
@@ -101,6 +107,11 @@ page-perfil-catador {
     margin-top: 20px;
     margin-bottom: 15px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.56);
+}
+
+// Photo loading
+#perfil-catador-content > div.scroll-content > div:nth-child(1) > ion-spinner > svg > circle {
+    stroke: #58585a;
 }
 
 .catador-name {

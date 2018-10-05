@@ -6,13 +6,22 @@ export class SearchFilter {
     public name: Boolean;
     public nickname: Boolean;
     public address: Boolean;
+    public state: string;
+    public city: string;
     public materials = [];
 
     constructor() {
+        this.clean();
+    }
+
+    clean() {
+        this.search = '';
         this.name = true;
         this.nickname = false;
         this.address = false;
         this.materials = [];
+        this.state = '';
+        this.city = '';
     }
 
     getAsUrlParams() {
@@ -30,11 +39,18 @@ export class SearchFilter {
         if (this.address)
             query += 'address=' + this.address + '&';
 
+        if (this.state)
+            query += 'state=' + this.state + '&';
+        
+        if (this.city)
+            query += 'city=' + this.city + '&';
+
         if (this.materials.length) {
             for (var x=0; x<this.materials.length; x++){
                 query += 'materials=' + this.materials[x] + '&';
             }
         }
+
         // if (this.materials.length > 0) {
         //     query += 'cars[]='
         // }

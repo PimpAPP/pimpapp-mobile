@@ -35,6 +35,7 @@ export class PerfilCatador {
     public avatar: String = '';
     showRightSliderArrow = true;
     showLeftSliderArrow = false;
+    photoLoading = true;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         public http: UsersAPI, public loading: LoadingController,
@@ -65,6 +66,7 @@ export class PerfilCatador {
     
 
     updateData(id) {
+        this.photoLoading = true;
         this.catadorID = id;
         this.scrollToTop();
         this.update();
@@ -81,6 +83,8 @@ export class PerfilCatador {
 
     update() {
         this.catador = {};
+        this.photoLoading = true;
+        this.catadorImg = this.noImageSrc;
         let url = this.apiProvider.url + "api/catadores/" + this.catadorID + "/";
         //Prepara o loading
         let loader = this.loading.create({
@@ -133,7 +137,7 @@ export class PerfilCatador {
                     }    
                     
                     this.whatsapp = phone;
-                    console.log(this.catador);
+                    this.photoLoading = false;
                 },
                 err => { }
             );

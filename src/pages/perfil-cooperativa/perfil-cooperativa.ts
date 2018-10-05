@@ -30,6 +30,7 @@ export class PerfilCooperativa {
     historyMaxSize: Number = 200;
     showCompleteHistory: boolean = false;
     whatsapp: any;
+    
 
 
     constructor(public navCtrl: NavController, public navParams: NavParams,

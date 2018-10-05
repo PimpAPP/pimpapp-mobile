@@ -5,15 +5,23 @@
             <ion-col col-12>
                 <ion-list>
                     <ion-item>
-                        <ion-label color="primary" stacked text-wrap>
+                        <!-- <ion-label class="subtitle" stacked text-wrap>
                             Digite aqui o nome do(a) catadores(as); o nome da cooperativa;
-                        </ion-label>
-                        <ion-input [(ngModel)]="searchFilter.search" placeholder="Pesquisa"></ion-input>
+                        </ion-label> -->
+                        <p class="subtitle" text-wrap>
+                            Digite aqui o nome do(a) catadores(as); o nome da cooperativa;
+                        </p>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input [(ngModel)]="searchFilter.search"
+                                placeholder="Pesquisa" 
+                                class="search-input"
+                                (keypress)="searchKeyPress($event)"></ion-input>
                     </ion-item>
 
                     <ion-item>
                         <ion-label>Nome</ion-label>
-                        <ion-checkbox [(ngModel)]="searchFilter.name"></ion-checkbox>
+                        <ion-checkbox [(ngModel)]="searchFilter.name" id="name"></ion-checkbox>
                     </ion-item>
 
                     <ion-item>
@@ -26,23 +34,88 @@
                         <ion-checkbox [(ngModel)]="searchFilter.address"></ion-checkbox>
                     </ion-item>
 
-                    <ion-item>
-                        <ion-label>Materiais</ion-label>
-                        <ion-select [(ngModel)]="materialsList" multiple="true">
-                            <ion-option>Misturado</ion-option>
-                            <ion-option>Papel</ion-option>
-                            <ion-option>Lata</ion-option>
-                            <ion-option>Plástico</ion-option>
-                            <ion-option>Vidro</ion-option>
-                            <ion-option>Metal</ion-option>
-                            <ion-option>Óleo</ion-option>
-                            <ion-option>Móveis</ion-option>
-                            <ion-option>Eletrônico</ion-option>
-                            <ion-option>Entulho</ion-option>
-                            <ion-option>Bateria</ion-option>
-                            <ion-option>Outros</ion-option>
+                    <ion-item [hidden]="!searchFilter.address">
+                        <ion-label>Estado</ion-label>
+                        <ion-select [(ngModel)]="searchFilter.state" (ionChange)="onSelectState($event)">
+                            <ion-option *ngFor="let state of stateList" value="{{ state.nome }}">
+                                {{ state.nome }}
+                            </ion-option>
                         </ion-select>
                     </ion-item>
+
+                    <ion-item [hidden]="!searchFilter.address">
+                        <ion-label>Cidade</ion-label>
+                        <ion-select [(ngModel)]="searchFilter.city">
+                            <ion-option *ngFor="let city of cityList" value="{{ city }}">
+                                {{ city }}
+                            </ion-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                        <p class="subtitle">Materiais</p>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Misturado</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.misturado" (ionChange)="selectMaterial('misturado')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Papel</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.papel" (ionChange)="selectMaterial('papel')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Lata</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.lata" (ionChange)="selectMaterial('lata')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Plástico</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.plastico" (ionChange)="selectMaterial('plastico')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Vidro</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.vidro" (ionChange)="selectMaterial('vidro')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Metal</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.metal" (ionChange)="selectMaterial('metal')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Óleo</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.oleo" (ionChange)="selectMaterial('oleo')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Móveis</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.moveis" (ionChange)="selectMaterial('moveis')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Eletrônico</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.eletronico" (ionChange)="selectMaterial('eletronico')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Entulho</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.entulho" (ionChange)="selectMaterial('entulho')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Bateria</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.bateria" (ionChange)="selectMaterial('bateria')"></ion-checkbox>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Outros</ion-label>
+                        <ion-checkbox [(ngModel)]="materialsList.outros" (ionChange)="selectMaterial('outros')"></ion-checkbox>
+                    </ion-item>
+
                 </ion-list>
             </ion-col>
         </ion-row>

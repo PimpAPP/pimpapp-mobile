@@ -12,6 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { Keyboard } from '@ionic-native/keyboard';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SQLite } from '@ionic-native/sqlite';
@@ -94,6 +95,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MapFilter } from '../pages/map-filter/map-filter';
 import { MaterialRecover } from '../pages/MaterialRecover';
+import { UtilDataService } from '../services/util-data.service';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -249,8 +251,10 @@ export function createTranslateLoader(http: HttpClient) {
         LangProvider,
         // FileOpener,
         MaterialRecover,
+        UtilDataService,
         File,
         FileTransfer,
+        Keyboard,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         { provide: AppStorage, useClass: AppStorage }
     ]

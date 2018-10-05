@@ -14,9 +14,6 @@ import { CollectsOpen } from './../collects-open/catador-collects';
 import { AutocompletePage } from './../autocomplete/autocomplete';
 import { ResidueRegister } from './../residue-register/residue-register';
 import { NgZone, ViewChild } from '@angular/core';
-import { DatabaseProvider } from './../../providers/database/database-provider';
-import { LangProvider } from './../../providers/lang/lang-provider';
-import { LangPage } from './../lang-page/lang-page';
 import { TranslateService } from '@ngx-translate/core';
 import { TutorialPage } from '../tutorial/tutorial';
 import { Storage } from '@ionic/storage';
@@ -125,7 +122,7 @@ export class HomePage {
 
     search() {
         this.loading = this.loadingCtrl.create({
-            content: 'Please wait...'
+            content: 'Carregando...'
         });
 
         this.loading.present();
@@ -133,8 +130,14 @@ export class HomePage {
         if (this.map) // To work in browser
             this.map.clear();
 
+        this.setCurrentPosition();
+        
         this.catadoresProvider.search(this.searchFilter).subscribe(data => {
             this.nearest_catadores = data;
+
+            var target = this.NearestCity(this.openLatitude, this.openLongitude);
+            this.setZoomOnNearestCatador(target);
+
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
             this.loadCooperatives();
             this.loading.dismiss();
@@ -208,10 +211,11 @@ export class HomePage {
             };
         }
 
-        this.map.addMarker(markerOptions)
-            .then((marker: Marker) => {
+        if (this.map) {
+            this.map.addMarker(markerOptions).then((marker: Marker) => {
                 marker.showInfoWindow();
             });
+        }
     }
 
     loadMap(zoom, target?) {
@@ -256,15 +260,17 @@ export class HomePage {
             duration: 1000
         };
     
-        this.map.animateCamera(position).then(() => {
-            // Deveria ser possível pegar o zoom atual e redefini-lo com um 
-            // menor valor. Mas ao fazer isso com o getCameraPosition() o
-            // o zoom não é aplicado.
-            this.map.getCameraPosition().then((position) => {
-                position.zoom = position.zoom - 0.5;
-                this.map.moveCamera(position);
-            }); 
-        });
+        if (this.map) {
+            this.map.animateCamera(position).then(() => {
+                // Deveria ser possível pegar o zoom atual e redefini-lo com um 
+                // menor valor. Mas ao fazer isso com o getCameraPosition() o
+                // o zoom não é aplicado.
+                this.map.getCameraPosition().then((position) => {
+                    position.zoom = position.zoom - 0.5;
+                    this.map.moveCamera(position);
+                }); 
+            });
+        }
     }
 
     getCurrentLocation() {
@@ -411,11 +417,13 @@ export class HomePage {
 
 
         // Adding the Marker 
-        this.map.addMarker(marker)
-            .then((marker: Marker) => {
-                //marker.setIcon('www/' + iconURL);
-                //marker.showInfoWindow();
-            });
+        if (this.map) {
+            this.map.addMarker(marker)
+                .then((marker: Marker) => {
+                    //marker.setIcon('www/' + iconURL);
+                    //marker.showInfoWindow();
+                });
+        }
     }
 
     iconClicked(id, type) {

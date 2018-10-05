@@ -4,8 +4,9 @@
         <div class="profile-header-background">
             <!-- <div id="arrow-header-up"></div> -->
         </div>
-        <img src="{{ catadorImg }}" class="img-profile" 
+        <img src="{{ catadorImg }}" class="img-profile" [hidden]="photoLoading"
                 (error)="photoOnError()" imageViewer>
+        <ion-spinner class="img-profile img-loading" [hidden]="!photoLoading"></ion-spinner>
     </div>
     
     <div *ngIf="!catador?.profile_photo"></div>
