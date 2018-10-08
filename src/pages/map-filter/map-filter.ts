@@ -33,6 +33,8 @@ export class MapFilter {
         bateria: false,
         outros: false
     };
+    public showMaterials = false;
+
 
     constructor(public navCtrl: NavController, 
             params: NavParams, 
@@ -51,6 +53,10 @@ export class MapFilter {
                 let material = this.materialRecover.findMaterialId(this.searchFilter.materials[x]);
                 this.materialsList[this.replaceSpecialChars(material['name'].toLowerCase())] = true;
             }
+
+            this.showMaterials = true
+        } else {
+            this.showMaterials = false;
         }
 
         this.utilDataService.getStateAndCityList().subscribe((res) => {

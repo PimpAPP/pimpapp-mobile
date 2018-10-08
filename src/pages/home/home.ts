@@ -477,7 +477,9 @@ export class HomePage {
     }
 
     closeProfile() {
-        this.map.setClickable(true);
+        if (this.map)
+            this.map.setClickable(true);
+
         var profileDiv = document.getElementById('profileDiv');
         var mapDiv = document.getElementById('map');
         profileDiv.style.height = '0%';
