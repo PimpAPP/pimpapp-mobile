@@ -17,6 +17,7 @@ import { NgZone, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TutorialPage } from '../tutorial/tutorial';
 import { Storage } from '@ionic/storage';
+import { Http, Headers } from '@angular/http';
 
 
 import {
@@ -77,7 +78,8 @@ export class HomePage {
         public collectsProvider: CollectsProvider, public modalCtrl: ModalController, 
         public zone:NgZone, public loadingCtrl : LoadingController,  
         public apiProvider: ApiProvider, public cooperativesProvider: CooperativesProvider,
-        private translate: TranslateService, public storage: Storage) {
+        private translate: TranslateService, public storage: Storage, 
+        public http: Http) {
 
         this.showProfile = false;
         this.translate.setDefaultLang('pt_BR');
@@ -129,18 +131,72 @@ export class HomePage {
 
         if (this.map) // To work in browser
             this.map.clear();
-
-        this.setCurrentPosition();
         
         this.catadoresProvider.search(this.searchFilter).subscribe(data => {
             this.nearest_catadores = data;
-
-            var target = this.NearestCity(this.openLatitude, this.openLongitude);
-            this.setZoomOnNearestCatador(target);
-
             this.plotCatadoresOnMap(this.nearest_catadores, 'Catador');
             this.loadCooperatives();
+
+            if (this.searchFilter.state || this.searchFilter.city) {
+                // Set zoom on state/city
+                this.setZoomOnSearchAddress(this.searchFilter);
+            } else {
+                // Set zoom on nearest Catador
+                this.setCurrentPosition();
+                var target = this.NearestCity(this.openLatitude, this.openLongitude);
+                this.setZoomOnNearestCatador(target);
+            }
+
             this.loading.dismiss();
+        });
+    }
+
+    setZoomOnSearchAddress(searchFilter) {
+        let address = '';
+
+        if (searchFilter.city)
+            address += (address) ? ', ' + searchFilter.city : searchFilter.city;
+
+        if (searchFilter.state)
+            address += (address) ? ', ' + searchFilter.state : searchFilter.state;        
+        
+        if (searchFilter.street)
+            address += (address) ? ', ' + searchFilter.street : searchFilter.street;   
+
+        var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + 
+                address + '&key=AIzaSyDS7AxBMmoeRanMxs4-VJJ87I9hMKp-d1E';
+
+        return this.http.get(url).subscribe(data => {
+            var res = JSON.parse(data['_body']);
+            var results = res.results;
+            if (!results) return;
+
+            var geolocation = results[0]['geometry']['location'];
+            var latlng = new LatLng(
+                geolocation['lat'],
+                geolocation['lng']
+            );
+
+            this.setSearchPosition(latlng);
+
+            let position: AnimateCameraOptions = {
+                target: latlng,
+                tilt: 0,
+                duration: 1000
+            };
+        
+            if (this.map) {
+                this.map.animateCamera(position).then(() => {
+                    // Deveria ser possível pegar o zoom atual e redefini-lo com um 
+                    // menor valor. Mas ao fazer isso com o getCameraPosition() o
+                    // o zoom não é aplicado.
+                    this.map.getCameraPosition().then((position) => {
+                        position.zoom = position.zoom - 0.5;
+                        console.log(position.zoom);
+                        this.map.moveCamera(position);
+                    }); 
+                });
+            }
         });
     }
 
@@ -207,6 +263,31 @@ export class HomePage {
             markerOptions = {
                 position: location,
                 title: "ó você aqui",
+                icon: { url: "file:///android_asset/www/" + iconURL },
+            };
+        }
+
+        if (this.map) {
+            this.map.addMarker(markerOptions).then((marker: Marker) => {
+                marker.showInfoWindow();
+            });
+        }
+    }
+
+    setSearchPosition(latLng) {
+        let markerOptions: MarkerOptions;
+        let iconURL: string = 'assets/icon/marker-user.png';
+
+        if (this.platform.is('ios')) {
+            markerOptions = {
+                position: latLng,
+                title: "Você pesquisou aqui",
+                icon: { url: iconURL },
+            };
+        } else {
+            markerOptions = {
+                position: latLng,
+                title: "Você pesquisou aqui",
                 icon: { url: "file:///android_asset/www/" + iconURL },
             };
         }

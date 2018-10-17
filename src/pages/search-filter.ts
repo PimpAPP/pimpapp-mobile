@@ -8,6 +8,7 @@ export class SearchFilter {
     public address: Boolean;
     public state: string;
     public city: string;
+    public street: string;
     public materials = [];
 
     constructor() {
@@ -22,6 +23,7 @@ export class SearchFilter {
         this.materials = [];
         this.state = '';
         this.city = '';
+        this.street = '';
     }
 
     getAsUrlParams() {

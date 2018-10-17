@@ -293,7 +293,7 @@ export class CadastroCatador {
         if (this.catador.country)
             address += (address) ? ', ' + this.catador.country : this.catador.country;
         
-        return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address).subscribe(data => {
+        return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyDS7AxBMmoeRanMxs4-VJJ87I9hMKp-d1E').subscribe(data => {
             var res = JSON.parse(data['_body']);
             var results = res.results;
             if (!results) return;

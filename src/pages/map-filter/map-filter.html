@@ -5,12 +5,9 @@
             <ion-col col-12>
                 <ion-list>
                     <ion-item>
-                        <!-- <ion-label class="subtitle" stacked text-wrap>
+                        <!-- <p class="subtitle" text-wrap>
                             Digite aqui o nome do(a) catadores(as); o nome da cooperativa;
-                        </ion-label> -->
-                        <p class="subtitle" text-wrap>
-                            Digite aqui o nome do(a) catadores(as); o nome da cooperativa;
-                        </p>
+                        </p> -->
                     </ion-item>
                     <!-- <ion-item>
                         <ion-input [(ngModel)]="searchFilter.search"
@@ -33,10 +30,10 @@
                         <button clear ion-button item-right (click)="ok()" class="button-search">
                             <ion-icon name="search"></ion-icon>
                         </button>
-                        <!-- <button ion-button icon-end (click)="ok()">
+                        <button ion-button icon-end (click)="ok()">
                             ok
                             <ion-icon name="search"></ion-icon>
-                        </button>  -->
+                        </button> 
                     </ion-item>
 
                     <ion-item>
@@ -70,6 +67,11 @@
                                 {{ city }}
                             </ion-option>
                         </ion-select>
+                    </ion-item>
+
+                    <ion-item [hidden]="!searchFilter.address">
+                        <ion-label>Rua</ion-label>
+                        <ion-input [(ngModel)]="searchFilter.street" type="text"></ion-input>
                     </ion-item>
 
                     <ion-item>
