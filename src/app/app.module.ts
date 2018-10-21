@@ -96,6 +96,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MapFilter } from '../pages/map-filter/map-filter';
 import { MaterialRecover } from '../pages/MaterialRecover';
 import { UtilDataService } from '../services/util-data.service';
+import { IntroSlidePage } from '../pages/intro-slide/intro-slide';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -117,6 +118,7 @@ export function createTranslateLoader(http: HttpClient) {
         MenuPage,
         MenuCadastroComponent,
         TutorialPage,
+        IntroSlidePage,
         MenuCatadorRegister,
         MenuMaterials,
         CansPage,
@@ -191,6 +193,7 @@ export function createTranslateLoader(http: HttpClient) {
         MenuPage,
         MenuCadastroComponent,
         TutorialPage,
+        IntroSlidePage,
         MenuCatadorRegister,
         MenuMaterials,
         CansPage,

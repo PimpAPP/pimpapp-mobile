@@ -31,6 +31,7 @@ import {
 } from '@ionic-native/google-maps';
 import { SearchFilter } from '../search-filter';
 import { MapFilter } from '../map-filter/map-filter';
+import { IntroSlidePage } from '../intro-slide/intro-slide';
 
 declare var google: any;
 
@@ -101,6 +102,8 @@ export class HomePage {
             //     console.log('error');
             // });
 
+            this.openIntroSlide();
+            
             // Buscando posição atual
             this.geolocation.getCurrentPosition({timeout: 40000, enableHighAccuracy: true}).then(resp => {
                 this.openLatitude = resp.coords.latitude;
@@ -117,9 +120,17 @@ export class HomePage {
                 // this.loadMap(3);
             });
 
+
+
         }, (error) => {
             console.log('Error ' + error);
         });
+    }
+
+    openIntroSlide() {
+        // this.navCtrl.push(TutorialPage);
+        const modal = this.modalCtrl.create(IntroSlidePage);
+        modal.present();
     }
 
     search() {
@@ -222,7 +233,7 @@ export class HomePage {
         this.storage.ready().then(() => {
             this.storage.get('firstAccess').then((val) => {
                 if (val == null || val == 1) {
-                    this.navCtrl.push(TutorialPage);
+                    // this.navCtrl.push(TutorialPage);
                     const modal = this.modalCtrl.create(TutorialPage);
                     modal.present();
                 }
