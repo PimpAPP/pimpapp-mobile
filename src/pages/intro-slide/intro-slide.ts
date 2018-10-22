@@ -22,4 +22,9 @@ export class IntroSlidePage {
     close() {
         this.viewCtrl.dismiss();
     }
+
+    newxtSlide() {
+        this.slides.slideNext(300);
+    }
+
 }
